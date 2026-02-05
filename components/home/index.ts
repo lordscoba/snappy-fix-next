@@ -1,0 +1,11 @@
+export { default as Hero } from "./Hero";
+export { default as Why } from "./Why";
+export { default as What } from "./What";
+export { default as Features } from "./Features";
+export { default as Video } from "./Video";
+export { default as Counter } from "./Counter";
+export { default as Pricing } from "./Pricing";
+export { default as Testimonial } from "./Testimonial";
+export { default as Join } from "./Join";
+export { default as Team } from "./Team";
+export { default as ContactUs } from "./Contact-us";
