@@ -1,12 +1,13 @@
+"use client";
+
 import { memo, useMemo } from "react";
 import { BsPatchCheck } from "react-icons/bs";
-import { useLocation } from "react-router-dom";
+import { useParams } from "next/navigation";
 import { data } from "./Data";
-import { Helmet } from "react-helmet-async";
 
 const Skills = () => {
-  const location = useLocation().pathname;
-  const locationId = Number(location.split("/")[2]);
+  const params = useParams();
+  const locationId = Number(params?.id);
 
   const single = useMemo(() => {
     return data[locationId - 1];
@@ -40,23 +41,6 @@ const Skills = () => {
           </SkillCard>
         ))}
       </div>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: single.name,
-            image: single.image,
-            jobTitle: "Software Developer",
-            url: window.location.href,
-            sameAs: [
-              `https://${single.github_link}`,
-              `https://${single.linkdln_link}`,
-              `https://${single.twitter_link}`,
-            ],
-          })}
-        </script>
-      </Helmet>
     </section>
   );
 };

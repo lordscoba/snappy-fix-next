@@ -1,15 +1,20 @@
+"use client";
+
 import { memo, useMemo } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+
 import { FaBriefcase } from "react-icons/fa";
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { BsMouse } from "react-icons/bs";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { data } from "./Data";
-import { Link, useLocation } from "react-router-dom";
 
 const Hero = () => {
-  const location = useLocation().pathname;
-  const locationId = Number(location.split("/")[2]);
+  const params = useParams();
+  const locationId = Number(params?.id);
 
   const single = useMemo(() => {
     return data[locationId - 1];
@@ -19,20 +24,9 @@ const Hero = () => {
 
   return (
     <header className="bg-[#fafafa] min-h-screen">
-      {/* <Helmet>
-        <title>{single.name} – Full Stack Developer Portfolio</title>
-        <meta
-          name="description"
-          content={`Portfolio of ${single.name}. Skills: ${single.skills.map((s) => s.skill_main).join(", ")}.`}
-        />
-        <meta property="og:title" content={`${single.name} Portfolio`} />
-        <meta property="og:description" content={single.text} />
-        <meta property="og:image" content={single.image} />
-      </Helmet> */}
-      {/* Back Navigation */}
       <nav className="p-4">
         <Link
-          to="/"
+          href="/"
           className="flex items-center gap-2 text-2xl hover:opacity-70 transition"
           aria-label="Go back to homepage"
         >
@@ -42,7 +36,6 @@ const Hero = () => {
       </nav>
 
       <main className="flex flex-wrap-reverse justify-center gap-10 py-16 px-4">
-        {/* Social Icons */}
         <aside className="flex md:flex-col gap-6 items-center">
           <SocialIcon href={single.github_link} label="GitHub">
             <FiGithub />
@@ -57,7 +50,6 @@ const Hero = () => {
           </SocialIcon>
         </aside>
 
-        {/* Text Section */}
         <section className="max-w-xl space-y-6">
           <h1 className="text-4xl md:text-6xl font-bold">{single.name} 👋</h1>
 
@@ -79,7 +71,6 @@ const Hero = () => {
             View My Technical Skills <FaBriefcase />
           </a>
 
-          {/* Scroll */}
           <a
             href="#about"
             className="flex items-center gap-2 text-gray-700 hover:text-black"
@@ -90,16 +81,14 @@ const Hero = () => {
           </a>
         </section>
 
-        {/* Image */}
-        <figure className="max-w-sm">
-          <img
-            width="400"
-            height="400"
-            decoding="async"
+        <figure className="max-w-sm relative">
+          <Image
             src={single.image}
             alt={single.name}
+            width={400}
+            height={400}
             className="rounded-2xl shadow-lg animate-zoom"
-            loading="eager"
+            priority
           />
         </figure>
       </main>

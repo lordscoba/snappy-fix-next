@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import {
   Hero,
   Why,
@@ -14,17 +14,21 @@ import {
   Team,
   ContactUs,
 } from "../../components/home";
+import Blog from "../../components/home/Blog";
 import { NavbarMenu } from "../../components/Layout";
-import { SnowPics, SnowG, SnowC1, SnowC2 } from "../../images";
+import { SnowG, SnowC1, SnowC2 } from "../../images";
 import Snow from "../../screens/Snow";
 
-const backgrounds = [SnowPics, SnowG, SnowC1, SnowC2];
+const backgrounds = [SnowG, SnowC1, SnowC2];
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [bgSrc, setBgSrc] = useState<string | null>(null);
 
-  const randomBg = useMemo(() => {
-    return backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  useEffect(() => {
+    const randomBg =
+      backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    setBgSrc(randomBg.src);
   }, []);
 
   useEffect(() => {
@@ -44,7 +48,7 @@ export default function Home() {
 
       <header
         className="bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: `url(${randomBg.src})` }}
+        style={bgSrc ? { backgroundImage: `url(${bgSrc})` } : undefined}
       >
         <NavbarMenu background={scrolled ? "bg-[#884bdf]" : "bg-transparent"} />
         <Hero />
@@ -59,6 +63,7 @@ export default function Home() {
       <Testimonial />
       <Join />
       <Team />
+      <Blog />
       <ContactUs />
     </main>
   );
