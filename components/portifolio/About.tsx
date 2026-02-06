@@ -1,13 +1,18 @@
+"use client";
+
 import { memo, useMemo } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+
 import { FiAward } from "react-icons/fi";
 import { AiOutlineFilePdf } from "react-icons/ai";
 import { BiBriefcaseAlt2, BiSupport } from "react-icons/bi";
 import { data } from "./Data";
-import { Link, useLocation } from "react-router-dom";
 
 const About = () => {
-  const location = useLocation().pathname;
-  const locationId = Number(location.split("/")[2]);
+  const params = useParams();
+  const locationId = Number(params?.id);
 
   const single = useMemo(() => {
     return data[locationId - 1];
@@ -30,21 +35,18 @@ const About = () => {
 
       <div className="mt-10 flex flex-wrap justify-center gap-12 px-4">
         {/* Image */}
-        <figure className="w-72 h-72">
-          <img
-            width="400"
-            height="400"
-            decoding="async"
+        <figure className="w-72 h-72 relative">
+          <Image
             src={single.image}
             alt={`${single.name} portrait`}
-            loading="lazy"
-            className="w-full h-full object-cover rounded-3xl border-4 border-black shadow-lg animate-zoom"
+            fill
+            className="object-cover rounded-3xl border-4 border-black shadow-lg animate-zoom"
+            sizes="288px"
           />
         </figure>
 
         {/* Content */}
         <article className="max-w-xl space-y-8">
-          {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <StatCard
               icon={<FiAward size={24} />}
@@ -63,12 +65,10 @@ const About = () => {
             />
           </div>
 
-          {/* About text */}
           <p className="text-gray-600 leading-relaxed">{single.about}</p>
 
-          {/* Download */}
           <Link
-            to={single.image}
+            href={single.image}
             target="_blank"
             download
             aria-label="Download CV"

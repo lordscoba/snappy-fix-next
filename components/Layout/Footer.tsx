@@ -1,4 +1,7 @@
+"use client";
+
 import { Footer as FooterBg } from "../../images/bg-img";
+import { useEffect, useState } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -7,6 +10,13 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
+  // Use state for the year to prevent hydration mismatch
+  const [year, setYear] = useState<number | string>("");
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer
       className="bg-cover bg-center bg-fixed py-20"
@@ -32,8 +42,8 @@ const Footer = () => {
         </nav>
 
         <p className="text-xs text-[#b5aec4]">
-          © {new Date().getFullYear()} Snappy-fix Technologies. All rights
-          reserved.
+          {/* Default to 2026 or leave empty until hydrated */}©{" "}
+          {year || "2026"} Snappy-fix Technologies. All rights reserved.
         </p>
       </div>
     </footer>
