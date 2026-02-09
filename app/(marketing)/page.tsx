@@ -17,7 +17,8 @@ import {
 import Blog from "../../components/home/Blog";
 import { NavbarMenu } from "../../components/Layout";
 import { SnowG, SnowC1, SnowC2 } from "../../images";
-import Snow from "../../screens/Snow";
+import Snow from "../../packages/Snow";
+import ProjectsDone from "@/components/projects/ProjectsDone";
 
 const backgrounds = [SnowG, SnowC1, SnowC2];
 
@@ -63,6 +64,7 @@ export default function Home() {
       <Testimonial />
       <Join />
       <Team />
+      <ProjectsDone />
       <Blog />
       <ContactUs />
     </main>
