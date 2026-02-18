@@ -9,45 +9,39 @@ export type Project = {
 
 export const projects: any = [
   {
-    slug: "aurora-shop",
-    title: "Aurora Shop",
-    category: "E‑commerce",
+    slug: "bible-compass",
+    title: "Bible Compass",
+    category: "Faith-Based Platform",
     excerpt:
-      "A fast, conversion‑focused storefront with product search and smart filters.",
-    cover: "/images/projects/aurora.jpg",
-    link: "https://example.com/aurora",
+      "A Christian digital platform offering structured Bible study tools, devotionals, and scripture resources with a clean, mobile-friendly experience.",
+    cover: "/images/projects/bible-compass_project.png",
+    link: "https://www.bible-compass.com/",
   },
   {
-    slug: "nova-invest",
-    title: "Nova Invest",
-    category: "Fintech",
-    excerpt: "A secure investment dashboard with live performance tracking.",
-    cover: "/images/projects/nova.jpg",
-    link: "https://example.com/nova",
-  },
-  {
-    slug: "pulse-health",
-    title: "Pulse Health",
-    category: "Healthcare",
-    excerpt: "A modern clinic website with online booking and telehealth UX.",
-    cover: "/images/projects/pulse.jpg",
-    link: "https://example.com/pulse",
-  },
-  {
-    slug: "bright-campus",
-    title: "Bright Campus",
-    category: "Education",
+    slug: "snappy-fix-technologies",
+    title: "Snappy-fix Technologies",
+    category: "Software Development",
     excerpt:
-      "A responsive learning platform with student portals and analytics.",
-    cover: "/images/projects/campus.jpg",
-    link: "https://example.com/campus",
+      "A full-service technology company delivering scalable web and mobile applications, UI/UX solutions, and post-launch support for businesses and startups.",
+    cover: "/images/projects/snappy-fix_project.png",
+    link: "https://www.snappy-fix.com/",
   },
   {
-    slug: "vertex-hub",
-    title: "Vertex Hub",
-    category: "SaaS",
-    excerpt: "A modern SaaS dashboard with team management and billing.",
-    cover: "/images/projects/vertex.jpg",
-    link: "https://example.com/vertex",
+    slug: "house-link-up",
+    title: "House Link Up",
+    category: "Real Estate",
+    excerpt:
+      "A real estate platform connecting property owners, agents, and renters with listing management, user dashboards, and scalable backend architecture.",
+    cover: "/images/projects/project_image.png",
+    link: "#",
+  },
+  {
+    slug: "ceeyit-solutions",
+    title: "CeeyIT Solutions",
+    category: "IT Solutions",
+    excerpt:
+      "A technology solutions company providing web development, IT consulting, business automation tools, and performance-optimized digital systems.",
+    cover: "/images/projects/ceeyit_project.png",
+    link: "https://ceeyitsolutions.com/",
   },
 ];

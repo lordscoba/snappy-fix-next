@@ -1,4 +1,5 @@
-import { Chigozie2, Chris2, Pascal, Seyi } from "../../images/team-img";
+// import { Chigozie2, Chris2, Pascal, Seyi } from "../../images/team-img";
+import { Chigozie2, Chris2, Pascal, Seyi } from "@/images/team-img";
 
 type mine = {
   skill_type: string;
@@ -11,6 +12,7 @@ type know = {
 export type Tester = {
   id: number;
   name: string;
+  slug: string;
   skills: Array<know>;
   text: string;
   image: any;
@@ -30,6 +32,7 @@ export const data: Array<Tester> = [
   {
     id: 1,
     name: "Nwokoye Christopher",
+    slug: "nwokoye-christopher",
     skills: [
       {
         skill_main: "FrontEnd Development",
@@ -174,6 +177,7 @@ export const data: Array<Tester> = [
   {
     id: 2,
     name: "Nwokoye Chigozie",
+    slug: "nwokoye-chigozie",
     skills: [
       {
         skill_main: "FrontEnd Development",
@@ -342,6 +346,7 @@ export const data: Array<Tester> = [
   {
     id: 3,
     name: "John Akande",
+    slug: "john-akande",
     skills: [
       {
         skill_main: "Web Designer",
@@ -403,6 +408,7 @@ export const data: Array<Tester> = [
   {
     id: 4,
     name: "Osunkwor Pascal",
+    slug: "osunkwor-pascal",
     skills: [
       {
         skill_main: "Graphics Designer",

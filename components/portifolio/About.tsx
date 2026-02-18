@@ -1,27 +1,22 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 
 import { FiAward } from "react-icons/fi";
 import { AiOutlineFilePdf } from "react-icons/ai";
 import { BiBriefcaseAlt2, BiSupport } from "react-icons/bi";
-import { data } from "./Data";
 
-const About = () => {
-  const params = useParams();
-  const locationId = Number(params?.id);
+type AboutProps = {
+  portfolio: any;
+};
 
-  const single = useMemo(() => {
-    return data[locationId - 1];
-  }, [locationId]);
-
-  if (!single) {
+const About = ({ portfolio }: AboutProps) => {
+  if (!portfolio) {
     return (
       <section className="py-20 text-center">
-        <p>User not found.</p>
+        <p>Portfolio not found.</p>
       </section>
     );
   }
@@ -37,10 +32,10 @@ const About = () => {
         {/* Image */}
         <figure className="w-72 h-72 relative">
           <Image
-            src={single.image}
-            alt={`${single.name} portrait`}
+            src={portfolio.image}
+            alt={`${portfolio.name} portrait`}
             fill
-            className="object-cover rounded-3xl border-4 border-black shadow-lg animate-zoom"
+            className="object-cover rounded-3xl border-4 border-black shadow-lg"
             sizes="288px"
           />
         </figure>
@@ -51,12 +46,12 @@ const About = () => {
             <StatCard
               icon={<FiAward size={24} />}
               title="Experience"
-              value={`${single.years_experience}+ Years`}
+              value={`${portfolio.years_experience}+ Years`}
             />
             <StatCard
               icon={<BiBriefcaseAlt2 size={24} />}
               title="Projects"
-              value={`${single.projects}+ Completed`}
+              value={`${portfolio.projects}+ Completed`}
             />
             <StatCard
               icon={<BiSupport size={24} />}
@@ -65,17 +60,18 @@ const About = () => {
             />
           </div>
 
-          <p className="text-gray-600 leading-relaxed">{single.about}</p>
+          <p className="text-gray-600 leading-relaxed">{portfolio.about}</p>
 
-          <Link
-            href={single.image}
-            target="_blank"
-            download
-            aria-label="Download CV"
-            className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl hover:scale-105 transition"
-          >
-            Download CV <AiOutlineFilePdf size={20} />
-          </Link>
+          {portfolio.cv && (
+            <Link
+              href={portfolio.cv}
+              target="_blank"
+              download
+              className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl hover:scale-105 transition"
+            >
+              Download CV <AiOutlineFilePdf size={20} />
+            </Link>
+          )}
         </article>
       </div>
     </section>

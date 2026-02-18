@@ -46,12 +46,12 @@ export default function ProjectsPage() {
                 </p>
 
                 <div className="flex items-center justify-between pt-2">
-                  <Link
+                  {/* <Link
                     href={`/projects/${project.slug}`}
                     className="text-sm font-semibold text-[#fb397d] hover:underline"
                   >
                     View case study
-                  </Link>
+                  </Link> */}
                   <a
                     href={project.link}
                     target="_blank"
