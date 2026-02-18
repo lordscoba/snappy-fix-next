@@ -1,22 +1,17 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import { BsPatchCheck } from "react-icons/bs";
-import { useParams } from "next/navigation";
-import { data } from "./Data";
 
-const Skills = () => {
-  const params = useParams();
-  const locationId = Number(params?.id);
+type SkillsProps = {
+  portfolio: any;
+};
 
-  const single = useMemo(() => {
-    return data[locationId - 1];
-  }, [locationId]);
-
-  if (!single) {
+const Skills = ({ portfolio }: SkillsProps) => {
+  if (!portfolio) {
     return (
       <section className="py-20 text-center">
-        <p>User not found.</p>
+        <p>Portfolio not found.</p>
       </section>
     );
   }
@@ -29,9 +24,9 @@ const Skills = () => {
       </header>
 
       <div className="mt-10 flex flex-wrap justify-center gap-6">
-        {single.skills.map((skill, index) => (
+        {portfolio.skills?.map((skill: any, index: number) => (
           <SkillCard key={index} title={skill.skill_main}>
-            {skill.skill_level.map((item, i) => (
+            {skill.skill_level.map((item: any, i: number) => (
               <SkillItem
                 key={i}
                 domain={item.skill_type}
@@ -45,12 +40,7 @@ const Skills = () => {
   );
 };
 
-type SkillItemProps = {
-  domain: string;
-  level: string;
-};
-
-const SkillItem = ({ domain, level }: SkillItemProps) => (
+const SkillItem = ({ domain, level }: any) => (
   <div className="flex gap-2 items-start">
     <BsPatchCheck className="mt-1 text-black" />
     <div>

@@ -1,26 +1,22 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 
 import { FaBriefcase } from "react-icons/fa";
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { BsMouse } from "react-icons/bs";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
-import { data } from "./Data";
 
-const Hero = () => {
-  const params = useParams();
-  const locationId = Number(params?.id);
+type HeroProps = {
+  portfolio: any;
+};
 
-  const single = useMemo(() => {
-    return data[locationId - 1];
-  }, [locationId]);
-
-  if (!single) return <p className="text-center py-20">User not found.</p>;
+const Hero = ({ portfolio }: HeroProps) => {
+  if (!portfolio)
+    return <p className="text-center py-20">Portfolio not found.</p>;
 
   return (
     <header className="bg-[#fafafa] min-h-screen">
@@ -28,7 +24,7 @@ const Hero = () => {
         <Link
           href="/"
           className="flex items-center gap-2 text-2xl hover:opacity-70 transition"
-          aria-label="Go back to homepage"
+          aria-label="Go back to portfolio list"
         >
           <MdOutlineKeyboardDoubleArrowLeft size={36} />
           <span>Back</span>
@@ -36,33 +32,43 @@ const Hero = () => {
       </nav>
 
       <main className="flex flex-wrap-reverse justify-center gap-10 py-16 px-4">
+        {/* Social Links */}
         <aside className="flex md:flex-col gap-6 items-center">
-          <SocialIcon href={single.github_link} label="GitHub">
-            <FiGithub />
-          </SocialIcon>
+          {portfolio.github_link && (
+            <SocialIcon href={portfolio.github_link} label="GitHub">
+              <FiGithub />
+            </SocialIcon>
+          )}
 
-          <SocialIcon href={single.linkdln_link} label="LinkedIn">
-            <FiLinkedin />
-          </SocialIcon>
+          {portfolio.linkdln_link && (
+            <SocialIcon href={portfolio.linkdln_link} label="LinkedIn">
+              <FiLinkedin />
+            </SocialIcon>
+          )}
 
-          <SocialIcon href={single.twitter_link} label="Twitter">
-            <FiTwitter />
-          </SocialIcon>
+          {portfolio.twitter_link && (
+            <SocialIcon href={portfolio.twitter_link} label="Twitter">
+              <FiTwitter />
+            </SocialIcon>
+          )}
         </aside>
 
+        {/* Content */}
         <section className="max-w-xl space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold">{single.name} 👋</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">
+            {portfolio.name} 👋
+          </h1>
 
           <p className="text-xl text-gray-700">
-            {single.skills.map((s, i) => (
+            {portfolio.skills?.map((s: any, i: number) => (
               <span key={i}>
                 {s.skill_main}
-                {i !== single.skills.length - 1 && ", "}
+                {i !== portfolio.skills.length - 1 && ", "}
               </span>
             ))}
           </p>
 
-          <p className="text-gray-600 leading-relaxed">{single.text}</p>
+          <p className="text-gray-600 leading-relaxed">{portfolio.text}</p>
 
           <a
             href="#skills"
@@ -81,13 +87,14 @@ const Hero = () => {
           </a>
         </section>
 
+        {/* Image */}
         <figure className="max-w-sm relative">
           <Image
-            src={single.image}
-            alt={single.name}
+            src={portfolio.image}
+            alt={portfolio.name}
             width={400}
             height={400}
-            className="rounded-2xl shadow-lg animate-zoom"
+            className="rounded-2xl shadow-lg"
             priority
           />
         </figure>
@@ -98,7 +105,7 @@ const Hero = () => {
 
 const SocialIcon = ({ href, label, children }: any) => (
   <a
-    href={`https://${href}`}
+    href={href.startsWith("http") ? href : `https://${href}`}
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}

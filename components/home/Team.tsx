@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { data } from "../portifolio/Data";
+// import { data } from "../portifolio/Data";
+import { data } from "@/data/PortifolioData";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -97,7 +98,7 @@ const TeamCard = ({ member }: CardProps) => {
         </p>
 
         <Link
-          href={`/portifolio/${member.id}`}
+          href={`/portifolio/${member.slug}`}
           className="inline-flex items-center gap-2 text-[#fb397d] font-medium
              transition-all duration-300 group-hover:gap-3"
         >

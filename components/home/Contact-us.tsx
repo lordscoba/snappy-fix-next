@@ -25,8 +25,8 @@ const ContactUs = () => {
 
           <address className="not-italic space-y-4 text-[#726a84]">
             <p>
-              <strong className="text-[#5b32b4]">Address:</strong> Ihiagwa,
-              Owerri West, Imo State, Nigeria
+              <strong className="text-[#5b32b4]">Address:</strong> Uyo, Akwaibom
+              State Nigeria
             </p>
             <p>
               <strong className="text-[#5b32b4]">Phone:</strong>{" "}
