@@ -87,11 +87,22 @@ const TeamCard = ({ member }: CardProps) => {
 
       {/* Content */}
       <div className="p-6 space-y-3">
-        <a href={member.link_tree} target="_blank" rel="noopener noreferrer">
+        {member.link_tree ? (
+          <a href={member.link_tree} target="_blank" rel="noopener noreferrer">
+            <h3 className="text-xl font-semibold text-[#5b32b4] hover:underline">
+              {member.name}
+            </h3>
+          </a>
+        ) : (
+          <h3 className="text-xl font-semibold text-[#5b32b4]">
+            {member.name}
+          </h3>
+        )}
+        {/* <a href={member.link_tree} target="_blank" rel="noopener noreferrer">
           <h3 className="text-xl font-semibold text-[#5b32b4] hover:underline">
             {member.name}
           </h3>
-        </a>
+        </a> */}
 
         <p className="text-sm text-[#b5aec4]">
           {member.skills.map((s) => s.skill_main).join(", ")}
