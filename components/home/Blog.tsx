@@ -57,7 +57,10 @@ const Blog = () => {
                     href={`/blog/${post.slug}`}
                     className="text-sm font-semibold text-[#fb397d] hover:underline"
                   >
-                    Read more
+                    <span className="sr-only">
+                      Read more about {post.title}
+                    </span>
+                    <span aria-hidden="true">Read more</span>{" "}
                   </Link>
                 </div>
               </div>

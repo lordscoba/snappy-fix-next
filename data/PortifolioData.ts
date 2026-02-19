@@ -173,6 +173,7 @@ export const data: Array<Tester> = [
     projects: 30,
     about: "I am a good deveoper",
     cv: Chris2,
+    link_tree: "https://www.github.com/lordscoba",
   },
   {
     id: 2,
@@ -341,6 +342,7 @@ export const data: Array<Tester> = [
     years_experience: 4,
     projects: 30,
     about: "I am a good deveoper",
+    link_tree: "https://www.github.com/NwokoyeChigozie",
     cv: Chigozie2,
   },
   {
