@@ -3,6 +3,7 @@ import "animate.css";
 
 import type { Metadata } from "next";
 import Footer from "../components/Layout/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.snappy-fix.com"),
@@ -114,6 +115,7 @@ export default function RootLayout({
           }}
         />
       </body>
+      <GoogleAnalytics gaId="G-XLRF67HQ9E" />
     </html>
   );
 }
