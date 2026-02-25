@@ -15,18 +15,26 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Snappy-Fix Technologies is a Nigerian software development company based in Uyo, building scalable web and mobile applications for startups and enterprises across Nigeria and globally.",
+    "Snappy-Fix Technologies is a Nigerian software development company based in Uyo, known for building scalable websites, web designs, frontend development, Backend development, and mobile applications for startups and enterprises across Nigeria and globally.",
 
   keywords: [
-    "Software development company Nigeria",
+    "Software development company",
     "Web development Nigeria",
     "Mobile app development Nigeria",
-    "Flutter development Nigeria",
-    "React development Nigeria",
-    "Full-stack developers Nigeria",
-    "Tech company in Uyo",
-    "Software company in Lagos",
-    "Software company in Abuja",
+    "MERN stack development",
+    "Devops",
+    "Web development company",
+    "Frontend development",
+    "Backend development",
+    "Flutter development",
+    "React development",
+    "Full-stack developers",
+    "Tech company",
+    "Software company",
+    "Uyo",
+    "Nigeria",
+    "Port Harcourt",
+    "Lagos",
   ],
 
   authors: [{ name: "Snappy-Fix Technologies" }],
@@ -48,7 +56,7 @@ export const metadata: Metadata = {
       "We design and build scalable web and mobile applications for Nigerian and global businesses.",
     url: "https://www.snappy-fix.com",
     siteName: "Snappy-Fix Technologies",
-    locale: "en_NG", // 🇳🇬 Important
+    locale: "en_NG",
     type: "website",
     images: [
       {
