@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 import Footer from "../components/Layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
+// Redux
+import ReduxProvider from "./providers";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.snappy-fix.com"),
 
@@ -114,7 +117,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
-        <main className="flex-1">{children}</main>
+        <ReduxProvider>{children}</ReduxProvider>
+        {/* <main className="flex-1">{children}</main> */}
         <Footer />
         <script
           type="application/ld+json"

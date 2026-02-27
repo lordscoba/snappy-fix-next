@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.snappy-fix.com/login</loc><lastmod>2026-02-18T13:53:32.911Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.snappy-fix.com/register</loc><lastmod>2026-02-18T13:53:32.912Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.snappy-fix.com/dashboard</loc><lastmod>2026-02-18T13:53:32.912Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.snappy-fix.com/blog</loc><lastmod>2026-02-18T13:53:32.912Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.snappy-fix.com</loc><lastmod>2026-02-18T13:53:32.912Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.snappy-fix.com/projects</loc><lastmod>2026-02-18T13:53:32.912Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.snappy-fix.com/admin</loc><lastmod>2026-02-18T13:53:32.912Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.snappy-fix.com/admin/settings</loc><lastmod>2026-02-18T13:53:32.912Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/login</loc><lastmod>2026-02-27T14:06:46.183Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/register</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/dashboard</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/blog</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/projects</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/admin</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/admin/settings</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/image-converter</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/optimize-image-custom</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/optimize-instagram-image</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/optimize-seo-responsive-image</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/optimize-twitter-image</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/optimize-web-image</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/optimize-whatsapp-image</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools/optimize-youtube-thumbnail-image</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.snappy-fix.com/tools</loc><lastmod>2026-02-27T14:06:46.184Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
