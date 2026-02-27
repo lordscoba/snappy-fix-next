@@ -253,7 +253,7 @@ export default function ImageConverterTool() {
         <div className="flex flex-col gap-3 animate-in zoom-in-95 duration-300">
           <button
             onClick={() =>
-              downloadBlob(convertedBlob, `converted-${Date.now()}.${format}`)
+              downloadBlob(convertedBlob, `converted-${Date.now()}`)
             }
             className="w-full bg-[#5b32b4] text-white font-bold py-4 rounded-2xl hover:shadow-lg hover:shadow-indigo-200 transition-all flex items-center justify-center gap-2"
           >
