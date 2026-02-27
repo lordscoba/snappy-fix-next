@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { SnappyFixLogo } from "../../images/logo";
 import Image from "next/image";
+import Link from "next/link";
 
 type NavProps = {
   background: string;
@@ -16,6 +17,8 @@ const links = [
   "testimonial",
   "team",
   "contact",
+  "tools",
+  "blog",
 ];
 
 const Nav = ({ background }: NavProps) => {
@@ -59,19 +62,33 @@ const Nav = ({ background }: NavProps) => {
             className="w-28 h-auto"
           />
         </a>
-
         <div className="hidden md:flex gap-6 text-white">
+          {links.map((item) => {
+            const label = item.charAt(0).toUpperCase() + item.slice(1);
+
+            const isInternalRoute = item === "blog" || item === "tools";
+
+            return isInternalRoute ? (
+              <Link key={item} href={`/${item}`} className="hover:underline">
+                {label}
+              </Link>
+            ) : (
+              <a key={item} href={`#${item}`} className="hover:underline">
+                {label}
+              </a>
+            );
+          })}
+        </div>
+        {/* <div className="hidden md:flex gap-6 text-white">
           {links.map((id) => (
             <a key={id} href={`#${id}`} className="hover:underline">
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </a>
           ))}
-        </div>
-
+        </div> */}
         <button className="hidden md:block border-2 border-[#9572e8] px-8 py-2 rounded-full text-white hover:bg-[#fb397d] transition">
           Login
         </button>
-
         <button
           aria-label="Toggle navigation"
           aria-expanded={open}

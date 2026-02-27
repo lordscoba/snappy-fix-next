@@ -1,4 +1,4 @@
-import { getAppEnv } from "../../lib/env";
+import { getAppEnv } from "../../lib/config/env";
 import { HealthRepository } from "../repositories/health.repository";
 import { HealthResponse } from "../types/api.types";
 
