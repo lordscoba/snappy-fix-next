@@ -1,6 +1,7 @@
 import { posts } from "@/data/BlogData";
 import BlogHero from "../../../components/blog/BlogHero";
 import BlogList from "../../../components/blog/BlogList";
+import { NavbarMenu } from "@/components/Layout";
 
 export default function BlogPage() {
   const heroItems = posts.slice(0, 3).map((post) => ({
@@ -22,8 +23,12 @@ export default function BlogPage() {
   }));
 
   return (
-    <main className="bg-white">
-      <section className="w-full max-w-7xl mx-auto px-6 py-16 space-y-12">
+    <main className="min-h-screen bg-gradient-to-br from-white via-[#faf7ff] to-white">
+      {/* Sticky Navbar */}
+      <div className="top-0 z-50 backdrop-blur-md bg-white/70 border-b border-[#f0e9ff]">
+        <NavbarMenu background="bg-[#884bdf]" />
+      </div>
+      <section className="w-full max-w-7xl mx-auto px-6 pt-48 pb-20 space-y-20">
         <header className="text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
             Blog & Insights

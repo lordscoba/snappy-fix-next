@@ -1,5 +1,6 @@
 import Base64ToImageTools from "@/components/tools/Base64ToImageTools";
 import OtherToolsSection from "@/components/tools/OtherToolsSection";
+import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 
 const currentTool = tools.find((tool) => tool.slug === "base64-to-image")!;
@@ -25,14 +26,14 @@ export const metadata = {
 
 export default function Base64ToImagePage() {
   return (
-    <main className="bg-white">
-      <section className="w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
+    <main className="bg-white min-h-screen">
+      <ToolTopNav />
+      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
         {/* Header */}
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
             Base64 to Image Converter
           </h1>
-
           <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Instantly decode Base64 strings into downloadable image files.
             Convert Base64 to JPG, PNG, WEBP, and other image formats securely
