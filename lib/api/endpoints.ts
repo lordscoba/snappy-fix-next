@@ -14,7 +14,7 @@ export const IMAGE_ENDPOINTS = {
   ANALYZE: "/analyze",
 
   // svg optimizers
-  SVG_OPTIMIZE: "/svg/optimize",
+  SVG_OPTIMIZE: "/optimize-svg",
 
   // Cropping
   CROP: "/images/crop",

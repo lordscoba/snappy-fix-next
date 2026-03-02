@@ -86,82 +86,81 @@ export const tools = [
     href: "/tools/optimize-seo-responsive-image",
     api: "/api/v1/optimize/seo-responsive",
   },
+  {
+    slug: "image-analyzer",
+    name: "Image Analyzer",
+    description: "Analyze image size, format, metadata and dimensions.",
+    longDescription:
+      "Inspect your image properties including size, dimensions, and metadata.",
+    category: "Analysis Tools",
+    href: "/tools/image-analyzer",
+    api: "/api/v1/analyze/",
+  },
 
-  // {
-  //   slug: "image-analyzer",
-  //   name: "Image Analyzer",
-  //   description: "Analyze image size, format, metadata and dimensions.",
-  //   longDescription:
-  //     "Inspect your image properties including size, dimensions, and metadata.",
-  //   category: "Analysis Tools",
-  //   href: "/tools/image-analyzer",
-  //   api: "/api/v1/analyze/",
-  // },
+  {
+    slug: "svg-image-optimizer",
+    name: "SVG Optimizer",
+    description: "Reduce SVG file size instantly without quality loss.",
+    longDescription:
+      "Optimize SVG files by removing unnecessary data and reducing size.",
+    category: "Optimization Tools",
+    href: "/tools/svg-image-optimizer",
+    api: "/api/v1/optimize-svg",
+  },
 
-  // {
-  //   slug: "svg-image-optimizer",
-  //   name: "SVG Optimizer",
-  //   description: "Reduce SVG file size instantly without quality loss.",
-  //   longDescription:
-  //     "Optimize SVG files by removing unnecessary data and reducing size.",
-  //   category: "Optimization Tools",
-  //   href: "/tools/svg-image-optimizer",
-  //   api: "/api/v1/optimize-svg",
-  // },
+  {
+    slug: "image-cropper",
+    name: "Image Cropper",
+    description: "Crop images to exact dimensions online.",
+    longDescription: "Free online image cropper tool to crop images precisely.",
+    category: "Editing Tools",
+    href: "/tools/image-cropper",
+    api: "/api/v1/images/crop",
+  },
 
-  // {
-  //   slug: "image-cropper",
-  //   name: "Image Cropper",
-  //   description: "Crop images to exact dimensions online.",
-  //   longDescription: "Free online image cropper tool to crop images precisely.",
-  //   category: "Editing Tools",
-  //   href: "/tools/image-cropper",
-  //   api: "/api/v1/images/crop",
-  // },
+  {
+    slug: "image-resizer",
+    name: "Image Resizer",
+    description: "Resize images to custom width and height.",
+    longDescription:
+      "Quickly resize images while maintaining aspect ratio and quality.",
+    category: "Editing Tools",
+    href: "/tools/image-resizer",
+    api: "/api/v1/images/resize",
+  },
 
-  // {
-  //   slug: "image-resizer",
-  //   name: "Image Resizer",
-  //   description: "Resize images to custom width and height.",
-  //   longDescription:
-  //     "Quickly resize images while maintaining aspect ratio and quality.",
-  //   category: "Editing Tools",
-  //   href: "/tools/image-resizer",
-  //   api: "/api/v1/images/resize",
-  // },
+  {
+    slug: "image-to-base64",
+    name: "Image to Base64",
+    description: "Convert images to Base64 encoding.",
+    longDescription:
+      "Encode images to Base64 format for embedding in HTML, CSS, or JSON.",
+    category: "Conversion Tools",
+    href: "/tools/image-to-base64",
+    api: "/api/v1/images/to-base64",
+  },
 
-  // {
-  //   slug: "image-to-base64",
-  //   name: "Image to Base64",
-  //   description: "Convert images to Base64 encoding.",
-  //   longDescription:
-  //     "Encode images to Base64 format for embedding in HTML, CSS, or JSON.",
-  //   category: "Conversion Tools",
-  //   href: "/tools/image-to-base64",
-  //   api: "/api/v1/images/to-base64",
-  // },
+  {
+    slug: "base64-to-image",
+    name: "Base64 to Image",
+    description: "Decode Base64 string back to image.",
+    longDescription:
+      "Convert Base64 encoded strings back into image files instantly.",
+    category: "Conversion Tools",
+    href: "/tools/base64-to-image",
+    api: "/api/v1/images/from-base64",
+  },
 
-  // {
-  //   slug: "base64-to-image",
-  //   name: "Base64 to Image",
-  //   description: "Decode Base64 string back to image.",
-  //   longDescription:
-  //     "Convert Base64 encoded strings back into image files instantly.",
-  //   category: "Conversion Tools",
-  //   href: "/tools/base64-to-image",
-  //   api: "/api/v1/images/from-base64",
-  // },
-
-  // {
-  //   slug: "favicon-generator",
-  //   name: "Favicon Generator",
-  //   description: "Generate favicon icons from any image.",
-  //   longDescription:
-  //     "Create optimized favicon files for websites from JPG, PNG or SVG.",
-  //   category: "SEO Tools",
-  //   href: "/tools/favicon-generator",
-  //   api: "/api/v1/images/favicon",
-  // },
+  {
+    slug: "favicon-generator",
+    name: "Favicon Generator",
+    description: "Generate favicon icons from any image.",
+    longDescription:
+      "Create optimized favicon files for websites from JPG, PNG or SVG.",
+    category: "SEO Tools",
+    href: "/tools/favicon-generator",
+    api: "/api/v1/images/favicon",
+  },
   {
     slug: "optimize-image-custom",
     name: "Custom Image Optimizer",
