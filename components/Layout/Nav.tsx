@@ -79,13 +79,6 @@ const Nav = ({ background }: NavProps) => {
             );
           })}
         </div>
-        {/* <div className="hidden md:flex gap-6 text-white">
-          {links.map((id) => (
-            <a key={id} href={`#${id}`} className="hover:underline">
-              {id.charAt(0).toUpperCase() + id.slice(1)}
-            </a>
-          ))}
-        </div> */}
         <button className="hidden md:block border-2 border-[#9572e8] px-8 py-2 rounded-full text-white hover:bg-[#fb397d] transition">
           Login
         </button>
@@ -113,16 +106,30 @@ const Nav = ({ background }: NavProps) => {
               ✕
             </button>
 
-            {links.map((id) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setOpen(false)}
-                className="text-lg hover:underline"
-              >
-                {id.charAt(0).toUpperCase() + id.slice(1)}
-              </a>
-            ))}
+            {links.map((item) => {
+              const label = item.charAt(0).toUpperCase() + item.slice(1);
+              const isInternalRoute = item === "blog" || item === "tools";
+
+              return isInternalRoute ? (
+                <Link
+                  key={item}
+                  href={`/${item}`}
+                  onClick={() => setOpen(false)}
+                  className="text-lg hover:underline"
+                >
+                  {label}
+                </Link>
+              ) : (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  onClick={() => setOpen(false)}
+                  className="text-lg hover:underline"
+                >
+                  {label}
+                </a>
+              );
+            })}
 
             <button className="mt-6 border-2 border-white px-6 py-3 rounded-full hover:bg-[#fb397d] transition">
               Login
