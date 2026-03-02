@@ -73,9 +73,9 @@ const Nav = ({ background }: NavProps) => {
                 {label}
               </Link>
             ) : (
-              <a key={item} href={`#${item}`} className="hover:underline">
+              <Link key={item} href={`/#${item}`} className="hover:underline">
                 {label}
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -120,14 +120,14 @@ const Nav = ({ background }: NavProps) => {
                   {label}
                 </Link>
               ) : (
-                <a
+                <Link
                   key={item}
-                  href={`#${item}`}
+                  href={`/#${item}`}
                   onClick={() => setOpen(false)}
                   className="text-lg hover:underline"
                 >
                   {label}
-                </a>
+                </Link>
               );
             })}
 

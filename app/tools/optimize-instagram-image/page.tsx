@@ -1,5 +1,6 @@
 import InstagramOptimizerTool from "@/components/tools/InstagramOptimizerTool";
 import OtherToolsSection from "@/components/tools/OtherToolsSection";
+import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 
 const currentTool = tools.find((tool) => tool.slug === "optimize-instagram")!;
@@ -25,8 +26,9 @@ export const metadata = {
 
 export default function InstagramOptimizerPage() {
   return (
-    <main className="bg-white">
-      <section className="w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
+    <main className="bg-white min-h-screen">
+      <ToolTopNav />
+      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
             Optimize Images for Instagram
