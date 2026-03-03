@@ -36,6 +36,11 @@ export const analyzeImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
+  // --- ADD THIS LOG ---
+  console.log("DEBUG: API Base URL is:", apiClient.defaults.baseURL);
+  console.log("DEBUG: Full Endpoint is:", IMAGE_ENDPOINTS.ANALYZE);
+  // --------------------
+
   return apiClient.post<ImageAnalysisResponse>(
     IMAGE_ENDPOINTS.ANALYZE,
     formData,

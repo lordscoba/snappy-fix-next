@@ -89,6 +89,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  other: {
+    "Content-Security-Policy": "upgrade-insecure-requests",
+  },
 };
 
 export default function RootLayout({
