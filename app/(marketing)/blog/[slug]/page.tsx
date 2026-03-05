@@ -39,6 +39,12 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  return posts.map((post) => ({
+    slug: post.slug, // The key must match the folder name [slug]
+  }));
+}
+
 export default async function BlogDetails({ params }: { params: Params }) {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);

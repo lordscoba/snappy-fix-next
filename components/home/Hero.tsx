@@ -15,8 +15,10 @@ const Hero = () => {
           </h1>
 
           <p className="text-white/90 text-lg leading-relaxed">
-            We design and build high-performance websites, web applications, and
-            digital products that help businesses grow online.
+            Snappy-Fix Technologies builds high-performance websites, web
+            applications, and free online image tools. From image converters and
+            optimizers to custom web platforms, we create fast, scalable digital
+            solutions that help businesses grow online.
           </p>
 
           <form className="flex flex-col sm:flex-row gap-3">

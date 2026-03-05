@@ -2,6 +2,7 @@ import FaviconGeneratorTool from "@/components/tools/FaviconGenerator";
 import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
+import Script from "next/script";
 
 const currentTool = tools.find((tool) => tool.slug === "favicon-generator")!;
 
@@ -27,8 +28,148 @@ export const metadata = {
 };
 
 export default function FaviconGeneratorPage() {
+  const toolStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Favicon & App Icon Generator",
+    applicationCategory: "MultimediaApplication",
+    applicationSubCategory: "Website Icon Generator",
+    operatingSystem: "Web",
+    browserRequirements: "Requires JavaScript. Works in modern browsers.",
+    inLanguage: "en",
+    url: "https://www.snappy-fix.com/tools/favicon-generator",
+    description:
+      "Generate favicon icons and app icons for websites instantly. Convert any image into 16x16, 32x32, and Apple Touch icons using this free favicon generator.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is a favicon?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "A favicon is a small icon displayed in browser tabs, bookmarks, and website shortcuts. It helps users identify a website quickly.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I generate multiple favicon sizes?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. The Snappy Fix Favicon Generator creates multiple standard favicon sizes including 16x16, 32x32, and Apple Touch icons for modern browsers and devices.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is the favicon generator free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. The Snappy Fix Favicon Generator is completely free and allows unlimited icon generation.",
+        },
+      },
+    ],
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.snappy-fix.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tools",
+        item: "https://www.snappy-fix.com/tools",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Favicon & App Icon Generator",
+        item: "https://www.snappy-fix.com/tools/favicon-generator",
+      },
+    ],
+  };
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Generate a Favicon for Your Website",
+    description:
+      "Step-by-step guide to generating favicon icons from any image using the Snappy Fix Favicon Generator.",
+    totalTime: "PT30S",
+    supply: [
+      {
+        "@type": "HowToSupply",
+        name: "Logo or image file",
+      },
+    ],
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "Snappy Fix Favicon Generator",
+      },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Upload your logo",
+        text: "Upload the logo or image you want to convert into a favicon.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Generate favicon sizes",
+        text: "Click generate to create standard favicon sizes such as 16x16 and 32x32.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Download favicon files",
+        text: "Download the favicon package and add it to your website.",
+      },
+    ],
+  };
   return (
     <main className="bg-white min-h-screen">
+      <Script
+        id="favicon-generator-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(toolStructuredData),
+        }}
+      />
+
+      <Script
+        id="favicon-generator-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
+
+      <Script
+        id="favicon-generator-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
+      <Script
+        id="favicon-generator-howto"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(howToSchema),
+        }}
+      />
       <ToolTopNav />
       <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
         {/* Header */}

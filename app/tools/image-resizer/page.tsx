@@ -2,6 +2,7 @@ import ImageResizerTool from "@/components/tools/ResizeImageTools";
 import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
+import Script from "next/script";
 
 const currentTool = tools.find((tool) => tool.slug === "image-resizer")!;
 
@@ -38,6 +39,10 @@ export const metadata = {
     "resize image for whatsapp",
     "resize youtube thumbnail",
     "profile picture resizer",
+    "Instagram Post: 1080 × 1080",
+    "Instagram Story: 1080 × 1920",
+    "Twitter Post: 1600 × 900",
+    "YouTube Thumbnail: 1280 × 720",
 
     // Web & performance
     "resize image for website",
@@ -51,11 +56,145 @@ export const metadata = {
     "private image resize tool",
     "free unlimited image resizer",
   ],
+  alternates: {
+    canonical: "/tools/image-resizer",
+  },
 };
 
 export default function ImageResizerPage() {
+  const toolStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Image Resizer",
+    applicationCategory: "MultimediaApplication",
+    applicationSubCategory: "Image Processing Tool",
+    operatingSystem: "Web",
+    browserRequirements: "Requires JavaScript. Works in modern browsers.",
+    inLanguage: "en",
+    url: "https://www.snappy-fix.com/tools/image-resizer",
+    description:
+      "Free online image resizer to change image width and height instantly.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is this image resizer free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, the Snappy Fix Image Resizer is completely free with no watermark.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does resizing reduce image quality?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Resizing changes dimensions but does not reduce quality unless compression is applied.",
+        },
+      },
+    ],
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.snappy-fix.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tools",
+        item: "https://www.snappy-fix.com/tools",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Image Resizer",
+        item: "https://www.snappy-fix.com/tools/image-resizer",
+      },
+    ],
+  };
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Resize an Image Online",
+    description:
+      "Step-by-step guide to resizing images online using the Snappy Fix Image Resizer tool.",
+    totalTime: "PT30S",
+    supply: [
+      {
+        "@type": "HowToSupply",
+        name: "Image file (JPG, PNG, WebP)",
+      },
+    ],
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "Snappy Fix Image Resizer",
+      },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Upload your image",
+        text: "Upload the image you want to resize from your device.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Set width and height",
+        text: "Enter the desired width and height in pixels or resize by percentage.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Download the resized image",
+        text: "Click resize and download the optimized image instantly.",
+      },
+    ],
+  };
+
   return (
     <main className="bg-white min-h-screen">
+      {/* Tool Structured Data */}
+      <Script
+        id="image-resizer-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(toolStructuredData),
+        }}
+      />
+      <Script
+        id="image-resizer-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
+      <Script
+        id="image-resizer-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <Script
+        id="image-resizer-howto"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(howToSchema),
+        }}
+      />
       <ToolTopNav />
       <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
         {/* Header */}

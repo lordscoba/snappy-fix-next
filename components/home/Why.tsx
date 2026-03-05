@@ -10,21 +10,21 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: "Custom Website Design",
+    title: "Custom Website & Platform Development",
     description:
-      "We design and build custom websites tailored to your brand, goals, and audience.",
+      "We design and build scalable websites, SaaS platforms, and web applications tailored to your brand and business goals.",
     icon: <MdOutlinePhoneAndroid size={42} className="text-[#fb397d]" />,
   },
   {
-    title: "Modern UI & Updated Designs",
+    title: "Modern UI & High-Performance Design",
     description:
-      "We use modern UI/UX principles to deliver visually appealing and conversion-focused layouts.",
+      "Our interfaces are built with modern UI/UX principles to deliver fast, visually engaging and conversion-focused digital experiences.",
     icon: <TfiRulerPencil size={42} className="text-[#fb397d]" />,
   },
   {
-    title: "Fully Functional Solutions",
+    title: "Powerful Online Tools",
     description:
-      "We ensure your website works flawlessly with fast performance and reliable functionality.",
+      "We build and maintain free online tools like image converters, optimizers, analyzers and other utilities designed for developers, designers and marketers.",
     icon: <CiSettings size={42} className="text-[#fb397d]" />,
   },
 ];
@@ -37,8 +37,10 @@ const Why = () => {
           Why Choose Snappy-Fix Technologies
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          We combine design, technology, and strategy to build high-quality web
-          solutions that help businesses grow online.
+          We combine design, technology, and engineering to build high-quality
+          web platforms and powerful online tools. From custom websites to
+          advanced image processing utilities, we create fast, reliable
+          solutions that help businesses and creators succeed online.
         </p>
         <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
       </header>

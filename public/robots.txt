@@ -2,6 +2,19 @@
 User-agent: *
 Allow: /
 
+# *
+User-agent: *
+Allow: /tools/
+
+# *
+User-agent: *
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /api/
+Disallow: /*?
+
 # Host
 Host: https://www.snappy-fix.com
 

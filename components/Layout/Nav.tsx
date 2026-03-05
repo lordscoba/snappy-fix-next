@@ -55,13 +55,13 @@ const Nav = ({ background }: NavProps) => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition ${background}`}>
       <div className="flex items-center justify-between p-6 max-w-7xl mx-auto">
-        <a href="#hero" aria-label="Snappy-Fix homepage">
+        <Link href="/#hero" aria-label="Snappy-Fix Technologies logo">
           <Image
             src={SnappyFixLogo}
             alt="Snappy-Fix Technologies logo"
             className="w-28 h-auto"
           />
-        </a>
+        </Link>
         <div className="hidden md:flex gap-6 text-white">
           {links.map((item) => {
             const label = item.charAt(0).toUpperCase() + item.slice(1);
