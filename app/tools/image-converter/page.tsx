@@ -2,6 +2,7 @@ import ImageConverterTool from "@/components/tools/ImageConverterTool";
 import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
+import Script from "next/script";
 
 const currentTool = tools.find((tool) => tool.slug === "image-converter")!;
 
@@ -72,8 +73,148 @@ export const metadata = {
 };
 
 export default function ImageConverterPage() {
+  const toolStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Online Image Converter",
+    applicationCategory: "MultimediaApplication",
+    applicationSubCategory: "Image Conversion Tool",
+    operatingSystem: "Web",
+    browserRequirements: "Requires JavaScript. Works in modern browsers.",
+    inLanguage: "en",
+    url: "https://www.snappy-fix.com/tools/image-converter",
+    description:
+      "Convert images between JPG, PNG, WEBP, SVG and other formats instantly using this free online image converter.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What formats can I convert images to?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Snappy Fix Image Converter supports multiple formats including JPG, PNG, WEBP, and SVG.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is the image converter free to use?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, the Snappy Fix Image Converter is completely free and allows unlimited conversions.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Will converting images reduce quality?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Our converter preserves the best possible image quality during conversion between formats.",
+        },
+      },
+    ],
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.snappy-fix.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tools",
+        item: "https://www.snappy-fix.com/tools",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Online Image Converter",
+        item: "https://www.snappy-fix.com/tools/image-converter",
+      },
+    ],
+  };
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Convert an Image Online",
+    description:
+      "Step-by-step guide to converting images between formats using the Snappy Fix Image Converter.",
+    totalTime: "PT30S",
+    supply: [
+      {
+        "@type": "HowToSupply",
+        name: "Image file (JPG, PNG, WEBP, SVG)",
+      },
+    ],
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "Snappy Fix Online Image Converter",
+      },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Upload your image",
+        text: "Upload the image file you want to convert.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Choose output format",
+        text: "Select the format you want to convert the image into such as JPG, PNG, or WEBP.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Download the converted image",
+        text: "Click convert and download the new image instantly.",
+      },
+    ],
+  };
   return (
     <main className="bg-white min-h-screen">
+      <Script
+        id="image-converter-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(toolStructuredData),
+        }}
+      />
+
+      <Script
+        id="image-converter-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
+
+      <Script
+        id="image-converter-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
+      <Script
+        id="image-converter-howto"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(howToSchema),
+        }}
+      />
       <ToolTopNav />
       <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
         {/* Header */}

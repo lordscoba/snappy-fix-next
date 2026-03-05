@@ -19,19 +19,19 @@ const What = () => {
             className="rounded-3xl object-cover w-full hover:scale-105 transition"
           />
         </figure>
-
         {/* Text */}
         <article className="w-full md:w-1/2 space-y-6 md:px-10">
           <h2 className="font-bold text-3xl md:text-5xl text-[#5b32b4]">
             What Snappy-Fix Technologies Is Known For in Web Development
           </h2>
-
           <p className="text-gray-700 leading-relaxed">
-            Snappy-Fix Technologies is a professional web development company
-            specializing in building business websites, web applications,
-            landing pages, and custom digital platforms. We combine clean
-            design, strong functionality, and scalable architecture to deliver
-            high-quality digital products that drive real business growth.
+            Snappy-Fix Technologies is a modern web development company and
+            creator of powerful online tools. We build business websites,
+            scalable web applications, SaaS platforms, and free image tools such
+            as converters, optimizers, analyzers, and social media image
+            resizers. By combining clean design, strong engineering, and
+            scalable architecture, we deliver digital products that help
+            businesses and creators perform better online.
           </p>
         </article>
       </div>

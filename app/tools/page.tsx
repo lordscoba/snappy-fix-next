@@ -1,4 +1,4 @@
-import ToolsPageClient from "./ToolsPageClient";
+import ToolsComponents from "./ToolsComponents";
 
 export const metadata = {
   title:
@@ -15,5 +15,8 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <ToolsPageClient />;
+  // We return the Client Component here.
+  // This allows the page to remain a Server Component for SEO (metadata)
+  // while enabling interactivity inside ToolsComponents.
+  return <ToolsComponents />;
 }

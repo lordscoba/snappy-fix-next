@@ -4,40 +4,44 @@ import "animate.css";
 import type { Metadata } from "next";
 import Footer from "../components/Layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-
-// Redux
 import ReduxProvider from "./providers";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.snappy-fix.com"),
 
   title: {
     default:
-      "Snappy-Fix Technologies | Software Development Company in Nigeria",
+      "Snappy-Fix Technologies | Software Development Company & Free Online Image Tools",
     template: "%s | Snappy-Fix Technologies",
   },
 
   description:
-    "Snappy-Fix Technologies is a Nigerian software development company based in Uyo, known for building scalable websites, web designs, frontend development, Backend development, and mobile applications for startups and enterprises across Nigeria and globally.",
+    "Snappy-Fix Technologies is a Nigerian software development company building scalable websites, web applications, and mobile apps. We also provide powerful free online image tools including image converters, optimizers, analyzers, resizers, and SEO utilities used by developers, designers, and marketers worldwide.",
 
   keywords: [
-    "Software development company",
-    "Web development Nigeria",
-    "Mobile app development Nigeria",
-    "MERN stack development",
-    "Devops",
-    "Web development company",
-    "Frontend development",
-    "Backend development",
-    "Flutter development",
-    "React development",
-    "Full-stack developers",
-    "Tech company",
-    "Software company",
+    "software development company",
+    "web development Nigeria",
+    "mobile app development Nigeria",
+    "web application development",
+    "image tools online",
+    "free image tools",
+    "image converter",
+    "image optimizer",
+    "resize image online",
+    "svg optimizer",
+    "seo image tools",
+    "frontend development",
+    "backend development",
+    "flutter development",
+    "react development",
+    "full stack developers",
+    "tech company Nigeria",
+    "software company Nigeria",
     "Uyo",
-    "Nigeria",
     "Port Harcourt",
     "Lagos",
+    "Nigeria",
   ],
 
   authors: [{ name: "Snappy-Fix Technologies" }],
@@ -101,29 +105,39 @@ export default function RootLayout({
 }) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "Organization",
     name: "Snappy-Fix Technologies",
     url: "https://www.snappy-fix.com",
-    logo: "https://www.snappy-fix.com/logo.png",
+    logo: "https://www.snappy-fix.com/images/snappy-fix-logo.png",
     sameAs: [
-      "https://www.linkedin.com/company/snappy-fix",
-      "https://twitter.com/snappyfix",
+      "https://web.facebook.com/p/Snappy-fix-Technologies-100064249260204/?_rdc=1&_rdr#",
     ],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Uyo, Akwa Ibom State",
-      addressLocality: "Uyo",
-      addressRegion: "Akwa Ibom",
-      addressCountry: "Nigeria",
+    description:
+      "Snappy-Fix Technologies builds scalable web applications, mobile apps, and developer tools for businesses across Nigeria and globally.",
+    foundingLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Uyo",
+        addressRegion: "Akwa Ibom",
+        addressCountry: "Nigeria",
+      },
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "snappyfix.tech@gmail.com",
+      areaServed: "NG",
+      availableLanguage: ["English"],
     },
   };
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <ReduxProvider>{children}</ReduxProvider>
-        {/* <main className="flex-1">{children}</main> */}
         <Footer />
-        <script
+        <Script
+          id="structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
