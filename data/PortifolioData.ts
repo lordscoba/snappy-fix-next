@@ -1,6 +1,3 @@
-// import { Chigozie2, Chris2, Pascal, Seyi } from "../../images/team-img";
-// import { Chigozie2, Chris2, Pascal, Seyi } from "@/public/images/team-img";
-
 type mine = {
   skill_type: string;
   skill_level: string;
@@ -172,7 +169,7 @@ export const data: Array<Tester> = [
     years_experience: 5,
     projects: 30,
     about: "I am a good deveoper",
-    cv: "/images/team-img/Chris2.webp",
+    cv: "/images/team-img/Chris2.jpeg",
     link_tree: "https://www.github.com/lordscoba",
   },
   {
@@ -343,7 +340,7 @@ export const data: Array<Tester> = [
     projects: 30,
     about: "I am a good deveoper",
     link_tree: "https://www.github.com/NwokoyeChigozie",
-    cv: "/images/team-img/Chigozie2.webp",
+    cv: "/images/team-img/Chigozie2.jpeg",
   },
   {
     id: 3,
