@@ -7,14 +7,14 @@ const What = () => {
       id="what"
       className="bg-no-repeat bg-cover bg-center p-6 md:p-16"
       style={{
-        backgroundImage: `url("/images/bg-img/footer.avif")`,
+        backgroundImage: `url("/images/bg-img/footer.webp")`,
       }}
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Image */}
         <figure className="w-full md:w-1/2">
           <Image
-            src="/images/bg-img/cart-1.avif"
+            src="/images/bg-img/cart-1.webp"
             alt="Snappy-Fix web development project preview"
             width={600}
             height={450}

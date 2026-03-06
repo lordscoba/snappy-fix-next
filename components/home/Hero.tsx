@@ -48,7 +48,7 @@ const Hero = () => {
         {/* Image */}
         <figure className="hidden md:block max-w-lg">
           <Image
-            src="/images/bg-img/welcome-img.avif"
+            src="/images/bg-img/welcome-img.webp"
             alt="Web development illustration showing digital innovation"
             width={640}
             height={480}

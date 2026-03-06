@@ -9,7 +9,7 @@ const Video = () => {
       aria-labelledby="video-heading"
       className="bg-no-repeat bg-cover bg-center p-6 md:p-16"
       style={{
-        backgroundImage: `url("/images/bg-img/footer.avif")`,
+        backgroundImage: `url("/images/bg-img/footer.webp")`,
       }}
     >
       <div className="max-w-5xl mx-auto relative">
@@ -19,7 +19,7 @@ const Video = () => {
 
         <figure className="relative">
           <Image
-            src="/images/bg-img/Snappy3.avif"
+            src="/images/bg-img/Snappy3.webp"
             alt="Snappy-Fix Technologies web development showcase"
             className="rounded-3xl border-white border-[1rem] w-full"
             width={1000}
