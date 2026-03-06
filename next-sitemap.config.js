@@ -36,10 +36,10 @@ module.exports = {
         ],
       },
     ],
-    // additionalSitemaps: ["https://www.snappy-fix.com/sitemap.xml"],
   },
 
   transform: async (config, path) => {
+    // Homepage
     if (path === "/") {
       return {
         loc: path,
@@ -48,6 +48,7 @@ module.exports = {
       };
     }
 
+    // Tools landing page
     if (path === "/tools") {
       return {
         loc: path,
@@ -56,6 +57,7 @@ module.exports = {
       };
     }
 
+    // Individual tool pages
     if (path.startsWith("/tools/")) {
       return {
         loc: path,
@@ -64,6 +66,16 @@ module.exports = {
       };
     }
 
+    // Legal pages
+    if (path === "/privacy" || path === "/terms") {
+      return {
+        loc: path,
+        changefreq: "yearly",
+        priority: 0.3,
+      };
+    }
+
+    // Default pages
     return {
       loc: path,
       changefreq: "weekly",

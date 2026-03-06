@@ -206,7 +206,7 @@ export default function InstagramOptimizerPage() {
           </ul>
         </section>
 
-        <OtherToolsSection currentSlug="optimize-instagram" />
+        <OtherToolsSection currentSlug="optimize-instagram-image" />
       </section>
     </main>
   );

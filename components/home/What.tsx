@@ -1,4 +1,4 @@
-import { Footer, Cart1 } from "../../images/bg-img";
+// import { Footer, Cart1 } from "/images/bg-img";
 import Image from "next/image";
 
 const What = () => {
@@ -6,13 +6,15 @@ const What = () => {
     <section
       id="what"
       className="bg-no-repeat bg-cover bg-center p-6 md:p-16"
-      style={{ backgroundImage: `url(${Footer.src})` }}
+      style={{
+        backgroundImage: `url("/images/bg-img/footer.avif")`,
+      }}
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Image */}
         <figure className="w-full md:w-1/2">
           <Image
-            src={Cart1}
+            src="/images/bg-img/cart-1.avif"
             alt="Snappy-Fix web development project preview"
             width={600}
             height={450}

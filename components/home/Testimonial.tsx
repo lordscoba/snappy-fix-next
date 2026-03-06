@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import { AiTwotoneStar } from "react-icons/ai";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { Client2, Customer1, Customer2, Customer3 } from "../../images/bg-img";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 
@@ -10,28 +9,28 @@ const testimonials = [
   {
     name: "Aigars Silkalns",
     user_type: "user",
-    image: Customer1,
+    image: "/images/bg-img/client-2.avif",
     star: 5,
     text: "I have been using Snappy-fix for years. They deliver responsive websites with impressive functionality.",
   },
   {
     name: "Jeff Obuekwe",
     user_type: "user",
-    image: Customer2,
+    image: "/images/bg-img/customeer3.avif",
     star: 5,
     text: "Snappy-fix has shown professionalism in delivering quality websites. They remain my number one.",
   },
   {
     name: "Simon",
     user_type: "user",
-    image: Customer3,
+    image: "/images/bg-img/customer2.avif",
     star: 5,
     text: "Quality job with full functionality. Thumbs up.",
   },
   {
     name: "Helen",
     user_type: "user",
-    image: Client2,
+    image: "/images/bg-img/customer1.avif",
     star: 5,
     text: "Delivered all my requested functionality in full working shape. Thanks again.",
   },

@@ -15,20 +15,36 @@ export default function OtherToolsSection({
   title = "Explore Other Free Tools",
   limit = 4,
 }: Props) {
-  // Shuffle helper
-  const shuffleArray = (array: typeof tools) => {
-    const copied = [...array];
-    for (let i = copied.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copied[i], copied[j]] = [copied[j], copied[i]];
+  // Seeded shuffle (stable per day)
+  const shuffleWithSeed = (array: typeof tools, seed: number) => {
+    const shuffled = [...array];
+
+    const random = () => {
+      const x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    };
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    return copied;
+
+    return shuffled;
   };
 
-  // Memoized so it doesn't reshuffle on every state update
   const otherTools = useMemo(() => {
-    const filtered = tools.filter((tool) => tool.slug !== currentSlug);
-    return shuffleArray(filtered).slice(0, limit);
+    const currentTool = tools.find((tool) => tool.slug === currentSlug);
+
+    if (!currentTool) return [];
+
+    const sameCategoryTools = tools.filter(
+      (tool) =>
+        tool.category === currentTool.category && tool.slug !== currentSlug,
+    );
+
+    const seed = new Date().getDate(); // reshuffle daily
+
+    return shuffleWithSeed(sameCategoryTools, seed).slice(0, limit);
   }, [currentSlug, limit]);
 
   return (
@@ -59,7 +75,7 @@ export default function OtherToolsSection({
         ))}
       </div>
 
-      {/* View All Tools Button */}
+      {/* View All Tools */}
       <div className="flex justify-center pt-4">
         <Link
           href="/tools"

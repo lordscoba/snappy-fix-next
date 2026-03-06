@@ -16,11 +16,14 @@ import {
 } from "../../components/home";
 import Blog from "../../components/home/Blog";
 import { NavbarMenu } from "../../components/Layout";
-import { SnowG, SnowC1, SnowC2 } from "../../images";
 import Snow from "../../packages/Snow";
 import ProjectsDone from "@/components/projects/ProjectsDone";
 
-const backgrounds = [SnowG, SnowC1, SnowC2];
+const backgrounds = [
+  "/images/SnowC1.avif",
+  "/images/SnowC2.avif",
+  "/images/SnowG.avif",
+];
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,7 +32,7 @@ export default function Home() {
   useEffect(() => {
     const randomBg =
       backgrounds[Math.floor(Math.random() * backgrounds.length)];
-    setBgSrc(randomBg.src);
+    setBgSrc(randomBg);
   }, []);
 
   useEffect(() => {

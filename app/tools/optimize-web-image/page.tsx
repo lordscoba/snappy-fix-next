@@ -208,7 +208,7 @@ export default function WebOptimizerPage() {
           </ul>
         </section>
 
-        <OtherToolsSection currentSlug="optimize-web" />
+        <OtherToolsSection currentSlug="optimize-web-image" />
       </section>
     </main>
   );

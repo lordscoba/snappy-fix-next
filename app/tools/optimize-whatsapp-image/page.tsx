@@ -208,7 +208,7 @@ export default function WhatsAppOptimizerPage() {
           </ul>
         </section>
 
-        <OtherToolsSection currentSlug="optimize-whatsapp" />
+        <OtherToolsSection currentSlug="optimize-whatsapp-image" />
       </section>
     </main>
   );

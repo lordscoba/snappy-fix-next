@@ -1,5 +1,5 @@
 // import { Chigozie2, Chris2, Pascal, Seyi } from "../../images/team-img";
-import { Chigozie2, Chris2, Pascal, Seyi } from "@/images/team-img";
+// import { Chigozie2, Chris2, Pascal, Seyi } from "@/public/images/team-img";
 
 type mine = {
   skill_type: string;
@@ -163,7 +163,7 @@ export const data: Array<Tester> = [
       },
     ],
     text: "I am a good developer",
-    image: Chris2,
+    image: "/images/team-img/Chris2.avif",
     github_link: "github.com/lordscoba",
     linkdln_link: "linkdln.com/lordscoba",
     twitter_link: "twitter.com/lordscoba",
@@ -172,7 +172,7 @@ export const data: Array<Tester> = [
     years_experience: 5,
     projects: 30,
     about: "I am a good deveoper",
-    cv: Chris2,
+    cv: "/images/team-img/Chris2.avif",
     link_tree: "https://www.github.com/lordscoba",
   },
   {
@@ -333,7 +333,7 @@ export const data: Array<Tester> = [
       },
     ],
     text: "I am a good developer, ",
-    image: Chigozie2,
+    image: "/images/team-img/Chigozie2.avif",
     github_link: "github.com/greg",
     linkdln_link: "linkdln.com/greg",
     twitter_link: "twitter.com/greg",
@@ -343,7 +343,7 @@ export const data: Array<Tester> = [
     projects: 30,
     about: "I am a good deveoper",
     link_tree: "https://www.github.com/NwokoyeChigozie",
-    cv: Chigozie2,
+    cv: "/images/team-img/Chigozie2.avif",
   },
   {
     id: 3,
@@ -396,7 +396,7 @@ export const data: Array<Tester> = [
     ],
     link_tree: "https://linktr.ee/johnakande",
     text: "I am a good developer",
-    image: Seyi,
+    image: "/images/team-img/seyi.avif",
     github_link: "github.com/seyi",
     linkdln_link: "linkdln.com/seyi",
     twitter_link: "twitter.com/seyi",
@@ -405,7 +405,7 @@ export const data: Array<Tester> = [
     years_experience: 3,
     projects: 30,
     about: "I am a good deveoper",
-    cv: Seyi,
+    cv: "/images/team-img/seyi.avif",
   },
   {
     id: 4,
@@ -436,7 +436,7 @@ export const data: Array<Tester> = [
       },
     ],
     text: "I am a good Designer",
-    image: Pascal,
+    image: "/images/team-img/pascal.avif",
     github_link: "github.com/pascal",
     linkdln_link: "linkdln.com/pascal",
     twitter_link: "twitter.com/pascal",
@@ -445,6 +445,6 @@ export const data: Array<Tester> = [
     years_experience: 5,
     projects: 30,
     about: "I am a good designer",
-    cv: Pascal,
+    cv: "/images/team-img/pascal.avif",
   },
 ];

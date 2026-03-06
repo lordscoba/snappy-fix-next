@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { SnappyFixLogo } from "../../images/logo";
+// import { SnappyFixLogo } from "/images/logo";
 import { Menu, X, ArrowRight } from "lucide-react"; // Professional iconography
 
 export default function ToolTopNav() {
@@ -40,7 +40,7 @@ export default function ToolTopNav() {
           className="flex items-center hover:opacity-80 transition-opacity"
         >
           <Image
-            src={SnappyFixLogo}
+            src="/images/logo/snappyfix-logo.avif"
             alt="Snappy-Fix Logo"
             className="w-32 md:w-36 h-auto object-contain"
             priority
