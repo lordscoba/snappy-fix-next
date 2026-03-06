@@ -36,7 +36,7 @@ const Pricing = () => {
       aria-labelledby="pricing-heading"
       className="bg-cover bg-center py-20"
       style={{
-        backgroundImage: `url("/images/bg-img/footer.avif")`,
+        backgroundImage: `url("/images/bg-img/footer.webp")`,
       }}
     >
       <div className="max-w-7xl mx-auto px-6 space-y-14">

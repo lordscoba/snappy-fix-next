@@ -60,7 +60,7 @@ const Counter = () => {
       id="counter"
       ref={sectionRef}
       className="bg-no-repeat bg-cover bg-center py-20"
-      style={{ backgroundImage: `url("/images/bg-img/rt.avif")` }}
+      style={{ backgroundImage: `url("/images/bg-img/rt.webp")` }}
     >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-white">
         {stats.map((stat, index) => (

@@ -73,7 +73,7 @@ const Footer = () => {
     <footer
       className="relative bg-cover bg-center bg-fixed text-white"
       style={{
-        backgroundImage: `url("/images/bg-img/footer.avif")`,
+        backgroundImage: `url("/images/bg-img/footer.webp")`,
       }}
     >
       <div className="absolute inset-0"></div>

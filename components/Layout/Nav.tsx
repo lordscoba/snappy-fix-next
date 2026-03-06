@@ -57,7 +57,7 @@ const Nav = ({ background }: NavProps) => {
       <div className="flex items-center justify-between p-6 max-w-7xl mx-auto">
         <Link href="/#hero" aria-label="Snappy-Fix Technologies logo">
           <Image
-            src="/images/logo/snappy-fix-logo.avif"
+            src="/images/logo/snappy-fix-logo.webp"
             alt="Snappy-Fix Technologies logo"
             className="w-28 h-auto"
             width={112}

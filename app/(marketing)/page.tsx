@@ -20,9 +20,9 @@ import Snow from "../../packages/Snow";
 import ProjectsDone from "@/components/projects/ProjectsDone";
 
 const backgrounds = [
-  "/images/SnowC1.avif",
-  "/images/SnowC2.avif",
-  "/images/SnowG.avif",
+  "/images/SnowC1.webp",
+  "/images/SnowC2.webp",
+  "/images/SnowG.webp",
 ];
 
 export default function Home() {
