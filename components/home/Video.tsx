@@ -19,7 +19,7 @@ const Video = () => {
 
         <figure className="relative">
           <Image
-            src="/images/bg-img/Snappy3.webp"
+            src="/images/bg-img/Snappy3.jpg"
             alt="Snappy-Fix Technologies web development showcase"
             className="rounded-3xl border-white border-[1rem] w-full"
             width={1000}
