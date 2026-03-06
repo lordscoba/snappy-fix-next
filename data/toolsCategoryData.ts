@@ -1,18 +1,13 @@
 export const toolCategories = [
   {
     name: "Conversion Tools",
-    slug: "image-conversion-tools",
-    href: "/tools/image-conversion-tools",
+    slug: "conversion-tools",
+    href: "/tools/conversion-tools",
   },
   {
-    name: "Social Media Optimizers",
-    slug: "social-media-image-tools",
-    href: "/tools/social-media-image-tools",
-  },
-  {
-    name: "Optimization Tools",
-    slug: "image-optimization-tools",
-    href: "/tools/image-optimization-tools",
+    name: "PDF Tools",
+    slug: "pdf-tools",
+    href: "/tools/pdf-tools",
   },
   {
     name: "Editing Tools",
@@ -20,13 +15,28 @@ export const toolCategories = [
     href: "/tools/image-editing-tools",
   },
   {
-    name: "SEO Tools",
-    slug: "image-seo-tools",
-    href: "/tools/image-seo-tools",
+    name: "Optimization Tools",
+    slug: "image-optimization-tools",
+    href: "/tools/image-optimization-tools",
   },
   {
     name: "Analysis Tools",
     slug: "image-analysis-tools",
     href: "/tools/image-analysis-tools",
+  },
+  {
+    name: "Security Tools",
+    slug: "security-tools",
+    href: "/tools/security-tools",
+  },
+  {
+    name: "Social Media Tools",
+    slug: "social-media-tools",
+    href: "/tools/social-media-tools",
+  },
+  {
+    name: "SEO Tools",
+    slug: "image-seo-tools",
+    href: "/tools/image-seo-tools",
   },
 ];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { SnappyFixLogo } from "../../images/logo";
+// import { SnappyFixLogo } from "/images/logo";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -57,9 +57,11 @@ const Nav = ({ background }: NavProps) => {
       <div className="flex items-center justify-between p-6 max-w-7xl mx-auto">
         <Link href="/#hero" aria-label="Snappy-Fix Technologies logo">
           <Image
-            src={SnappyFixLogo}
+            src="/images/logo/snappy-fix-logo.avif"
             alt="Snappy-Fix Technologies logo"
             className="w-28 h-auto"
+            width={112}
+            height={112}
           />
         </Link>
         <div className="hidden md:flex gap-6 text-white">

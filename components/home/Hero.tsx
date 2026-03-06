@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState } from "react";
-import { WelcomeImg } from "../../images/bg-img";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -49,7 +48,7 @@ const Hero = () => {
         {/* Image */}
         <figure className="hidden md:block max-w-lg">
           <Image
-            src={WelcomeImg}
+            src="/images/bg-img/welcome-img.avif"
             alt="Web development illustration showing digital innovation"
             width={640}
             height={480}

@@ -211,7 +211,7 @@ export default function YouTubeOptimizerPage() {
           </ul>
         </section>
 
-        <OtherToolsSection currentSlug="optimize-youtube-thumbnail" />
+        <OtherToolsSection currentSlug="optimize-youtube-thumbnail-image" />
       </section>
     </main>
   );

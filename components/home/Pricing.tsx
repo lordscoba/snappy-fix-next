@@ -1,5 +1,3 @@
-import { Footer } from "../../images/bg-img";
-
 type Plan = {
   title: string;
   price: number;
@@ -37,7 +35,9 @@ const Pricing = () => {
       id="pricing"
       aria-labelledby="pricing-heading"
       className="bg-cover bg-center py-20"
-      style={{ backgroundImage: `url(${Footer.src})` }}
+      style={{
+        backgroundImage: `url("/images/bg-img/footer.avif")`,
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 space-y-14">
         <header className="text-center space-y-4">

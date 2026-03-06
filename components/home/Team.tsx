@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-// import { data } from "../portifolio/Data";
 import { data } from "@/data/PortifolioData";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -82,6 +81,8 @@ const TeamCard = ({ member }: CardProps) => {
             .slice(0, 2)
             .join(" & ")} specialist`}
           className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+          width={400}
+          height={400}
         />
       </figure>
 

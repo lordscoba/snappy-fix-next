@@ -1,4 +1,4 @@
-import { Footer, Snappy3 } from "../../images/bg-img";
+// import { Footer, Snappy3 } from "/images/bg-img";
 import { BsPlayCircleFill } from "react-icons/bs";
 import Image from "next/image";
 
@@ -8,7 +8,9 @@ const Video = () => {
       id="video"
       aria-labelledby="video-heading"
       className="bg-no-repeat bg-cover bg-center p-6 md:p-16"
-      style={{ backgroundImage: `url(${Footer.src})` }}
+      style={{
+        backgroundImage: `url("/images/bg-img/footer.avif")`,
+      }}
     >
       <div className="max-w-5xl mx-auto relative">
         <header className="sr-only">
@@ -17,9 +19,11 @@ const Video = () => {
 
         <figure className="relative">
           <Image
-            src={Snappy3}
+            src="/images/bg-img/Snappy3.avif"
             alt="Snappy-Fix Technologies web development showcase"
             className="rounded-3xl border-white border-[1rem] w-full"
+            width={1000}
+            height={1000}
           />
 
           <a

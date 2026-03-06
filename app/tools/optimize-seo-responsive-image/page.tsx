@@ -210,7 +210,7 @@ export default function SeoResponsiveOptimizerPage() {
           </ul>
         </section>
 
-        <OtherToolsSection currentSlug="optimize-seo-responsive" />
+        <OtherToolsSection currentSlug="optimize-seo-responsive-image" />
       </section>
     </main>
   );

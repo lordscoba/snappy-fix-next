@@ -209,7 +209,7 @@ export default function TwitterOptimizerPage() {
           </ul>
         </section>
 
-        <OtherToolsSection currentSlug="optimize-twitter" />
+        <OtherToolsSection currentSlug="optimize-twitter-image" />
       </section>
     </main>
   );

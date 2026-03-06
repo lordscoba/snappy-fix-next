@@ -12,7 +12,7 @@ import { optimizeSeoResponsiveImage } from "@/lib/api/services/image-optimizer.s
 import { downloadBlob } from "@/lib/utils/download";
 import { AxiosProgressEvent } from "axios";
 
-export default function InstagramOptimizerTool() {
+export default function SeoResponsiveOptimizerTool() {
   const dispatch = useDispatch();
 
   const progress = useSelector(
@@ -158,7 +158,7 @@ export default function InstagramOptimizerTool() {
               📷
             </div>
             <p className="text-lg font-bold text-[#2b1d3a]">
-              Drop your image for Instagram
+              Drop your image for optimization
             </p>
             <p className="text-sm text-gray-400">
               Perfectly optimized for feed & reels

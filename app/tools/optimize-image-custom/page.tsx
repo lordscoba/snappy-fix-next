@@ -206,7 +206,7 @@ export default function CustomOptimizerPage() {
           </ul>
         </section>
 
-        <OtherToolsSection currentSlug="optimize-custom" />
+        <OtherToolsSection currentSlug="optimize-image-custom" />
       </section>
     </main>
   );

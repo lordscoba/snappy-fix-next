@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Rt } from "../../images/bg-img";
 import { ImArrowDown } from "react-icons/im";
 import { RiEmotionHappyLine } from "react-icons/ri";
 import { IoPersonSharp } from "react-icons/io5";
@@ -61,7 +60,7 @@ const Counter = () => {
       id="counter"
       ref={sectionRef}
       className="bg-no-repeat bg-cover bg-center py-20"
-      style={{ backgroundImage: `url(${Rt.src})` }}
+      style={{ backgroundImage: `url("/images/bg-img/rt.avif")` }}
     >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-white">
         {stats.map((stat, index) => (
