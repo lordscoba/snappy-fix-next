@@ -22,7 +22,7 @@ import ProjectsDone from "@/components/projects/ProjectsDone";
 const backgrounds = [
   "/images/snowC1.webp",
   "/images/snowC2.webp",
-  "/images/snowG.webp",
+  "/images/snowg.webp",
 ];
 
 export default function Home() {
