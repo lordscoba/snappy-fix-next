@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-12">
         {/* Text */}
         <div className="max-w-xl space-y-6">
-          <h1 className="text-white text-5xl md:text-7xl font-bold">
+          <h1 className="text-white text-5xl md:text-7xl font-bold tracking-tight">
             Snappy-Fix Technologies
           </h1>
 
@@ -52,7 +52,10 @@ const Hero = () => {
             alt="Web development illustration showing digital innovation"
             width={640}
             height={480}
+            sizes="(max-width: 768px) 100vw, 640px"
             className="animate-zoom"
+            fetchPriority="high"
+            priority
           />
         </figure>
       </div>

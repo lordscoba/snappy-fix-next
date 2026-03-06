@@ -29,6 +29,10 @@ export default function ProjectsDone() {
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  width={600}
+                  height={400}
                 />
               </figure>
 

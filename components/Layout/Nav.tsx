@@ -62,6 +62,8 @@ const Nav = ({ background }: NavProps) => {
             className="w-28 h-auto"
             width={112}
             height={112}
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Link>
         <div className="hidden md:flex gap-6 text-white">

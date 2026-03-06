@@ -144,6 +144,8 @@ const Avatar = ({
       width={112}
       height={112}
       className="w-full h-full object-cover"
+      loading="lazy"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     />
   </div>
 );

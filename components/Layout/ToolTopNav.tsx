@@ -40,10 +40,13 @@ export default function ToolTopNav() {
           className="flex items-center hover:opacity-80 transition-opacity"
         >
           <Image
-            src="/images/logo/snappyfix-logo.webp"
+            src="/images/logo/snappy-fix-logo.webp"
             alt="Snappy-Fix Logo"
             className="w-32 md:w-36 h-auto object-contain"
             priority
+            width={112}
+            height={112}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Link>
 

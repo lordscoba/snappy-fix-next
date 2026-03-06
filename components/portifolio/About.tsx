@@ -37,6 +37,9 @@ const About = ({ portfolio }: AboutProps) => {
             fill
             className="object-cover rounded-3xl border-4 border-black shadow-lg"
             sizes="288px"
+            width={288}
+            height={288}
+            loading="lazy"
           />
         </figure>
 
