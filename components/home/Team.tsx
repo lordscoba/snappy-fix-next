@@ -83,6 +83,8 @@ const TeamCard = ({ member }: CardProps) => {
           className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
           width={400}
           height={400}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </figure>
 

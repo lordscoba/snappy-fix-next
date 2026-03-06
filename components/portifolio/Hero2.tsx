@@ -96,6 +96,7 @@ const Hero = ({ portfolio }: HeroProps) => {
             height={400}
             className="rounded-2xl shadow-lg"
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </figure>
       </main>

@@ -24,6 +24,8 @@ const Video = () => {
             className="rounded-3xl border-white border-[1rem] w-full"
             width={1000}
             height={1000}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
 
           <a
