@@ -243,6 +243,7 @@ export default function StickerGeneratorTools() {
               <button
                 onClick={handleReset}
                 className="flex items-center gap-2 mx-auto text-sm font-bold text-slate-400 hover:text-red-500 transition-colors"
+                aria-label="start over"
               >
                 <Trash2 size={16} /> Start Over
               </button>
@@ -344,6 +345,7 @@ export default function StickerGeneratorTools() {
                         ? "bg-indigo-600 border-indigo-600"
                         : "bg-slate-100 border-slate-200"
                     }`}
+                    aria-label="reverse switch"
                   >
                     <div
                       className={`absolute w-8 h-8 rounded-xl flex items-center justify-center transition-all shadow-sm ${
@@ -385,6 +387,7 @@ export default function StickerGeneratorTools() {
               onClick={handleGenerate}
               disabled={isGlobalLoading || !file}
               className="group relative w-full h-16 bg-slate-900 text-white font-black rounded-2xl overflow-hidden transition-all hover:bg-indigo-600 disabled:bg-slate-200"
+              aria-label="generate sticker"
             >
               {isGlobalLoading ? (
                 <div className="relative z-10 flex items-center justify-center gap-3">

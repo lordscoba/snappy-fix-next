@@ -204,6 +204,7 @@ export default function ImageToBase64Tools() {
           onClick={handleConvert}
           disabled={!file || isGlobalLoading}
           className="w-full h-14 bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] active:scale-[0.98] transition-all disabled:bg-slate-100 disabled:text-slate-400 flex items-center justify-center gap-2"
+          aria-label="convert now"
         >
           {isGlobalLoading ? (
             <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -265,6 +266,7 @@ export default function ImageToBase64Tools() {
               onClick={handleCopy}
               className={`flex-1 h-12 rounded-xl font-bold flex items-center justify-center gap-2 transition-all
                 ${copied ? "bg-green-500 text-white" : "bg-[#5b32b4] text-white hover:bg-[#4a2896]"}`}
+              aria-label={copied ? "Copied!" : "Copy String"}
             >
               {copied ? <Check size={18} /> : <Copy size={18} />}
               {copied ? "Copied!" : "Copy String"}

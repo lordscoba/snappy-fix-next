@@ -3,50 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find(
-  (tool) => tool.slug === "optimize-youtube-thumbnail",
+  (tool) => tool.slug === "optimize-youtube-thumbnail-image",
 )!;
 
-export const metadata = {
-  title:
-    "YouTube Thumbnail Optimizer Free | Resize & Compress YouTube Thumbnails - Snappy Fix",
-  description:
-    "Optimize YouTube thumbnails instantly. Resize to 1280x720, compress without quality loss, and meet YouTube thumbnail size requirements. Fast, secure and free online tool.",
-  keywords: [
-    "youtube thumbnail optimizer",
-    "optimize youtube thumbnail",
-    "youtube thumbnail size",
-    "resize youtube thumbnail",
-    "compress youtube thumbnail",
-    "youtube thumbnail dimensions 1280x720",
-    "best youtube thumbnail size",
-    "youtube thumbnail compressor",
-    "free youtube thumbnail resizer",
-    "youtube image optimizer",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function YouTubeOptimizerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "YouTube Thumbnail Optimizer",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Social Media Image Optimization Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/optimize-youtube-thumbnail-image",
-    description:
-      "Optimize and compress images to the perfect YouTube thumbnail size (1280x720) while staying under the 2MB limit.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,31 +42,6 @@ export default function YouTubeOptimizerPage() {
           "@type": "Answer",
           text: "YouTube thumbnails must be less than 2MB and can be in JPG, PNG, or WebP format.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "YouTube Thumbnail Optimizer",
-        item: "https://www.snappy-fix.com/tools/optimize-youtube-thumbnail-image",
       },
     ],
   };
@@ -146,7 +89,7 @@ export default function YouTubeOptimizerPage() {
         id="youtube-thumbnail-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -162,7 +105,7 @@ export default function YouTubeOptimizerPage() {
         id="youtube-thumbnail-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

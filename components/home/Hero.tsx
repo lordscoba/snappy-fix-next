@@ -26,19 +26,19 @@ const Hero = () => {
             </label>
 
             <input
+              name="email"
               id="email"
               type="email"
               required
               placeholder="you@example.com"
-              className="p-4 rounded-full bg-[#9572e8] text-white placeholder-white/70 w-full"
+              className="p-4 rounded-full bg-[#6d36e3] text-white placeholder-white/80 w-full outline-none focus:ring-2 focus:ring-[#fb397d]"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <button
               type="submit"
-              className="bg-[#fb397d] px-10 py-4 rounded-full text-white hover:opacity-90 whitespace-nowrap
-"
+              className="bg-[#e31b6d] px-10 py-4 rounded-full text-white hover:opacity-90 whitespace-nowrap transition-all shadow-md active:scale-95"
             >
               Get Updates
             </button>
@@ -46,7 +46,7 @@ const Hero = () => {
         </div>
 
         {/* Image */}
-        <figure className="hidden md:block max-w-lg">
+        {/* <figure className="hidden md:block max-w-lg">
           <Image
             src="/images/bg-img/welcome-img.webp"
             alt="Web development illustration showing digital innovation"
@@ -54,6 +54,19 @@ const Hero = () => {
             height={480}
             sizes="(max-width: 768px) 100vw, 640px"
             className="animate-zoom"
+            fetchPriority="high"
+            priority
+          />
+        </figure> */}
+        <figure className="hidden md:block max-w-lg">
+          <Image
+            src="/images/bg-img/welcome-img.webp"
+            alt="Web development illustration showing digital innovation"
+            // Updated to match your natural file dimensions
+            width={750}
+            height={664}
+            sizes="(max-width: 768px) 100vw, 750px"
+            className="animate-zoom h-auto w-full" // Use h-auto to keep it fluid
             fetchPriority="high"
             priority
           />

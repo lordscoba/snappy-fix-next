@@ -3,49 +3,17 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import StickerGeneratorTools from "@/components/tools/StickerGeneratorTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "sticker-maker")!;
 
-export const metadata = {
-  title:
-    "Sticker Maker Online | Create WhatsApp & Telegram Stickers Free - Snappy Fix",
-  description:
-    "Create WhatsApp and Telegram stickers from images or videos instantly. Convert photos into transparent stickers or turn videos into animated stickers using our free online sticker maker.",
-  keywords: [
-    "sticker maker",
-    "whatsapp sticker maker",
-    "telegram sticker maker",
-    "create stickers online",
-    "image to sticker converter",
-    "video to sticker converter",
-    "make whatsapp stickers",
-    "custom sticker maker",
-    "animated sticker creator",
-    "photo to sticker generator",
-    "online sticker generator",
-    "free sticker maker",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function StickerMakerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Sticker Maker (Image & Video to Sticker)",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Messaging Sticker Generator",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/sticker-maker",
-    description:
-      "Create custom stickers for WhatsApp and Telegram instantly. Convert images into transparent stickers or turn short videos into animated stickers using this free online sticker maker.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -76,30 +44,7 @@ export default function StickerMakerPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Sticker Maker (Image & Video to Sticker)",
-        item: "https://www.snappy-fix.com/tools/sticker-maker",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -143,7 +88,7 @@ export default function StickerMakerPage() {
         id="sticker-maker-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +104,7 @@ export default function StickerMakerPage() {
         id="sticker-maker-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

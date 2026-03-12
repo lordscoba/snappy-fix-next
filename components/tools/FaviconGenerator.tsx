@@ -253,6 +253,7 @@ export default function FaviconGeneratorTool() {
         onClick={handleGenerate}
         disabled={!file || isGlobalLoading}
         className="h-[60px] w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] transition-all disabled:bg-gray-200 disabled:text-gray-400 flex items-center justify-center gap-2"
+        aria-label="generate favicon"
       >
         {isGlobalLoading ? (
           <>

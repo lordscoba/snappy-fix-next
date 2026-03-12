@@ -4,6 +4,7 @@ import { toolCategories } from "@/data/toolsCategoryData";
 import { NavbarMenu } from "@/components/Layout";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { splitTitle } from "@/lib/utils/title";
 
 // Define the type to match your folder name [category]
 type Params = Promise<{ category: string }>;
@@ -87,7 +88,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
               >
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold text-[#2b1d3a] group-hover:text-[#5b32b4] transition-colors">
-                    {tool.name}
+                    {splitTitle(tool.name, 1)}
                   </h3>
 
                   <p className="text-sm text-gray-600 leading-relaxed">

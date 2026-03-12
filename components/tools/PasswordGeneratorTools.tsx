@@ -211,6 +211,7 @@ export default function PasswordGeneratorTools() {
         onClick={handleGenerate}
         disabled={isGlobalLoading}
         className="h-[60px] w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] transition-all disabled:bg-gray-200 disabled:text-gray-400"
+        aria-label="generate password"
       >
         {isGlobalLoading ? "Generating..." : "Generate Password"}
       </button>

@@ -31,7 +31,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
 
   // 1. Start with a stable image. Next.js will preload this.
-  const [bgSrc, setBgSrc] = useState(backgrounds[0]);
+  const [bgSrc, setBgSrc] = useState(backgrounds[2]);
 
   useEffect(() => {
     // 2. Randomize ONLY after mounting on the client.

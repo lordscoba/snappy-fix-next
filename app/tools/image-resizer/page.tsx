@@ -3,83 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import { splitTitle } from "@/lib/utils/title";
 
 const currentTool = tools.find((tool) => tool.slug === "image-resizer")!;
 
-export const metadata = {
-  title:
-    "Free Online Image Resizer | Resize Images to Exact Width & Height - Snappy Fix",
-  description:
-    "Resize images online instantly. Change image width and height in pixels, resize by percentage, or maintain aspect ratio. Free, fast and secure image resizing tool.",
-  keywords: [
-    // Core
-    "image resizer",
-    "resize image online",
-    "free image resizer",
-    "photo resizer online",
-    "online image resize tool",
-
-    // Dimension intent
-    "resize image to exact size",
-    "resize image to specific dimensions",
-    "resize image width and height",
-    "resize image in pixels",
-    "custom image resizer",
-
-    // Percentage & scaling
-    "resize image by percentage",
-    "scale image online",
-    "increase image size",
-    "reduce image dimensions",
-    "shrink image size online",
-
-    // Social media
-    "resize image for instagram",
-    "resize image for twitter",
-    "resize image for whatsapp",
-    "resize youtube thumbnail",
-    "profile picture resizer",
-    "Instagram Post: 1080 × 1080",
-    "Instagram Story: 1080 × 1920",
-    "Twitter Post: 1600 × 900",
-    "YouTube Thumbnail: 1280 × 720",
-
-    // Web & performance
-    "resize image for website",
-    "optimize image dimensions",
-    "reduce image size for web",
-    "prepare image for upload",
-
-    // Trust modifiers
-    "secure image resizer",
-    "no watermark image resizer",
-    "private image resize tool",
-    "free unlimited image resizer",
-  ],
-  alternates: {
-    canonical: "/tools/image-resizer",
-  },
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function ImageResizerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image Resizer",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Processing Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-resizer",
-    description:
-      "Free online image resizer to change image width and height instantly.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -99,30 +34,6 @@ export default function ImageResizerPage() {
           "@type": "Answer",
           text: "Resizing changes dimensions but does not reduce quality unless compression is applied.",
         },
-      },
-    ],
-  };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image Resizer",
-        item: "https://www.snappy-fix.com/tools/image-resizer",
       },
     ],
   };
@@ -171,7 +82,7 @@ export default function ImageResizerPage() {
         id="image-resizer-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
       <Script
@@ -185,7 +96,7 @@ export default function ImageResizerPage() {
         id="image-resizer-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
       <Script
@@ -200,7 +111,7 @@ export default function ImageResizerPage() {
         {/* Header */}
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            {currentTool.name}
+            {splitTitle(currentTool.name)}
           </h1>
 
           <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">

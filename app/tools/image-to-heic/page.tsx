@@ -3,48 +3,16 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "image-to-heic")!;
 
-export const metadata = {
-  title:
-    "Image to HEIC Converter Online | Convert JPG, PNG to HEIC - Snappy Fix",
-  description:
-    "Convert JPG, PNG, or WebP images to HEIC format instantly. Reduce image file size while maintaining high quality using our free online HEIC converter.",
-  keywords: [
-    "convert image to heic",
-    "jpg to heic",
-    "png to heic",
-    "heic image converter",
-    "image to heic converter online",
-    "convert photo to heic",
-    "webp to heic",
-    "heic format converter",
-    "create heic images",
-    "heic converter free",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function ImageToHeicPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image to HEIC Converter",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Conversion Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-to-heic",
-    description:
-      "Convert JPG, PNG, or WebP images into HEIC format instantly using this free online Image to HEIC converter. Reduce storage space while maintaining high image quality.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -72,31 +40,6 @@ export default function ImageToHeicPage() {
           "@type": "Answer",
           text: "No. Images uploaded to the Snappy Fix Image to HEIC Converter are processed securely and are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image to HEIC Converter",
-        item: "https://www.snappy-fix.com/tools/image-to-heic",
       },
     ],
   };
@@ -144,7 +87,7 @@ export default function ImageToHeicPage() {
         id="image-to-heic-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -160,7 +103,7 @@ export default function ImageToHeicPage() {
         id="image-to-heic-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

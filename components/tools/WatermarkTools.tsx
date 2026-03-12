@@ -214,6 +214,7 @@ export default function WatermarkTools() {
                     setResultBlob(null);
                   }}
                   className="absolute top-6 right-6 bg-white/10 hover:bg-red-500 text-white p-3 rounded-2xl backdrop-blur-xl transition-all"
+                  aria-label="remove image"
                 >
                   <Trash2 size={20} />
                 </button>
@@ -267,12 +268,14 @@ export default function WatermarkTools() {
             <button
               onClick={() => setWmType("text")}
               className={`flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-all ${wmType === "text" ? "bg-white shadow-md text-indigo-600" : "text-slate-500"}`}
+              aria-label="text watermark"
             >
               <Type size={16} /> Text
             </button>
             <button
               onClick={() => setWmType("image")}
               className={`flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-all ${wmType === "image" ? "bg-white shadow-md text-indigo-600" : "text-slate-500"}`}
+              aria-label="image watermark"
             >
               <ImageIcon size={16} /> Logo
             </button>
@@ -339,6 +342,7 @@ export default function WatermarkTools() {
                         className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${color === swatch ? "border-indigo-600" : "border-transparent"}`}
                         style={{ backgroundColor: swatch }}
                         title={swatch}
+                        aria-label={swatch}
                       />
                     ))}
                   </div>
@@ -411,6 +415,8 @@ export default function WatermarkTools() {
                     key={pos}
                     onClick={() => setPosition(pos as WatermarkPosition)}
                     className={`py-3 text-[9px] font-black uppercase rounded-xl border transition-all ${position === pos ? "border-indigo-600 bg-indigo-50 text-indigo-600" : "border-slate-100 bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
+                    aria-label={pos}
+                    title={pos}
                   >
                     {pos.replace("-", " ")}
                   </button>
@@ -459,6 +465,8 @@ export default function WatermarkTools() {
                     key={level}
                     onClick={() => setCompression(level as any)}
                     className={`py-2 rounded-lg text-[10px] font-bold capitalize border transition-all ${compression === level ? "bg-slate-800 text-white border-slate-800" : "bg-white text-slate-500 border-slate-100"}`}
+                    aria-label={level}
+                    title={level}
                   >
                     {level}
                   </button>
@@ -479,6 +487,7 @@ export default function WatermarkTools() {
                 !file || isGlobalLoading || (wmType === "image" && !wmFile)
               }
               className="group relative w-full h-16 bg-slate-900 text-white font-black rounded-2xl overflow-hidden transition-all hover:bg-indigo-600 disabled:bg-slate-100 disabled:text-slate-400"
+              aria-label="generate watermark"
             >
               {isGlobalLoading ? (
                 <div className="relative z-10 flex items-center justify-center gap-3">

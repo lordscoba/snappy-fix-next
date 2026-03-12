@@ -3,71 +3,17 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import { splitTitle } from "@/lib/utils/title";
 
 const currentTool = tools.find((tool) => tool.slug === "image-analyzer")!;
-
-export const metadata = {
-  title:
-    "Image Analyzer Online | Check Image Size, Dimensions & Metadata - Snappy Fix",
-  description:
-    "Analyze image properties instantly. Check image size, dimensions, format, file type and metadata online for free. Fast, secure and accurate image analysis tool.",
-  keywords: [
-    // Core
-    "image analyzer",
-    "analyze image online",
-    "image file analyzer",
-    "image metadata viewer",
-    "check image details",
-
-    // Technical checks
-    "check image size",
-    "check image dimensions",
-    "image resolution checker",
-    "image format checker",
-    "image file type checker",
-    "inspect image properties",
-
-    // Metadata intent
-    "view image metadata",
-    "extract image metadata",
-    "exif data viewer",
-    "check exif data online",
-    "image information tool",
-
-    // Web & SEO intent
-    "analyze image for website",
-    "check image size for web",
-    "optimize image before upload",
-    "inspect image before optimization",
-
-    // Trust & modifiers
-    "free image analyzer",
-    "secure image analyzer",
-    "online image inspection tool",
-    "no signup image analyzer",
-    "private image checker",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function ImageAnalyzerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image Metadata & DPI Analyzer",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Analysis Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-analyzer",
-    description:
-      "Analyze image metadata, DPI, dimensions, format, and EXIF information instantly using this free online image analyzer.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -98,30 +44,7 @@ export default function ImageAnalyzerPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image Metadata & DPI Analyzer",
-        item: "https://www.snappy-fix.com/tools/image-analyzer",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -165,7 +88,7 @@ export default function ImageAnalyzerPage() {
         id="image-analyzer-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -181,7 +104,7 @@ export default function ImageAnalyzerPage() {
         id="image-analyzer-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
@@ -197,7 +120,7 @@ export default function ImageAnalyzerPage() {
         {/* Header */}
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            {currentTool.name}
+            {splitTitle(currentTool.name)}
           </h1>
 
           <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">

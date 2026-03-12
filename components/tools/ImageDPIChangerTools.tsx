@@ -168,6 +168,7 @@ export default function ImageDPIChangerTools() {
               ? "bg-[#5b32b4] text-white"
               : "bg-gray-100 text-gray-500"
           }`}
+          aria-label="check dpi"
         >
           Check DPI
         </button>
@@ -179,6 +180,7 @@ export default function ImageDPIChangerTools() {
               ? "bg-[#fb397d] text-white"
               : "bg-gray-100 text-gray-500"
           }`}
+          aria-label="change dpi"
         >
           Change DPI
         </button>
@@ -251,6 +253,7 @@ export default function ImageDPIChangerTools() {
         onClick={handleProcess}
         disabled={!file || isGlobalLoading}
         className="h-[60px] w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] transition-all disabled:bg-gray-200 disabled:text-gray-400"
+        aria-label="process"
       >
         {isGlobalLoading
           ? "Processing..."

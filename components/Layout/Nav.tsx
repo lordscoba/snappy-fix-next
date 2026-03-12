@@ -59,11 +59,14 @@ const Nav = ({ background }: NavProps) => {
           <Image
             src="/images/logo/snappy-fix-logo.webp"
             alt="Snappy-Fix Technologies logo"
-            className="w-28 h-auto"
             width={112}
             height={112}
             priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto"
+            sizes="(max-width: 640px) 96px,
+           (max-width: 768px) 112px,
+           (max-width: 1024px) 128px,
+           144px"
           />
         </Link>
         <div className="hidden md:flex gap-6 text-white">

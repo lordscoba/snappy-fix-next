@@ -3,49 +3,17 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import { splitTitle } from "@/lib/utils/title";
 
 const currentTool = tools.find((tool) => tool.slug === "image-to-base64")!;
 
-export const metadata = {
-  title:
-    "Image to Base64 Converter Online | Encode JPG, PNG, WEBP to Base64 - Snappy Fix",
-  description:
-    "Convert images to Base64 instantly. Encode JPG, PNG, WEBP and other formats to Base64 string for HTML, CSS, JSON or API usage. Free and secure Base64 encoder.",
-  keywords: [
-    "image to base64",
-    "convert image to base64",
-    "encode image to base64",
-    "jpg to base64",
-    "png to base64",
-    "webp to base64",
-    "base64 image encoder online",
-    "convert image to base64 string",
-    "base64 converter tool",
-    "image encoder online",
-    "secure base64 encoder",
-    "free image to base64 converter",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function ImageToBase64Page() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image to Base64 Converter",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Encoding Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-to-base64",
-    description:
-      "Convert images into Base64 strings instantly using this free online Image to Base64 converter.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -76,30 +44,7 @@ export default function ImageToBase64Page() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image to Base64 Converter",
-        item: "https://www.snappy-fix.com/tools/image-to-base64",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -143,7 +88,7 @@ export default function ImageToBase64Page() {
         id="image-to-base64-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +104,7 @@ export default function ImageToBase64Page() {
         id="image-to-base64-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
@@ -174,7 +119,7 @@ export default function ImageToBase64Page() {
       <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            {currentTool.name}
+            {splitTitle(currentTool.name)}
           </h1>
 
           <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">

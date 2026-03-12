@@ -3,49 +3,16 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import ImageColorEffectTools from "@/components/tools/ImageColorEffectTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "image-color-effects")!;
 
-export const metadata = {
-  title:
-    "Image Color Effects Editor Online | Apply Photo Filters & Effects - Snappy Fix",
-  description:
-    "Apply beautiful color effects and photo filters to images online. Add grayscale, sepia, vintage, and creative color filters instantly with our free image color effects editor.",
-  keywords: [
-    "image color effects",
-    "photo filter editor",
-    "apply color filters online",
-    "add effects to images",
-    "image effects tool",
-    "photo effects editor",
-    "grayscale image filter",
-    "sepia photo effect",
-    "vintage photo filter",
-    "online image color editor",
-    "free photo effects tool",
-    "image filter generator",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function ImageColorEffectsPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image Color Effects Editor",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Photo Effects & Filters Editor",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-color-effects",
-    description:
-      "Apply creative color filters and photo effects to images instantly. Transform photos using grayscale, sepia, vintage, and other professional color effects with this free online image editor.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -76,30 +43,7 @@ export default function ImageColorEffectsPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image Color Effects Editor",
-        item: "https://www.snappy-fix.com/tools/image-color-effects",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -143,7 +87,7 @@ export default function ImageColorEffectsPage() {
         id="image-color-effects-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +103,7 @@ export default function ImageColorEffectsPage() {
         id="image-color-effects-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

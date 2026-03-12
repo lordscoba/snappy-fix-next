@@ -3,49 +3,16 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import WatermarkTools from "@/components/tools/WatermarkTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "image-watermark")!;
 
-export const metadata = {
-  title:
-    "Add Watermark to Images Online | Protect Photos with Text or Logo - Snappy Fix",
-  description:
-    "Add text or logo watermarks to images online to protect your photos and artwork. Use our free watermark generator to secure images with transparent or visible watermarks instantly.",
-  keywords: [
-    "add watermark to image",
-    "image watermark tool",
-    "watermark photos online",
-    "protect photos watermark",
-    "online watermark generator",
-    "add logo watermark",
-    "add text watermark",
-    "photo watermark tool",
-    "protect images from theft",
-    "watermark maker online",
-    "logo watermark generator",
-    "free image watermark tool",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function ImageWatermarkPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image Watermark Tool",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Editing Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-watermark",
-    description:
-      "Add text or logo watermarks to images online instantly. Protect photos from unauthorized reuse by applying visible or transparent watermarks using this free image watermark generator.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -76,30 +43,7 @@ export default function ImageWatermarkPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image Watermark Tool",
-        item: "https://www.snappy-fix.com/tools/image-watermark",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -143,7 +87,7 @@ export default function ImageWatermarkPage() {
         id="image-watermark-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +103,7 @@ export default function ImageWatermarkPage() {
         id="image-watermark-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

@@ -3,47 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
-const currentTool = tools.find((tool) => tool.slug === "optimize-whatsapp")!;
+const currentTool = tools.find(
+  (tool) => tool.slug === "optimize-whatsapp-image",
+)!;
 
-export const metadata = {
-  title:
-    "Optimize Images for WhatsApp Free | Compress & Resize WhatsApp Images - Snappy Fix",
-  description:
-    "Optimize images for WhatsApp without losing quality. Compress and resize photos for faster sharing and reduced data usage. Free and secure WhatsApp image optimizer.",
-  keywords: [
-    "whatsapp image optimizer",
-    "compress image for whatsapp",
-    "whatsapp image size",
-    "resize image for whatsapp",
-    "whatsapp photo compressor",
-    "optimize image for whatsapp status",
-    "whatsapp image compression tool",
-    "reduce whatsapp image size",
-    "free whatsapp image optimizer",
-    "whatsapp image resizer online",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function WhatsAppOptimizerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "WhatsApp Image Optimizer",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Social Media Image Optimization Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/optimize-whatsapp-image",
-    description:
-      "Resize and compress images for WhatsApp status updates and chat sharing without losing quality.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -72,31 +43,6 @@ export default function WhatsAppOptimizerPage() {
           "@type": "Answer",
           text: "The recommended WhatsApp status size is 1080 × 1920 pixels with a 9:16 aspect ratio for the best display on mobile devices.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "WhatsApp Image Optimizer",
-        item: "https://www.snappy-fix.com/tools/optimize-whatsapp-image",
       },
     ],
   };
@@ -144,7 +90,7 @@ export default function WhatsAppOptimizerPage() {
         id="whatsapp-image-optimizer-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -160,7 +106,7 @@ export default function WhatsAppOptimizerPage() {
         id="whatsapp-image-optimizer-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

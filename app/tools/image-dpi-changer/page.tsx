@@ -3,48 +3,17 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import ImageDPIChangerTools from "@/components/tools/ImageDPIChangerTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "image-dpi-changer")!;
 
-export const metadata = {
-  title:
-    "Image DPI Changer Online | Change Image DPI for Print & Design - Snappy Fix",
-  description:
-    "Change image DPI online without resizing the image. Adjust photos to 72, 150, 300, or custom DPI for printing, publishing, and professional design.",
-  keywords: [
-    "change image dpi",
-    "image dpi converter",
-    "adjust dpi image",
-    "photo dpi changer",
-    "change dpi of image online",
-    "set image dpi to 300",
-    "image dpi editor",
-    "convert image to 300 dpi",
-    "change photo resolution dpi",
-    "dpi changer online",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function ImageDpiChangerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image DPI Changer",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Editing Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-dpi-changer",
-    description:
-      "Change image DPI online without resizing the image. Convert photos to 72, 150, 300, or custom DPI for printing, web use, or publishing.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -72,31 +41,6 @@ export default function ImageDpiChangerPage() {
           "@type": "Answer",
           text: "No. Changing DPI only modifies the print resolution metadata and does not change the actual pixel dimensions of the image.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image DPI Changer",
-        item: "https://www.snappy-fix.com/tools/image-dpi-changer",
       },
     ],
   };
@@ -144,7 +88,7 @@ export default function ImageDpiChangerPage() {
         id="image-dpi-changer-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -160,7 +104,7 @@ export default function ImageDpiChangerPage() {
         id="image-dpi-changer-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

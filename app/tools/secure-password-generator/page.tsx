@@ -3,50 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "secure-password-generator",
 )!;
 
-export const metadata = {
-  title:
-    "Secure Password Generator Online | Create Strong Passwords - Snappy Fix",
-  description:
-    "Generate strong and secure passwords instantly. Create random passwords with customizable length, symbols, numbers, and characters to protect your accounts.",
-  keywords: [
-    "secure password generator",
-    "random password generator",
-    "strong password creator",
-    "generate strong password",
-    "password generator online",
-    "create secure password",
-    "random password tool",
-    "safe password generator",
-    "strong password maker",
-    "online password generator",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function SecurePasswordGeneratorPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Secure Password Generator",
-    applicationCategory: "SecurityApplication",
-    applicationSubCategory: "Password Generation Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/secure-password-generator",
-    description:
-      "Generate strong and secure passwords instantly using this free online Secure Password Generator. Customize length, symbols, numbers, and characters to protect your online accounts.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,31 +42,6 @@ export default function SecurePasswordGeneratorPage() {
           "@type": "Answer",
           text: "No. The Snappy Fix Secure Password Generator creates passwords directly in your browser and does not store them on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Secure Password Generator",
-        item: "https://www.snappy-fix.com/tools/secure-password-generator",
       },
     ],
   };
@@ -146,7 +89,7 @@ export default function SecurePasswordGeneratorPage() {
         id="secure-password-generator-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -162,7 +105,7 @@ export default function SecurePasswordGeneratorPage() {
         id="secure-password-generator-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

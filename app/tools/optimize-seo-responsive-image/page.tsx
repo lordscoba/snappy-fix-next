@@ -3,49 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find(
-  (tool) => tool.slug === "optimize-seo-responsive",
+  (tool) => tool.slug === "optimize-seo-responsive-image",
 )!;
 
-export const metadata = {
-  title:
-    "SEO Responsive Image Optimizer | Optimize Images for Search Engines - Snappy Fix",
-  description:
-    "Optimize images for SEO and responsive design. Reduce file size, improve mobile performance and enhance search engine rankings with our SEO responsive image optimizer.",
-  keywords: [
-    "seo image optimizer",
-    "responsive image optimizer",
-    "optimize images for seo",
-    "compress images for mobile",
-    "responsive web images",
-    "image optimization for search engines",
-    "reduce image size for seo",
-    "mobile friendly image optimizer",
-    "seo image compression tool",
-    "optimize images for core web vitals",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function SeoResponsiveOptimizerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "SEO & Responsive Image Generator",
-    applicationCategory: "DeveloperApplication",
-    applicationSubCategory: "SEO Optimization Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/optimize-seo-responsive-image",
-    description:
-      "Generate responsive images and srcset attributes for better SEO and Core Web Vitals performance.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -74,31 +43,6 @@ export default function SeoResponsiveOptimizerPage() {
           "@type": "Answer",
           text: "Yes. The tool generates optimized image sizes and srcset attributes you can directly use in your HTML.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "SEO & Responsive Image Generator",
-        item: "https://www.snappy-fix.com/tools/optimize-seo-responsive-image",
       },
     ],
   };
@@ -146,7 +90,7 @@ export default function SeoResponsiveOptimizerPage() {
         id="seo-responsive-image-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -162,7 +106,7 @@ export default function SeoResponsiveOptimizerPage() {
         id="seo-responsive-image-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

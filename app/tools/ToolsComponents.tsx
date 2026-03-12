@@ -5,6 +5,7 @@ import Link from "next/link";
 import { tools } from "@/data/toolsData";
 import { NavbarMenu } from "@/components/Layout";
 import ToolCategories from "@/components/tools/ToolCategories";
+import { splitTitle } from "@/lib/utils/title";
 
 export default function ToolsComponents() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -91,7 +92,7 @@ export default function ToolsComponents() {
                       >
                         <div className="space-y-4">
                           <h3 className="text-xl font-bold text-[#2b1d3a] group-hover:text-[#5b32b4] transition-colors">
-                            {tool.name}
+                            {splitTitle(tool.name, 1)}
                           </h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             {tool.description}

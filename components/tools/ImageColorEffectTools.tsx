@@ -213,6 +213,7 @@ export default function ImageColorEffectTools() {
                       resetAdjustments();
                     }}
                     className="p-4 bg-white/10 hover:bg-red-500 text-white rounded-2xl backdrop-blur-xl transition-all"
+                    aria-label="reset image"
                   >
                     <Trash2 size={20} />
                   </button>
@@ -260,6 +261,7 @@ export default function ImageColorEffectTools() {
                         setActivePreset(undefined);
                       }}
                       className={`px-3 py-4 rounded-2xl text-[10px] font-black uppercase tracking-tighter transition-all border-2 ${activeLut === lut ? "border-indigo-600 bg-indigo-50 text-indigo-600" : "border-slate-50 bg-slate-50 text-slate-400 hover:bg-white hover:border-slate-200"}`}
+                      aria-label={lut}
                     >
                       {lut.replace("_", " ")}
                     </button>
@@ -283,6 +285,7 @@ export default function ImageColorEffectTools() {
                         setActiveLut(undefined);
                       }}
                       className={`px-8 py-4 rounded-2xl text-xs font-black capitalize transition-all border-2 ${activePreset === preset ? "border-indigo-600 bg-indigo-50 text-indigo-600 shadow-lg shadow-indigo-100" : "border-slate-100 bg-white text-slate-500 hover:border-indigo-200"}`}
+                      aria-label={preset}
                     >
                       {preset}
                     </button>
@@ -308,6 +311,7 @@ export default function ImageColorEffectTools() {
               <button
                 onClick={resetAdjustments}
                 className="p-3 text-slate-400 hover:text-indigo-600 transition-colors"
+                aria-label="reset adjustments"
               >
                 <RefreshCw size={20} />
               </button>
@@ -397,6 +401,7 @@ export default function ImageColorEffectTools() {
                 onClick={handleApplyEffect}
                 disabled={!file || isGlobalLoading}
                 className="w-full h-20 bg-slate-900 text-white font-black rounded-3xl shadow-xl shadow-slate-200 hover:bg-indigo-600 hover:translate-y-[-2px] active:translate-y-0 transition-all duration-300 disabled:bg-slate-100 disabled:text-slate-300 disabled:shadow-none disabled:translate-y-0 group"
+                aria-label="apply effect"
               >
                 <span className="flex items-center justify-center gap-3 text-lg">
                   {isGlobalLoading ? "Processing Master..." : "Apply Grade"}
@@ -413,6 +418,7 @@ export default function ImageColorEffectTools() {
                     downloadBlob(resultBlob!, `snappy-grade-${Date.now()}`)
                   }
                   className="w-full h-16 bg-white border-2 border-slate-900 text-slate-900 font-black rounded-3xl hover:bg-slate-50 transition-all flex items-center justify-center gap-3"
+                  aria-label="download result"
                 >
                   <Download size={20} /> Download Result
                 </button>

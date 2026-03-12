@@ -3,48 +3,16 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import PDFToImageConverterTools from "@/components/tools/PDFToImageConverterTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "pdf-to-image")!;
 
-export const metadata = {
-  title:
-    "PDF to Image Converter Online | Convert PDF Pages to PNG or JPG - Snappy Fix",
-  description:
-    "Convert PDF pages into high-quality PNG or JPG images instantly. Free online PDF to image converter for extracting pages as downloadable image files.",
-  keywords: [
-    "pdf to image",
-    "pdf to png",
-    "pdf to jpg",
-    "convert pdf pages to images",
-    "extract images from pdf pages",
-    "pdf page to image converter",
-    "pdf to png online",
-    "pdf to jpg converter free",
-    "download pdf pages as images",
-    "pdf image converter tool",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function PdfToImagePage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "PDF to Image Converter",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "PDF Conversion Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/pdf-to-image",
-    description:
-      "Convert PDF pages into PNG or JPG images instantly using this free online PDF to Image converter.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -72,31 +40,6 @@ export default function PdfToImagePage() {
           "@type": "Answer",
           text: "No. Files uploaded to the Snappy Fix PDF to Image tool are processed securely and are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "PDF to Image Converter",
-        item: "https://www.snappy-fix.com/tools/pdf-to-image",
       },
     ],
   };
@@ -145,7 +88,7 @@ export default function PdfToImagePage() {
         id="pdf-to-image-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -161,7 +104,7 @@ export default function PdfToImagePage() {
         id="pdf-to-image-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

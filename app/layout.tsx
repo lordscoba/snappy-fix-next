@@ -1,5 +1,5 @@
 import "./globals.css";
-import "animate.css";
+// import "animate.css";
 
 import type { Metadata } from "next";
 import Footer from "../components/Layout/Footer";
@@ -50,15 +50,27 @@ export const metadata: Metadata = {
 
   category: "Technology",
 
+  applicationName: "Snappy-Fix Technologies",
+
   icons: {
     icon: "/images/snappy-fix-logo.png",
     shortcut: "/images/snappy-fix-logo.png",
     apple: "/images/snappy-fix-logo.png",
   },
 
+  alternates: {
+    canonical: "https://www.snappy-fix.com",
+    types: {
+      "application/rss+xml": "https://www.snappy-fix.com/feed.xml",
+    },
+  },
+
   openGraph: {
-    title:
-      "Snappy-Fix Technologies | Leading Software Development Company in Nigeria",
+    title: {
+      default:
+        "Snappy-Fix Technologies | Software Development Company in Nigeria",
+      template: "%s | Snappy-Fix Technologies",
+    },
     description:
       "We design and build scalable web and mobile applications for Nigerian and global businesses.",
     url: "https://www.snappy-fix.com",
@@ -77,9 +89,21 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Snappy-Fix Technologies | Software Development Company in Nigeria",
-    description: "Building scalable digital products across Nigeria.",
-    images: ["/images/snappy-fix-logo.png"],
+    title: {
+      default:
+        "Snappy-Fix Technologies | Software Development Company in Nigeria",
+      template: "%s | Snappy-Fix Technologies",
+    },
+    description:
+      "Snappy-Fix builds scalable web, mobile, and cloud applications for businesses worldwide.",
+    creator: "@snappyfix",
+    site: "@snappyfix",
+    images: [
+      {
+        url: "/images/snappy-fix-logo.png",
+        alt: "Snappy-Fix Technologies Logo",
+      },
+    ],
   },
 
   robots: {
@@ -93,6 +117,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
+  // themeColor: "#0f172a",
+  referrer: "origin-when-cross-origin",
+
   other: {
     "Content-Security-Policy": "upgrade-insecure-requests",
   },

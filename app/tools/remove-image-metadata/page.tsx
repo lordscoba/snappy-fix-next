@@ -3,50 +3,19 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import ExifScrubberTools from "@/components/tools/ExifScrubberTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "remove-image-metadata",
 )!;
 
-export const metadata = {
-  title:
-    "Remove Image Metadata Online | EXIF Data Remover & Privacy Tool - Snappy Fix",
-  description:
-    "Remove EXIF metadata from images instantly. Strip GPS location, camera information, and hidden image data before sharing photos online.",
-  keywords: [
-    "remove exif data",
-    "strip image metadata",
-    "delete exif information",
-    "image privacy tool",
-    "remove photo metadata",
-    "exif scrubber",
-    "delete gps data from image",
-    "remove metadata from jpg",
-    "remove metadata from photo",
-    "image exif remover",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function RemoveImageMetadataPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image Metadata Remover (EXIF Scrubber)",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Security Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/remove-image-metadata",
-    description:
-      "Remove EXIF metadata such as GPS location, camera information, and timestamps from images instantly using this free online Image Metadata Remover.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,31 +43,6 @@ export default function RemoveImageMetadataPage() {
           "@type": "Answer",
           text: "No. Images uploaded to the Snappy Fix Image Metadata Remover are processed securely and are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image Metadata Remover",
-        item: "https://www.snappy-fix.com/tools/remove-image-metadata",
       },
     ],
   };
@@ -146,7 +90,7 @@ export default function RemoveImageMetadataPage() {
         id="remove-image-metadata-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -162,7 +106,7 @@ export default function RemoveImageMetadataPage() {
         id="remove-image-metadata-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

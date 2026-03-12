@@ -3,47 +3,16 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import ImageDPICheckerTools from "@/components/tools/ImageDPICheckerTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "image-dpi-checker")!;
 
-export const metadata = {
-  title: "Image DPI Checker Online | Check Image Resolution & DPI - Snappy Fix",
-  description:
-    "Check image DPI, resolution, and printable size instantly. Analyze photo DPI, dimensions, and quality online for printing, design, and publishing.",
-  keywords: [
-    "check image dpi",
-    "image dpi analyzer",
-    "image resolution checker",
-    "photo dpi checker",
-    "check image resolution online",
-    "analyze image dpi",
-    "image dpi inspector",
-    "photo resolution checker",
-    "check dpi of image",
-    "image print size checker",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function ImageDpiCheckerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image DPI Checker",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Analysis Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-dpi-checker",
-    description:
-      "Check image DPI, resolution, pixel dimensions, and printable size instantly using this free online Image DPI Checker.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -71,31 +40,6 @@ export default function ImageDpiCheckerPage() {
           "@type": "Answer",
           text: "No. Images uploaded to the Snappy Fix Image DPI Checker are processed securely and are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image DPI Checker",
-        item: "https://www.snappy-fix.com/tools/image-dpi-checker",
       },
     ],
   };
@@ -143,7 +87,7 @@ export default function ImageDpiCheckerPage() {
         id="image-dpi-checker-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +103,7 @@ export default function ImageDpiCheckerPage() {
         id="image-dpi-checker-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

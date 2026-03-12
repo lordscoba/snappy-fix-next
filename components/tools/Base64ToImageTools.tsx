@@ -143,6 +143,7 @@ export default function Base64ToImageTools() {
               <button
                 onClick={() => setBase64Input("")}
                 className="absolute top-5 right-5 text-gray-400 hover:text-[#fb397d] transition-colors"
+                aria-label="clear input"
               >
                 <RefreshCcw size={18} />
               </button>
@@ -154,6 +155,7 @@ export default function Base64ToImageTools() {
             onClick={handleConvert}
             disabled={!isValidInput || isGlobalLoading}
             className="w-full h-16 bg-gradient-to-r from-[#5b32b4] to-[#fb397d] text-white font-bold rounded-3xl hover:shadow-[0_15px_40px_rgba(251,57,125,0.35)] active:scale-[0.98] transition-all disabled:bg-gray-100 disabled:text-gray-400 flex items-center justify-center gap-2 text-lg"
+            aria-label="generate image"
           >
             {isGlobalLoading ? (
               <>
@@ -212,6 +214,7 @@ export default function Base64ToImageTools() {
                 downloadBlob(optimizedBlob, `decoded-${Date.now()}.png`)
               }
               className="flex-[2] h-14 bg-[#5b32b4] text-white font-bold rounded-2xl hover:bg-[#4a2896] transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-200"
+              aria-label="download image"
             >
               <Download size={20} />
               Download Image
@@ -220,6 +223,7 @@ export default function Base64ToImageTools() {
             <button
               onClick={handleReset}
               className="flex-1 h-14 bg-slate-100 text-slate-600 font-bold rounded-2xl hover:bg-slate-200 transition-all flex items-center justify-center gap-2"
+              aria-label="generate new image"
             >
               <RefreshCcw size={18} />
               New

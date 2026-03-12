@@ -1,7 +1,7 @@
 export const tools = [
   {
     slug: "image-converter",
-    name: "Online Image Converter",
+    name: "Free Online Image Converter | Convert JPG, PNG, WEBP, SVG",
     description:
       "Convert images between JPG, PNG, WEBP, SVG and more instantly.",
     longDescription:
@@ -10,15 +10,68 @@ export const tools = [
     href: "/tools/image-converter",
     icon: "convert",
     keywords: [
+      // Core
       "image converter",
+      "free image converter",
+      "online image converter",
+      "image file converter",
+      "photo converter online",
+      "convert images online",
+
+      // Popular format conversions
       "convert jpg to png",
+      "convert png to jpg",
+      "convert png to webp",
+      "convert webp to png",
       "convert webp to jpg",
-      "bulk image converter",
+      "convert avif to jpg",
+      "convert avif to png",
+      "convert gif to png",
+      "convert bmp to jpg",
+      "convert tiff to jpg",
+      "convert image to webp",
+      "convert image to png",
+      "convert image to jpg",
+
+      // Web optimization intent
+      "webp converter online",
+      "image optimizer and converter",
+      "convert image for website",
+      "convert image for web",
+      "reduce image size and convert",
+      "compress and convert image",
+
+      // Bulk & usability
+      "batch image converter",
+      "bulk image converter online",
+      "multiple image converter",
+      "drag and drop image converter",
+      "fast image converter",
+      "instant image converter",
+
+      // Trust & free modifiers
+      "free online image converter no watermark",
+      "secure image converter",
+      "private image converter",
+      "no signup image converter",
+      "unlimited image converter",
+
+      // Device intent
+      "image converter for mobile",
+      "convert image on iphone",
+      "convert image on android",
+      "mac image converter online",
+      "windows image converter online",
+
+      // Modern format targeting (high value SEO)
+      "best webp converter",
+      "avif image converter",
+      "modern image format converter",
     ],
   },
   {
     slug: "optimize-twitter-image",
-    name: "Twitter Image Optimizer & Resizer",
+    name: "Optimize Images for Twitter (X) Free Online | Best Twitter Image Optimizer",
     description:
       "Resize and optimize images perfectly for Twitter posts and headers.",
     longDescription:
@@ -26,30 +79,66 @@ export const tools = [
     category: "Social Media Tools",
     href: "/tools/optimize-twitter-image",
     api: "/api/v1/optimize/twitter",
+    keywords: [
+      "twitter image optimizer",
+      "optimize image for twitter",
+      "twitter image size optimizer",
+      "compress image for twitter",
+      "twitter header size",
+      "best twitter image dimensions",
+      "optimize image for x",
+      "twitter image compression tool",
+      "free twitter image optimizer",
+      "resize image for twitter post",
+    ],
   },
   {
     slug: "optimize-whatsapp-image",
-    name: "WhatsApp Image Optimizer",
+    name: "Optimize Images for WhatsApp Free | Compress & Resize WhatsApp Images",
     description: "Resize and compress images for WhatsApp status and chats.",
     longDescription:
       "Stop WhatsApp from ruining your image quality. Compress and resize images to the perfect dimensions for WhatsApp status and direct messaging.",
     category: "Social Media Tools",
     href: "/tools/optimize-whatsapp-image",
     api: "/api/v1/optimize/whatsapp",
+    keywords: [
+      "whatsapp image optimizer",
+      "compress image for whatsapp",
+      "whatsapp image size",
+      "resize image for whatsapp",
+      "whatsapp photo compressor",
+      "optimize image for whatsapp status",
+      "whatsapp image compression tool",
+      "reduce whatsapp image size",
+      "free whatsapp image optimizer",
+      "whatsapp image resizer online",
+    ],
   },
   {
     slug: "optimize-web-image",
-    name: "Web Image Optimizer (JPG/PNG/WEBP)",
+    name: "Optimize Images for Website Performance | Web Image Compressor",
     description: "Optimize images for websites to improve PageSpeed and SEO.",
     longDescription:
       "Reduce image file sizes by up to 80% without losing quality. Perfect for improving Core Web Vitals and website loading performance.",
     category: "Optimization Tools",
     href: "/tools/optimize-web-image",
     api: "/api/v1/optimize/web",
+    keywords: [
+      "web image optimizer",
+      "optimize image for website",
+      "reduce image size for web",
+      "website image compression tool",
+      "improve page speed images",
+      "image optimizer for seo",
+      "compress images for website performance",
+      "web performance image tool",
+      "optimize images for faster loading",
+      "website image resizer online",
+    ],
   },
   {
     slug: "optimize-instagram-image",
-    name: "Instagram Post & Reel Resizer",
+    name: "Optimize Images for Instagram Free | Instagram Photo Resizer & Compressor",
     description:
       "Resize images perfectly for Instagram posts, stories, and reels.",
     longDescription:
@@ -57,10 +146,22 @@ export const tools = [
     category: "Social Media Tools",
     href: "/tools/optimize-instagram-image",
     api: "/api/v1/optimize/instagram",
+    keywords: [
+      "instagram image optimizer",
+      "optimize image for instagram",
+      "instagram photo resizer",
+      "instagram image dimensions",
+      "compress image for instagram",
+      "instagram story size",
+      "instagram post size",
+      "best instagram image size",
+      "resize image for instagram",
+      "free instagram image optimizer",
+    ],
   },
   {
     slug: "optimize-youtube-thumbnail-image",
-    name: "YouTube Thumbnail Optimizer",
+    name: "YouTube Thumbnail Optimizer Free | Resize & Compress YouTube Thumbnails",
     description:
       "Optimize thumbnails for YouTube (1280x720) with high compression.",
     longDescription:
@@ -68,10 +169,22 @@ export const tools = [
     category: "Social Media Tools",
     href: "/tools/optimize-youtube-thumbnail-image",
     api: "/api/v1/optimize/youtube-thumbnail",
+    keywords: [
+      "youtube thumbnail optimizer",
+      "optimize youtube thumbnail",
+      "youtube thumbnail size",
+      "resize youtube thumbnail",
+      "compress youtube thumbnail",
+      "youtube thumbnail dimensions 1280x720",
+      "best youtube thumbnail size",
+      "youtube thumbnail compressor",
+      "free youtube thumbnail resizer",
+      "youtube image optimizer",
+    ],
   },
   {
     slug: "optimize-seo-responsive-image",
-    name: "SEO & Responsive Image Generator",
+    name: "SEO Responsive Image Optimizer | Optimize Images for Search Engines",
     description:
       "Generate responsive images for modern SEO and Core Web Vitals.",
     longDescription:
@@ -79,70 +192,238 @@ export const tools = [
     category: "SEO Tools",
     href: "/tools/optimize-seo-responsive-image",
     api: "/api/v1/optimize/seo-responsive",
+    keywords: [
+      "seo image optimizer",
+      "responsive image optimizer",
+      "optimize images for seo",
+      "compress images for mobile",
+      "responsive web images",
+      "image optimization for search engines",
+      "reduce image size for seo",
+      "mobile friendly image optimizer",
+      "seo image compression tool",
+      "optimize images for core web vitals",
+    ],
   },
   {
     slug: "image-analyzer",
-    name: "Image Metadata & DPI Analyzer",
+    name: "Image Analyzer Online | Check Image Size, Dimensions & Metadata ",
     description: "Analyze image size, format, EXIF metadata, and dimensions.",
     longDescription:
       "Deep-dive into your image properties. Check DPI, EXIF data, color profiles, and hidden metadata instantly.",
     category: "Analysis Tools",
     href: "/tools/image-analyzer",
     api: "/api/v1/analyze/",
+    keywords: [
+      // Core
+      "image analyzer",
+      "analyze image online",
+      "image file analyzer",
+      "image metadata viewer",
+      "check image details",
+
+      // Technical checks
+      "check image size",
+      "check image dimensions",
+      "image resolution checker",
+      "image format checker",
+      "image file type checker",
+      "inspect image properties",
+
+      // Metadata intent
+      "view image metadata",
+      "extract image metadata",
+      "exif data viewer",
+      "check exif data online",
+      "image information tool",
+
+      // Web & SEO intent
+      "analyze image for website",
+      "check image size for web",
+      "optimize image before upload",
+      "inspect image before optimization",
+
+      // Trust & modifiers
+      "free image analyzer",
+      "secure image analyzer",
+      "online image inspection tool",
+      "no signup image analyzer",
+      "private image checker",
+    ],
   },
   {
     slug: "svg-image-optimizer",
-    name: "SVG Vector Optimizer (SVGO)",
+    name: "Free SVG Optimizer Online | Reduce SVG File Size Without Losing Quality",
     description: "Reduce SVG file size instantly by removing unnecessary code.",
     longDescription:
       "Clean up your SVG files. Remove metadata, comments, and hidden elements to create tiny, fast-loading vector files for the web.",
     category: "Optimization Tools",
     href: "/tools/svg-image-optimizer",
     api: "/api/v1/optimize-svg",
+    keywords: [
+      "svg optimizer",
+      "optimize svg online",
+      "reduce svg file size",
+      "compress svg file",
+      "svg file size reducer",
+      "svg minifier online",
+      "optimize svg for web",
+      "svg cleaner tool",
+      "remove unnecessary svg data",
+      "svg compression tool",
+      "optimize svg without quality loss",
+      "secure svg optimizer",
+      "free svg optimizer online",
+    ],
   },
   {
     slug: "image-cropper",
-    name: "Free Online Image Cropper",
+    name: "Free Online Image Cropper | Crop Images to Exact Dimensions",
     description: "Crop images to exact dimensions or aspect ratios online.",
     longDescription:
       "A precise image cropping tool. Select custom areas or use presets for social media to get the perfect frame every time.",
     category: "Editing Tools",
     href: "/tools/image-cropper",
     api: "/api/v1/images/crop",
+    keywords: [
+      // Core
+      "image cropper",
+      "crop image online",
+      "free image cropper",
+      "online photo cropper",
+      "crop photo online",
+
+      // Dimension intent
+      "crop image to exact size",
+      "crop image to specific dimensions",
+      "crop image to width and height",
+      "custom image cropper",
+      "manual image cropping tool",
+
+      // Social media intent
+      "crop image for instagram",
+      "crop image for twitter",
+      "crop image for whatsapp",
+      "crop youtube thumbnail",
+      "square image cropper",
+
+      // Web intent
+      "crop image for website",
+      "resize and crop image",
+      "optimize image by cropping",
+      "reduce image dimensions online",
+
+      // Trust modifiers
+      "secure image cropper",
+      "no watermark image cropper",
+      "private image editor online",
+      "free unlimited image crop tool",
+    ],
   },
   {
     slug: "image-resizer",
-    name: "Image Resizer: Resize by Pixels or %",
+    name: "Free Online Image Resizer | Resize Images to Exact Width & Height or %",
     description: "Resize images to custom width and height instantly.",
     longDescription:
       "Quickly resize images by entering custom dimensions or scaling by percentage. Maintain aspect ratio for high-quality results.",
     category: "Editing Tools",
     href: "/tools/image-resizer",
     api: "/api/v1/images/resize",
+    keywords: [
+      // Core
+      "image resizer",
+      "resize image online",
+      "free image resizer",
+      "photo resizer online",
+      "online image resize tool",
+
+      // Dimension intent
+      "resize image to exact size",
+      "resize image to specific dimensions",
+      "resize image width and height",
+      "resize image in pixels",
+      "custom image resizer",
+
+      // Percentage & scaling
+      "resize image by percentage",
+      "scale image online",
+      "increase image size",
+      "reduce image dimensions",
+      "shrink image size online",
+
+      // Social media
+      "resize image for instagram",
+      "resize image for twitter",
+      "resize image for whatsapp",
+      "resize youtube thumbnail",
+      "profile picture resizer",
+      "Instagram Post: 1080 × 1080",
+      "Instagram Story: 1080 × 1920",
+      "Twitter Post: 1600 × 900",
+      "YouTube Thumbnail: 1280 × 720",
+
+      // Web & performance
+      "resize image for website",
+      "optimize image dimensions",
+      "reduce image size for web",
+      "prepare image for upload",
+
+      // Trust modifiers
+      "secure image resizer",
+      "no watermark image resizer",
+      "private image resize tool",
+      "free unlimited image resizer",
+    ],
   },
   {
     slug: "image-to-base64",
-    name: "Image to Base64 Converter",
+    name: "Image to Base64 Converter Online | Encode JPG, PNG, WEBP to Base64",
     description: "Convert images to Base64 strings for CSS and HTML.",
     longDescription:
       "Encode images into Base64 format instantly. Perfect for embedding small icons directly into your code to reduce HTTP requests.",
     category: "Conversion Tools",
     href: "/tools/image-to-base64",
-    api: "/api/v1/images/to-base64",
+    api: "/images-to-base64",
+    keywords: [
+      "image to base64",
+      "convert image to base64",
+      "encode image to base64",
+      "jpg to base64",
+      "png to base64",
+      "webp to base64",
+      "base64 image encoder online",
+      "convert image to base64 string",
+      "base64 converter tool",
+      "image encoder online",
+      "secure base64 encoder",
+      "free image to base64 converter",
+    ],
   },
   {
     slug: "base64-to-image",
-    name: "Base64 String to Image Decoder",
+    name: "Base64 to Image Converter Online | Decode Base64 to JPG, PNG, WEBP",
     description: "Decode Base64 strings back into viewable image files.",
     longDescription:
       "Turn Base64 code back into JPG, PNG, or WEBP files. Simply paste your data URI and download your image instantly.",
     category: "Conversion Tools",
     href: "/tools/base64-to-image",
     api: "/api/v1/images/from-base64",
+    keywords: [
+      "base64 to image",
+      "decode base64 to jpg",
+      "convert base64 to png",
+      "base64 image decoder online",
+      "base64 to webp converter",
+      "decode base64 string to image",
+      "base64 image converter free",
+      "convert base64 to image file",
+      "base64 to jpg online",
+      "base64 decoder tool",
+    ],
   },
   {
     slug: "favicon-generator",
-    name: "Favicon & App Icon Generator",
+    name: "Favicon Generator Online | Create ICO & App Icons from PNG or JPG ",
     description:
       "Generate professional favicon icons for websites from any image.",
     longDescription:
@@ -150,20 +431,46 @@ export const tools = [
     category: "SEO Tools",
     href: "/tools/favicon-generator",
     api: "/api/v1/images/favicon",
+    keywords: [
+      "favicon generator",
+      "create favicon online",
+      "png to ico converter",
+      "generate favicon from image",
+      "favicon creator free",
+      "favicon ico generator",
+      "website icon generator",
+      "convert image to favicon",
+      "create favicon for website",
+      "favicon maker online",
+      "generate app icons",
+      "multi size favicon generator",
+    ],
   },
   {
     slug: "optimize-image-custom",
-    name: "Professional Custom Image Optimizer",
+    name: "Custom Image Optimizer Online | Compress to Target KB & Resize",
     description: "Full control over image compression, quality, and file size.",
     longDescription:
       "The ultimate image tool. Compress to a specific target KB size, adjust quality sliders, and resize dimensions all in one place.",
     category: "Optimization Tools",
     href: "/tools/optimize-image-custom",
     api: "/api/v1/optimize/custom",
+    keywords: [
+      "custom image optimizer",
+      "compress image to target kb",
+      "reduce image size to specific kb",
+      "image compression with quality control",
+      "resize image by percentage",
+      "advanced image optimizer",
+      "compress image without losing quality",
+      "image size reducer online",
+      "manual image compression tool",
+      "optimize image custom settings",
+    ],
   },
   {
     slug: "compress-pdf",
-    name: "Free PDF Compressor",
+    name: "Compress PDF Online Free | Reduce PDF File Size Without Losing Quality",
     description:
       "Compress PDF files online to reduce file size while maintaining quality.",
     longDescription:
@@ -174,14 +481,22 @@ export const tools = [
     keywords: [
       "compress pdf",
       "reduce pdf size",
-      "online pdf compressor",
+      "pdf compressor online",
       "shrink pdf file",
+      "reduce pdf file size",
+      "compress pdf without losing quality",
+      "free pdf compressor",
+      "optimize pdf for email",
+      "pdf size reducer",
+      "compress large pdf",
+      "minimize pdf size",
+      "pdf compression tool",
     ],
   },
 
   {
     slug: "image-to-pdf",
-    name: "Image to PDF Converter",
+    name: "Image to PDF Converter Online | Convert JPG, PNG, WebP to PDF ",
     description:
       "Convert JPG, PNG, and WebP images into high-quality PDF documents.",
     longDescription:
@@ -194,12 +509,18 @@ export const tools = [
       "jpg to pdf",
       "png to pdf",
       "convert images to pdf",
+      "webp to pdf",
+      "photo to pdf converter",
+      "convert picture to pdf",
+      "merge images into pdf",
+      "image pdf converter online",
+      "free image to pdf tool",
     ],
   },
 
   {
     slug: "pdf-to-image",
-    name: "PDF to Image Converter",
+    name: "PDF to Image Converter Online | Convert PDF Pages to PNG or JPG",
     description:
       "Convert PDF pages into high-quality PNG or JPG images instantly.",
     longDescription:
@@ -212,12 +533,18 @@ export const tools = [
       "pdf to png",
       "pdf to jpg",
       "convert pdf pages to images",
+      "extract images from pdf pages",
+      "pdf page to image converter",
+      "pdf to png online",
+      "pdf to jpg converter free",
+      "download pdf pages as images",
+      "pdf image converter tool",
     ],
   },
 
   {
     slug: "extract-pdf-images",
-    name: "Extract Images from PDF",
+    name: "Extract Images from PDF Online | Download PDF Images Instantly",
     description: "Extract all embedded images from PDF documents instantly.",
     longDescription:
       "Pull images directly from PDF files without losing quality. Our PDF image extractor lets you download embedded images from any PDF document in seconds.",
@@ -229,12 +556,18 @@ export const tools = [
       "pdf image extractor",
       "get images from pdf",
       "pdf image downloader",
+      "download images from pdf online",
+      "extract pictures from pdf",
+      "pdf to images extractor",
+      "pull images from pdf",
+      "save images from pdf",
+      "free pdf image extractor",
     ],
   },
 
   {
     slug: "heic-to-jpg",
-    name: "HEIC to JPG / PNG Converter",
+    name: "HEIC to JPG / PNG Converter Online | Convert iPhone HEIC Photos ",
     description:
       "Convert HEIC photos from iPhone to JPG or PNG images instantly.",
     longDescription:
@@ -247,12 +580,18 @@ export const tools = [
       "heic to png",
       "convert heic images",
       "iphone photo converter",
+      "convert heic to jpg online",
+      "heic converter free",
+      "iphone heic to jpg",
+      "convert iphone photos to jpg",
+      "heic image converter",
+      "heic to png online",
     ],
   },
 
   {
     slug: "image-to-heic",
-    name: "Image to HEIC Converter",
+    name: "Image to HEIC Converter Online | Convert JPG, PNG to HEIC",
     description:
       "Convert JPG, PNG, or WebP images into HEIC format with adjustable quality.",
     longDescription:
@@ -265,12 +604,18 @@ export const tools = [
       "jpg to heic",
       "png to heic",
       "heic image converter",
+      "image to heic converter online",
+      "convert photo to heic",
+      "webp to heic",
+      "heic format converter",
+      "create heic images",
+      "heic converter free",
     ],
   },
 
   {
     slug: "image-dpi-checker",
-    name: "Image DPI Checker",
+    name: "Image DPI Checker Online | Check Image Resolution & DPI",
     description:
       "Check image DPI, resolution, and print size instantly online.",
     longDescription:
@@ -283,12 +628,18 @@ export const tools = [
       "image dpi analyzer",
       "image resolution checker",
       "photo dpi checker",
+      "check image resolution online",
+      "analyze image dpi",
+      "image dpi inspector",
+      "photo resolution checker",
+      "check dpi of image",
+      "image print size checker",
     ],
   },
 
   {
     slug: "image-dpi-changer",
-    name: "Image DPI Changer",
+    name: "Image DPI Changer Online | Change Image DPI for Print & Design ",
     description:
       "Change image DPI online for printing and professional design.",
     longDescription:
@@ -301,12 +652,18 @@ export const tools = [
       "image dpi converter",
       "adjust dpi image",
       "photo dpi changer",
+      "change dpi of image online",
+      "set image dpi to 300",
+      "image dpi editor",
+      "convert image to 300 dpi",
+      "change photo resolution dpi",
+      "dpi changer online",
     ],
   },
 
   {
     slug: "image-watermark",
-    name: "Image Watermark Tool",
+    name: "Add Watermark to Images Online | Protect Photos with Text or Logo",
     description: "Add text or logo watermarks to protect your images online.",
     longDescription:
       "Secure your photos by adding visible or transparent watermarks. Upload images and apply text or logo watermarks to prevent unauthorized reuse.",
@@ -316,14 +673,22 @@ export const tools = [
     keywords: [
       "add watermark to image",
       "image watermark tool",
+      "watermark photos online",
       "protect photos watermark",
       "online watermark generator",
+      "add logo watermark",
+      "add text watermark",
+      "photo watermark tool",
+      "protect images from theft",
+      "watermark maker online",
+      "logo watermark generator",
+      "free image watermark tool",
     ],
   },
 
   {
     slug: "image-color-effects",
-    name: "Image Color Effects Editor",
+    name: "Image Color Effects Editor Online | Apply Photo Filters & Effects",
     description:
       "Apply creative color filters and effects to your images instantly.",
     longDescription:
@@ -331,11 +696,25 @@ export const tools = [
     category: "Editing Tools",
     href: "/tools/image-color-effects",
     api: "/image-color-effect",
+    keywords: [
+      "image color effects",
+      "photo filter editor",
+      "apply color filters online",
+      "add effects to images",
+      "image effects tool",
+      "photo effects editor",
+      "grayscale image filter",
+      "sepia photo effect",
+      "vintage photo filter",
+      "online image color editor",
+      "free photo effects tool",
+      "image filter generator",
+    ],
   },
 
   {
     slug: "remove-image-metadata",
-    name: "Image Metadata Remover (EXIF Scrubber)",
+    name: "Remove Image Metadata Online (EXIF Scrubber) | EXIF Data Remover & Privacy Tool ",
     description: "Remove EXIF metadata from images to protect privacy.",
     longDescription:
       "Strip hidden metadata such as GPS location, camera information, and timestamps from images before sharing them online.",
@@ -347,23 +726,43 @@ export const tools = [
       "strip image metadata",
       "delete exif information",
       "image privacy tool",
+      "remove photo metadata",
+      "exif scrubber",
+      "delete gps data from image",
+      "remove metadata from jpg",
+      "remove metadata from photo",
+      "image exif remover",
     ],
   },
 
   {
     slug: "gif-maker",
-    name: "GIF Maker (Video & Images)",
+    name: "GIF Maker Online (Video & Images) | Create GIFs from Videos & Images Free",
     description: "Create animated GIFs from videos or multiple images online.",
     longDescription:
       "Upload a video or multiple images to create animated GIFs instantly. Perfect for social media, messaging apps, memes, and lightweight animations. Convert video clips to GIFs or combine images into a single animated GIF in seconds.",
     category: "Conversion Tools",
     href: "/tools/gif-maker",
     api: "/gif-maker",
+    keywords: [
+      "gif maker",
+      "create gif online",
+      "video to gif converter",
+      "image to gif maker",
+      "animated gif generator",
+      "gif creator online",
+      "convert video to gif",
+      "combine images to gif",
+      "make gif from images",
+      "free gif maker",
+      "gif animation creator",
+      "online gif generator",
+    ],
   },
 
   {
     slug: "sticker-maker",
-    name: "Sticker Maker (Image & Video to Sticker)",
+    name: "Sticker Maker Online (Image & Video to Sticker) | Create WhatsApp & Telegram Stickers Free",
     description:
       "Create WhatsApp and Telegram stickers from images or videos instantly.",
     longDescription:
@@ -371,15 +770,41 @@ export const tools = [
     category: "Social Media Tools",
     href: "/tools/sticker-maker",
     api: "/sticker-maker",
+    keywords: [
+      "sticker maker",
+      "whatsapp sticker maker",
+      "telegram sticker maker",
+      "create stickers online",
+      "image to sticker converter",
+      "video to sticker converter",
+      "make whatsapp stickers",
+      "custom sticker maker",
+      "animated sticker creator",
+      "photo to sticker generator",
+      "online sticker generator",
+      "free sticker maker",
+    ],
   },
   {
     slug: "secure-password-generator",
-    name: "Secure Password Generator",
+    name: "Secure Password Generator Online | Create Strong Passwords",
     description: "Generate strong and secure passwords instantly.",
     longDescription:
       "Create highly secure passwords with customizable length, symbols, numbers, and characters to protect your online accounts.",
     category: "Security Tools",
     href: "/tools/secure-password-generator",
     api: "/secure-password-generator",
+    keywords: [
+      "secure password generator",
+      "random password generator",
+      "strong password creator",
+      "generate strong password",
+      "password generator online",
+      "create secure password",
+      "random password tool",
+      "safe password generator",
+      "strong password maker",
+      "online password generator",
+    ],
   },
 ];

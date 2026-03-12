@@ -3,47 +3,17 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "heic-to-jpg")!;
 
-export const metadata = {
-  title:
-    "HEIC to JPG / PNG Converter Online | Convert iPhone HEIC Photos - Snappy Fix",
-  description:
-    "Convert HEIC photos from iPhone to JPG or PNG instantly. Free online HEIC converter that makes iPhone images compatible with Android, Windows, and websites.",
-  keywords: [
-    "heic to jpg",
-    "heic to png",
-    "convert heic images",
-    "iphone photo converter",
-    "convert heic to jpg online",
-    "heic converter free",
-    "iphone heic to jpg",
-    "convert iphone photos to jpg",
-    "heic image converter",
-    "heic to png online",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function HeicToJpgPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "HEIC to JPG / PNG Converter",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Conversion Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/heic-to-jpg",
-    description:
-      "Convert HEIC photos from iPhone to JPG or PNG instantly using this free online HEIC converter. Make HEIC images compatible with Android devices, Windows, and websites.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -72,31 +42,6 @@ export default function HeicToJpgPage() {
           "@type": "Answer",
           text: "No. Files are processed securely and are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "HEIC to JPG / PNG Converter",
-        item: "https://www.snappy-fix.com/tools/heic-to-jpg",
       },
     ],
   };
@@ -144,7 +89,7 @@ export default function HeicToJpgPage() {
         id="heic-to-jpg-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -160,7 +105,7 @@ export default function HeicToJpgPage() {
         id="heic-to-jpg-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
