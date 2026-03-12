@@ -1,3 +1,4 @@
+import { toolCategories } from "@/data/toolsCategoryData";
 import { tools } from "@/data/toolsData";
 
 export function getToolMetadata(slug: string) {
@@ -101,4 +102,111 @@ export function getToolSchemas(slug: string) {
   };
 
   return { toolStructuredData, breadcrumbSchema };
+}
+
+export function getCategoryMetadata(slug: string) {
+  // 1. Find the category based on the slug
+  const category = toolCategories.find((c) => c.slug === slug);
+
+  // 2. Fallback
+  if (!category) {
+    return {
+      title: "Category Not Found | Snappy-fix",
+    };
+  }
+
+  // 3. Define dynamic values
+  const title = `${category.name}`;
+  const description = category.longDescription || category.description;
+  const url = `https://www.snappy-fix.com/tools/${category.slug}`;
+  const ogImage = "/images/snappy-fix-logo.png";
+
+  return {
+    title: title,
+    description: description,
+    keywords: category.keywords || [],
+
+    alternates: {
+      canonical: url,
+    },
+
+    openGraph: {
+      title: title,
+      description: description,
+      url: url,
+      type: "website",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${category.name} - Snappy-fix`,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: [ogImage],
+    },
+  };
+}
+
+/**
+ * 1. Schema for the Main Tools Hub (/tools)
+ */
+export function getMainToolsBreadcrumb() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.snappy-fix.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tools",
+        item: "https://www.snappy-fix.com/tools",
+      },
+    ],
+  };
+}
+
+/**
+ * 2. Schema for Category Pages (/tools/[category])
+ */
+export function getCategoryBreadcrumb(slug: string) {
+  const category = toolCategories.find((c) => c.slug === slug);
+  if (!category) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.snappy-fix.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tools",
+        item: "https://www.snappy-fix.com/tools",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: category.name,
+        item: `https://www.snappy-fix.com/tools/${category.slug}`,
+      },
+    ],
+  };
 }

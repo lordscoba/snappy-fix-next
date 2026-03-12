@@ -1,3 +1,5 @@
+import { posts } from "@/data/BlogData";
+import { toolCategories } from "@/data/toolsCategoryData";
 import { tools } from "@/data/toolsData";
 import { Feed } from "feed";
 import { NextResponse } from "next/server";
@@ -40,6 +42,33 @@ export async function GET() {
   // 1. Fetch your dynamic data (e.g., from a DB or CMS)
   // const posts = await getPosts();
 
+  feed.addItem({
+    title: "Free Online Image Tools Library | Snappy-fix",
+    id: `${site_url}/tools`,
+    link: `${site_url}/tools`,
+    description:
+      "Explore our full suite of free online image tools. Convert, optimize, and edit images instantly in your browser with professional-grade speed.",
+    content:
+      "The Snappy-fix tools library offers a comprehensive collection of utilities for developers, designers, and SEO specialists. Our suite includes Base64 converters, image optimizers, metadata analyzers, and more, all built for performance and privacy.",
+    date: new Date(),
+    category: [{ name: "Resource Hub" }],
+    author: [{ name: "Snappy-Fix Technologies" }],
+  });
+
+  // 2. Add Category Pages
+  toolCategories.forEach((cat) => {
+    feed.addItem({
+      title: `${cat.name} Library`,
+      id: `${site_url}${cat.href}`,
+      link: `${site_url}${cat.href}`,
+      description: cat.description,
+      content: cat.longDescription,
+      date: new Date(),
+      category: [{ name: "Tool Categories" }],
+      author: [{ name: "Snappy-Fix Technologies" }],
+    });
+  });
+
   // Loop through your tools array
   tools.forEach((tool) => {
     feed.addItem({
@@ -51,6 +80,37 @@ export async function GET() {
       date: new Date(),
       category: [{ name: tool.category }],
       author: [{ name: "Snappy-Fix Technologies" }],
+    });
+  });
+
+  feed.addItem({
+    title: "Snappy-fix Engineering & Design Blog",
+    id: `${site_url}/blog`,
+    link: `${site_url}/blog`,
+    description:
+      "Insights on web development, UI/UX design, SEO strategies, and scaling digital products from the Snappy-fix team.",
+    content:
+      "Stay updated with the latest trends in high-performance web development, modern design systems, and technical SEO. Our blog features tactical guides and industry insights for developers and digital creators.",
+    date: new Date(), // Current date to keep it "fresh" in the feed
+    category: [{ name: "Blog" }],
+    author: [{ name: "Snappy-Fix Technologies" }],
+  });
+
+  // 3. Add Blog Posts
+  posts.forEach((post) => {
+    feed.addItem({
+      title: post.title,
+      id: `${site_url}/blog/${post.slug}`,
+      link: `${site_url}/blog/${post.slug}`,
+      description: post.excerpt,
+      // Joining array of strings into a paragraph for RSS readers
+      content: Array.isArray(post.content)
+        ? post.content.join(" ")
+        : post.content,
+      date: new Date(post.date),
+      category: [{ name: post.category }],
+      author: [{ name: post.author }],
+      image: `${site_url}${post.ogImage}`,
     });
   });
 
