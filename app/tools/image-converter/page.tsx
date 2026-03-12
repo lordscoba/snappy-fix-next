@@ -3,94 +3,17 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import { splitTitle } from "@/lib/utils/title";
 
 const currentTool = tools.find((tool) => tool.slug === "image-converter")!;
 
-export const metadata = {
-  title:
-    "Free Online Image Converter | Convert JPG, PNG, WEBP, SVG - Snappy Fix",
-  description:
-    "Convert images online for free. Instantly convert JPG to PNG, PNG to WEBP, WEBP to JPG and more. Fast, secure and high-quality image conversion tool by Snappy Fix.",
-  keywords: [
-    // Core
-    "image converter",
-    "free image converter",
-    "online image converter",
-    "image file converter",
-    "photo converter online",
-    "convert images online",
-
-    // Popular format conversions
-    "convert jpg to png",
-    "convert png to jpg",
-    "convert png to webp",
-    "convert webp to png",
-    "convert webp to jpg",
-    "convert avif to jpg",
-    "convert avif to png",
-    "convert gif to png",
-    "convert bmp to jpg",
-    "convert tiff to jpg",
-    "convert image to webp",
-    "convert image to png",
-    "convert image to jpg",
-
-    // Web optimization intent
-    "webp converter online",
-    "image optimizer and converter",
-    "convert image for website",
-    "convert image for web",
-    "reduce image size and convert",
-    "compress and convert image",
-
-    // Bulk & usability
-    "batch image converter",
-    "bulk image converter online",
-    "multiple image converter",
-    "drag and drop image converter",
-    "fast image converter",
-    "instant image converter",
-
-    // Trust & free modifiers
-    "free online image converter no watermark",
-    "secure image converter",
-    "private image converter",
-    "no signup image converter",
-    "unlimited image converter",
-
-    // Device intent
-    "image converter for mobile",
-    "convert image on iphone",
-    "convert image on android",
-    "mac image converter online",
-    "windows image converter online",
-
-    // Modern format targeting (high value SEO)
-    "best webp converter",
-    "avif image converter",
-    "modern image format converter",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function ImageConverterPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Online Image Converter",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Conversion Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-converter",
-    description:
-      "Convert images between JPG, PNG, WEBP, SVG and other formats instantly using this free online image converter.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -121,30 +44,7 @@ export default function ImageConverterPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Online Image Converter",
-        item: "https://www.snappy-fix.com/tools/image-converter",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -188,7 +88,7 @@ export default function ImageConverterPage() {
         id="image-converter-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -204,7 +104,7 @@ export default function ImageConverterPage() {
         id="image-converter-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
@@ -220,7 +120,7 @@ export default function ImageConverterPage() {
         {/* Header */}
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            {currentTool.name}
+            {splitTitle(currentTool.name)}
           </h1>
 
           <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">

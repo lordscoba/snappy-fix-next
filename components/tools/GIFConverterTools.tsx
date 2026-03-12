@@ -231,6 +231,7 @@ export default function GifConverterTools() {
                 setResultBlob(null);
               }}
               className="text-sm font-semibold text-gray-400 hover:text-red-500"
+              aria-label="remove file"
             >
               ✕ Remove file
             </button>
@@ -355,6 +356,7 @@ export default function GifConverterTools() {
               onClick={handleConvert}
               disabled={isGlobalLoading}
               className="w-full h-14 bg-[#fb397d] text-white font-bold rounded-2xl shadow-lg hover:scale-[1.02] transition"
+              aria-label="generate gif"
             >
               {isGlobalLoading ? `Processing... ${progress}%` : "Generate GIF"}
             </button>

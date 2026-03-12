@@ -3,47 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
-const currentTool = tools.find((tool) => tool.slug === "optimize-custom")!;
+const currentTool = tools.find(
+  (tool) => tool.slug === "optimize-image-custom",
+)!;
 
-export const metadata = {
-  title:
-    "Custom Image Optimizer Online | Compress to Target KB & Resize - Snappy Fix",
-  description:
-    "Optimize images with custom settings. Compress to target KB, adjust quality, and resize by percentage. Full control image optimization tool – fast, secure and free.",
-  keywords: [
-    "custom image optimizer",
-    "compress image to target kb",
-    "reduce image size to specific kb",
-    "image compression with quality control",
-    "resize image by percentage",
-    "advanced image optimizer",
-    "compress image without losing quality",
-    "image size reducer online",
-    "manual image compression tool",
-    "optimize image custom settings",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function CustomOptimizerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Professional Custom Image Optimizer",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Optimization Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/optimize-image-custom",
-    description:
-      "Optimize images with full control over compression level, quality, dimensions, and target file size using the Snappy Fix Custom Image Optimizer.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,30 +45,7 @@ export default function CustomOptimizerPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Professional Custom Image Optimizer",
-        item: "https://www.snappy-fix.com/tools/optimize-image-custom",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -141,7 +89,7 @@ export default function CustomOptimizerPage() {
         id="optimize-image-custom-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -157,7 +105,7 @@ export default function CustomOptimizerPage() {
         id="optimize-image-custom-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

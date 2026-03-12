@@ -152,6 +152,7 @@ export default function PDFCompressorTools() {
               ? "bg-[#5b32b4] text-white"
               : "bg-gray-100 text-gray-500"
           }`}
+          aria-label="standard mode"
         >
           Standard
         </button>
@@ -163,6 +164,7 @@ export default function PDFCompressorTools() {
               ? "bg-[#fb397d] text-white"
               : "bg-gray-100 text-gray-500"
           }`}
+          aria-label="pro mode"
         >
           Pro
         </button>
@@ -218,6 +220,7 @@ export default function PDFCompressorTools() {
         onClick={handleCompress}
         disabled={!file || isGlobalLoading}
         className="h-[60px] w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] transition-all disabled:bg-gray-200 disabled:text-gray-400"
+        aria-label="compress pdf"
       >
         {isGlobalLoading ? "Compressing..." : "Compress PDF"}
       </button>
@@ -244,6 +247,7 @@ export default function PDFCompressorTools() {
               downloadBlob(optimizedBlob, `compressed-${Date.now()}`)
             }
             className="w-full bg-[#5b32b4] text-white font-bold py-4 rounded-2xl"
+            aria-label="download compressed pdf"
           >
             📥 Download Compressed PDF
           </button>
@@ -251,6 +255,7 @@ export default function PDFCompressorTools() {
           <button
             onClick={handleReset}
             className="text-sm font-bold text-gray-400 hover:text-[#fb397d]"
+            aria-label="clear and start over"
           >
             Clear and start over
           </button>

@@ -141,6 +141,7 @@ export default function HeicToImageTools() {
               ? "bg-[#5b32b4] text-white"
               : "bg-gray-100 text-gray-500"
           }`}
+          aria-label="jpg"
         >
           JPG
         </button>
@@ -152,6 +153,7 @@ export default function HeicToImageTools() {
               ? "bg-[#fb397d] text-white"
               : "bg-gray-100 text-gray-500"
           }`}
+          aria-label="png"
         >
           PNG
         </button>
@@ -225,6 +227,7 @@ export default function HeicToImageTools() {
         onClick={handleConvert}
         disabled={!file || isGlobalLoading}
         className="h-[60px] w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] transition-all disabled:bg-gray-200 disabled:text-gray-400 flex items-center justify-center gap-2"
+        aria-label="convert"
       >
         {isGlobalLoading ? "Converting..." : "Convert Image"}
       </button>

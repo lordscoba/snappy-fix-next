@@ -3,49 +3,17 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import PDFCompressorTools from "@/components/tools/PDFCompressorTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "compress-pdf")!;
 
-export const metadata = {
-  title:
-    "Compress PDF Online Free | Reduce PDF File Size Without Losing Quality - Snappy Fix",
-  description:
-    "Compress PDF files online to reduce file size while maintaining quality. Shrink large PDFs instantly for email, web uploads, and document sharing. Free, secure, and fast PDF compressor.",
-  keywords: [
-    "compress pdf",
-    "reduce pdf size",
-    "pdf compressor online",
-    "shrink pdf file",
-    "reduce pdf file size",
-    "compress pdf without losing quality",
-    "free pdf compressor",
-    "optimize pdf for email",
-    "pdf size reducer",
-    "compress large pdf",
-    "minimize pdf size",
-    "pdf compression tool",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function CompressPDFPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Free PDF Compressor",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "PDF Compression Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/compress-pdf",
-    description:
-      "Compress PDF files online instantly and reduce PDF file size while maintaining quality. Optimize large PDFs for email, website uploads, and document sharing using this free PDF compressor.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -76,30 +44,7 @@ export default function CompressPDFPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Free PDF Compressor",
-        item: "https://www.snappy-fix.com/tools/compress-pdf",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -143,7 +88,7 @@ export default function CompressPDFPage() {
         id="compress-pdf-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +104,7 @@ export default function CompressPDFPage() {
         id="compress-pdf-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

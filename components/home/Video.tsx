@@ -7,36 +7,51 @@ const Video = () => {
     <section
       id="video"
       aria-labelledby="video-heading"
-      className="bg-no-repeat bg-cover bg-center p-6 md:p-16"
-      style={{
-        backgroundImage: `url("/images/bg-img/footer.webp")`,
-      }}
+      className="relative px-4 py-10 sm:px-6 sm:py-14 md:px-10 md:py-16 min-h-[300px] [clip-path:inset(0)]"
     >
-      <div className="max-w-5xl mx-auto relative">
+      {/* 1. Optimized Fixed Background Layer */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/images/bg-img/footer.webp"
+          alt="" // Background is decorative
+          fill
+          className="object-cover"
+          quality={75}
+          priority={false}
+        />
+      </div>
+
+      {/* 2. Content Layer */}
+      <div className="max-w-5xl mx-auto relative z-10">
         <header className="sr-only">
           <h2 id="video-heading">Introduction Video</h2>
         </header>
 
         <figure className="relative">
-          <Image
-            src="/images/bg-img/snappy3.webp"
-            alt="Snappy-Fix Technologies web development showcase"
-            className="rounded-3xl border-white border-[1rem] w-full"
-            width={1000}
-            height={1000}
-            loading="lazy"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+          <div className="relative aspect-video w-full">
+            <Image
+              src="/images/bg-img/snappy3.webp"
+              alt="Snappy-Fix Technologies web development showcase"
+              fill
+              className="rounded-xl sm:rounded-2xl md:rounded-3xl border-4 sm:border-6 md:border-[1rem] border-white object-cover"
+              sizes="(max-width: 640px) 100vw,
+                 (max-width: 1024px) 90vw,
+                 80vw"
+            />
+          </div>
 
           <a
             href="https://www.youtube.com/watch?v=bmixiVwtDso"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Watch Snappy-Fix introduction video on YouTube"
-            className="absolute inset-0 flex items-center justify-center group"
+            className="absolute inset-0 flex items-center justify-center group z-20"
           >
-            <span className="bg-white rounded-full p-3 transition group-hover:scale-110">
-              <BsPlayCircleFill size={70} className="text-[#fb397d]" />
+            <span className="bg-white rounded-full p-2 sm:p-3 transition group-hover:scale-110 shadow-lg">
+              <BsPlayCircleFill
+                size={50}
+                className="text-[#fb397d] sm:w-[60px] sm:h-[60px] md:w-[70px] md:h-[70px]"
+              />
             </span>
           </a>
         </figure>

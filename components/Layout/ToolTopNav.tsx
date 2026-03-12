@@ -85,6 +85,7 @@ export default function ToolTopNav() {
         <button
           className="md:hidden p-2 text-slate-600"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

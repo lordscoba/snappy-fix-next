@@ -3,51 +3,17 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import { splitTitle } from "@/lib/utils/title";
 
 const currentTool = tools.find((tool) => tool.slug === "svg-image-optimizer")!;
 
-export const metadata = {
-  title:
-    "Free SVG Optimizer Online | Reduce SVG File Size Without Losing Quality - Snappy Fix",
-  description:
-    "Optimize SVG files instantly. Reduce SVG file size, remove unnecessary code, and improve website performance. Fast, secure and free SVG image optimizer.",
-  keywords: [
-    "svg optimizer",
-    "optimize svg online",
-    "reduce svg file size",
-    "compress svg file",
-    "svg file size reducer",
-    "svg minifier online",
-    "optimize svg for web",
-    "svg cleaner tool",
-    "remove unnecessary svg data",
-    "svg compression tool",
-    "optimize svg without quality loss",
-    "secure svg optimizer",
-    "free svg optimizer online",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function SVGImageOptimizerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "SVG Vector Optimizer (SVGO)",
-    applicationCategory: "DeveloperApplication",
-    applicationSubCategory: "SVG Optimization Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/svg-image-optimizer",
-    description:
-      "Reduce SVG file size instantly by removing unnecessary code, metadata, and hidden elements using the Snappy Fix SVG Vector Optimizer.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -75,31 +41,6 @@ export default function SVGImageOptimizerPage() {
           "@type": "Answer",
           text: "No. The optimizer removes redundant code while keeping the visual appearance of the SVG unchanged.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "SVG Vector Optimizer (SVGO)",
-        item: "https://www.snappy-fix.com/tools/svg-image-optimizer",
       },
     ],
   };
@@ -147,7 +88,7 @@ export default function SVGImageOptimizerPage() {
         id="svg-optimizer-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -163,7 +104,7 @@ export default function SVGImageOptimizerPage() {
         id="svg-optimizer-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
@@ -178,7 +119,7 @@ export default function SVGImageOptimizerPage() {
       <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            {currentTool.name}
+            {splitTitle(currentTool.name)}
           </h1>
 
           <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">

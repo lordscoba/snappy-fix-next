@@ -187,6 +187,7 @@ export default function SeoResponsiveOptimizerTool() {
         onClick={handleOptimize}
         disabled={!file || isGlobalLoading}
         className="h-[60px] w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] transition-all disabled:bg-gray-200 disabled:text-gray-400 flex items-center justify-center gap-2"
+        aria-label="optimize"
       >
         {isGlobalLoading ? "Optimizing..." : "Optimize for SEO & Responsive"}
       </button>
@@ -213,6 +214,7 @@ export default function SeoResponsiveOptimizerTool() {
               downloadBlob(optimizedBlob, `seo-responsive-${Date.now()}`)
             }
             className="w-full bg-[#5b32b4] text-white font-bold py-4 rounded-2xl"
+            aria-label="download optimized image"
           >
             📥 Download Optimized Image
           </button>

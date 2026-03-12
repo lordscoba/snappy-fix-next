@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo } from "react";
 import { tools } from "@/data/toolsData";
+import { splitTitle } from "@/lib/utils/title";
 
 type Props = {
   currentSlug: string;
@@ -61,7 +62,7 @@ export default function OtherToolsSection({
             className="rounded-3xl border p-6 bg-white shadow-sm hover:shadow-xl transition hover:-translate-y-1 space-y-3 group"
           >
             <h3 className="text-lg font-semibold text-[#2b1d3a]">
-              {tool.name}
+              {splitTitle(tool.name)}
             </h3>
 
             <p className="text-sm text-gray-600 leading-relaxed">

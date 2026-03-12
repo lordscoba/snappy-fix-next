@@ -3,47 +3,17 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import ExtractPDFImagesTools from "@/components/tools/ExtractPDFImagesTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "extract-pdf-images")!;
 
-export const metadata = {
-  title:
-    "Extract Images from PDF Online | Download PDF Images Instantly - Snappy Fix",
-  description:
-    "Extract all images embedded inside PDF files instantly. Download images from any PDF document without losing quality. Free, fast, and secure PDF image extractor.",
-  keywords: [
-    "extract images from pdf",
-    "pdf image extractor",
-    "get images from pdf",
-    "pdf image downloader",
-    "download images from pdf online",
-    "extract pictures from pdf",
-    "pdf to images extractor",
-    "pull images from pdf",
-    "save images from pdf",
-    "free pdf image extractor",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function ExtractPdfImagesPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Extract Images from PDF",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "PDF Processing Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/extract-pdf-images",
-    description:
-      "Extract and download embedded images from PDF documents instantly. This free PDF image extractor lets you pull images from PDF files without losing quality.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -72,31 +42,6 @@ export default function ExtractPdfImagesPage() {
           "@type": "Answer",
           text: "No. Uploaded files are processed securely and are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Extract Images from PDF",
-        item: "https://www.snappy-fix.com/tools/extract-pdf-images",
       },
     ],
   };
@@ -144,7 +89,7 @@ export default function ExtractPdfImagesPage() {
         id="extract-pdf-images-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -160,7 +105,7 @@ export default function ExtractPdfImagesPage() {
         id="extract-pdf-images-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

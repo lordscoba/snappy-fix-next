@@ -233,6 +233,7 @@ export default function CustomOptimizerTool() {
         onClick={handleOptimize}
         disabled={!file || isGlobalLoading}
         className="h-[60px] w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] disabled:bg-gray-200 disabled:text-gray-400"
+        aria-label="optimize image"
       >
         {isGlobalLoading ? "Optimizing..." : "Optimize Custom"}
       </button>

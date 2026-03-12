@@ -3,48 +3,16 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
-const currentTool = tools.find((tool) => tool.slug === "optimize-web")!;
+const currentTool = tools.find((tool) => tool.slug === "optimize-web-image")!;
 
-export const metadata = {
-  title:
-    "Optimize Images for Website Performance | Web Image Compressor - Snappy Fix",
-  description:
-    "Optimize images for websites and improve page speed. Reduce file size, enhance loading performance and boost SEO rankings with our free web image optimizer.",
-  keywords: [
-    "web image optimizer",
-    "optimize image for website",
-    "reduce image size for web",
-    "website image compression tool",
-    "improve page speed images",
-    "image optimizer for seo",
-    "compress images for website performance",
-    "web performance image tool",
-    "optimize images for faster loading",
-    "website image resizer online",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function WebOptimizerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Web Image Optimizer (JPG/PNG/WEBP)",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Optimization Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/optimize-web-image",
-    description:
-      "Optimize JPG, PNG, and WebP images for websites to improve PageSpeed, SEO, and Core Web Vitals.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -72,31 +40,6 @@ export default function WebOptimizerPage() {
           "@type": "Answer",
           text: "The tool compresses images intelligently to reduce file size while maintaining high visual quality.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Web Image Optimizer (JPG/PNG/WEBP)",
-        item: "https://www.snappy-fix.com/tools/optimize-web-image",
       },
     ],
   };
@@ -144,7 +87,7 @@ export default function WebOptimizerPage() {
         id="web-image-optimizer-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -160,7 +103,7 @@ export default function WebOptimizerPage() {
         id="web-image-optimizer-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

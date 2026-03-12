@@ -3,47 +3,17 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "base64-to-image")!;
-
-export const metadata = {
-  title:
-    "Base64 to Image Converter Online | Decode Base64 to JPG, PNG, WEBP - Snappy Fix",
-  description:
-    "Convert Base64 strings back into image files instantly. Decode Base64 to JPG, PNG, WEBP and more. Free, fast, and secure Base64 to image converter online.",
-  keywords: [
-    "base64 to image",
-    "decode base64 to jpg",
-    "convert base64 to png",
-    "base64 image decoder online",
-    "base64 to webp converter",
-    "decode base64 string to image",
-    "base64 image converter free",
-    "convert base64 to image file",
-    "base64 to jpg online",
-    "base64 decoder tool",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function Base64ToImagePage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Base64 to Image Decoder",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Conversion Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/base64-to-image",
-    description:
-      "Decode Base64 strings and convert them back into JPG, PNG, or WebP images instantly using this free online Base64 to Image decoder.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -71,30 +41,6 @@ export default function Base64ToImagePage() {
           "@type": "Answer",
           text: "No. All decoding is processed securely and files are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Base64 to Image Decoder",
-        item: "https://www.snappy-fix.com/tools/base64-to-image",
       },
     ],
   };
@@ -141,7 +87,15 @@ export default function Base64ToImagePage() {
         id="base64-to-image-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
+        }}
+      />
+
+      <Script
+        id="base64-to-image-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
@@ -150,14 +104,6 @@ export default function Base64ToImagePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqSchema),
-        }}
-      />
-
-      <Script
-        id="base64-to-image-breadcrumb"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
         }}
       />
 

@@ -163,6 +163,7 @@ export default function ImageDPICheckerTools() {
               onClick={handleCheckDPI}
               disabled={!file || isGlobalLoading}
               className="h-16 w-full bg-[#fb397d] text-white font-bold rounded-2xl hover:bg-[#e02d6b] transition-all disabled:bg-gray-200 flex items-center justify-center gap-2"
+              aria-label="analyze image"
             >
               {isGlobalLoading
                 ? `Analyzing Metadata ${progress}%...`
@@ -180,6 +181,7 @@ export default function ImageDPICheckerTools() {
               <button
                 onClick={handleReset}
                 className="text-sm font-bold text-[#fb397d] hover:underline"
+                aria-label="analyze another image"
               >
                 Analyze another image
               </button>

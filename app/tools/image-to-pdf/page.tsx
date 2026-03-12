@@ -3,48 +3,16 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import ImageToPDFConverterTools from "@/components/tools/ImageToPDFConverterTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "image-to-pdf")!;
 
-export const metadata = {
-  title:
-    "Image to PDF Converter Online | Convert JPG, PNG, WebP to PDF - Snappy Fix",
-  description:
-    "Convert JPG, PNG, and WebP images into high-quality PDF documents instantly. Free online image to PDF converter for documents, printing, and easy sharing.",
-  keywords: [
-    "image to pdf",
-    "jpg to pdf",
-    "png to pdf",
-    "convert images to pdf",
-    "webp to pdf",
-    "photo to pdf converter",
-    "convert picture to pdf",
-    "merge images into pdf",
-    "image pdf converter online",
-    "free image to pdf tool",
-  ],
-};
-
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 export default function ImageToPdfPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Image to PDF Converter",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "PDF Conversion Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-to-pdf",
-    description:
-      "Convert JPG, PNG, or WebP images into high-quality PDF documents instantly using this free online Image to PDF converter.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -72,31 +40,6 @@ export default function ImageToPdfPage() {
           "@type": "Answer",
           text: "No. Images uploaded to the Snappy Fix Image to PDF tool are processed securely and are not permanently stored on our servers.",
         },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Image to PDF Converter",
-        item: "https://www.snappy-fix.com/tools/image-to-pdf",
       },
     ],
   };
@@ -144,7 +87,7 @@ export default function ImageToPdfPage() {
         id="image-to-pdf-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -160,7 +103,7 @@ export default function ImageToPdfPage() {
         id="image-to-pdf-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

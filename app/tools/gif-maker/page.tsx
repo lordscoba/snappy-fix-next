@@ -3,49 +3,18 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import GifConverterTools from "@/components/tools/GIFConverterTools";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "gif-maker")!;
 
-export const metadata = {
-  title:
-    "GIF Maker Online | Create GIFs from Videos & Images Free - Snappy Fix",
-  description:
-    "Create animated GIFs from videos or images online. Convert video clips to GIFs or combine multiple images into a single animated GIF instantly. Free, fast, and secure GIF generator.",
-  keywords: [
-    "gif maker",
-    "create gif online",
-    "video to gif converter",
-    "image to gif maker",
-    "animated gif generator",
-    "gif creator online",
-    "convert video to gif",
-    "combine images to gif",
-    "make gif from images",
-    "free gif maker",
-    "gif animation creator",
-    "online gif generator",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function GifMakerPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "GIF Maker (Video & Images)",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "GIF Animation Generator",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/gif-maker",
-    description:
-      "Create animated GIFs from videos or multiple images instantly. Convert video clips to GIF animations or combine images into looping GIFs using this free online GIF maker.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -76,30 +45,7 @@ export default function GifMakerPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "GIF Maker (Video & Images)",
-        item: "https://www.snappy-fix.com/tools/gif-maker",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -143,7 +89,7 @@ export default function GifMakerPage() {
         id="gif-maker-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +105,7 @@ export default function GifMakerPage() {
         id="gif-maker-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 

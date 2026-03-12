@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { tools } from "@/data/toolsData";
 import { toolCategories } from "@/data/toolsCategoryData";
 import { useEffect, useState } from "react";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { splitTitle } from "@/lib/utils/title";
 
 const links = [
   "hero",
@@ -70,15 +72,19 @@ const Footer = () => {
   );
 
   return (
-    <footer
-      className="relative bg-cover bg-center bg-fixed text-white"
-      style={{
-        backgroundImage: `url("/images/bg-img/footer.webp")`,
-      }}
-    >
-      <div className="absolute inset-0"></div>
-
-      <div className="relative max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 lg:grid-cols-4 gap-14">
+    <footer className="relative [clip-path:inset(0)] text-white">
+      {/* 1. Optimized Fixed Background Layer */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/images/bg-img/footer.webp"
+          alt=""
+          fill
+          className="object-cover"
+          quality={75}
+          priority={false}
+        />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 lg:grid-cols-4 gap-14">
         {/* Brand */}
         <div>
           <h2 className="text-3xl font-bold text-[#9b69e4]">Snappy-fix Tech</h2>
@@ -110,7 +116,7 @@ const Footer = () => {
                       href={tool.href}
                       className="hover:text-white transition"
                     >
-                      {tool.name}
+                      {splitTitle(tool.name, 1)}
                     </Link>
                   </li>
                 ))}
@@ -181,6 +187,7 @@ const SocialButton = ({ icon }: { icon: React.ReactNode }) => (
                bg-[#9b69e4] text-white
                transition-all duration-300
                hover:bg-[#fb397d] hover:scale-110 hover:shadow-lg"
+    aria-label="social link"
   >
     {icon}
   </button>

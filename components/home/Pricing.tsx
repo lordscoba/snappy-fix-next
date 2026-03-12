@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Plan = {
   title: string;
   price: number;
@@ -33,13 +35,19 @@ const Pricing = () => {
   return (
     <section
       id="pricing"
-      aria-labelledby="pricing-heading"
-      className="bg-cover bg-center py-20"
-      style={{
-        backgroundImage: `url("/images/bg-img/footer.webp")`,
-      }}
+      className="relative py-20 min-h-[600px] [clip-path:inset(0)]"
     >
-      <div className="max-w-7xl mx-auto px-6 space-y-14">
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/images/bg-img/footer.webp"
+          alt="footer"
+          fill
+          className="object-cover"
+          quality={75}
+          priority={false}
+        />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 space-y-14">
         <header className="text-center space-y-4">
           <h2
             id="pricing-heading"

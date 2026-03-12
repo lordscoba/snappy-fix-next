@@ -4,6 +4,7 @@ import { RiEmotionHappyLine } from "react-icons/ri";
 import { IoPersonSharp } from "react-icons/io5";
 import { AiOutlineStar } from "react-icons/ai";
 import CountUp from "react-countup";
+import Image from "next/image";
 
 type Stat = {
   label: string;
@@ -59,16 +60,25 @@ const Counter = () => {
     <section
       id="counter"
       ref={sectionRef}
-      className="bg-no-repeat bg-cover bg-center py-20"
-      style={{ backgroundImage: `url("/images/bg-img/rt.webp")` }}
+      className="relative py-20 overflow-hidden" // Changed to relative and overflow-hidden
     >
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-white">
+      {/* The Background Image Layer */}
+      <Image
+        src="/images/bg-img/rt.webp"
+        alt="Background pattern"
+        fill
+        priority={false} // Ensures lazy loading (default)
+        className="object-cover object-center -z-10" // Puts it behind the content
+        sizes="100vw" // Helps Next.js pick the right size for the screen
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-white">
         {stats.map((stat, index) => (
           <div key={index} className="flex items-end gap-4">
             <span className="text-5xl font-bold min-w-[80px]">
               {visible ? (
                 <CountUp
-                  key={visible ? "start" : "reset"} // forces remount
+                  key={visible ? "start" : "reset"}
                   end={stat.value}
                   duration={2}
                 />

@@ -197,6 +197,7 @@ export default function ImageAnalyserTools() {
           onClick={handleAnalyze}
           disabled={!file || isGlobalLoading}
           className="w-full h-16 bg-gradient-to-r from-[#5b32b4] to-[#fb397d] text-white font-bold rounded-2xl transition-all shadow-lg shadow-indigo-100 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
+          aria-label="analyze image"
         >
           {isGlobalLoading ? "Reading Pixels..." : "Start Full Analysis"}
         </button>

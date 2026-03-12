@@ -27,7 +27,6 @@ export default function ProjectsDone() {
                 <Image
                   src={project.cover}
                   alt={project.title}
-                  fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

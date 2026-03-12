@@ -105,8 +105,8 @@ export default async function BlogDetails({ params }: { params: Params }) {
             className="object-cover"
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            width={600}
-            height={400}
+            // width={600}
+            // height={400}
           />
         </figure>
 

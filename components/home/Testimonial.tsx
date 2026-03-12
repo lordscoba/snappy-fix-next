@@ -94,7 +94,7 @@ const Testimonial = () => {
 
         {/* Avatar row */}
         <div className="flex items-center justify-center gap-4 md:gap-8">
-          <button onClick={prev}>
+          <button onClick={prev} aria-label="Previous slide">
             <IoIosArrowBack className="text-2xl text-[#b5aec4]" />
           </button>
 
@@ -102,7 +102,7 @@ const Testimonial = () => {
           <Avatar image={active.image} />
           <Avatar image={nextUser.image} small />
 
-          <button onClick={next}>
+          <button onClick={next} aria-label="Next slide">
             <IoIosArrowForward className="text-2xl text-[#b5aec4]" />
           </button>
         </div>
@@ -111,6 +111,7 @@ const Testimonial = () => {
         <div className="flex justify-center gap-4">
           {testimonials.map((_, i) => (
             <button
+              aria-label="dot button"
               key={i}
               onClick={() => setIndex(i)}
               className={`w-3 h-3 rounded-full transition-all ${

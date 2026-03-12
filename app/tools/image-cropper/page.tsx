@@ -3,69 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import { splitTitle } from "@/lib/utils/title";
 
 const currentTool = tools.find((tool) => tool.slug === "image-cropper")!;
 
-export const metadata = {
-  title:
-    "Free Online Image Cropper | Crop Images to Exact Dimensions - Snappy Fix",
-  description:
-    "Crop images online instantly. Cut images to exact width and height, square crop for social media, or custom crop area. Free, fast and secure image cropping tool.",
-  keywords: [
-    // Core
-    "image cropper",
-    "crop image online",
-    "free image cropper",
-    "online photo cropper",
-    "crop photo online",
-
-    // Dimension intent
-    "crop image to exact size",
-    "crop image to specific dimensions",
-    "crop image to width and height",
-    "custom image cropper",
-    "manual image cropping tool",
-
-    // Social media intent
-    "crop image for instagram",
-    "crop image for twitter",
-    "crop image for whatsapp",
-    "crop youtube thumbnail",
-    "square image cropper",
-
-    // Web intent
-    "crop image for website",
-    "resize and crop image",
-    "optimize image by cropping",
-    "reduce image dimensions online",
-
-    // Trust modifiers
-    "secure image cropper",
-    "no watermark image cropper",
-    "private image editor online",
-    "free unlimited image crop tool",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function ImageCropperPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Free Online Image Cropper",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Image Editing Tool",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/image-cropper",
-    description:
-      "Crop images to exact dimensions or aspect ratios instantly using the Snappy Fix online image cropper.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -96,30 +45,7 @@ export default function ImageCropperPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Free Online Image Cropper",
-        item: "https://www.snappy-fix.com/tools/image-cropper",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -163,7 +89,7 @@ export default function ImageCropperPage() {
         id="image-cropper-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -179,7 +105,7 @@ export default function ImageCropperPage() {
         id="image-cropper-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
@@ -195,7 +121,7 @@ export default function ImageCropperPage() {
         {/* Header */}
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            {currentTool.name}
+            {splitTitle(currentTool.name)}
           </h1>
 
           <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">

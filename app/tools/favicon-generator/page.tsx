@@ -3,49 +3,18 @@ import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
+import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 
 const currentTool = tools.find((tool) => tool.slug === "favicon-generator")!;
 
-export const metadata = {
-  title:
-    "Favicon Generator Online | Create ICO & App Icons from PNG or JPG - Snappy Fix",
-  description:
-    "Generate favicon.ico files instantly from PNG, JPG or SVG images. Create website favicons, app icons, and multi-size favicon packages for all devices. Free and secure favicon generator.",
-  keywords: [
-    "favicon generator",
-    "create favicon online",
-    "png to ico converter",
-    "generate favicon from image",
-    "favicon creator free",
-    "favicon ico generator",
-    "website icon generator",
-    "convert image to favicon",
-    "create favicon for website",
-    "favicon maker online",
-    "generate app icons",
-    "multi size favicon generator",
-  ],
-};
+export async function generateMetadata() {
+  return getToolMetadata(currentTool.slug);
+}
 
 export default function FaviconGeneratorPage() {
-  const toolStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Favicon & App Icon Generator",
-    applicationCategory: "MultimediaApplication",
-    applicationSubCategory: "Website Icon Generator",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: "en",
-    url: "https://www.snappy-fix.com/tools/favicon-generator",
-    description:
-      "Generate favicon icons and app icons for websites instantly. Convert any image into 16x16, 32x32, and Apple Touch icons using this free favicon generator.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
+  const schemas = getToolSchemas(currentTool.slug);
+  if (!schemas) return null;
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -76,30 +45,7 @@ export default function FaviconGeneratorPage() {
       },
     ],
   };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.snappy-fix.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Favicon & App Icon Generator",
-        item: "https://www.snappy-fix.com/tools/favicon-generator",
-      },
-    ],
-  };
+
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -143,7 +89,7 @@ export default function FaviconGeneratorPage() {
         id="favicon-generator-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
+          __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
 
@@ -159,7 +105,7 @@ export default function FaviconGeneratorPage() {
         id="favicon-generator-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
 
