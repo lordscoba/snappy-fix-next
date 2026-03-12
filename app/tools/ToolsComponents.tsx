@@ -6,6 +6,8 @@ import { tools } from "@/data/toolsData";
 import { NavbarMenu } from "@/components/Layout";
 import ToolCategories from "@/components/tools/ToolCategories";
 import { splitTitle } from "@/lib/utils/title";
+import { getMainToolsBreadcrumb } from "@/lib/utils/metadata";
+import Script from "next/script";
 
 export default function ToolsComponents() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,9 +22,15 @@ export default function ToolsComponents() {
 
   // Get unique categories from the filtered results
   const categories = [...new Set(filteredTools.map((tool) => tool.category))];
+  const breadcrumb = getMainToolsBreadcrumb();
 
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-white via-[#faf7ff] to-white">
+      <Script
+        id="main-tools-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       <NavbarMenu background="bg-[#884bdf]" />
 
       <section className="w-full max-w-7xl mx-auto px-6 pt-48 pb-20 space-y-20">

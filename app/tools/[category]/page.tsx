@@ -5,6 +5,11 @@ import { NavbarMenu } from "@/components/Layout";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { splitTitle } from "@/lib/utils/title";
+import {
+  getCategoryBreadcrumb,
+  getCategoryMetadata,
+} from "@/lib/utils/metadata";
+import Script from "next/script";
 
 // Define the type to match your folder name [category]
 type Params = Promise<{ category: string }>;
@@ -21,30 +26,10 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
-  const { category: slug } = await params; // Fix: destructure 'category'
-  const category = toolCategories.find((c) => c.slug === slug);
-
-  if (!category) return {};
-
-  return {
-    title: `${category.name} | Free Online ${category.name} - Snappy Fix`,
-
-    description: `Use Snappy Fix ${category.name.toLowerCase()} to convert, optimize, analyze and enhance images online. Fast, secure and completely free image tools built for developers, designers and marketers.`,
-
-    keywords: [
-      `${category.name.toLowerCase()}`,
-      `${category.name.toLowerCase()} online`,
-      `free ${category.name.toLowerCase()}`,
-      "online image tools",
-      "free image tools",
-      "image optimization tools",
-      "image conversion tools",
-      "image editing tools",
-      "snappy fix tools",
-    ],
-  };
+  const { category: slug } = await params;
+  // Use the helper we just created
+  return getCategoryMetadata(slug);
 }
-
 export default async function CategoryPage({ params }: { params: Params }) {
   const { category: slug } = await params; // Fix: match the folder name [category]
 
@@ -54,8 +39,17 @@ export default async function CategoryPage({ params }: { params: Params }) {
 
   const categoryTools = tools.filter((tool) => tool.category === category.name);
 
+  const breadcrumb = getCategoryBreadcrumb(slug);
+
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-white via-[#faf7ff] to-white">
+      {breadcrumb && (
+        <Script
+          id="category-breadcrumb"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+        />
+      )}
       <NavbarMenu background="bg-[#884bdf]" />
 
       <section className="w-full max-w-7xl mx-auto px-6 pt-48 pb-20 space-y-20">

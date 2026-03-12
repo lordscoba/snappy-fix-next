@@ -6,7 +6,6 @@
     "dev": "next dev",
     "optimize-images": "node scripts/optimize-images.js",
     "build": "npm run optimize-images && next build",
-    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint"
   },
