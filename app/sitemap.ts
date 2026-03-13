@@ -2,11 +2,12 @@ import { MetadataRoute } from "next";
 import { tools } from "@/data/toolsData";
 import { toolCategories } from "@/data/toolsCategoryData";
 import { posts } from "@/data/BlogData";
+import { data as portfolios } from "@/data/PortifolioData";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.snappy-fix.com";
+  const baseUrl = "https://snappy-fix.com";
 
   // 1. Individual Tools - Priority 0.8 / Daily
   const toolEntries = tools.map((tool) => ({
@@ -31,6 +32,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
     changeFrequency: "weekly" as const,
     priority: 0.7,
+  }));
+
+  // 4. Portfolio Pages - Priority 0.6 / Monthly
+  const portfolioEntries = portfolios.map((person) => ({
+    url: `${baseUrl}/portfolio/${person.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   }));
 
   // 4. Static Pages - Matching your custom transform logic
@@ -60,6 +69,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/terms`,
       lastModified: new Date(),
       changeFrequency: "yearly",
@@ -67,5 +82,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  return [...staticPages, ...toolEntries, ...categoryEntries, ...blogEntries];
+  return [
+    ...staticPages,
+    ...toolEntries,
+    ...categoryEntries,
+    ...blogEntries,
+    ...portfolioEntries,
+  ];
 }

@@ -2,10 +2,12 @@ type mine = {
   skill_type: string;
   skill_level: string;
 };
+
 type know = {
   skill_main: string;
   skill_level: Array<mine>;
 };
+
 export type Tester = {
   id: number;
   name: string;
@@ -159,7 +161,7 @@ export const data: Array<Tester> = [
         ],
       },
     ],
-    text: "I am a good developer",
+    text: "Nwokoye Christopher is a full-stack software developer with expertise in building scalable web applications, APIs, and mobile apps. He specializes in modern technologies such as React, Flutter, Golang, Laravel, and FastAPI, delivering high-performance solutions for startups and businesses.",
     image: "/images/team-img/chris2.webp",
     github_link: "github.com/lordscoba",
     linkdln_link: "linkdln.com/lordscoba",
@@ -168,7 +170,8 @@ export const data: Array<Tester> = [
     instagram_link: "instagram.com/lordscoba",
     years_experience: 5,
     projects: 30,
-    about: "I am a good deveoper",
+    about:
+      "Christopher is a passionate full-stack developer with over 5 years of professional experience in web and mobile application development. He has built multiple production platforms including SaaS applications, developer tools, and mobile apps. His expertise spans frontend engineering, backend architecture, and mobile development using technologies such as React, Flutter, Golang, Node.js, and PostgreSQL.",
     cv: "/images/team-img/chris2.jpeg",
     link_tree: "https://www.github.com/lordscoba",
   },
@@ -329,7 +332,7 @@ export const data: Array<Tester> = [
         ],
       },
     ],
-    text: "I am a good developer, ",
+    text: "Nwokoye Chigozie is a backend and DevOps engineer experienced in building scalable server infrastructures, cloud systems, and machine learning applications using modern technologies including Rust, Golang, Python, and AWS.",
     image: "/images/team-img/chigozie2.webp",
     github_link: "github.com/greg",
     linkdln_link: "linkdln.com/greg",
@@ -338,7 +341,8 @@ export const data: Array<Tester> = [
     instagram_link: "instagram.com/greg",
     years_experience: 4,
     projects: 30,
-    about: "I am a good deveoper",
+    about:
+      "Chigozie is a backend engineer and DevOps specialist with strong experience in cloud infrastructure, containerization, and scalable backend architecture. He works extensively with technologies such as Rust, Golang, Python, Docker, Kubernetes, and AWS to build reliable and high-performance systems.",
     link_tree: "https://www.github.com/NwokoyeChigozie",
     cv: "/images/team-img/chigozie2.jpeg",
   },
@@ -392,7 +396,7 @@ export const data: Array<Tester> = [
       },
     ],
     link_tree: "https://linktr.ee/johnakande",
-    text: "I am a good developer",
+    text: "John Akande is a creative web designer and SEO specialist focused on building visually appealing websites and improving online visibility through modern SEO strategies.",
     image: "/images/team-img/seyi.webp",
     github_link: "github.com/seyi",
     linkdln_link: "linkdln.com/seyi",
@@ -401,7 +405,8 @@ export const data: Array<Tester> = [
     instagram_link: "instagram.com/seyi",
     years_experience: 3,
     projects: 30,
-    about: "I am a good deveoper",
+    about:
+      "John Akande is a professional web designer and digital marketing specialist with expertise in user-centered design and search engine optimization. He helps businesses improve their online presence through modern web design, keyword research, and effective SEO strategies.",
     cv: "/images/team-img/seyi.webp",
   },
   {
@@ -432,7 +437,7 @@ export const data: Array<Tester> = [
         ],
       },
     ],
-    text: "I am a good Designer",
+    text: "Osunkwor Pascal is a creative graphics and UI/UX designer specializing in modern user interface design, branding, and digital product design using tools like Figma, Photoshop, and After Effects.",
     image: "/images/team-img/pascal.webp",
     github_link: "github.com/pascal",
     linkdln_link: "linkdln.com/pascal",
@@ -441,7 +446,8 @@ export const data: Array<Tester> = [
     instagram_link: "instagram.com/pascal",
     years_experience: 5,
     projects: 30,
-    about: "I am a good designer",
+    about:
+      "Pascal is a professional graphics and UI/UX designer who focuses on creating engaging digital experiences and visually compelling brand designs. His expertise includes interface design, motion graphics, and digital branding for modern web and mobile applications.",
     cv: "/images/team-img/pascal.webp",
   },
 ];

@@ -1,3 +1,4 @@
+import { data } from "@/data/PortifolioData";
 import { toolCategories } from "@/data/toolsCategoryData";
 import { tools } from "@/data/toolsData";
 
@@ -15,7 +16,7 @@ export function getToolMetadata(slug: string) {
   // 3. Define your dynamic values
   const title = `${tool.name}`;
   const description = tool.longDescription || tool.description;
-  const url = `https://www.snappy-fix.com/tools/${tool.slug}`;
+  const url = `https://snappy-fix.com/tools/${tool.slug}`;
   const ogImage = "/images/snappy-fix-logo.png";
 
   return {
@@ -56,7 +57,7 @@ export function getToolSchemas(slug: string) {
   const tool = tools.find((t) => t.slug === slug);
   if (!tool) return null;
 
-  const toolUrl = `https://www.snappy-fix.com/tools/${tool.slug}`;
+  const toolUrl = `https://snappy-fix.com/tools/${tool.slug}`;
 
   const toolStructuredData = {
     "@context": "https://schema.org",
@@ -84,13 +85,13 @@ export function getToolSchemas(slug: string) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.snappy-fix.com",
+        item: "https://snappy-fix.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
+        item: "https://snappy-fix.com/tools",
       },
       {
         "@type": "ListItem",
@@ -118,7 +119,7 @@ export function getCategoryMetadata(slug: string) {
   // 3. Define dynamic values
   const title = `${category.name}`;
   const description = category.longDescription || category.description;
-  const url = `https://www.snappy-fix.com/tools/${category.slug}`;
+  const url = `https://snappy-fix.com/tools/${category.slug}`;
   const ogImage = "/images/snappy-fix-logo.png";
 
   return {
@@ -166,13 +167,13 @@ export function getMainToolsBreadcrumb() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.snappy-fix.com",
+        item: "https://snappy-fix.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
+        item: "https://snappy-fix.com/tools",
       },
     ],
   };
@@ -193,20 +194,126 @@ export function getCategoryBreadcrumb(slug: string) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.snappy-fix.com",
+        item: "https://snappy-fix.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Tools",
-        item: "https://www.snappy-fix.com/tools",
+        item: "https://snappy-fix.com/tools",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: category.name,
-        item: `https://www.snappy-fix.com/tools/${category.slug}`,
+        item: `https://snappy-fix.com/tools/${category.slug}`,
       },
     ],
+  };
+}
+
+export function getPortfolioBreadcrumb(slug: string) {
+  const portfolio = data.find((p) => p.slug === slug);
+
+  if (!portfolio) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://snappy-fix.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Portfolio",
+        item: "https://snappy-fix.com/portfolio",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: portfolio.name,
+        item: `https://snappy-fix.com/portfolio/${portfolio.slug}`,
+      },
+    ],
+  };
+}
+
+export function getPortfolioPersonSchema(slug: string) {
+  const portfolio = data.find((p) => p.slug === slug);
+  if (!portfolio) return null;
+
+  const baseUrl = "https://snappy-fix.com";
+  const profileUrl = `${baseUrl}/portfolio/${portfolio.slug}`;
+
+  // Extract skills for knowsAbout
+  const skills = portfolio.skills.flatMap((skill) => [
+    skill.skill_main,
+    ...skill.skill_level.map((lvl) => lvl.skill_type),
+  ]);
+
+  // Normalize social links
+  const sameAs = [
+    portfolio.github_link,
+    portfolio.linkdln_link,
+    portfolio.twitter_link,
+    portfolio.fb_link,
+    portfolio.instagram_link,
+    portfolio.link_tree,
+  ]
+    .filter(Boolean)
+    .map((url) => (url?.startsWith("http") ? url : `https://${url ?? ""}`));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+
+    "@id": `${profileUrl}#person`,
+
+    name: portfolio.name,
+    url: profileUrl,
+    image: portfolio.image,
+
+    description: portfolio.about,
+
+    jobTitle: "Software Developer",
+
+    worksFor: {
+      "@type": "Organization",
+      name: "Snappy-fix Technologies",
+      url: "https://snappy-fix.com",
+    },
+
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": profileUrl,
+    },
+
+    knowsAbout: skills,
+
+    sameAs: sameAs,
+
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Federal University of Technology Owerri",
+    },
+
+    interactionStatistic: [
+      {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/Project",
+        userInteractionCount: portfolio.projects,
+      },
+    ],
+
+    experience: {
+      "@type": "QuantitativeValue",
+      value: portfolio.years_experience,
+      unitText: "years",
+    },
   };
 }

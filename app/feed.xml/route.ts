@@ -3,9 +3,10 @@ import { toolCategories } from "@/data/toolsCategoryData";
 import { tools } from "@/data/toolsData";
 import { Feed } from "feed";
 import { NextResponse } from "next/server";
+import { data as portfolios } from "@/data/PortifolioData";
 
 export async function GET() {
-  const site_url = "https://www.snappy-fix.com";
+  const site_url = "https://snappy-fix.com";
 
   const feed = new Feed({
     // Using your official Default Title from Metadata
@@ -50,6 +51,19 @@ export async function GET() {
       "Explore our full suite of free online image tools. Convert, optimize, and edit images instantly in your browser with professional-grade speed.",
     content:
       "The Snappy-fix tools library offers a comprehensive collection of utilities for developers, designers, and SEO specialists. Our suite includes Base64 converters, image optimizers, metadata analyzers, and more, all built for performance and privacy.",
+    date: new Date(),
+    category: [{ name: "Resource Hub" }],
+    author: [{ name: "Snappy-Fix Technologies" }],
+  });
+
+  feed.addItem({
+    title: "Snappy-fix Projects Done",
+    id: `${site_url}/projects`,
+    link: `${site_url}/projects`,
+    description:
+      "Snappy-fix Projects Done is a collection of projects completed by the Snappy-fix team. These projects showcase our expertise in web development, UI/UX design, and digital product scaling.",
+    content:
+      "Snappy-fix Projects Done is a collection of projects completed by the Snappy-fix team. These projects showcase our expertise in web development, UI/UX design, and digital product scaling.",
     date: new Date(),
     category: [{ name: "Resource Hub" }],
     author: [{ name: "Snappy-Fix Technologies" }],
@@ -111,6 +125,21 @@ export async function GET() {
       category: [{ name: post.category }],
       author: [{ name: post.author }],
       image: `${site_url}${post.ogImage}`,
+    });
+  });
+
+  // 4. Add Portfolio Pages
+  portfolios.forEach((person) => {
+    feed.addItem({
+      title: `${person.name} – Professional Portfolio`,
+      id: `${site_url}/portfolio/${person.slug}`,
+      link: `${site_url}/portfolio/${person.slug}`,
+      description: person.text,
+      content: person.about,
+      date: new Date(),
+      category: [{ name: "Portfolio" }],
+      author: [{ name: person.name }],
+      image: `${site_url}${person.image}`,
     });
   });
 

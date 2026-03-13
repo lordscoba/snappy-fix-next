@@ -6,13 +6,13 @@ export const metadata = {
   description:
     "Learn how Snappy-fix Technologies protects your privacy. Files uploaded to our tools are processed temporarily and are not permanently stored.",
   alternates: {
-    canonical: "https://www.snappy-fix.com/privacy",
+    canonical: "https://snappy-fix.com/privacy",
   },
   openGraph: {
     title: "Privacy Policy | Snappy-fix Technologies",
     description:
       "Learn how Snappy-fix Technologies protects your privacy and processes uploaded files securely.",
-    url: "https://www.snappy-fix.com/privacy",
+    url: "https://snappy-fix.com/privacy",
     siteName: "Snappy-fix Technologies",
     type: "website",
   },
@@ -30,7 +30,7 @@ export default function Privacy() {
               "@context": "https://schema.org",
               "@type": "WebPage",
               name: "Privacy Policy",
-              url: "https://www.snappy-fix.com/privacy",
+              url: "https://snappy-fix.com/privacy",
               description:
                 "Learn how Snappy-fix Technologies protects your privacy when using our online tools.",
             },
@@ -38,8 +38,8 @@ export default function Privacy() {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Snappy-fix Technologies",
-              url: "https://www.snappy-fix.com",
-              logo: "https://www.snappy-fix.com/logo.png",
+              url: "https://snappy-fix.com",
+              logo: "https://snappy-fix.com/logo.png",
             },
           ]),
         }}
