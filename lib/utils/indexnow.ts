@@ -6,10 +6,10 @@ export async function submitToIndexNow(urls: string[]): Promise<void> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        host: "https://www.snappy-fix.com",
+        host: "https://snappy-fix.com",
         key: "912144dd-3612-4949-9768-fded8fdc1c02",
         keyLocation:
-          "https://www.snappy-fix.com/912144dd-3612-4949-9768-fded8fdc1c02.txt",
+          "https://snappy-fix.com/912144dd-3612-4949-9768-fded8fdc1c02.txt",
         urlList: urls,
       }),
     });

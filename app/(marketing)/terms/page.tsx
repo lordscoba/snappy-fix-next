@@ -6,13 +6,13 @@ export const metadata = {
   description:
     "Read the terms and conditions for using Snappy-fix Technologies online tools platform including file processing, usage policies, and service rules.",
   alternates: {
-    canonical: "https://www.snappy-fix.com/terms",
+    canonical: "https://snappy-fix.com/terms",
   },
   openGraph: {
     title: "Terms of Service | Snappy-fix Technologies",
     description:
       "Terms and conditions governing the use of Snappy-fix Technologies online tools and services.",
-    url: "https://www.snappy-fix.com/terms",
+    url: "https://snappy-fix.com/terms",
     siteName: "Snappy-fix Technologies",
     type: "website",
   },
@@ -30,7 +30,7 @@ export default function Terms() {
               "@context": "https://schema.org",
               "@type": "WebPage",
               name: "Terms of Service",
-              url: "https://www.snappy-fix.com/terms",
+              url: "https://snappy-fix.com/terms",
               description:
                 "Terms and conditions governing the use of Snappy-fix Technologies tools platform.",
             },
@@ -38,8 +38,8 @@ export default function Terms() {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Snappy-fix Technologies",
-              url: "https://www.snappy-fix.com",
-              logo: "https://www.snappy-fix.com/logo.png",
+              url: "https://snappy-fix.com",
+              logo: "https://snappy-fix.com/logo.png",
             },
           ]),
         }}
