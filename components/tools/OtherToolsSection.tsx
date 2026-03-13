@@ -82,7 +82,7 @@ export default function OtherToolsSection({
           href="/tools"
           className="px-6 py-3 rounded-full bg-[#5b32b4] text-white font-semibold shadow hover:opacity-90 transition"
         >
-          View All Image Tools →
+          View All Tools →
         </Link>
       </div>
     </section>
