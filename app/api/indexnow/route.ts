@@ -9,11 +9,19 @@ export async function POST(req: Request) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      host: "snappy-fix.com",
+      host: "https://www.snappy-fix.com",
       key: "912144dd-3612-4949-9768-fded8fdc1c02",
+      keyLocation:
+        "https://www.snappy-fix.com/912144dd-3612-4949-9768-fded8fdc1c02.txt",
       urlList: urls,
     }),
   });
 
   return NextResponse.json({ success: true });
 }
+
+// {
+//   "urls": [
+//     "https://snappy-fix.com/tools/base64-to-image"
+//   ]
+// }

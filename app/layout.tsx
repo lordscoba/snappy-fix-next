@@ -6,6 +6,7 @@ import Footer from "../components/Layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import ReduxProvider from "./providers";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.snappy-fix.com"),
@@ -164,6 +165,7 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <ReduxProvider>{children}</ReduxProvider>
         <Footer />
+        <SpeedInsights />
         <Script
           id="structured-data"
           type="application/ld+json"
