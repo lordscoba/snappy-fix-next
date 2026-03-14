@@ -6,10 +6,10 @@ export async function submitToIndexNow(urls: string[]): Promise<void> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        host: "https://snappy-fix.com",
+        host: "https://www.snappy-fix.com",
         key: "912144dd-3612-4949-9768-fded8fdc1c02",
         keyLocation:
-          "https://snappy-fix.com/912144dd-3612-4949-9768-fded8fdc1c02.txt",
+          "https://www.snappy-fix.com/912144dd-3612-4949-9768-fded8fdc1c02.txt",
         urlList: urls,
       }),
     });
@@ -33,6 +33,6 @@ export async function submitToIndexNow(urls: string[]): Promise<void> {
 // import { submitToIndexNow } from "@/lib/indexnow";
 
 // submitToIndexNow([
-//   "https://snappy-fix.com/tools/svg-optimizer",
-//   "https://snappy-fix.com/tools/base64-to-image"
+//   "https://www.snappy-fix.com/tools/svg-optimizer",
+//   "https://www.snappy-fix.com/tools/base64-to-image"
 // ]);

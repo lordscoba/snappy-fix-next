@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { data as portfolios } from "@/data/PortifolioData";
 
 export async function GET() {
-  const site_url = "https://snappy-fix.com";
+  const site_url = "https://www.snappy-fix.com";
 
   const feed = new Feed({
     // Using your official Default Title from Metadata

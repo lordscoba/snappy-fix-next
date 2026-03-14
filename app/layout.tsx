@@ -10,7 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://snappy-fix.com"),
+  metadataBase: new URL("https://www.snappy-fix.com"),
 
   title: {
     default:
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://snappy-fix.com",
+    canonical: "https://www.snappy-fix.com",
     types: {
-      "application/rss+xml": "https://snappy-fix.com/feed.xml",
+      "application/rss+xml": "https://www.snappy-fix.com/feed.xml",
     },
   },
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     },
     description:
       "We design and build scalable web and mobile applications for Nigerian and global businesses.",
-    url: "https://snappy-fix.com",
+    url: "https://www.snappy-fix.com",
     siteName: "Snappy-Fix Technologies",
     locale: "en_NG",
     type: "website",
@@ -137,8 +137,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Snappy-Fix Technologies",
-    url: "https://snappy-fix.com",
-    logo: "https://snappy-fix.com/images/snappy-fix-logo.png",
+    url: "https://www.snappy-fix.com",
+    logo: "https://www.snappy-fix.com/images/snappy-fix-logo.png",
     sameAs: [
       "https://web.facebook.com/p/Snappy-fix-Technologies-100064249260204/?_rdc=1&_rdr#",
     ],

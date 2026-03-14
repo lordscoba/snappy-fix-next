@@ -26,7 +26,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const portfolio = data.find((item) => item.slug === slug);
 
-  const baseUrl = "https://snappy-fix.com";
+  const baseUrl = "https://www.snappy-fix.com";
 
   if (!portfolio) {
     return {

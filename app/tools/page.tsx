@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://snappy-fix.com/tools",
+    canonical: "https://www.snappy-fix.com/tools",
   },
 
   openGraph: {
     title: "Free Online Image Tools | Snappy-fix",
     description:
       "Explore the Snappy-fix toolkit: fast, secure, and professional image tools for developers, designers, and creators. Convert, optimize, and edit images instantly in your browser.",
-    url: "https://snappy-fix.com/tools",
+    url: "https://www.snappy-fix.com/tools",
     type: "website",
     images: [
       {
