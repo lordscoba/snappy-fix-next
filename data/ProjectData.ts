@@ -24,7 +24,7 @@ export const projects: any = [
     excerpt:
       "A full-service technology company delivering scalable web and mobile applications, UI/UX solutions, and post-launch support for businesses and startups.",
     cover: "/images/projects/snappy-fix_project.png",
-    link: "https://snappy-fix.com/",
+    link: "https://www.snappy-fix.com/",
   },
   {
     slug: "house-link-up",

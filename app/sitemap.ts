@@ -7,7 +7,7 @@ import { data as portfolios } from "@/data/PortifolioData";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://snappy-fix.com";
+  const baseUrl = "https://www.snappy-fix.com";
 
   // 1. Individual Tools - Priority 0.8 / Daily
   const toolEntries = tools.map((tool) => ({
