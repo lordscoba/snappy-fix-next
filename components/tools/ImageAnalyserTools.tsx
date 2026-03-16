@@ -148,7 +148,7 @@ export default function ImageAnalyserTools() {
   }, [analysis]);
 
   return (
-    <section className="max-w-5xl mx-auto bg-gradient-to-br from-white to-[#faf7ff] border border-[#e9e1ff] rounded-[2.5rem] p-6 md:p-10 shadow-[0_25px_70px_rgba(91,50,180,0.15)] space-y-8">
+    <section className="max-w-5xl mx-auto bg-gradient-to-br from-white to-[#faf7ff] border border-[#e9e1ff] rounded-[2.5rem] p-3 md:p-10 shadow-[0_25px_70px_rgba(91,50,180,0.15)] space-y-8">
       {/* 1. Upload Section */}
       <div
         onDragOver={(e) => {

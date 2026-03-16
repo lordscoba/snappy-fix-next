@@ -4,6 +4,8 @@ import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import WatermarkTools from "@/components/tools/WatermarkTools";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find((tool) => tool.slug === "image-watermark")!;
 
@@ -116,7 +118,7 @@ export default function ImageWatermarkPage() {
       />
       <ToolTopNav />
 
-      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
+      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-3 py-16 space-y-16">
         {/* Header */}
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
@@ -203,6 +205,12 @@ export default function ImageWatermarkPage() {
 
         {/* Other Tools */}
         <OtherToolsSection currentSlug="image-watermark" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );

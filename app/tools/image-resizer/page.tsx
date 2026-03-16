@@ -5,6 +5,8 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 import { splitTitle } from "@/lib/utils/title";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find((tool) => tool.slug === "image-resizer")!;
 
@@ -221,6 +223,12 @@ export default function ImageResizerPage() {
             </div>
           </div>
         </section>
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );

@@ -4,6 +4,8 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "secure-password-generator",
@@ -117,7 +119,7 @@ export default function SecurePasswordGeneratorPage() {
         }}
       />
       <ToolTopNav />
-      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
+      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-3 py-16 space-y-16">
         {/* Header */}
         <header className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
@@ -161,6 +163,12 @@ export default function SecurePasswordGeneratorPage() {
 
         {/* Other Tools */}
         <OtherToolsSection currentSlug="secure-password-generator" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );

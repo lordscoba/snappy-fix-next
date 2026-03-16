@@ -116,7 +116,7 @@ export default function PasswordGeneratorTools() {
   };
 
   return (
-    <section className="max-w-3xl mx-auto bg-gradient-to-br from-white to-[#f9f6ff] border border-[#e9e1ff] rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(91,50,180,0.15)] space-y-8">
+    <section className="max-w-3xl mx-auto bg-gradient-to-br from-white to-[#f9f6ff] border border-[#e9e1ff] rounded-[2rem] p-5 md:p-12 shadow-[0_20px_60px_rgba(91,50,180,0.15)] space-y-8">
       {/* Header */}
       <div className="text-center space-y-2">
         <h3 className="text-2xl font-bold text-[#5b32b4]">

@@ -4,6 +4,8 @@ import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import GifConverterTools from "@/components/tools/GIFConverterTools";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find((tool) => tool.slug === "gif-maker")!;
 
@@ -216,6 +218,12 @@ export default function GifMakerPage() {
 
         {/* Other Tools */}
         <OtherToolsSection currentSlug="gif-maker" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );

@@ -158,7 +158,7 @@ export default function ImageDPIChangerTools() {
   };
 
   return (
-    <section className="max-w-3xl mx-auto bg-gradient-to-br from-white to-[#f9f6ff] border border-[#e9e1ff] rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(91,50,180,0.15)] space-y-8">
+    <section className="max-w-3xl mx-auto bg-gradient-to-br from-white to-[#f9f6ff] border border-[#e9e1ff] rounded-[2rem] p-4 md:p-12 shadow-[0_20px_60px_rgba(91,50,180,0.15)] space-y-8">
       {/* Mode Switch */}
       <div className="flex gap-4 justify-center">
         <button

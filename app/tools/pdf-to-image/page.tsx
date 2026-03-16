@@ -4,6 +4,8 @@ import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import PDFToImageConverterTools from "@/components/tools/PDFToImageConverterTools";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find((tool) => tool.slug === "pdf-to-image")!;
 
@@ -161,6 +163,12 @@ export default function PdfToImagePage() {
 
         {/* Other Tools */}
         <OtherToolsSection currentSlug="pdf-to-image" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );
