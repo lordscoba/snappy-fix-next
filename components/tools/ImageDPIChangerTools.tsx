@@ -36,7 +36,7 @@ export default function ImageDPIChangerTools() {
   );
 
   const [mode, setMode] = useState<"checker" | "changer">("checker");
-  const [dpi, setDpi] = useState(300);
+  const [dpi, setDpi] = useState<number | "">(300);
 
   const [error, setError] = useState<string | null>(null);
 
@@ -93,7 +93,7 @@ export default function ImageDPIChangerTools() {
             })
           : imageDpiChanger(
               file,
-              { dpi },
+              { dpi: Number(dpi) },
               (progressEvent: AxiosProgressEvent) => {
                 const uploadPercent = Math.round(
                   (progressEvent.loaded * 100) / (progressEvent.total || 1),
@@ -192,9 +192,13 @@ export default function ImageDPIChangerTools() {
           <label className="font-semibold text-gray-600">Target DPI</label>
           <input
             type="number"
+            placeholder=" Input DPI here"
             value={dpi}
-            onChange={(e) => setDpi(Number(e.target.value))}
-            className="border rounded-xl px-4 py-2 w-32"
+            onChange={(e) => {
+              const value = e.target.value;
+              setDpi(value === "" ? "" : Number(value));
+            }}
+            className="border rounded-xl px-4 py-2 w-1/2 text-gray-600"
           />
         </div>
       )}

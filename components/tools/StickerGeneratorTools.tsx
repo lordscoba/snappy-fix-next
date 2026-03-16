@@ -115,7 +115,13 @@ export default function StickerGeneratorTools() {
       dispatch(setProgress(100));
       setResultBlob(response.data);
     } catch (err: any) {
-      setError("Failed to generate sticker. Check file duration or format.");
+      if (processingInterval) clearInterval(processingInterval);
+
+      setError(
+        err?.response?.data?.detail ||
+          err?.message ||
+          "Something went wrong. Please try again.",
+      );
     } finally {
       setTimeout(() => {
         dispatch(stopLoading());
@@ -325,46 +331,95 @@ export default function StickerGeneratorTools() {
                 </div>
 
                 {/* Quality & Reverse Switch */}
-                <div className="flex items-center gap-4">
-                  <select
-                    value={quality}
-                    onChange={(e) => setQuality(e.target.value as any)}
-                    className="flex-grow bg-slate-50 border border-slate-100 py-3 px-4 rounded-2xl text-sm font-bold text-slate-700 outline-none"
-                  >
-                    <option value="hd">Ultra HD</option>
-                    <option value="high">High Quality</option>
-                    <option value="medium">Balanced</option>
-                    <option value="low">Small File</option>
-                  </select>
-
-                  {/* Reverse Switch Icon */}
-                  <button
-                    onClick={() => setReverse(!reverse)}
-                    className={`h-12 w-20 rounded-2xl border transition-all flex items-center justify-center relative ${
-                      reverse
-                        ? "bg-indigo-600 border-indigo-600"
-                        : "bg-slate-100 border-slate-200"
-                    }`}
-                    aria-label="reverse switch"
-                  >
-                    <div
-                      className={`absolute w-8 h-8 rounded-xl flex items-center justify-center transition-all shadow-sm ${
-                        reverse
-                          ? "right-1 bg-white text-indigo-600"
-                          : "left-1 bg-white text-slate-400"
-                      }`}
-                    >
-                      <RefreshCw
-                        size={14}
-                        className={reverse ? "animate-spin-slow" : ""}
-                      />
-                    </div>
-                    <span
-                      className={`text-[9px] font-black absolute ${reverse ? "left-3 text-white" : "right-3 text-slate-400"}`}
-                    >
-                      {reverse ? "ON" : "OFF"}
+                <div className="flex flex-col items-start gap-6 w-full">
+                  {" "}
+                  {/* QUALITY SELECTOR */}
+                  <div className="flex flex-col gap-2 w-full sm:w-auto">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5 px-1">
+                      <span className="text-sm">⚙️</span> Quality Preset
                     </span>
-                  </button>
+
+                    <div className="flex bg-slate-100 p-1 rounded-2xl overflow-x-auto no-scrollbar scroll-smooth">
+                      {[
+                        { label: "Ultra HD", value: "hd", icon: "🖼️" },
+                        { label: "High", value: "high", icon: "⭐" },
+                        { label: "Balanced", value: "medium", icon: "⚖️" },
+                        { label: "Small", value: "low", icon: "📦" },
+                      ].map((option) => (
+                        <button
+                          key={option.value}
+                          onClick={() => setQuality(option.value as any)}
+                          className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 whitespace-nowrap transition-all flex-1 sm:flex-none
+          ${
+            quality === option.value
+              ? "bg-white text-indigo-600 shadow-md ring-1 ring-black/5"
+              : "text-slate-500 hover:text-slate-700 hover:bg-white/50"
+          }`}
+                        >
+                          <span className="text-base leading-none">
+                            {option.icon}
+                          </span>
+                          <span
+                            className={
+                              quality === option.value
+                                ? "opacity-100"
+                                : "opacity-70"
+                            }
+                          >
+                            {option.label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  {/* REVERSE TOGGLE */}
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5 px-1">
+                      <span className="text-sm">🔄</span> Reverse
+                    </span>
+
+                    <button
+                      onClick={() => setReverse(!reverse)}
+                      className={`h-[46px] w-[7rem] rounded-2xl transition-all duration-300 flex items-center relative p-1 group overflow-hidden ${
+                        reverse
+                          ? "bg-indigo-600 shadow-lg shadow-indigo-200"
+                          : "bg-slate-100 border border-slate-200"
+                      }`}
+                      aria-label="reverse switch"
+                    >
+                      {/* Background Text Labels */}
+                      <div className="absolute inset-0 flex items-center justify-between px-3 pointer-events-none">
+                        <span
+                          className={`text-[9px] font-black transition-opacity ${reverse ? "opacity-100 text-white" : "opacity-0"}`}
+                        >
+                          ON
+                        </span>
+                        <span
+                          className={`text-[9px] font-black transition-opacity ${!reverse ? "opacity-100 text-slate-400" : "opacity-0"}`}
+                        >
+                          OFF
+                        </span>
+                      </div>
+
+                      {/* Sliding Knob */}
+                      <div
+                        className={`z-10 w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 ease-out shadow-sm ${
+                          reverse
+                            ? "translate-x-10 bg-white text-indigo-600 rotate-180"
+                            : "translate-x-0 bg-white text-slate-400"
+                        }`}
+                      >
+                        <RefreshCw
+                          size={14}
+                          className={
+                            reverse
+                              ? "animate-spin-slow"
+                              : "group-hover:rotate-45 transition-transform"
+                          }
+                        />
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -407,6 +462,12 @@ export default function StickerGeneratorTools() {
               )}
             </button>
           </div>
+          {/* Error */}
+          {error && (
+            <div className="bg-red-50 border border-red-100 text-red-600 p-4 rounded-2xl text-sm">
+              ⚠️ {error}
+            </div>
+          )}
         </div>
       </div>
 

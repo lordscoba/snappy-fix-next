@@ -81,9 +81,9 @@ export default function ResizeImageTool() {
   const [optimizedBlob, setOptimizedBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // ✅ NEW STATES (only added)
-  const [width, setWidth] = useState<number>(1200);
-  const [height, setHeight] = useState<number>(675);
+  // NEW STATES (only added)
+  const [width, setWidth] = useState<number | "">(1200);
+  const [height, setHeight] = useState<number | "">(675);
   const [keepAspect, setKeepAspect] = useState<boolean>(true);
   const [selectedPreset, setSelectedPreset] = useState<string>("custom");
 
@@ -327,7 +327,11 @@ export default function ResizeImageTool() {
             <input
               type="number"
               value={width}
-              onChange={(e) => setWidth(Number(e.target.value))}
+              placeholder="Input width"
+              onChange={(e) => {
+                const value = e.target.value;
+                setWidth(value === "" ? "" : Number(value));
+              }}
               className="w-full mt-2 border rounded-xl p-3"
             />
           </div>
@@ -339,7 +343,11 @@ export default function ResizeImageTool() {
             <input
               type="number"
               value={height}
-              onChange={(e) => setHeight(Number(e.target.value))}
+              placeholder="Input height"
+              onChange={(e) => {
+                const value = e.target.value;
+                setHeight(value === "" ? "" : Number(value));
+              }}
               className="w-full mt-2 border rounded-xl p-3"
             />
           </div>
