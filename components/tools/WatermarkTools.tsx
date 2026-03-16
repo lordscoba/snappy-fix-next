@@ -46,7 +46,7 @@ export default function WatermarkTools() {
   // Configuration States
   const [wmType, setWmType] = useState<"text" | "image">("text");
   const [text, setText] = useState("Property of Snappy Fix");
-  const [fontSize, setFontSize] = useState(48);
+  const [fontSize, setFontSize] = useState<number | "">(48);
   const [color, setColor] = useState("#ffffff");
   const [wmFile, setWmFile] = useState<File | null>(null);
   const [wmFilePreview, setWmFilePreview] = useState<string | null>(null);
@@ -64,6 +64,7 @@ export default function WatermarkTools() {
   };
   const [opacity, setOpacity] = useState(60);
   const [rotation, setRotation] = useState(0);
+  const normalizedRotation = ((rotation % 360) + 360) % 360;
   const [scale, setScale] = useState(0.3);
   const [compression, setCompression] = useState<"low" | "medium" | "high">(
     "medium",
@@ -128,7 +129,7 @@ export default function WatermarkTools() {
         {
           watermark_type: wmType,
           text: wmType === "text" ? text : undefined,
-          font_size: fontSize,
+          font_size: Number(fontSize),
           color,
           watermark_file: wmType === "image" ? wmFile || undefined : undefined,
           position,
@@ -329,7 +330,11 @@ export default function WatermarkTools() {
                     <input
                       type="number"
                       value={fontSize}
-                      onChange={(e) => setFontSize(Number(e.target.value))}
+                      placeholder="Font size"
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setFontSize(value === "" ? "" : Number(value));
+                      }}
                       className="w-full p-4 bg-slate-50 rounded-2xl border border-slate-100 outline-none"
                     />
                   </div>
@@ -458,34 +463,107 @@ export default function WatermarkTools() {
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Opacity Control with Visual Preview */}
+              <div className="space-y-3">
+                <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase tracking-widest">
                   <span>Opacity</span>
-                  <span>{opacity}%</span>
+                  <span className="text-indigo-600">{opacity}%</span>
                 </div>
-                <input
-                  type="range"
-                  min="10"
-                  max="100"
-                  value={opacity}
-                  onChange={(e) => setOpacity(Number(e.target.value))}
-                  className="w-full accent-indigo-600"
-                />
+
+                <div className="flex items-center gap-3">
+                  {/* Transparency Preview Box */}
+                  <div className="relative w-10 h-10 shrink-0 rounded-lg border border-slate-200 overflow-hidden bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAACBJREFUGFdjZEAD6u7u/8EMJpibm8PE0S6A8mAKYALpBQC96QoFvD8O9AAAAABJRU5ErkJggg==')]">
+                    {/* The Actual Color Layer */}
+                    <div
+                      className="w-full h-full shadow-inner"
+                      style={{
+                        backgroundColor: color,
+                        opacity: opacity / 100,
+                      }}
+                    />
+                  </div>
+
+                  <input
+                    type="range"
+                    min="10"
+                    max="100"
+                    value={opacity}
+                    onChange={(e) => setOpacity(Number(e.target.value))}
+                    className="w-full accent-indigo-600 cursor-pointer h-1.5 bg-slate-100 rounded-lg appearance-none"
+                  />
+                </div>
               </div>
+
+              {/* Rotation Control with Visual Dial */}
               <div className="space-y-2">
-                <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase">
+                <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase tracking-widest">
                   <span>Rotation</span>
-                  <span>{rotation}°</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-indigo-600">{rotation}°</span>
+                  </div>
                 </div>
-                <input
-                  type="range"
-                  min="-180"
-                  max="180"
-                  value={rotation}
-                  onChange={(e) => setRotation(Number(e.target.value))}
-                  className="w-full accent-indigo-600"
-                />
+
+                <div className="flex items-center gap-3">
+                  {/* Visual Rotation Compass */}
+                  <div className="relative w-10 h-10 shrink-0 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center overflow-hidden">
+                    {/* Static Dial Markings */}
+                    <div className="absolute inset-1 border border-dotted border-slate-300 rounded-full" />
+
+                    {/* Rotating Indicator */}
+                    <div className="relative w-12 h-12 shrink-0 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center overflow-visible">
+                      {/* Tick Marks */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        {[...Array(12)].map((_, i) => (
+                          <span
+                            key={i}
+                            className="absolute w-[2px] h-2 bg-slate-300 rounded"
+                            style={{
+                              transform: `rotate(${i * 30}deg) translateY(-20px)`,
+                            }}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Rotating Arrow */}
+                      <div
+                        className="relative w-full h-full flex items-center justify-center transition-transform duration-150 ease-out"
+                        style={{ transform: `rotate(${rotation - 90}deg)` }}
+                      >
+                        {/* Arrow Shaft */}
+                        <div className="w-[2px] h-5 bg-gradient-to-t from-indigo-500 to-[#fb397d] rounded-full" />
+
+                        {/* Arrow Head */}
+                        <div
+                          className="absolute bottom-0 w-0 h-0"
+                          style={{
+                            borderLeft: "6px solid transparent",
+                            borderRight: "6px solid transparent",
+                            borderTop: "10px solid #fb397d",
+                          }}
+                        />
+                      </div>
+
+                      {/* Center Pivot */}
+                      <div className="absolute w-2 h-2 bg-slate-700 rounded-full border border-white shadow" />
+
+                      {/* Degree Label */}
+                      <span className="absolute -bottom-6 text-[11px] font-semibold text-slate-600">
+                        {normalizedRotation}°
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Range Input */}
+                  <input
+                    type="range"
+                    min="-180"
+                    max="180"
+                    value={rotation}
+                    onChange={(e) => setRotation(Number(e.target.value))}
+                    className="w-full accent-indigo-600 cursor-pointer"
+                  />
+                </div>
               </div>
             </div>
 

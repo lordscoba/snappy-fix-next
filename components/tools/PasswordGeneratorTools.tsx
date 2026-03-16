@@ -21,7 +21,7 @@ export default function PasswordGeneratorTools() {
     (state: RootState) => state.loading.globalLoading,
   );
 
-  const [length, setLength] = useState(16);
+  const [length, setLength] = useState<number | "">(16);
   const [uppercase, setUppercase] = useState(true);
   const [lowercase, setLowercase] = useState(true);
   const [numbers, setNumbers] = useState(true);
@@ -75,8 +75,9 @@ export default function PasswordGeneratorTools() {
         }
       }, 120);
 
+      let finalLength: number = length === "" ? 16 : Number(length);
       const response = await passwordGenerator({
-        length,
+        length: finalLength,
         uppercase,
         lowercase,
         numbers,
@@ -137,10 +138,14 @@ export default function PasswordGeneratorTools() {
             </label>
             <input
               type="number"
+              placeholder="e.g. 16"
               min={6}
               max={128}
               value={length}
-              onChange={(e) => setLength(Number(e.target.value))}
+              onChange={(e) => {
+                const value = e.target.value;
+                setLength(value === "" ? "" : Number(value));
+              }}
               className="w-full mt-2 border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#5b32b4]"
             />
           </div>

@@ -42,6 +42,8 @@ export const watermarkImage = async (
 ) => {
   const formData = new FormData();
 
+  let rotation: number;
+
   formData.append("file", file);
   formData.append("watermark_type", options?.watermark_type || "text");
 
@@ -56,8 +58,10 @@ export const watermarkImage = async (
   if (options?.scale) formData.append("scale", options.scale.toString());
   if (options?.position) formData.append("position", options.position);
   if (options?.opacity) formData.append("opacity", options.opacity.toString());
-  if (options?.rotation)
-    formData.append("rotation", options.rotation.toString());
+  if (options?.rotation) {
+    rotation = -options.rotation;
+    formData.append("rotation", rotation.toString());
+  }
   if (options?.compression) formData.append("compression", options.compression);
 
   console.log(JSON.stringify(formDataToJson(formData), null, 2));

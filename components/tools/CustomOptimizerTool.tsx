@@ -29,9 +29,9 @@ export default function CustomOptimizerTool() {
   const [optimizedBlob, setOptimizedBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const [targetKb, setTargetKb] = useState<number | undefined>();
-  const [quality, setQuality] = useState<number>(85);
-  const [resizePercent, setResizePercent] = useState<number | undefined>();
+  const [targetKb, setTargetKb] = useState<number | "">();
+  const [quality, setQuality] = useState<number | "">(85);
+  const [resizePercent, setResizePercent] = useState<number | "">();
 
   /* -------------------- File Handling -------------------- */
 
@@ -76,12 +76,19 @@ export default function CustomOptimizerTool() {
       dispatch(startLoading());
       dispatch(resetProgress());
 
+      const finalQuality =
+        quality === "" ? 85 : Math.min(100, Math.max(1, quality));
+
       const responsePromise = optimizeCustomImage(
         file,
         {
-          target_kb: targetKb,
-          quality,
-          resize_percent: resizePercent,
+          target_kb:
+            targetKb === "" || targetKb === undefined ? undefined : targetKb,
+          quality: finalQuality,
+          resize_percent:
+            resizePercent === "" || resizePercent === undefined
+              ? undefined
+              : resizePercent,
         },
         (progressEvent: AxiosProgressEvent) => {
           const uploadPercent = Math.round(
@@ -113,7 +120,11 @@ export default function CustomOptimizerTool() {
         try {
           const text = await err.response.data.text();
           const json = JSON.parse(text);
-          setError(json.detail || "Optimization failed.");
+          setError(
+            Array.isArray(json.detail)
+              ? json.detail[0]?.msg || "Optimization failed."
+              : json.detail || "Optimization failed.",
+          );
         } catch {
           setError("Optimization failed. Please try again.");
         }
@@ -207,15 +218,23 @@ export default function CustomOptimizerTool() {
           type="number"
           placeholder="Target KB"
           value={targetKb ?? ""}
-          onChange={(e) => setTargetKb(Number(e.target.value))}
+          onChange={(e) => {
+            const value = e.target.value;
+            setTargetKb(value === "" ? "" : Number(value));
+          }}
           disabled={isGlobalLoading}
           className="border-2 border-[#eee] rounded-2xl p-4 focus:border-[#5b32b4] outline-none"
         />
         <input
           type="number"
           placeholder="Quality (1–100)"
-          value={quality}
-          onChange={(e) => setQuality(Number(e.target.value))}
+          value={quality ?? ""}
+          min={1}
+          max={100}
+          onChange={(e) => {
+            const value = e.target.value;
+            setQuality(value === "" ? "" : Number(value));
+          }}
           disabled={isGlobalLoading}
           className="border-2 border-[#eee] rounded-2xl p-4 focus:border-[#5b32b4] outline-none"
         />
@@ -223,7 +242,10 @@ export default function CustomOptimizerTool() {
           type="number"
           placeholder="Resize %"
           value={resizePercent ?? ""}
-          onChange={(e) => setResizePercent(Number(e.target.value))}
+          onChange={(e) => {
+            const value = e.target.value;
+            setResizePercent(value === "" ? "" : Number(value));
+          }}
           disabled={isGlobalLoading}
           className="border-2 border-[#eee] rounded-2xl p-4 focus:border-[#5b32b4] outline-none"
         />
