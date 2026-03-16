@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export const exifScrubber = async (
@@ -9,7 +9,7 @@ export const exifScrubber = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.EXIF_SCRUBBER, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.EXIF_SCRUBBER, formData, {
     responseType: "blob",
     onUploadProgress,
   });

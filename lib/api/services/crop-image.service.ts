@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export const cropImage = async (
@@ -15,7 +15,7 @@ export const cropImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.CROP, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.CROP, formData, {
     responseType: "blob",
     params,
     onUploadProgress,

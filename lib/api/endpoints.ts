@@ -1,3 +1,5 @@
+import { register } from "module";
+
 export const IMAGE_ENDPOINTS = {
   CONVERT: "/convert",
 
@@ -67,4 +69,41 @@ export const IMAGE_ENDPOINTS = {
   // STICKER GENERATOR
   VIDEO_TO_STICKER: "/video-to-sticker",
   IMAGE_TO_STICKER: "/image-to-sticker",
+} as const;
+
+export const WEB_ENDPOINTS = {
+  // Auth
+  register: "/auth/register",
+  login: "/auth/login",
+  refreshToken: "/auth/refresh-token",
+  logout: "/auth/logout",
+
+  // blog
+  blog_list: "/blog/news",
+  blog_details: "/blog/news/",
+  blog_featured: "blog/news/featured",
+  blog_exclusive: "/blog/news/exclusive",
+  // blog_category: "/blog/news/category",
+  blog_search: "/blog/news/search",
+
+  // blog category
+  blog_category_list: "/blog/categories",
+  blog_category_details: "/blog/categories/",
+  blog_category_top: "/blog/categories/top",
+
+  // admin bog
+  admin_login: "/admin/login",
+  admin_blog_list: "/admin/news/",
+  admin_blog_details: "/admin/news/",
+  admin_blog_create: "/admin/news",
+  admin_blog_update: "/admin/news/",
+  admin_blog_delete: "/admin/news/",
+
+  // admin category
+  admin_category_list: "/admin/categories",
+  admin_category_details: "/admin/categories/",
+  admin_category_create: "/admin/categories",
+  admin_category_update: "/admin/categories/",
+  admin_category_delete: "/admin/categories/",
+  admin_category_top: "/admin/categories/top",
 } as const;

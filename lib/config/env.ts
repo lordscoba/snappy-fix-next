@@ -22,8 +22,11 @@ export function getAppEnv(): AppEnv {
   return "development";
 }
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
-if (!API_BASE_URL) {
-  throw new Error("NEXT_PUBLIC_API_URL is not defined");
+export const MAIN_API_BASE_URL =
+  process.env.NEXT_PUBLIC_GOLANG_API_BASE_URL ?? "";
+
+if (!API_BASE_URL || !MAIN_API_BASE_URL) {
+  console.error("Missing API base URLs in environment variables");
 }

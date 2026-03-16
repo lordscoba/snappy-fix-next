@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export interface ImageAnalysisResponse {
@@ -37,11 +37,11 @@ export const analyzeImage = async (
   formData.append("file", file);
 
   // --- ADD THIS LOG ---
-  console.log("DEBUG: API Base URL is:", apiClient.defaults.baseURL);
+  console.log("DEBUG: API Base URL is:", clients.fastapi.defaults.baseURL);
   console.log("DEBUG: Full Endpoint is:", IMAGE_ENDPOINTS.ANALYZE);
   // --------------------
 
-  return apiClient.post<ImageAnalysisResponse>(
+  return clients.fastapi.post<ImageAnalysisResponse>(
     IMAGE_ENDPOINTS.ANALYZE,
     formData,
     { onUploadProgress },

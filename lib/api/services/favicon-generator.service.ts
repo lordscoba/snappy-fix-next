@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export const faviconGenerator = async (
@@ -14,7 +14,7 @@ export const faviconGenerator = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.FAVICON, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.FAVICON, formData, {
     responseType: "blob",
     params, // 👈 query params added here
     onUploadProgress,

@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export type WatermarkPosition =
@@ -66,7 +66,7 @@ export const watermarkImage = async (
 
   console.log(JSON.stringify(formDataToJson(formData), null, 2));
 
-  return apiClient.post(IMAGE_ENDPOINTS.WATERMARK_IMAGE, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.WATERMARK_IMAGE, formData, {
     params,
     responseType: "blob",
     onUploadProgress,
