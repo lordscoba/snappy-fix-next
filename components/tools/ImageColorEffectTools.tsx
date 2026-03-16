@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startLoading, stopLoading } from "@/store/slices/loadingSlices";
 import {
@@ -74,6 +74,7 @@ export default function ImageColorEffectTools() {
     ImageColorPreset | undefined
   >();
   const [activeLut, setActiveLut] = useState<LutFilterType | undefined>();
+  const downloadRef = useRef<HTMLDivElement | null>(null);
 
   const handleFile = (selectedFile: File) => {
     if (!selectedFile.type.startsWith("image/")) {
@@ -168,8 +169,19 @@ export default function ImageColorEffectTools() {
     setActiveLut(undefined);
   };
 
+  useEffect(() => {
+    if (resultBlob && !isGlobalLoading) {
+      setTimeout(() => {
+        downloadRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 100);
+    }
+  }, [resultBlob, isGlobalLoading]);
+
   return (
-    <section className="max-w-[1400px] mx-auto px-4 py-8 lg:py-12">
+    <section className="max-w-[1400px] mx-auto px-2 py-8 lg:py-12">
       <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
         {/* LEFT: Workbench / Preview Section */}
         <div className="lg:col-span-8 flex flex-col gap-8">
@@ -205,7 +217,7 @@ export default function ImageColorEffectTools() {
                 />
 
                 {/* Overlay Controls */}
-                <div className="absolute top-8 right-8 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-8 right-8 flex gap-3 group-hover:opacity-100 transition-opacity">
                   <button
                     onClick={() => {
                       setFile(null);
@@ -219,6 +231,19 @@ export default function ImageColorEffectTools() {
                   </button>
                 </div>
 
+                {/* Download Icon */}
+                {resultBlob && !isGlobalLoading && (
+                  <button
+                    onClick={() =>
+                      downloadBlob(resultBlob!, `snappy-grade-${Date.now()}`)
+                    }
+                    className="absolute bottom-8 right-8 p-4 bg-white/10 hover:bg-indigo-600 text-white rounded-2xl backdrop-blur-xl transition-all shadow-xl"
+                    aria-label="download result"
+                  >
+                    <Download size={22} />
+                  </button>
+                )}
+
                 {isGlobalLoading && (
                   <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-md flex flex-col items-center justify-center text-white p-8 animate-in fade-in duration-300">
                     <div className="relative w-24 h-24 mb-8">
@@ -227,18 +252,62 @@ export default function ImageColorEffectTools() {
                         <span className="text-2xl font-black">{progress}%</span>
                       </div>
                     </div>
+
                     <div className="w-64 bg-white/10 h-1.5 rounded-full overflow-hidden">
                       <div
                         className="bg-indigo-500 h-full transition-all duration-300 ease-out"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
+
                     <p className="mt-6 text-sm font-black uppercase tracking-[0.2em] text-indigo-300">
                       Applying Color Science
                     </p>
                   </div>
                 )}
               </div>
+              // <div className="relative w-full h-full p-6 flex items-center justify-center group">
+              //   <img
+              //     src={resultBlob ? URL.createObjectURL(resultBlob) : preview!}
+              //     className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl transition-all duration-700"
+              //     alt="Workbench"
+              //   />
+
+              //   {/* Overlay Controls */}
+              //   <div className="absolute top-8 right-8 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+              //     <button
+              //       onClick={() => {
+              //         setFile(null);
+              //         setResultBlob(null);
+              //         resetAdjustments();
+              //       }}
+              //       className="p-4 bg-white/10 hover:bg-red-500 text-white rounded-2xl backdrop-blur-xl transition-all"
+              //       aria-label="reset image"
+              //     >
+              //       <Trash2 size={20} />
+              //     </button>
+              //   </div>
+
+              //   {isGlobalLoading && (
+              //     <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-md flex flex-col items-center justify-center text-white p-8 animate-in fade-in duration-300">
+              //       <div className="relative w-24 h-24 mb-8">
+              //         <RefreshCw className="w-full h-full text-indigo-400 animate-spin-slow opacity-20" />
+              //         <div className="absolute inset-0 flex items-center justify-center">
+              //           <span className="text-2xl font-black">{progress}%</span>
+              //         </div>
+              //       </div>
+              //       <div className="w-64 bg-white/10 h-1.5 rounded-full overflow-hidden">
+              //         <div
+              //           className="bg-indigo-500 h-full transition-all duration-300 ease-out"
+              //           style={{ width: `${progress}%` }}
+              //         />
+              //       </div>
+              //       <p className="mt-6 text-sm font-black uppercase tracking-[0.2em] text-indigo-300">
+              //         Applying Color Science
+              //       </p>
+              //     </div>
+              //   )}
+              // </div>
             )}
           </div>
 

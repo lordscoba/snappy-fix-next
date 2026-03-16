@@ -4,6 +4,8 @@ import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import PDFCompressorTools from "@/components/tools/PDFCompressorTools";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find((tool) => tool.slug === "compress-pdf")!;
 
@@ -204,6 +206,12 @@ export default function CompressPDFPage() {
 
         {/* Other Tools */}
         <OtherToolsSection currentSlug="compress-pdf" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );

@@ -4,6 +4,8 @@ import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "optimize-seo-responsive-image",
@@ -155,6 +157,12 @@ export default function SeoResponsiveOptimizerPage() {
         </section>
 
         <OtherToolsSection currentSlug="optimize-seo-responsive-image" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );

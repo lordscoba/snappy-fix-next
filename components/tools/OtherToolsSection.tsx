@@ -13,8 +13,8 @@ type Props = {
 
 export default function OtherToolsSection({
   currentSlug,
-  title = "Explore Other Free Tools",
-  limit = 4,
+  title = "Other Related Free Tools",
+  limit = 10,
 }: Props) {
   // Seeded shuffle (stable per day)
   const shuffleWithSeed = (array: typeof tools, seed: number) => {

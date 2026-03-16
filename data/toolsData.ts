@@ -658,6 +658,52 @@ export const tools = [
       "convert image to 300 dpi",
       "change photo resolution dpi",
       "dpi changer online",
+
+      // High intent queries from Search Console
+      "dpi changer",
+      "dpi converter",
+      "image dpi converter online",
+      "photo dpi converter",
+      "jpeg dpi converter",
+      "jpeg to dpi converter",
+      "change image dpi online",
+      "change photo dpi online",
+
+      // Question based keywords (very good for SEO)
+      "how to change image dpi",
+      "how to change dpi of an image",
+      "how do you change the dpi of an image",
+      "how do i change dpi of an image",
+      "how to change dpi of photo",
+      "how to adjust dpi of an image",
+      "how to change picture dpi",
+      "how to change dpi on image",
+
+      // Action intent keywords
+      "increase image dpi",
+      "increase image dpi online",
+      "reduce image dpi",
+      "reduce dpi of image",
+      "resize image dpi",
+      "adjust dpi of image",
+
+      // Format specific keywords
+      "change dpi of jpeg",
+      "change dpi of png",
+      "change dpi of photo",
+      "change dpi of picture",
+
+      // Printing intent keywords
+      "convert image to 300 dpi",
+      "make image 300 dpi",
+      "set photo to 300 dpi",
+      "prepare image for printing dpi",
+
+      // Tool style keywords
+      "dpi adjuster",
+      "photo size dpi editor",
+      "online dpi editor",
+      "image dpi tool",
     ],
   },
 

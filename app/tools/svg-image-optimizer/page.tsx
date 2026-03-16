@@ -5,6 +5,8 @@ import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
 import { splitTitle } from "@/lib/utils/title";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find((tool) => tool.slug === "svg-image-optimizer")!;
 
@@ -161,6 +163,12 @@ export default function SVGImageOptimizerPage() {
         </section>
 
         <OtherToolsSection currentSlug="svg-image-optimizer" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
 
         <section className="max-w-4xl mx-auto space-y-6">
           <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />

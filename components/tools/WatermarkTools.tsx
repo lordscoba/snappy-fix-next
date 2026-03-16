@@ -51,12 +51,24 @@ export default function WatermarkTools() {
   const [wmFile, setWmFile] = useState<File | null>(null);
   const [wmFilePreview, setWmFilePreview] = useState<string | null>(null);
   const [position, setPosition] = useState<WatermarkPosition>("bottom-right");
+  const positions: Record<string, WatermarkPosition | null> = {
+    "1-1": "top-left",
+    "1-2": null,
+    "1-3": "top-right",
+    "2-1": null,
+    "2-2": "center",
+    "2-3": null,
+    "3-1": "bottom-left",
+    "3-2": null,
+    "3-3": "bottom-right",
+  };
   const [opacity, setOpacity] = useState(60);
   const [rotation, setRotation] = useState(0);
   const [scale, setScale] = useState(0.3);
   const [compression, setCompression] = useState<"low" | "medium" | "high">(
     "medium",
   );
+  const downloadRef = useRef<HTMLDivElement | null>(null);
 
   const quickSwatches = [
     "#FFFFFF", // White
@@ -172,8 +184,18 @@ export default function WatermarkTools() {
     }
   };
 
+  useEffect(() => {
+    if (resultBlob && !isGlobalLoading) {
+      setTimeout(() => {
+        downloadRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 100);
+    }
+  }, [resultBlob, isGlobalLoading]);
   return (
-    <section className="max-w-6xl mx-auto space-y-8 p-4">
+    <section className="max-w-6xl mx-auto space-y-8 p-1">
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         {/* LEFT: Preview Panel */}
         <div className="lg:col-span-7 flex flex-col gap-6">
@@ -229,7 +251,10 @@ export default function WatermarkTools() {
           </div>
 
           {resultBlob && !isGlobalLoading && (
-            <div className="bg-indigo-600 rounded-[2.5rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-indigo-200 animate-in slide-in-from-bottom-4">
+            <div
+              ref={downloadRef}
+              className="bg-indigo-600 rounded-[2.5rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-indigo-200 animate-in slide-in-from-bottom-4"
+            >
               <div className="flex items-center gap-5">
                 <div className="p-4 bg-white/20 rounded-2xl">
                   <ShieldCheck size={32} />
@@ -308,22 +333,27 @@ export default function WatermarkTools() {
                       className="w-full p-4 bg-slate-50 rounded-2xl border border-slate-100 outline-none"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 w-full">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1">
                       <Palette size={10} /> Hex Color
                     </label>
-                    <div className="flex gap-2">
+
+                    <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+                      {/* Color Picker */}
                       <input
                         type="color"
                         value={color}
                         onChange={(e) => setColor(e.target.value)}
-                        className="h-14 w-14 p-1 bg-slate-50 border border-slate-100 rounded-xl cursor-pointer"
+                        className="h-12 w-full sm:w-14 sm:h-14 p-1 bg-slate-50 border border-slate-100 rounded-xl cursor-pointer"
                       />
+
+                      {/* Hex Input */}
                       <input
                         type="text"
                         value={color}
                         onChange={(e) => setColor(e.target.value)}
-                        className="flex-1 p-4 bg-slate-50 border border-slate-100 rounded-2xl text-xs font-mono uppercase"
+                        className="flex-1 w-full p-3 sm:p-4 bg-slate-50 border border-slate-100 rounded-2xl text-xs font-mono uppercase"
+                        placeholder="#000000"
                       />
                     </div>
                   </div>
@@ -339,7 +369,8 @@ export default function WatermarkTools() {
                       <button
                         key={swatch}
                         onClick={() => setColor(swatch)}
-                        className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${color === swatch ? "border-indigo-600" : "border-transparent"}`}
+                        className={`w-8 h-8 rounded-full border transition-all duration-200 hover:scale-110 shadow-sm
+  ${color === swatch ? "ring-2 ring-[#5b32b4] ring-offset-2 shadow-md" : "border-transparent"}`}
                         style={{ backgroundColor: swatch }}
                         title={swatch}
                         aria-label={swatch}
@@ -399,31 +430,34 @@ export default function WatermarkTools() {
               </div>
             )}
 
-            <div className="space-y-4">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+            <div className="space-y-2">
+              <label className="text-[10px] font-black text-slate-400 tracking-widest flex items-center gap-2">
                 <Maximize2 size={12} /> Grid Position
               </label>
-              <div className="grid grid-cols-3 gap-2">
-                {[
-                  "top-left",
-                  "top-right",
-                  "center",
-                  "bottom-left",
-                  "bottom-right",
-                ].map((pos) => (
-                  <button
-                    key={pos}
-                    onClick={() => setPosition(pos as WatermarkPosition)}
-                    className={`py-3 text-[9px] font-black uppercase rounded-xl border transition-all ${position === pos ? "border-indigo-600 bg-indigo-50 text-indigo-600" : "border-slate-100 bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
-                    aria-label={pos}
-                    title={pos}
-                  >
-                    {pos.replace("-", " ")}
-                  </button>
-                ))}
+
+              <div className="w-full h-48 mx-auto grid grid-cols-3 grid-rows-3 gap-2 p-3 bg-slate-50 border rounded-xl">
+                {Object.entries(positions).map(([key, pos]) =>
+                  pos ? (
+                    <button
+                      key={key}
+                      onClick={() => setPosition(pos)}
+                      className={`text-[10px] font-bold rounded-lg border transition-all
+              ${
+                position === pos
+                  ? "border-[#5b32b4] bg-[#5b32b4]/10 text-[#5b32b4]"
+                  : "border-slate-200 bg-white text-slate-400 hover:bg-slate-100"
+              }`}
+                      title={pos}
+                      aria-label={pos}
+                    >
+                      {pos}
+                    </button>
+                  ) : (
+                    <div key={key} />
+                  ),
+                )}
               </div>
             </div>
-
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
                 <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase">

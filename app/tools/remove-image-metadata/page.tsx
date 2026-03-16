@@ -4,6 +4,8 @@ import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import ExifScrubberTools from "@/components/tools/ExifScrubberTools";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
+import RandomToolsSection from "@/components/tools/RandomToolsSection";
+import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "remove-image-metadata",
@@ -162,6 +164,12 @@ export default function RemoveImageMetadataPage() {
 
         {/* Other Tools */}
         <OtherToolsSection currentSlug="remove-image-metadata" />
+
+        {/* Random tools */}
+        <RandomToolsSection />
+
+        {/* Categories */}
+        <ToolCategoriesSection />
       </section>
     </main>
   );

@@ -86,7 +86,7 @@ export default function ImageDPICheckerTools() {
 
   return (
     <section className="max-w-4xl mx-auto space-y-8">
-      <div className="bg-white border border-[#e9e1ff] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(91,50,180,0.1)]">
+      <div className="bg-white border border-[#e9e1ff] rounded-[2.5rem] p-4 md:p-12 shadow-[0_20px_60px_rgba(91,50,180,0.1)]">
         {!dpiData ? (
           <div className="space-y-8">
             <div className="text-center space-y-2">
