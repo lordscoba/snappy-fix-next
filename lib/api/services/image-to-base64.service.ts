@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export interface ImageToBase64Response {
@@ -15,7 +15,7 @@ export const imageToBase64 = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post<ImageToBase64Response>(
+  return clients.fastapi.post<ImageToBase64Response>(
     IMAGE_ENDPOINTS.IMAGE_TO_BASE64,
     formData,
     {

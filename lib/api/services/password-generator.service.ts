@@ -1,4 +1,4 @@
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export type PasswordGeneratorResponse = {
@@ -16,7 +16,7 @@ export const passwordGenerator = async (params?: {
   symbols?: boolean;
   exclude_chars?: string;
 }) => {
-  return apiClient.get<PasswordGeneratorResponse>(
+  return clients.fastapi.get<PasswordGeneratorResponse>(
     IMAGE_ENDPOINTS.PASSWORD_GENERATOR,
     {
       params,

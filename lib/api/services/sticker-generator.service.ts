@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 // VIDEO → STICKER
@@ -17,7 +17,7 @@ export const videoToSticker = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.VIDEO_TO_STICKER, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.VIDEO_TO_STICKER, formData, {
     responseType: "blob",
     params,
     onUploadProgress,
@@ -31,7 +31,7 @@ export const imageToSticker = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.IMAGE_TO_STICKER, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.IMAGE_TO_STICKER, formData, {
     responseType: "blob",
     onUploadProgress,
   });

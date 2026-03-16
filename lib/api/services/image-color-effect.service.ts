@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export type ImageColorPreset =
@@ -43,7 +43,7 @@ export const imageColorEffect = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.IMAGE_COLOR_EFFECT, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.IMAGE_COLOR_EFFECT, formData, {
     params,
     responseType: "blob",
     onUploadProgress,

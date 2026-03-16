@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export const compressPdf = async (
@@ -12,7 +12,7 @@ export const compressPdf = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.PDF_COMPRESS, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.PDF_COMPRESS, formData, {
     responseType: "blob",
     params,
     onUploadProgress,
@@ -30,7 +30,7 @@ export const compressPdfPro = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.PDF_COMPRESS_PRO, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.PDF_COMPRESS_PRO, formData, {
     responseType: "blob",
     params,
     onUploadProgress,

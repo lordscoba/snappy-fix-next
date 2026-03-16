@@ -1,4 +1,4 @@
-import { apiClient } from "@/lib/api/client";
+import { clients } from "@/lib/api/client";
 import { AxiosProgressEvent } from "axios";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
@@ -14,7 +14,7 @@ export const optimizeTwitterImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.OPTIMIZE_TWITTER, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.OPTIMIZE_TWITTER, formData, {
     responseType: "blob", // IMPORTANT if backend returns file
     onUploadProgress,
   });
@@ -27,7 +27,7 @@ export const optimizeInstagramImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.OPTIMIZE_INSTAGRAM, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.OPTIMIZE_INSTAGRAM, formData, {
     responseType: "blob",
     onUploadProgress,
   });
@@ -40,10 +40,14 @@ export const optimizeYouTubeThumbnail = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.OPTIMIZE_YOUTUBE_THUMBNAIL, formData, {
-    responseType: "blob",
-    onUploadProgress,
-  });
+  return clients.fastapi.post(
+    IMAGE_ENDPOINTS.OPTIMIZE_YOUTUBE_THUMBNAIL,
+    formData,
+    {
+      responseType: "blob",
+      onUploadProgress,
+    },
+  );
 };
 
 export const optimizeWhatsAppImage = async (
@@ -53,7 +57,7 @@ export const optimizeWhatsAppImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.OPTIMIZE_WHATSAPP, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.OPTIMIZE_WHATSAPP, formData, {
     responseType: "blob",
     onUploadProgress,
   });
@@ -66,7 +70,7 @@ export const optimizeWebImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.OPTIMIZE_WEB, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.OPTIMIZE_WEB, formData, {
     responseType: "blob",
     onUploadProgress,
   });
@@ -79,10 +83,14 @@ export const optimizeSeoResponsiveImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.OPTIMIZE_SEO_RESPONSIVE, formData, {
-    responseType: "blob",
-    onUploadProgress,
-  });
+  return clients.fastapi.post(
+    IMAGE_ENDPOINTS.OPTIMIZE_SEO_RESPONSIVE,
+    formData,
+    {
+      responseType: "blob",
+      onUploadProgress,
+    },
+  );
 };
 
 export const optimizeCustomImage = async (
@@ -97,7 +105,7 @@ export const optimizeCustomImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.OPTIMIZE_CUSTOM, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.OPTIMIZE_CUSTOM, formData, {
     params: {
       target_kb: options?.target_kb,
       quality: options?.quality ?? 85,

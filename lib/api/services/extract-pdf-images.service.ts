@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export const extractPdfImages = async (
@@ -9,7 +9,7 @@ export const extractPdfImages = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.EXTRACT_PDF_IMAGES, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.EXTRACT_PDF_IMAGES, formData, {
     responseType: "blob",
     onUploadProgress,
   });

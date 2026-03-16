@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 // Inside your service file
@@ -21,7 +21,7 @@ export const imageDpiChanger = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.IMAGE_DPI_CHANGER, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.IMAGE_DPI_CHANGER, formData, {
     responseType: "blob",
     params,
     onUploadProgress,
@@ -35,7 +35,7 @@ export const imageDpiChecker = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post<ImageDpiCheckerResponse>(
+  return clients.fastapi.post<ImageDpiCheckerResponse>(
     IMAGE_ENDPOINTS.IMAGE_DPI_CHECKER,
     formData,
     {

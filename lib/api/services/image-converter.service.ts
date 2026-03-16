@@ -1,4 +1,4 @@
-import { apiClient } from "@/lib/api/client";
+import { clients } from "@/lib/api/client";
 import { AxiosProgressEvent } from "axios";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
@@ -10,7 +10,7 @@ export const convertImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.CONVERT, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.CONVERT, formData, {
     params: { target_format: targetFormat },
     responseType: "blob",
     onUploadProgress,

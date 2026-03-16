@@ -1,5 +1,5 @@
 import { AxiosProgressEvent } from "axios";
-import { apiClient } from "../client";
+import { clients } from "../client";
 import { IMAGE_ENDPOINTS } from "../endpoints";
 
 export const heicToImage = async (
@@ -12,7 +12,7 @@ export const heicToImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.HEIC_TO_IMAGE, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.HEIC_TO_IMAGE, formData, {
     responseType: "blob",
     params,
     onUploadProgress,
@@ -29,7 +29,7 @@ export const imageToHeic = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  return apiClient.post(IMAGE_ENDPOINTS.IMAGE_TO_HEIC, formData, {
+  return clients.fastapi.post(IMAGE_ENDPOINTS.IMAGE_TO_HEIC, formData, {
     responseType: "blob",
     params,
     onUploadProgress,
