@@ -76,32 +76,6 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
     }
   }, [slug]);
 
-  // ─── JSON-LD structured data ──────────────────────────────
-  const buildJsonLd = (p: News) => ({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: p.meta_title || p.title,
-    description: p.meta_desc || "",
-    image: p.thumbnail_url || "",
-    datePublished: p.created_at || p.updated_at,
-    dateModified: p.updated_at,
-    author: {
-      "@type": "Organization",
-      name: "Snappy‑Fix Technologies",
-      url: "https://www.snappy-fix.com",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Snappy‑Fix Technologies",
-      url: "https://www.snappy-fix.com",
-    },
-    keywords: p.tags || "",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://www.snappy-fix.com/blog/${p.slug}`,
-    },
-  });
-
   useEffect(() => {
     fetchPost();
     fetchSidebarData();
@@ -151,12 +125,6 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
 
   return (
     <>
-      {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(post)) }}
-      />
-
       {/* ── Hero Banner ────────────────────────────────────── */}
       <section className="relative w-full h-[55vh] min-h-[420px] max-h-[600px] overflow-hidden  mt-28 md:mt-32">
         <Image
