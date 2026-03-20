@@ -1,4 +1,4 @@
-import AdminShell from "../../components/admin/AdminShell";
+import AdminShell from "../../components/Layout/AdminShell";
 import StatCard from "../../components/admin/StatCard";
 
 export default function AdminHome() {
@@ -7,7 +7,7 @@ export default function AdminHome() {
       title="Dashboard"
       subtitle="Overview of recent activity and platform health."
     >
-      <section className="grid gap-6 md:grid-cols-3">
+      <section className="grid gap-6 md:grid-cols-3 my-4">
         <StatCard label="Active Projects" value="12" trend="+3 this week" />
         <StatCard label="New Requests" value="46" trend="+12 today" />
         <StatCard label="Revenue" value="$18.4k" trend="+8%" />

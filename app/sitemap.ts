@@ -1,13 +1,22 @@
 import { MetadataRoute } from "next";
 import { tools } from "@/data/toolsData";
 import { toolCategories } from "@/data/toolsCategoryData";
-import { posts } from "@/data/BlogData";
+import { fetchAllPublishedPosts } from "@/lib/api/services/blog.service";
+import { News } from "@/types/blog-types";
 import { data as portfolios } from "@/data/PortifolioData";
 
-export const dynamic = "force-static";
+export const revalidate = 3600;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.snappy-fix.com";
+
+  // ── Fetch all published posts from API ─────────────────────
+  let allPosts: News[] = [];
+  try {
+    allPosts = await fetchAllPublishedPosts();
+  } catch {
+    // sitemap still generates without blog entries
+  }
 
   // 1. Individual Tools - Priority 0.8 / Daily
   const toolEntries = tools.map((tool) => ({
@@ -26,10 +35,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  // 3. Blog Posts - Priority 0.7 / Weekly
-  const blogEntries = posts.map((post) => ({
+  const blogEntries = allPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: post.updated_at
+      ? new Date(post.updated_at)
+      : new Date(post.created_at),
+    changeFrequency: "weekly" as const,
+    priority: post.is_featured ? 0.9 : 0.8, // featured posts rank higher
+  }));
+
+  // ── Blog category pages ────────────────────────────────────
+  const blogCategoryEntries = Array.from(
+    new Map(
+      allPosts
+        .filter((p) => p.category?.id && p.category?.name)
+        .map((p) => [p.category.id, p.category]),
+    ).values(),
+  ).map((category) => ({
+    url: `${baseUrl}/blog/list?category=${category.id}`,
+    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
@@ -44,6 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 4. Static Pages - Matching your custom transform logic
   const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog/list`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -86,6 +116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPages,
     ...toolEntries,
     ...categoryEntries,
+    ...blogCategoryEntries,
     ...blogEntries,
     ...portfolioEntries,
   ];

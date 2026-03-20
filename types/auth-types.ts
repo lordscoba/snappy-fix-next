@@ -1,3 +1,5 @@
+import { ApiResponse } from "./base-response";
+
 export type User = {
   id: string;
   first_name: string;
@@ -23,14 +25,9 @@ export type RegisterRequest = {
   phone_number: string;
 };
 
-export type RegisterResponse = {
-  status: string;
-  code: number;
-  message: string;
-  data: {
-    user: User;
-  };
-};
+export type RegisterResponse = ApiResponse<{
+  user: User;
+}>;
 
 /* ---------------- LOGIN ---------------- */
 
@@ -39,22 +36,17 @@ export type LoginRequest = {
   password: string;
 };
 
-export type LoginResponse = {
-  status: string;
-  code: number;
-  message: string;
-  data: {
-    access_token: string;
-    access_token_expires_in: number;
-    refresh_token: string;
-    refresh_token_expires_in: number;
-    refresh_jti: string;
-    token_type: string;
-    device_token: string;
-    device_type: string;
-    user: User;
-  };
-};
+export type LoginResponse = ApiResponse<{
+  access_token: string;
+  access_token_expires_in: number;
+  refresh_token: string;
+  refresh_token_expires_in: number;
+  refresh_jti: string;
+  token_type: string;
+  device_token: string;
+  device_type: string;
+  user: User;
+}>;
 
 /* ---------------- REFRESH TOKEN ---------------- */
 
@@ -63,24 +55,14 @@ export type RefreshTokenRequest = {
   refresh_token: string;
 };
 
-export type RefreshTokenResponse = {
-  status: string;
-  code: number;
-  message: string;
-  data: {
-    access_token: string;
-    access_token_expires_in: number;
-    refresh_jti: string;
-    refresh_token: string;
-    refresh_token_expires_in: number;
-  };
-};
+export type RefreshTokenResponse = ApiResponse<{
+  access_token: string;
+  access_token_expires_in: number;
+  refresh_jti: string;
+  refresh_token: string;
+  refresh_token_expires_in: number;
+}>;
 
 /* ---------------- LOGOUT ---------------- */
 
-export type LogoutResponse = {
-  status: string;
-  code: number;
-  message: string;
-  data: {};
-};
+export type LogoutResponse = ApiResponse<Record<string, never>>;

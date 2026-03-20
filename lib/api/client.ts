@@ -1,11 +1,12 @@
-import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
-
+import axios, {
+  AxiosInstance,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { API_BASE_URL, MAIN_API_BASE_URL } from "../config/env";
 import { tokenStorage } from "@/lib/utils/tokenStorage";
 import { WEB_ENDPOINTS } from "./endpoints";
 import { RefreshTokenResponse } from "@/types/auth-types";
-
-/* ---------------- CLIENTS ---------------- */
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -17,108 +18,100 @@ const mainApiClient = axios.create({
   timeout: 240000,
 });
 
-/* ---------------- REQUEST INTERCEPTOR ---------------- */
-
 const requestInterceptor = (config: InternalAxiosRequestConfig) => {
   const token = tokenStorage.getAccessToken();
-
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 };
 
 apiClient.interceptors.request.use(requestInterceptor);
 mainApiClient.interceptors.request.use(requestInterceptor);
 
-/* ---------------- RESPONSE INTERCEPTOR ---------------- */
-
 let isRefreshing = false;
 type QueueItem = {
   resolve: (token: string) => void;
   reject: (error: any) => void;
 };
-
 let failedQueue: QueueItem[] = [];
 
 const processQueue = (error: any, token: string | null = null) => {
   failedQueue.forEach((prom) => {
     if (error) prom.reject(error);
-    else if (token !== null) prom.resolve(token);
-    else prom.resolve(""); // Handle the case when token is null
+    else prom.resolve(token ?? "");
   });
-
   failedQueue = [];
 };
 
-const responseSuccess = (response: AxiosResponse) => response;
+// ✅ Factory — each client gets its OWN response interceptor
+//    so retries go back through the SAME client that made the original request
+const attachResponseInterceptor = (client: AxiosInstance) => {
+  client.interceptors.response.use(
+    (response: AxiosResponse) => response,
+    async (error: any) => {
+      const originalRequest = error.config;
 
-const responseError = async (error: any) => {
-  const originalRequest = error.config as InternalAxiosRequestConfig & {
-    _retry?: boolean;
-  };
+      if (error.response?.status !== 401 || originalRequest._retry) {
+        return Promise.reject(error);
+      }
 
-  if (
-    error.response?.status === 401 &&
-    !originalRequest._retry &&
-    !originalRequest.url?.includes(WEB_ENDPOINTS.refreshToken)
-  ) {
-    if (isRefreshing) {
-      return new Promise((resolve, reject) => {
-        failedQueue.push({ resolve, reject });
-      })
-        .then((token) => {
-          originalRequest.headers.Authorization = `Bearer ${token}`;
-          return axios(originalRequest);
+      // ✅ Exact match — not includes() — prevents false positives
+      const isRefreshCall = originalRequest.url === WEB_ENDPOINTS.refreshToken;
+      if (isRefreshCall) {
+        tokenStorage.clearTokens();
+        if (typeof window !== "undefined") window.location.href = "/login";
+        return Promise.reject(error);
+      }
+
+      if (isRefreshing) {
+        // ✅ Queue the request and retry with new token when refresh completes
+        return new Promise<string>((resolve, reject) => {
+          failedQueue.push({ resolve, reject });
         })
-        .catch((err) => Promise.reject(err));
-    }
+          .then((token) => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            return client(originalRequest); // ✅ same client
+          })
+          .catch((err) => Promise.reject(err));
+      }
 
-    originalRequest._retry = true;
-    isRefreshing = true;
+      originalRequest._retry = true;
+      isRefreshing = true;
 
-    try {
-      const refreshToken = tokenStorage.getRefreshToken();
-      const refreshJti = tokenStorage.getRefreshJti();
+      try {
+        const rfToken = tokenStorage.getRefreshToken();
+        const rfJti = tokenStorage.getRefreshJti();
 
-      const response = await apiClient.post<RefreshTokenResponse>(
-        WEB_ENDPOINTS.refreshToken,
-        {
-          refresh_jti: refreshJti,
-          refresh_token: refreshToken,
-        },
-      );
+        if (!rfToken || !rfJti) {
+          throw new Error("No refresh token available");
+        }
 
-      const newAccessToken = response.data.data.access_token;
-      const newRefreshToken = response.data.data.refresh_token;
-      const newRefreshJti = response.data.data.refresh_jti;
+        // ✅ Always use mainApiClient for refresh — it's a golang endpoint
+        const response = await mainApiClient.post<RefreshTokenResponse>(
+          WEB_ENDPOINTS.refreshToken,
+          { refresh_jti: rfJti, refresh_token: rfToken },
+        );
 
-      tokenStorage.setTokens(newAccessToken, newRefreshToken, newRefreshJti);
+        const { access_token, refresh_token, refresh_jti } = response.data.data;
 
-      processQueue(null, newAccessToken);
+        tokenStorage.setTokens(access_token, refresh_token, refresh_jti);
+        processQueue(null, access_token);
 
-      originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-
-      return axios(originalRequest);
-    } catch (err) {
-      processQueue(err, null);
-
-      tokenStorage.clearTokens();
-
-      window.location.href = "/login";
-
-      return Promise.reject(err);
-    } finally {
-      isRefreshing = false;
-    }
-  }
-
-  return Promise.reject(error);
+        originalRequest.headers.Authorization = `Bearer ${access_token}`;
+        return client(originalRequest); // ✅ retry on same client
+      } catch (err) {
+        processQueue(err, null);
+        tokenStorage.clearTokens();
+        if (typeof window !== "undefined") window.location.href = "/login";
+        return Promise.reject(err);
+      } finally {
+        isRefreshing = false;
+      }
+    },
+  );
 };
 
-apiClient.interceptors.response.use(responseSuccess, responseError);
-mainApiClient.interceptors.response.use(responseSuccess, responseError);
+attachResponseInterceptor(apiClient);
+attachResponseInterceptor(mainApiClient);
 
 export const clients = {
   fastapi: apiClient,

@@ -1,6 +1,4 @@
 import "./globals.css";
-// import "animate.css";
-
 import type { Metadata } from "next";
 import Footer from "../components/Layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";

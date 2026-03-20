@@ -7,6 +7,7 @@ import { toolCategories } from "@/data/toolsCategoryData";
 import { useEffect, useState } from "react";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { splitTitle } from "@/lib/utils/title";
+import { usePathname } from "next/navigation";
 
 const links = [
   "hero",
@@ -48,6 +49,9 @@ const Footer = () => {
   const [year, setYear] = useState<number | string>("");
   const [categoryTools, setCategoryTools] = useState<any[]>([]);
 
+  const pathname = usePathname();
+  const isAdminPage = pathname?.startsWith("/admin");
+
   useEffect(() => {
     setYear(new Date().getFullYear());
 
@@ -72,112 +76,124 @@ const Footer = () => {
   );
 
   return (
-    <footer className="relative [clip-path:inset(0)] text-white">
-      {/* 1. Optimized Fixed Background Layer */}
-      <div className="fixed inset-0 -z-10">
-        <Image
-          src="/images/bg-img/footer.webp"
-          alt="Snow Background"
-          fill
-          className="object-cover"
-          quality={75}
-          priority={false}
-        />
-      </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 lg:grid-cols-4 gap-14">
-        {/* Brand */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#9b69e4]">Snappy-fix Tech</h2>
-
-          <p className="mt-4 text-sm text-black/50 leading-relaxed">
-            Powerful online image tools for creators, developers and businesses.
-            Convert, optimize and analyze images instantly.
-          </p>
-
-          <div className="flex gap-4 mt-6">
-            <SocialButton icon={<FaFacebookF />} />
-            <SocialButton icon={<FaTwitter />} />
-            <SocialButton icon={<FaInstagram />} />
+    <>
+      {" "}
+      {!isAdminPage && (
+        <footer className="relative [clip-path:inset(0)] text-white">
+          {/* 1. Optimized Fixed Background Layer */}
+          <div className="fixed inset-0 -z-10">
+            <Image
+              src="/images/bg-img/footer.webp"
+              alt="Snow Background"
+              fill
+              className="object-cover"
+              quality={75}
+              priority={false}
+            />
           </div>
-        </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 lg:grid-cols-4 gap-14">
+            {/* Brand */}
+            <div>
+              <h2 className="text-3xl font-bold text-[#9b69e4]">
+                Snappy-fix Tech
+              </h2>
 
-        {/* Tool Categories */}
-        <div className="lg:col-span-2 grid grid-cols-2 gap-10">
-          {categoryTools.slice(0, 4).map((category) => (
-            <div key={category.slug}>
+              <p className="mt-4 text-sm text-black/50 leading-relaxed">
+                Powerful online image tools for creators, developers and
+                businesses. Convert, optimize and analyze images instantly.
+              </p>
+
+              <div className="flex gap-4 mt-6">
+                <SocialButton icon={<FaFacebookF />} />
+                <SocialButton icon={<FaTwitter />} />
+                <SocialButton icon={<FaInstagram />} />
+              </div>
+            </div>
+
+            {/* Tool Categories */}
+            <div className="lg:col-span-2 grid grid-cols-2 gap-10">
+              {categoryTools.slice(0, 4).map((category) => (
+                <div key={category.slug}>
+                  <h3 className="text-lg font-semibold mb-5 text-black/60">
+                    {category.name}
+                  </h3>
+
+                  <ul className="space-y-3 text-sm text-black/50">
+                    {category.tools.map((tool: any) => (
+                      <li key={tool.slug}>
+                        <Link
+                          href={tool.href}
+                          className="hover:text-white transition"
+                        >
+                          {splitTitle(tool.name, 1)}
+                        </Link>
+                      </li>
+                    ))}
+
+                    <li>
+                      <Link
+                        href={category.href}
+                        className="text-[#9b69e4] hover:text-[#fb397d] font-medium"
+                      >
+                        View all →
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* Platform + Legal */}
+            <div>
               <h3 className="text-lg font-semibold mb-5 text-black/60">
-                {category.name}
+                Platform
               </h3>
 
               <ul className="space-y-3 text-sm text-black/50">
-                {category.tools.map((tool: any) => (
-                  <li key={tool.slug}>
-                    <Link
-                      href={tool.href}
+                {companyLinks.map((item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${item}`}
                       className="hover:text-white transition"
                     >
-                      {splitTitle(tool.name, 1)}
-                    </Link>
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                    </a>
                   </li>
                 ))}
 
                 <li>
-                  <Link
-                    href={category.href}
-                    className="text-[#9b69e4] hover:text-[#fb397d] font-medium"
-                  >
-                    View all →
+                  <Link href="/blog" className="hover:text-white transition">
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+
+              <h3 className="text-lg font-semibold mt-10 mb-5 text-black/60">
+                Legal
+              </h3>
+
+              <ul className="space-y-3 text-sm text-black/50">
+                <li>
+                  <Link href="/privacy" className="hover:text-white transition">
+                    Privacy Policy
+                  </Link>
+                </li>
+
+                <li>
+                  <Link href="/terms" className="hover:text-white transition">
+                    Terms & Conditions
                   </Link>
                 </li>
               </ul>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Platform + Legal */}
-        <div>
-          <h3 className="text-lg font-semibold mb-5 text-black/60">Platform</h3>
-
-          <ul className="space-y-3 text-sm text-black/50">
-            {companyLinks.map((item) => (
-              <li key={item}>
-                <a href={`#${item}`} className="hover:text-white transition">
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </a>
-              </li>
-            ))}
-
-            <li>
-              <Link href="/blog" className="hover:text-white transition">
-                Blog
-              </Link>
-            </li>
-          </ul>
-
-          <h3 className="text-lg font-semibold mt-10 mb-5 text-black/60">
-            Legal
-          </h3>
-
-          <ul className="space-y-3 text-sm text-black/50">
-            <li>
-              <Link href="/privacy" className="hover:text-white transition">
-                Privacy Policy
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/terms" className="hover:text-white transition">
-                Terms & Conditions
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="relative border-t border-white/10 text-center py-6 text-sm text-white/50">
-        © {year || "2026"} Snappy-fix Technologies. All rights reserved.
-      </div>
-    </footer>
+          <div className="relative border-t border-white/10 text-center py-6 text-sm text-white/50">
+            © {year || "2026"} Snappy-fix Technologies. All rights reserved.
+          </div>
+        </footer>
+      )}
+    </>
   );
 };
 

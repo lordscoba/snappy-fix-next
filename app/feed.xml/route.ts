@@ -4,9 +4,22 @@ import { tools } from "@/data/toolsData";
 import { Feed } from "feed";
 import { NextResponse } from "next/server";
 import { data as portfolios } from "@/data/PortifolioData";
+import { News } from "@/types/blog-types";
+import {
+  fetchAllPublishedPosts,
+  getBlogList,
+} from "@/lib/api/services/blog.service";
 
 export async function GET() {
   const site_url = "https://www.snappy-fix.com";
+
+  // ── Fetch all published blog posts from your Go API ──────────
+  let allPosts: News[] = [];
+  try {
+    allPosts = await fetchAllPublishedPosts();
+  } catch (err) {
+    console.error("RSS feed: failed to fetch blog posts", err);
+  }
 
   const feed = new Feed({
     // Using your official Default Title from Metadata
@@ -97,6 +110,7 @@ export async function GET() {
     });
   });
 
+  // Blog index entry — dated to latest post
   feed.addItem({
     title: "Snappy-fix Engineering & Design Blog",
     id: `${site_url}/blog`,
@@ -104,27 +118,82 @@ export async function GET() {
     description:
       "Insights on web development, UI/UX design, SEO strategies, and scaling digital products from the Snappy-fix team.",
     content:
-      "Stay updated with the latest trends in high-performance web development, modern design systems, and technical SEO. Our blog features tactical guides and industry insights for developers and digital creators.",
-    date: new Date(), // Current date to keep it "fresh" in the feed
+      "Stay updated with the latest trends in high-performance web development, modern design systems, and technical SEO.",
+    date: allPosts[0]?.created_at
+      ? new Date(allPosts[0].created_at)
+      : new Date(),
     category: [{ name: "Blog" }],
     author: [{ name: "Snappy-Fix Technologies" }],
   });
 
-  // 3. Add Blog Posts
-  posts.forEach((post) => {
+  // Individual blog posts
+  allPosts.forEach((post) => {
     feed.addItem({
       title: post.title,
       id: `${site_url}/blog/${post.slug}`,
       link: `${site_url}/blog/${post.slug}`,
-      description: post.excerpt,
-      // Joining array of strings into a paragraph for RSS readers
-      content: Array.isArray(post.content)
-        ? post.content.join(" ")
-        : post.content,
-      date: new Date(post.date),
-      category: [{ name: post.category }],
-      author: [{ name: post.author }],
-      image: `${site_url}${post.ogImage}`,
+      description: post.meta_desc || post.body?.slice(0, 160) || post.title,
+      content: `<p>${post.body || ""}</p>`, // body is already HTML from TipTap
+      date: post.created_at
+        ? new Date(post.created_at)
+        : new Date(post.created_at),
+      published: post.created_at
+        ? new Date(post.created_at)
+        : new Date(post.created_at),
+      category: [{ name: post.category?.name || "Blog" }],
+      author: [{ name: "Snappy-Fix Team" }],
+      image: post.thumbnail_url
+        ? post.thumbnail_url
+        : `${site_url}/images/og-default.png`,
+      extensions: [
+        {
+          name: "_meta",
+          objects: {
+            keywords: post.tags || "",
+            meta_title: post.meta_title || post.title,
+          },
+        },
+      ],
+    });
+  });
+
+  feed.addItem({
+    title: "Search Snappy-Fix Blog — Find Articles by Topic, Category & Filter",
+    id: `${site_url}/blog/list`,
+    link: `${site_url}/blog/list`,
+    description:
+      "Search and filter all Snappy-Fix blog articles by category, featured, exclusive, or keyword. Find guides on web development, design systems, SEO, performance, and more.",
+    content:
+      "The Snappy-Fix blog search page lets you discover articles by topic, category, or content type. Filter by featured posts, exclusive content, or search by keyword across our full library of engineering and design guides.",
+    date: allPosts[0]?.created_at
+      ? new Date(allPosts[0].created_at)
+      : new Date(),
+    category: [{ name: "Blog" }],
+    author: [{ name: "Snappy-Fix Technologies" }],
+  });
+
+  // ── Blog category pages ────────────────────────────────────────
+  // Build unique category list from fetched posts
+  const blogCategories = Array.from(
+    new Map(
+      allPosts
+        .filter((p) => p.category?.slug && p.category?.name)
+        .map((p) => [p.category.slug, p.category]),
+    ).values(),
+  );
+
+  blogCategories.forEach((category) => {
+    feed.addItem({
+      title: `${category.name} Articles — Snappy-Fix Blog`,
+      id: `${site_url}/blog?category=${category.id}`,
+      link: `${site_url}/blog?category=${category.id}`,
+      description: `Browse all Snappy-Fix articles in the ${category.name} category. Practical guides and insights on ${category.name.toLowerCase()} from the Snappy-Fix team.`,
+      content: `Explore our full collection of ${category.name} articles covering practical techniques, best practices, and real-world insights from the Snappy-Fix engineering and design team.`,
+      date: allPosts[0]?.created_at
+        ? new Date(allPosts[0].created_at)
+        : new Date(),
+      category: [{ name: category.name }],
+      author: [{ name: "Snappy-Fix Technologies" }],
     });
   });
 
