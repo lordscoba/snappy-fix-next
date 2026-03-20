@@ -92,8 +92,7 @@ export const WEB_ENDPOINTS = {
   blog_category_top: "/blog/categories/top",
 
   // admin bog
-  admin_login: "/admin/login",
-  admin_blog_list: "/admin/news/",
+  admin_blog_list: "/admin/news",
   admin_blog_details: "/admin/news/",
   admin_blog_create: "/admin/news",
   admin_blog_update: "/admin/news/",
@@ -106,4 +105,10 @@ export const WEB_ENDPOINTS = {
   admin_category_update: "/admin/categories/",
   admin_category_delete: "/admin/categories/",
   admin_category_top: "/admin/categories/top",
+
+  // admin images
+  admin_image_list: "/admin/images",
+  admin_image_details: "/admin/images/",
+  admin_image_create: "/admin/images",
+  admin_image_delete: "/admin/images/",
 } as const;

@@ -1,0 +1,527 @@
+// ─── Design tokens ────────────────────────────────────────────────────────────
+:root {
+  --e-bg: #ffffff;
+  --e-surface: #f8f7f4;
+  --e-border: #e4e0d8;
+  --e-text: #1a1a18;
+  --e-muted: #7a756a;
+  --e-accent: #1a6b3c; // deep editorial green
+  --e-accent-light: #e8f5ee;
+  --e-active-bg: #1a1a18;
+  --e-active-text: #ffffff;
+  --e-radius: 0.45rem;
+  --e-font-ui: "DM Mono", "Fira Code", ui-monospace, monospace;
+}
+
+// ─── Editor shell ─────────────────────────────────────────────────────────────
+.editor-shell {
+  font-family: var(--e-font-ui);
+  background: var(--e-bg);
+  border-color: var(--e-border) !important;
+}
+
+// ─── Toolbar ──────────────────────────────────────────────────────────────────
+.control-group {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--e-border);
+  background: var(--e-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 1.4rem;
+  background: var(--e-border);
+  margin: 0 0.2rem;
+  flex-shrink: 0;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.45rem;
+  border-radius: var(--e-radius);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--e-text);
+  font-size: 0.75rem;
+  font-family: var(--e-font-ui);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+  white-space: nowrap;
+  line-height: 1;
+
+  &:hover:not(:disabled) {
+    background: var(--e-accent-light);
+    border-color: var(--e-accent);
+    color: var(--e-accent);
+  }
+
+  &.is-active {
+    background: var(--e-active-bg);
+    color: var(--e-active-text);
+    border-color: var(--e-active-bg);
+  }
+
+  &:disabled {
+    opacity: 0.28;
+    cursor: not-allowed;
+  }
+}
+
+// ─── Color picker ─────────────────────────────────────────────────────────────
+.color-picker-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.color-trigger {
+  gap: 0.2rem;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  border: 1px solid var(--e-border);
+  flex-shrink: 0;
+}
+
+.color-popover,
+.link-popover,
+.table-popover {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  z-index: 100;
+  background: var(--e-bg);
+  border: 1px solid var(--e-border);
+  border-radius: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 0.6rem;
+  min-width: 10rem;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1.4rem);
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.color-dot {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.1s,
+    border-color 0.1s;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+  &.selected {
+    border-color: var(--e-active-bg);
+  }
+}
+
+.color-clear {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 0.7rem;
+  font-family: var(--e-font-ui);
+  background: var(--e-surface);
+  border: 1px solid var(--e-border);
+  border-radius: var(--e-radius);
+  cursor: pointer;
+  color: var(--e-muted);
+  &:hover {
+    color: var(--e-text);
+  }
+}
+
+// ─── Link dialog ──────────────────────────────────────────────────────────────
+.link-popover {
+  min-width: 18rem;
+}
+
+.link-label {
+  font-size: 0.65rem;
+  font-family: var(--e-font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--e-muted);
+  margin: 0 0 0.25rem;
+}
+
+.link-input {
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--e-border);
+  border-radius: var(--e-radius);
+  font-size: 0.78rem;
+  font-family: var(--e-font-ui);
+  outline: none;
+  color: var(--e-text);
+  background: var(--e-surface);
+
+  &:focus {
+    border-color: var(--e-accent);
+  }
+}
+
+.link-suggestions {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  max-height: 9rem;
+  overflow-y: auto;
+  border: 1px solid var(--e-border);
+  border-radius: var(--e-radius);
+
+  li button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+    font-family: var(--e-font-ui);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--e-text);
+    &:hover {
+      background: var(--e-accent-light);
+      color: var(--e-accent);
+    }
+  }
+}
+
+.link-actions {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.link-apply,
+.link-remove,
+.link-cancel {
+  flex: 1;
+  padding: 0.3rem;
+  border-radius: var(--e-radius);
+  font-size: 0.72rem;
+  font-family: var(--e-font-ui);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--e-border);
+}
+
+.link-apply {
+  background: var(--e-active-bg);
+  color: var(--e-active-text);
+  border-color: var(--e-active-bg);
+}
+
+.link-remove {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+.link-cancel {
+  background: var(--e-surface);
+  color: var(--e-muted);
+}
+
+// ─── Table menu ───────────────────────────────────────────────────────────────
+.table-popover {
+  min-width: 11rem;
+  padding: 0.4rem;
+}
+
+.table-action {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  font-family: var(--e-font-ui);
+  background: none;
+  border: none;
+  border-radius: var(--e-radius);
+  cursor: pointer;
+  color: var(--e-text);
+  &:hover {
+    background: var(--e-accent-light);
+    color: var(--e-accent);
+  }
+  & + & {
+    margin-top: 0.1rem;
+  }
+}
+
+// ─── Doc Stats bar ────────────────────────────────────────────────────────────
+.doc-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-top: 1px solid var(--e-border);
+  background: var(--e-surface);
+  font-size: 0.7rem;
+  font-family: var(--e-font-ui);
+  color: var(--e-muted);
+  flex-wrap: wrap;
+}
+
+.stats-dot {
+  opacity: 0.4;
+}
+
+// ─── Tiptap content ───────────────────────────────────────────────────────────
+.tiptap {
+  min-height: 420px;
+  padding: 1.75rem 2rem;
+  outline: none;
+  color: var(--e-text);
+  font-size: 1rem;
+  line-height: 1.75;
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0.75rem 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.2;
+    text-wrap: pretty;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--e-text);
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+  h2 {
+    font-size: 1.45rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4,
+  h5,
+  h6 {
+    font-size: 1rem;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+    li p {
+      margin: 0.2em 0;
+    }
+  }
+  ul {
+    list-style-type: disc !important;
+  }
+  ol {
+    list-style-type: decimal !important;
+  }
+
+  a {
+    color: var(--e-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  code {
+    background: var(--e-accent-light);
+    border-radius: 0.3rem;
+    color: var(--e-accent);
+    font-size: 0.85em;
+    padding: 0.15em 0.35em;
+    font-family: var(--e-font-ui);
+  }
+
+  pre {
+    background: var(--e-text);
+    border-radius: 0.6rem;
+    color: #e8e4dc;
+    font-family: var(--e-font-ui);
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+
+    code {
+      background: none;
+      color: inherit;
+      font-size: 0.85rem;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 3px solid var(--e-accent);
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    margin: 1.25rem 0;
+    font-style: italic;
+    color: #4a5568;
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid var(--e-border);
+    margin: 2rem 0;
+  }
+
+  mark {
+    border-radius: 0.2rem;
+    padding: 0.1em 0.2em;
+  }
+  /* These styles should apply both in and out of the editor */
+
+  // ── Table styles ──
+  table {
+    width: 100%;
+    /* 1. Change collapse to separate to allow the outer border to be independent */
+    border-collapse: separate;
+    border-spacing: 0;
+
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+
+    /* 2. Main Outer Border and Radius */
+    overflow: hidden;
+    border-radius: 0.8rem;
+    border: 1px solid var(--e-border);
+
+    th,
+    td {
+      /* 3. Draw only Right and Bottom borders for internal grid */
+      border-right: 1px solid var(--e-border);
+      border-bottom: 1px solid var(--e-border);
+
+      padding: 0.75rem 1rem;
+      vertical-align: top;
+      position: relative;
+    }
+
+    /* 4. Remove the trailing borders so they don't hit the outer shell */
+    th:last-child,
+    td:last-child {
+      border-right: none;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th {
+      background: var(--e-surface);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--e-muted);
+      text-align: left;
+    }
+
+    tr:hover td {
+      background: #fafaf8;
+    }
+
+    .column-resize-handle {
+      position: absolute;
+      right: -1px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--e-accent);
+      opacity: 0;
+      cursor: col-resize;
+      transition: opacity 0.15s;
+      z-index: 10;
+    }
+
+    &:hover .column-resize-handle {
+      opacity: 0.5;
+    }
+  }
+
+  text-align p[style*="text-align: center"],
+  h1[style*="text-align: center"],
+  h2[style*="text-align: center"],
+  h3[style*="text-align: center"] {
+    text-align: center;
+  }
+
+  p[style*="text-align: right"],
+  h1[style*="text-align: right"],
+  h2[style*="text-align: right"],
+  h3[style*="text-align: right"] {
+    text-align: right;
+  }
+
+  p[style*="text-align: justify"],
+  h1[style*="text-align: justify"],
+  h2[style*="text-align: justify"],
+  h3[style*="text-align: justify"] {
+    text-align: justify;
+  }
+}
+
+.tiptap {
+  img {
+    display: block;
+    height: auto;
+    margin: 1.5rem auto;
+    max-width: 100%;
+    &.ProseMirror-selectednode {
+      outline: 3px solid var(--e-accent);
+      border-radius: var(--e-radius);
+    }
+  }
+}
+
+// Add to your scss for modal responsiveness
+.color-picker-wrap {
+  // fix for icons in buttons
+  .tool-btn {
+    svg {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { Heroo, About, Skills } from "../../../../components/portifolio";
-import { data } from "@/data/PortifolioData";
+import { data, Tester } from "@/data/PortifolioData";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -12,10 +12,28 @@ type Params = {
   slug: string;
 };
 
+/**
+ * Helper to find portfolio by slug OR id
+ */
+const findPortfolio = (slug: string): Tester | undefined => {
+  // Check if the slug is a numeric string (e.g., "4")
+  const isNumeric = /^\d+$/.test(slug);
+
+  if (isNumeric) {
+    const id = parseInt(slug, 10);
+    return data.find((item) => item.id === id);
+  }
+
+  return data.find((item) => item.slug === slug);
+};
+
 export async function generateStaticParams() {
-  return data.map((item) => ({
-    slug: item.slug, // The key must match the folder name [slug]
-  }));
+  // We include both slugs and IDs to ensure both are statically generated
+  const params = data.flatMap((item) => [
+    { slug: item.slug },
+    { slug: item.id.toString() },
+  ]);
+  return params;
 }
 
 export async function generateMetadata({
@@ -24,7 +42,7 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const portfolio = data.find((item) => item.slug === slug);
+  const portfolio = findPortfolio(slug); // Use helper
 
   const baseUrl = "https://www.snappy-fix.com";
 
@@ -32,10 +50,7 @@ export async function generateMetadata({
     return {
       title: "Portfolio Not Found | Snappy-fix Technologies",
       description: "The requested portfolio profile does not exist.",
-      robots: {
-        index: false,
-        follow: false,
-      },
+      robots: { index: false, follow: false },
     };
   }
 
@@ -44,46 +59,34 @@ export async function generateMetadata({
   const url = `${baseUrl}/portfolio/${portfolio.slug}`;
   const image = portfolio.image || "/images/snappy-fix-logo.png";
 
-  // 1. Extract all unique skill types (e.g., "React.js", "PHP", "Figma")
   const rawSkills = portfolio.skills.flatMap((s) =>
     s.skill_level.map((l) => l.skill_type),
   );
 
-  // 2. Generate the localized variations
   const localizedKeywords = rawSkills.flatMap((skill) => [
-    skill, // "React.js"
-    `${skill} in Uyo`, // "React.js in Uyo"
-    `${skill} in Nigeria`, // "React.js in Nigeria"
+    skill,
+    `${skill} in Uyo`,
+    `${skill} in Nigeria`,
   ]);
 
-  // 3. Add personal branding keywords
   const brandKeywords = [
     portfolio.name,
     `${portfolio.name} portfolio`,
     "Snappy-fix Technologies",
   ];
 
-  // 4. Combine and remove duplicates
   const keywords = [...new Set([...localizedKeywords, ...brandKeywords])];
 
   return {
-    title: title,
-    description: description,
-    keywords: keywords,
-
-    alternates: {
-      canonical: url,
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-
+    title,
+    description,
+    keywords,
+    alternates: { canonical: url },
+    robots: { index: true, follow: true },
     openGraph: {
-      title: title,
-      description: description,
-      url: url,
+      title,
+      description,
+      url,
       type: "profile",
       images: [
         {
@@ -94,25 +97,25 @@ export async function generateMetadata({
         },
       ],
     },
-
     twitter: {
       card: "summary_large_image",
-      title: title,
-      description: description,
+      title,
+      description,
       images: [image],
     },
   };
 }
 
-/**
- * Portfolio Page
- */
 export default async function PortfolioPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const portfolio = data.find((item) => item.slug === slug);
-  const personSchema = getPortfolioPersonSchema(slug);
-  const breadcrumb = getPortfolioBreadcrumb(slug);
+  const portfolio = findPortfolio(slug); // Use helper
+
   if (!portfolio) return notFound();
+
+  // Note: Your schema/breadcrumb helpers likely use the string slug
+  // So we pass portfolio.slug (the string) instead of the input 'slug'
+  const personSchema = getPortfolioPersonSchema(portfolio.slug);
+  const breadcrumb = getPortfolioBreadcrumb(portfolio.slug);
 
   return (
     <div>

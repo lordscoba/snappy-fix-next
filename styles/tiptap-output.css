@@ -1,0 +1,692 @@
+/*
+ * tiptap-output.css
+ * Complete scoped styles for TipTap-rendered HTML inside .tiptap-output
+ * Dark editorial design: #0e0716 bg · #5b32b4 purple · #fb397d pink
+ * Handles: headings, paragraphs, lists, blockquote, code, pre, mark/highlight,
+ *          links, images, text-align, hr, tables, and all TipTap internals
+ */
+
+/* ─── Base typography ────────────────────────────────────────────────────────── */
+.tiptap-output {
+  color: #c4b5d9;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.tiptap-output > *:first-child {
+  margin-top: 0;
+}
+
+/* ─── Paragraphs ─────────────────────────────────────────────────────────────── */
+.tiptap-output p {
+  margin: 1rem 0;
+  color: #c4b5d9;
+  line-height: 1.85;
+}
+
+/* Drop-cap first paragraph */
+.tiptap-output > p:first-of-type {
+  font-size: 1.125rem;
+  color: #e0ccff;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+.tiptap-output > p:first-of-type::first-letter {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fb397d;
+  float: left;
+  margin-right: 0.2em;
+  margin-top: 0.08em;
+  line-height: 0.85;
+  font-family: inherit;
+}
+
+/* ─── Headings ───────────────────────────────────────────────────────────────── */
+.tiptap-output h1,
+.tiptap-output h2,
+.tiptap-output h3,
+.tiptap-output h4,
+.tiptap-output h5,
+.tiptap-output h6 {
+  color: #ffffff;
+  font-weight: 900;
+  line-height: 1.2;
+  text-wrap: pretty;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.tiptap-output h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(251, 57, 125, 0.25);
+}
+
+.tiptap-output h2 {
+  font-size: 1.5rem;
+  color: #f0e6ff;
+  position: relative;
+  padding-left: 1rem;
+}
+
+/* Pink-to-purple left bar on h2 */
+.tiptap-output h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 3px;
+  background: linear-gradient(to bottom, #fb397d, #5b32b4);
+  border-radius: 3px;
+}
+
+.tiptap-output h3 {
+  font-size: 1.2rem;
+  color: #e0ccff;
+}
+
+.tiptap-output h4 {
+  font-size: 1.05rem;
+  color: #c4b5d9;
+}
+
+.tiptap-output h5,
+.tiptap-output h6 {
+  font-size: 0.9rem;
+  color: #9d86b8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── Links ──────────────────────────────────────────────────────────────────── */
+.tiptap-output a {
+  color: #fb397d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition:
+    color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.tiptap-output a:hover {
+  color: #ff6fa3;
+  opacity: 0.9;
+}
+
+/* ─── Inline text formatting ─────────────────────────────────────────────────── */
+.tiptap-output strong,
+.tiptap-output b {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.tiptap-output em,
+.tiptap-output i {
+  color: #e0ccff;
+  font-style: italic;
+}
+
+.tiptap-output u {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(251, 57, 125, 0.6);
+}
+
+.tiptap-output s,
+.tiptap-output del {
+  color: #6f5a88;
+  text-decoration: line-through;
+  text-decoration-color: #fb397d;
+}
+
+/* ─── Mark / Highlight ───────────────────────────────────────────────────────── */
+.tiptap-output mark {
+  background-color: rgba(251, 191, 36, 0.2);
+  color: #fde68a;
+  border-radius: 0.2rem;
+  padding: 0.1em 0.25em;
+}
+
+/* TipTap injects data-color or inline style — cover both */
+.tiptap-output mark[style*="#fb397d"],
+.tiptap-output mark[data-color="#fb397d"] {
+  background-color: rgba(251, 57, 125, 0.2);
+  color: #ff8ab5;
+}
+
+.tiptap-output mark[style*="#884bdf"],
+.tiptap-output mark[data-color="#884bdf"],
+.tiptap-output mark[style*="#5b32b4"],
+.tiptap-output mark[data-color="#5b32b4"] {
+  background-color: rgba(91, 50, 180, 0.25);
+  color: #c4a8ff;
+}
+
+.tiptap-output mark[style*="#16a34a"],
+.tiptap-output mark[data-color="#16a34a"] {
+  background-color: rgba(22, 163, 74, 0.2);
+  color: #6ee7a0;
+}
+
+.tiptap-output mark[style*="#dc2626"],
+.tiptap-output mark[data-color="#dc2626"] {
+  background-color: rgba(220, 38, 38, 0.2);
+  color: #fca5a5;
+}
+
+.tiptap-output mark[style*="#2563eb"],
+.tiptap-output mark[data-color="#2563eb"] {
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #93c5fd;
+}
+
+.tiptap-output mark[style*="#d97706"],
+.tiptap-output mark[data-color="#d97706"] {
+  background-color: rgba(217, 119, 6, 0.2);
+  color: #fcd34d;
+}
+
+/* ─── Text color spans (TipTap color extension — inline style wins) ──────────── */
+.tiptap-output span[style*="color"] {
+  /* Let author-defined color render — just ensure it's not washed out */
+  opacity: 1;
+}
+
+/* ─── Inline code ────────────────────────────────────────────────────────────── */
+.tiptap-output :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #fb397d;
+  font-size: 0.855em;
+  padding: 0.18em 0.45em;
+  border-radius: 5px;
+  font-family:
+    "Fira Code", "JetBrains Mono", "Cascadia Code", ui-monospace, monospace;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Code blocks ────────────────────────────────────────────────────────────── */
+.tiptap-output pre {
+  background: #0d0820;
+  border: 1px solid rgba(91, 50, 180, 0.3);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin: 1.75rem 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(91, 50, 180, 0.4) transparent;
+  position: relative;
+}
+
+/* Gradient top bar on code blocks */
+.tiptap-output pre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #5b32b4, #fb397d);
+  border-radius: 1rem 1rem 0 0;
+}
+
+.tiptap-output pre::-webkit-scrollbar {
+  height: 4px;
+}
+.tiptap-output pre::-webkit-scrollbar-thumb {
+  background-color: rgba(91, 50, 180, 0.5);
+  border-radius: 99px;
+}
+
+.tiptap-output pre code {
+  background: none;
+  color: #e0d4f7;
+  font-size: 0.875rem;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  line-height: 1.7;
+}
+
+/* ─── Blockquote ─────────────────────────────────────────────────────────────── */
+.tiptap-output blockquote {
+  border-left: 4px solid #fb397d;
+  background: linear-gradient(
+    to right,
+    rgba(251, 57, 125, 0.06),
+    rgba(91, 50, 180, 0.04),
+    transparent
+  );
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  position: relative;
+}
+
+.tiptap-output blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.25rem;
+  left: 1rem;
+  font-size: 3rem;
+  color: rgba(251, 57, 125, 0.25);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.tiptap-output blockquote p {
+  color: #9d86b8;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.tiptap-output blockquote p + p {
+  margin-top: 0.75rem;
+}
+
+/* ─── Unordered lists ────────────────────────────────────────────────────────── */
+.tiptap-output ul {
+  list-style: none;
+  margin: 1.25rem 0;
+  padding-left: 0;
+}
+
+.tiptap-output ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #c4b5d9;
+}
+
+.tiptap-output ul li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fb397d;
+}
+
+/* Nested ul — purple dot */
+.tiptap-output ul ul li::before {
+  width: 5px;
+  height: 5px;
+  background: #5b32b4;
+  top: 0.68em;
+}
+
+/* Triple-nested — muted square */
+.tiptap-output ul ul ul li::before {
+  width: 4px;
+  height: 4px;
+  background: #9d86b8;
+  border-radius: 1px;
+}
+
+/* ─── Ordered lists ──────────────────────────────────────────────────────────── */
+.tiptap-output ol {
+  list-style: none;
+  margin: 1.25rem 0;
+  padding-left: 0;
+  counter-reset: tiptap-ol;
+}
+
+.tiptap-output ol li {
+  position: relative;
+  padding-left: 2.25rem;
+  margin-bottom: 0.5rem;
+  color: #c4b5d9;
+  counter-increment: tiptap-ol;
+}
+
+.tiptap-output ol li::before {
+  content: counter(tiptap-ol);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: rgba(91, 50, 180, 0.25);
+  border: 1px solid rgba(91, 50, 180, 0.4);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #c4a8ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Nested ol — alpha, pink tinted */
+.tiptap-output ol ol {
+  counter-reset: tiptap-ol-nested;
+}
+
+.tiptap-output ol ol li {
+  counter-increment: tiptap-ol-nested;
+}
+
+.tiptap-output ol ol li::before {
+  content: counter(tiptap-ol-nested, lower-alpha);
+  background: rgba(251, 57, 125, 0.12);
+  border-color: rgba(251, 57, 125, 0.25);
+  color: #ff8ab5;
+}
+
+/* Nested list indent */
+.tiptap-output ul ul,
+.tiptap-output ol ol,
+.tiptap-output ul ol,
+.tiptap-output ol ul {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding-left: 1.5rem;
+}
+
+/* TipTap wraps li content in <p> tags */
+.tiptap-output li > p {
+  margin: 0.15em 0;
+}
+
+/* ─── Horizontal rule ────────────────────────────────────────────────────────── */
+.tiptap-output hr {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(251, 57, 125, 0.35),
+    rgba(91, 50, 180, 0.35),
+    transparent
+  );
+}
+
+/* ─── Images ─────────────────────────────────────────────────────────────────── */
+.tiptap-output img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 2rem auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.tiptap-output img.ProseMirror-selectednode {
+  outline: 3px solid #fb397d;
+  border-radius: 1rem;
+}
+
+/* ─── Text alignment ─────────────────────────────────────────────────────────── */
+.tiptap-output p[style*="text-align: center"],
+.tiptap-output h1[style*="text-align: center"],
+.tiptap-output h2[style*="text-align: center"],
+.tiptap-output h3[style*="text-align: center"],
+.tiptap-output h4[style*="text-align: center"] {
+  text-align: center;
+}
+
+.tiptap-output p[style*="text-align: right"],
+.tiptap-output h1[style*="text-align: right"],
+.tiptap-output h2[style*="text-align: right"],
+.tiptap-output h3[style*="text-align: right"],
+.tiptap-output h4[style*="text-align: right"] {
+  text-align: right;
+}
+
+.tiptap-output p[style*="text-align: justify"],
+.tiptap-output h1[style*="text-align: justify"],
+.tiptap-output h2[style*="text-align: justify"],
+.tiptap-output h3[style*="text-align: justify"],
+.tiptap-output h4[style*="text-align: justify"] {
+  text-align: justify;
+}
+
+.tiptap-output p[style*="text-align: left"],
+.tiptap-output h1[style*="text-align: left"],
+.tiptap-output h2[style*="text-align: left"],
+.tiptap-output h3[style*="text-align: left"],
+.tiptap-output h4[style*="text-align: left"] {
+  text-align: left;
+}
+
+/* ─── Block spacing rhythm ───────────────────────────────────────────────────── */
+.tiptap-output h1 + p,
+.tiptap-output h2 + p,
+.tiptap-output h3 + p,
+.tiptap-output h4 + p {
+  margin-top: 0.5rem;
+}
+
+.tiptap-output p + h2,
+.tiptap-output p + h3,
+.tiptap-output p + h4 {
+  margin-top: 2.5rem;
+}
+
+.tiptap-output blockquote + p,
+.tiptap-output pre + p,
+.tiptap-output table + p,
+.tiptap-output ul + p,
+.tiptap-output ol + p {
+  margin-top: 1.5rem;
+}
+
+/* ─── Table wrapper — horizontal scroll on mobile ───────────────────────────── */
+.tiptap-output .tableWrapper,
+.tiptap-output div[class*="tableWrapper"] {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  margin: 2rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(91, 50, 180, 0.4) transparent;
+
+  /* ── These four are the actual fix ── */
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: visible;
+}
+
+.tiptap-output .tableWrapper::-webkit-scrollbar {
+  height: 4px;
+}
+.tiptap-output .tableWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tiptap-output .tableWrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(91, 50, 180, 0.5);
+  border-radius: 99px;
+}
+
+/* ─── Table ──────────────────────────────────────────────────────────────────── */
+.tiptap-output table {
+  width: 100%;
+  min-width: 600px; /* ← this is what activates the slide */
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9rem;
+  display: table;
+  margin: 0;
+}
+
+.tiptap-output > table {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* ─── Table header ───────────────────────────────────────────────────────────── */
+.tiptap-output th {
+  background: linear-gradient(135deg, #2b1d3a 0%, #1a0f2e 100%);
+  color: #fb397d;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.875rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(251, 57, 125, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  white-space: normal; /* ← was nowrap, now wraps */
+  word-break: break-word; /* ← added */
+  min-width: 100px; /* ← added: prevents columns collapsing too narrow */
+  position: relative;
+}
+
+.tiptap-output th:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 3px;
+  background: #fb397d;
+  border-radius: 0 3px 3px 0;
+}
+
+.tiptap-output th:last-child {
+  border-right: none;
+}
+
+/* ─── Table cells ────────────────────────────────────────────────────────────── */
+.tiptap-output td {
+  padding: 0.75rem 1.25rem;
+  color: #c4b5d9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: top;
+  line-height: 1.6;
+  transition: color 0.15s ease;
+}
+
+.tiptap-output td:last-child {
+  border-right: none;
+}
+
+.tiptap-output td:first-child {
+  color: #e0ccff;
+  font-weight: 600;
+}
+
+.tiptap-output tbody tr:nth-child(odd) td {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+.tiptap-output tbody tr:nth-child(even) td {
+  background-color: rgba(91, 50, 180, 0.04);
+}
+
+.tiptap-output tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.tiptap-output tbody tr:hover td {
+  background-color: rgba(91, 50, 180, 0.12) !important;
+  color: #e0ccff;
+}
+
+.tiptap-output tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Inline elements inside table cells */
+.tiptap-output td strong,
+.tiptap-output th strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.tiptap-output td em {
+  color: #9d86b8;
+  font-style: italic;
+}
+
+.tiptap-output td code,
+.tiptap-output th code {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #fb397d;
+  font-size: 0.78em;
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+}
+
+.tiptap-output td a {
+  color: #fb397d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.tiptap-output td a:hover {
+  color: #ff6fa3;
+}
+
+/* ─── Selected cell & resize handle ─────────────────────────────────────────── */
+.tiptap-output td.selectedCell,
+.tiptap-output th.selectedCell {
+  background-color: rgba(251, 57, 125, 0.12) !important;
+  outline: 2px solid rgba(251, 57, 125, 0.4);
+  outline-offset: -2px;
+}
+
+.tiptap-output .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: rgba(251, 57, 125, 0.5);
+  cursor: col-resize;
+  border-radius: 2px;
+  transition: background-color 0.15s ease;
+}
+
+.tiptap-output .column-resize-handle:hover {
+  background-color: #fb397d;
+}
+
+.tiptap-output table caption {
+  caption-side: bottom;
+  font-size: 0.78rem;
+  color: #6f5a88;
+  text-align: center;
+  padding-top: 0.75rem;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .tiptap-output th,
+  .tiptap-output td {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .tiptap-output th {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+.tiptap-output {
+  overflow-x: hidden; /* ← add this to the existing rule */
+  min-width: 0; /* ← add this — critical for flex/grid children */
+}
