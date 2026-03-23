@@ -101,7 +101,7 @@ const Blog = () => {
           subtitle="Ideas on design, performance, and building high-quality digital products."
           action={
             <Link
-              arial-label="View all articles"
+              aria-label="View all articles"
               href="/blog"
               className="text-sm font-bold text-[#c3003a] hover:underline"
             >
@@ -155,6 +155,7 @@ const Blog = () => {
                       className="inline-flex items-center gap-1 text-sm font-bold text-[#c3003a] hover:gap-2 transition-all"
                     >
                       Read more <ArrowRight size={14} />
+                      <span className="sr-only"> about {post.title}</span>
                     </Link>
                   </div>
                 </article>
