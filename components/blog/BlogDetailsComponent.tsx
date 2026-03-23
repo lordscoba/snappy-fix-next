@@ -132,6 +132,7 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
           alt={post.title}
           fill
           priority
+          fetchPriority="high"
           className="object-cover"
           sizes="100vw"
         />

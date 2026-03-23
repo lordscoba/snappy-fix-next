@@ -59,6 +59,8 @@ export default function BlogHero({ items }: { items: HeroPost[] }) {
           alt={active.title}
           fill
           priority
+          fetchPriority="high"
+          quality={75}
           className="object-cover"
           sizes="100vw"
         />

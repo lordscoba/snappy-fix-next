@@ -74,7 +74,7 @@ const Counter = () => {
           fill
           className="object-cover object-center scale-105"
           quality={75}
-          loading="lazy"
+          priority
           sizes="(max-width: 640px) 640w, (max-width: 1024px) 1024w, 100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#5b32b4]/90 via-[#47238f]/85 to-[#2b1d3a]/90" />
