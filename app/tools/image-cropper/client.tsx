@@ -71,7 +71,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Move size={20} className="text-[#fb397d]" />,
+    icon: <Move size={20} className="text-[#c3003a]" />,
     title: "Interactive drag-to-crop",
     description:
       "Drag corner and edge handles to precisely frame your crop area. Drag inside the selection to reposition it over your image.",
@@ -83,7 +83,7 @@ const benefits = [
       "The exact crop dimensions update in real time as you drag — so you always know precisely how many pixels you are selecting.",
   },
   {
-    icon: <Layers size={20} className="text-[#fb397d]" />,
+    icon: <Layers size={20} className="text-[#c3003a]" />,
     title: "Full-resolution output",
     description:
       "Crop coordinates scale to your original image resolution, not the preview size. You get full-quality output at exact pixel dimensions.",
@@ -95,7 +95,7 @@ const benefits = [
       "Cropping is handled server-side, not in the browser canvas — ensuring consistent, high-fidelity results across all image formats.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed securely and not permanently stored after cropping. Original and result files are never retained.",
@@ -280,7 +280,7 @@ export default function ImageCropperPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -366,7 +366,7 @@ export default function ImageCropperPageClient() {
                     <td className="px-5 py-3 text-sm font-medium text-[#2b1d3a]">
                       {row.platform}
                     </td>
-                    <td className="px-5 py-3 text-xs font-black text-[#fb397d] font-mono">
+                    <td className="px-5 py-3 text-xs font-black text-[#c3003a] font-mono">
                       {row.dimensions}
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-500 font-medium">

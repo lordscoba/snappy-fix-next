@@ -249,7 +249,7 @@ export const RegisterComponent = () => {
                         setIsManualCountryCode(false);
                         setForm((prev) => ({ ...prev, country_code: "+234" }));
                       }}
-                      className="text-[10px] font-bold text-[#fb397d] text-left px-1 hover:text-[#e02d6b] transition-colors"
+                      className="text-[10px] font-bold text-[#c3003a] text-left px-1 hover:text-[#e02d6b] transition-colors"
                     >
                       ← Back to list
                     </button>
@@ -347,7 +347,7 @@ export const RegisterComponent = () => {
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-semibold text-[#fb397d] hover:underline"
+            className="font-semibold text-[#c3003a] hover:underline"
           >
             Sign in
           </Link>

@@ -260,7 +260,7 @@ export default function ListBlogs() {
                         )}
                         {blog.is_exclusive && (
                           <div
-                            className="p-1.5 rounded-lg bg-[#fb397d]/10 text-[#fb397d] border border-[#fb397d]/20"
+                            className="p-1.5 rounded-lg bg-[#fb397d]/10 text-[#c3003a] border border-[#fb397d]/20"
                             title="Exclusive"
                           >
                             <ShieldCheck size={12} />

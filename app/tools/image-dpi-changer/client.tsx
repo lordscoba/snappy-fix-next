@@ -65,7 +65,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <ScanSearch size={20} className="text-[#fb397d]" />,
+    icon: <ScanSearch size={20} className="text-[#c3003a]" />,
     title: "Check DPI and Change DPI in one tool",
     description:
       "Two modes in a single upload: Check DPI reads your current DPI, dimensions, and format without changing the file. Change DPI re-saves with any target value you specify.",
@@ -77,7 +77,7 @@ const benefits = [
       "Enter any number — 72, 150, 300, 600, or any custom value. Not limited to presets, so you can meet any printer's exact requirement.",
   },
   {
-    icon: <FileImage size={20} className="text-[#fb397d]" />,
+    icon: <FileImage size={20} className="text-[#c3003a]" />,
     title: "Quality 95 — no pixel loss",
     description:
       "JPEG and WebP are re-saved at quality 95. PNG uses lossless optimisation. Pixel dimensions and visual quality are unchanged — only the DPI metadata is updated.",
@@ -89,7 +89,7 @@ const benefits = [
       "Output filename includes the DPI value (e.g. photo_300dpi.jpg) so print labs and designers can immediately identify the correct version.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed server-side and never permanently stored. No copies are retained after the updated file is delivered to your browser.",
@@ -238,7 +238,7 @@ export default function ImageDPIChangerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -360,7 +360,7 @@ export default function ImageDPIChangerPageClient() {
               >
                 <CheckCircle2
                   size={13}
-                  className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#fb397d]"}`}
+                  className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#c3003a]"}`}
                 />
                 {item}
               </div>
@@ -391,7 +391,7 @@ export default function ImageDPIChangerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#fb397d]"}`}
+                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#c3003a]"}`}
                     />
                     {item}
                   </li>
@@ -417,7 +417,7 @@ export default function ImageDPIChangerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#fb397d]" : "text-[#5b32b4]"}`}
+                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#c3003a]" : "text-[#5b32b4]"}`}
                     />
                     {item}
                   </li>

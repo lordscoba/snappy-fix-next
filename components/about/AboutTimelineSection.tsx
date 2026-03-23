@@ -62,7 +62,7 @@ export default function AboutTimelineSection() {
                   <div
                     className={`bg-white border border-[#e9e1ff] rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-[#5b32b4]/30 transition-all ${i % 2 === 0 ? "md:ml-0" : ""}`}
                   >
-                    <span className="text-xs font-black text-[#fb397d] bg-[#fb397d]/10 px-3 py-1 rounded-full">
+                    <span className="text-xs font-black text-[#c3003a] bg-[#fb397d]/10 px-3 py-1 rounded-full">
                       {m.year}
                     </span>
                     <h3 className="font-bold text-[#2b1d3a] mt-2 mb-1">

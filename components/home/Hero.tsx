@@ -46,9 +46,9 @@ export const Hero = () => {
           alt="Snow background"
           fill
           priority
-          quality={90}
+          quality={75}
           className="object-cover object-center"
-          sizes="100vw"
+          sizes="(max-width: 640px) 640w, (max-width: 1024px) 1024w, 100vw"
         />
       </div>
       {/* Gradient overlay */}
@@ -90,7 +90,7 @@ export const Hero = () => {
             <button
               aria-label="Search tools"
               type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#fb397d] hover:bg-[#e02d6e] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all active:scale-95 whitespace-nowrap"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#d42d68] hover:bg-[#b8245a] text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-all active:scale-95 whitespace-nowrap"
             >
               Search Tools
             </button>
@@ -103,11 +103,11 @@ export const Hero = () => {
           <div className="grid grid-cols-2 gap-3">
             <Link
               href="/tools"
-              className="group flex flex-col items-center justify-center gap-1.5 bg-[#fb397d] hover:bg-[#e02d6e] text-white font-bold py-4 px-4 rounded-2xl transition-all duration-200 active:scale-[0.97] shadow-lg shadow-[#fb397d]/30 text-center"
+              className="group flex flex-col items-center justify-center gap-1.5 bg-[#d42d68] hover:bg-[#b8245a] text-white font-bold py-4 px-4 rounded-2xl transition-all duration-200 active:scale-[0.97] shadow-lg shadow-[#fb397d]/30 text-center"
             >
               <ImageIcon size={20} />
-              <span className="text-sm">All Image Tools</span>
-              <span className="text-[10px] font-normal text-white/75">
+              <span className="text-md">All Image Tools</span>
+              <span className="text-[10px] font-normal text-white">
                 All free tools
               </span>
             </Link>
@@ -118,7 +118,7 @@ export const Hero = () => {
             >
               <Code2 size={20} />
               <span className="text-sm">Build a Website</span>
-              <span className="text-[10px] font-normal text-white/60">
+              <span className="text-[10px] font-normal text-white">
                 Get a quote
               </span>
             </Link>
@@ -132,7 +132,7 @@ export const Hero = () => {
             >
               <BookOpen size={17} />
               <span className="text-xs font-bold">Blog</span>
-              <span className="text-[10px] text-white/55">Guides & tips</span>
+              <span className="text-[10px] text-white/80">Guides & tips</span>
             </Link>
 
             <Link
@@ -141,7 +141,7 @@ export const Hero = () => {
             >
               <Zap size={17} />
               <span className="text-xs font-bold">Editing Tools</span>
-              <span className="text-[10px] text-white/55">Web & social</span>
+              <span className="text-[10px] text-white/80">Web & social</span>
             </Link>
 
             <Link
@@ -150,7 +150,7 @@ export const Hero = () => {
             >
               <ArrowLeftRight size={17} />
               <span className="text-xs font-bold">Converters</span>
-              <span className="text-[10px] text-white/55">Format & type</span>
+              <span className="text-[10px] text-white/80">Format & type</span>
             </Link>
           </div>
         </div>

@@ -63,7 +63,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <ImageIcon size={20} className="text-[#fb397d]" />,
+    icon: <ImageIcon size={20} className="text-[#c3003a]" />,
     title: "Image and video — both supported",
     description:
       "Upload a photo for a static transparent sticker, or a video clip for an animated looping WebP sticker. One tool, two fully-optimised conversion pipelines.",
@@ -75,7 +75,7 @@ const benefits = [
       "For videos, the encoder automatically tries multiple FPS and quality combinations to produce the best-looking sticker under WhatsApp's 512KB limit.",
   },
   {
-    icon: <RefreshCw size={20} className="text-[#fb397d]" />,
+    icon: <RefreshCw size={20} className="text-[#c3003a]" />,
     title: "Reverse animation",
     description:
       "Toggle reverse to flip the video animation backwards — creates a boomerang-style sticker from any short clip. Great for reactions and quick motions.",
@@ -87,7 +87,7 @@ const benefits = [
       "All stickers output at the exact 512×512 pixel size required by WhatsApp and Telegram, centred on a transparent background.",
   },
   {
-    icon: <Share2 size={20} className="text-[#fb397d]" />,
+    icon: <Share2 size={20} className="text-[#c3003a]" />,
     title: "Direct WhatsApp share",
     description:
       "On mobile, use the native share buttons to send the sticker directly to WhatsApp or any messaging app via the Web Share API — no download needed.",
@@ -272,7 +272,7 @@ export default function StickerMakerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -317,7 +317,7 @@ export default function StickerMakerPageClient() {
                   <th className="text-left px-5 py-3 font-bold text-[#5b32b4] text-xs uppercase tracking-wider">
                     Image sticker
                   </th>
-                  <th className="text-left px-5 py-3 font-bold text-[#fb397d] text-xs uppercase tracking-wider">
+                  <th className="text-left px-5 py-3 font-bold text-[#c3003a] text-xs uppercase tracking-wider">
                     Animated sticker (video)
                   </th>
                 </tr>
@@ -393,7 +393,7 @@ export default function StickerMakerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#fb397d]"}`}
+                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#c3003a]"}`}
                     />
                     {item}
                   </li>
@@ -419,7 +419,7 @@ export default function StickerMakerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#fb397d]" : "text-[#5b32b4]"}`}
+                      className={`mt-0.5 shrink-0 ${idx % 2 === 0 ? "text-[#c3003a]" : "text-[#5b32b4]"}`}
                     />
                     {item}
                   </li>

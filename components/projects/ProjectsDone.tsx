@@ -21,7 +21,7 @@ export default function ProjectsSection() {
           action={
             <Link
               href="/projects"
-              className="text-sm font-bold text-[#fb397d] hover:underline"
+              className="text-sm font-bold text-[#c3003a] hover:underline"
             >
               See all projects →
             </Link>
@@ -59,7 +59,7 @@ export default function ProjectsSection() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-bold text-[#fb397d] hover:gap-2 transition-all"
+                  className="inline-flex items-center gap-1 text-sm font-bold text-[#c3003a] hover:gap-2 transition-all"
                 >
                   Visit site <ExternalLink size={13} />
                 </a>

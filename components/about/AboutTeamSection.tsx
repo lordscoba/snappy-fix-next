@@ -65,7 +65,7 @@ export default function AboutTeamSection() {
                 </Link>
 
                 {/* Role tags */}
-                <p className="text-[10px] text-[#b5aec4] leading-relaxed line-clamp-2">
+                <p className="text-[10px] text-[#6b5d80] leading-relaxed line-clamp-2">
                   {member.skills
                     .map((s) => s.skill_main)
                     .slice(0, 2)
@@ -76,7 +76,7 @@ export default function AboutTeamSection() {
                 <div className="flex items-center justify-between pt-1.5">
                   <Link
                     href={`/portifolio/${member.slug}`}
-                    className="inline-flex items-center gap-1 text-[10px] font-bold text-[#5b32b4] hover:text-[#fb397d] transition-colors"
+                    className="inline-flex items-center gap-1 text-[10px] font-bold text-[#5b32b4] hover:text-[#c3003a] transition-colors"
                   >
                     View profile <ArrowRight size={9} />
                   </Link>
@@ -87,7 +87,7 @@ export default function AboutTeamSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${member.name} external portfolio`}
-                      className="inline-flex items-center gap-1 text-[10px] font-bold text-[#fb397d] hover:underline"
+                      className="inline-flex items-center gap-1 text-[10px] font-bold text-[#c3003a] hover:underline"
                     >
                       Portfolio <ExternalLink size={9} />
                     </a>

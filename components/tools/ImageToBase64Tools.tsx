@@ -177,7 +177,7 @@ export default function ImageToBase64Tools() {
                 </div>
               </div>
             ) : (
-              <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#fb397d]">
+              <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#c3003a]">
                 <UploadCloud size={32} />
               </div>
             )}
@@ -273,7 +273,7 @@ export default function ImageToBase64Tools() {
             </button>
             <button
               onClick={handleReset}
-              className="px-6 h-12 rounded-xl font-bold text-slate-400 hover:text-[#fb397d] hover:bg-pink-50 transition-all flex items-center justify-center gap-2"
+              className="px-6 h-12 rounded-xl font-bold text-slate-400 hover:text-[#c3003a] hover:bg-pink-50 transition-all flex items-center justify-center gap-2"
             >
               <RefreshCcw size={18} />
               Reset

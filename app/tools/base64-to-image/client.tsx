@@ -64,7 +64,7 @@ const faqs = [
 // ─── Benefits data ────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Instant decoding",
     description:
       "Paste your Base64 string and get a downloadable image in under a second. No processing queues, no waiting.",
@@ -76,7 +76,7 @@ const benefits = [
       "Your Base64 data is processed securely and never stored. What you paste stays between you and the result.",
   },
   {
-    icon: <Download size={20} className="text-[#fb397d]" />,
+    icon: <Download size={20} className="text-[#c3003a]" />,
     title: "No watermark",
     description:
       "Download your decoded image exactly as it was originally encoded — clean, unmodified, and watermark-free.",
@@ -88,7 +88,7 @@ const benefits = [
       "No software to install. Open the tool in Chrome, Firefox, Safari, or Edge on desktop or mobile and decode instantly.",
   },
   {
-    icon: <Code2 size={20} className="text-[#fb397d]" />,
+    icon: <Code2 size={20} className="text-[#c3003a]" />,
     title: "Developer-friendly",
     description:
       "Accepts both raw Base64 strings and full data URIs with the data:image/ prefix. Handles the cleanup automatically.",
@@ -229,7 +229,7 @@ export default function Base64ToImagePageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -306,7 +306,7 @@ export default function Base64ToImagePageClient() {
                   <li key={item} className="flex items-start gap-2">
                     <CheckCircle2
                       size={14}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

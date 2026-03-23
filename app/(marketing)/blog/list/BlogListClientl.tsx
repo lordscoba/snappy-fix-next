@@ -249,7 +249,7 @@ export default function BlogSearchPageClient() {
 
         <div className="relative max-w-4xl mx-auto text-center space-y-5">
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-xs text-[#9d86b8] font-semibold uppercase tracking-widest">
-            <HiMagnifyingGlass className="text-[#fb397d]" />
+            <HiMagnifyingGlass className="text-[#c3003a]" />
             Search & Discover
           </div>
 
@@ -360,7 +360,7 @@ export default function BlogSearchPageClient() {
                 type="button"
                 aria-label="Clear all filters"
                 onClick={clearAll}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs text-[#6f5a88] hover:text-[#fb397d] transition-colors border border-transparent hover:border-white/10"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs text-[#6f5a88] hover:text-[#c3003a] transition-colors border border-transparent hover:border-white/10"
               >
                 <HiXMark size={14} />
                 Clear all
@@ -426,7 +426,7 @@ export default function BlogSearchPageClient() {
                   type="button"
                   aria-label="Clear all filters"
                   onClick={clearAll}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs text-[#6f5a88] hover:text-[#fb397d] border border-transparent hover:border-white/10 transition-all"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs text-[#6f5a88] hover:text-[#c3003a] border border-transparent hover:border-white/10 transition-all"
                 >
                   <HiXMark size={14} />
                   Clear
@@ -517,7 +517,7 @@ export default function BlogSearchPageClient() {
               {debouncedSearch && !loading && (
                 <span className="text-xs text-[#6f5a88]">
                   Results for{" "}
-                  <span className="text-[#fb397d] font-semibold">
+                  <span className="text-[#c3003a] font-semibold">
                     "{debouncedSearch}"
                   </span>
                 </span>
@@ -537,7 +537,7 @@ export default function BlogSearchPageClient() {
             {!loading && error && (
               <div className="flex flex-col items-center justify-center py-24 text-center">
                 <div className="w-16 h-16 rounded-full bg-[#fb397d]/10 border border-[#fb397d]/20 flex items-center justify-center mb-4">
-                  <HiExclamationTriangle className="text-[#fb397d] text-2xl" />
+                  <HiExclamationTriangle className="text-[#c3003a] text-2xl" />
                 </div>
                 <h3 className="text-white font-black text-lg mb-2">
                   Failed to load articles
@@ -631,11 +631,11 @@ export default function BlogSearchPageClient() {
                         <div className="flex items-center justify-between pt-1">
                           <div className="flex items-center gap-3 text-[11px] text-[#6f5a88]">
                             <span className="flex items-center gap-1">
-                              <HiUser size={10} className="text-[#fb397d]" />
+                              <HiUser size={10} className="text-[#c3003a]" />
                               {post.author}
                             </span>
                             <span className="flex items-center gap-1">
-                              <HiClock size={10} className="text-[#fb397d]" />
+                              <HiClock size={10} className="text-[#c3003a]" />
                               {post.readingTime}
                             </span>
                           </div>
@@ -700,7 +700,7 @@ export default function BlogSearchPageClient() {
               {/* Quick filters */}
               <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-4">
-                  <HiAdjustmentsHorizontal className="text-[#fb397d]" />
+                  <HiAdjustmentsHorizontal className="text-[#c3003a]" />
                   <h3 className="text-white text-xs font-black uppercase tracking-[0.2em]">
                     Quick Filters
                   </h3>
@@ -709,7 +709,7 @@ export default function BlogSearchPageClient() {
                 <div className="space-y-2">
                   <SidebarToggle
                     active={filters.is_featured}
-                    icon={<HiStar className="text-[#fb397d]" size={14} />}
+                    icon={<HiStar className="text-[#c3003a]" size={14} />}
                     label="Featured Posts"
                     description="Editor's top picks"
                     onClick={() =>
@@ -731,7 +731,7 @@ export default function BlogSearchPageClient() {
               {/* Categories */}
               <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-[#fb397d] text-base">#</span>
+                  <span className="text-[#c3003a] text-base">#</span>
                   <h3 className="text-white text-xs font-black uppercase tracking-[0.2em]">
                     Categories
                   </h3>
@@ -764,7 +764,7 @@ export default function BlogSearchPageClient() {
                           }
                           className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200 ${
                             isActive
-                              ? "bg-[#fb397d]/15 border border-[#fb397d]/30 text-[#fb397d]"
+                              ? "bg-[#fb397d]/15 border border-[#fb397d]/30 text-[#c3003a]"
                               : "text-[#9d86b8] hover:bg-white/5 hover:text-white border border-transparent"
                           }`}
                         >
@@ -844,7 +844,7 @@ function ActiveChip({
         type="button"
         aria-label="Remove"
         onClick={onRemove}
-        className="hover:text-[#fb397d] transition-colors"
+        className="hover:text-[#c3003a] transition-colors"
       >
         <HiXMark size={12} />
       </button>

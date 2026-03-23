@@ -95,7 +95,7 @@ const Testimonial = () => {
                   <p className="font-bold text-[#2b1d3a]">
                     {TESTIMONIALS[testimonialIdx].name}
                   </p>
-                  <p className="text-[#b5aec4] text-sm">
+                  <p className="text-[#6b5d80] text-sm">
                     {TESTIMONIALS[testimonialIdx].role}
                   </p>
                 </div>

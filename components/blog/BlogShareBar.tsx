@@ -99,7 +99,7 @@ export default function BlogShareBar({ title, slug }: BlogShareBarProps) {
       >
         {copied ? (
           <>
-            <HiCheckCircle size={14} className="text-[#fb397d]" />
+            <HiCheckCircle size={14} className="text-[#c3003a]" />
             Copied!
           </>
         ) : (

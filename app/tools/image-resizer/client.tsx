@@ -71,7 +71,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <LayoutGrid size={20} className="text-[#fb397d]" />,
+    icon: <LayoutGrid size={20} className="text-[#c3003a]" />,
     title: "20+ named presets",
     description:
       "Platform-specific presets across 5 categories — social media, video thumbnails, banners, messaging, and documents. One click sets exact dimensions.",
@@ -83,7 +83,7 @@ const benefits = [
       "Enter any width and height in pixels for precise control. View original dimensions and file size immediately after upload.",
   },
   {
-    icon: <Lock size={20} className="text-[#fb397d]" />,
+    icon: <Lock size={20} className="text-[#c3003a]" />,
     title: "Aspect ratio lock",
     description:
       "Toggle Maintain Aspect Ratio to keep your image's original proportions and prevent distortion — or unlock it for exact fixed dimensions.",
@@ -95,7 +95,7 @@ const benefits = [
       "Resizing is processed server-side for consistent, high-quality output across all formats. Most resizes complete in under 5 seconds.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed securely and not permanently stored. Original and resized files are never retained after the session.",
@@ -301,7 +301,7 @@ export default function ImageResizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -428,7 +428,7 @@ export default function ImageResizerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

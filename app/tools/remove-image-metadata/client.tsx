@@ -118,7 +118,7 @@ const metadataFields = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <EyeOff size={20} className="text-[#fb397d]" />,
+    icon: <EyeOff size={20} className="text-[#c3003a]" />,
     title: "Complete metadata removal",
     description:
       "Removes all metadata — EXIF, IPTC, XMP, GPS, device info, and ICC profiles — not just selected fields. A full scrub, not a partial clean.",
@@ -130,7 +130,7 @@ const benefits = [
       "Precise GPS coordinates stored by smartphone cameras are permanently removed. No one can trace where a photo was taken from the file.",
   },
   {
-    icon: <Camera size={20} className="text-[#fb397d]" />,
+    icon: <Camera size={20} className="text-[#c3003a]" />,
     title: "Quality 95 output",
     description:
       "JPEG and WebP re-saved at quality 95 — no perceptible quality loss. PNG uses lossless optimisation. Visual fidelity is preserved entirely.",
@@ -142,7 +142,7 @@ const benefits = [
       "JPEG stays JPEG, PNG stays PNG, WebP stays WebP, HEIC stays HEIC. Output filename adds '_clean' so you always know which version is scrubbed.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Never stored",
     description:
       "Your original image and the scrubbed output are never permanently stored on the server. Processed and discarded — nothing retained.",
@@ -318,7 +318,7 @@ export default function RemoveImageMetadataPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -393,7 +393,7 @@ export default function RemoveImageMetadataPageClient() {
                     <td
                       className={`px-5 py-3 text-xs font-black ${
                         row.level === "High"
-                          ? "text-[#fb397d]"
+                          ? "text-[#c3003a]"
                           : row.level === "Medium"
                             ? "text-amber-500"
                             : "text-gray-400"
@@ -456,7 +456,7 @@ export default function RemoveImageMetadataPageClient() {
                     <CheckCircle2
                       size={13}
                       className={`mt-0.5 shrink-0 ${
-                        idx % 2 === 0 ? "text-[#fb397d]" : "text-[#5b32b4]"
+                        idx % 2 === 0 ? "text-[#c3003a]" : "text-[#5b32b4]"
                       }`}
                     />
                     {item}

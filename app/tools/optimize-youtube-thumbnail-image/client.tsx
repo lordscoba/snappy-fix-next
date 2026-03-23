@@ -70,7 +70,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <Maximize size={20} className="text-[#fb397d]" />,
+    icon: <Maximize size={20} className="text-[#c3003a]" />,
     title: "Exactly 1280×720 px",
     description:
       "Hard crops to YouTube's required 1280×720 resolution using centre-fit — no black bars, no padding, no distortion.",
@@ -82,7 +82,7 @@ const benefits = [
       "Quality 90 progressive JPEG preserves maximum detail in text, faces, and high-contrast edges — critical for thumbnail readability at small sizes.",
   },
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Under YouTube's 2MB limit",
     description:
       "Output stays well under YouTube's 2MB thumbnail size limit, minimising further re-encoding by YouTube's pipeline.",
@@ -94,7 +94,7 @@ const benefits = [
       "1280×720 at quality 90 displays sharply on phones, tablets, desktop browsers, and Smart TVs — across all YouTube surface areas.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed securely and never permanently stored. Files are discarded after download.",
@@ -247,7 +247,7 @@ export default function YouTubeOptimizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -306,7 +306,7 @@ export default function YouTubeOptimizerPageClient() {
                     <td className="px-5 py-3 font-bold text-[#5b32b4] text-xs">
                       {row.surface}
                     </td>
-                    <td className="px-5 py-3 text-xs font-black text-[#fb397d] font-mono">
+                    <td className="px-5 py-3 text-xs font-black text-[#c3003a] font-mono">
                       {row.display}
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-600">
@@ -372,7 +372,7 @@ export default function YouTubeOptimizerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

@@ -114,7 +114,7 @@ export default function ContactMainContent() {
                         {item.href ? (
                           <a
                             href={item.href}
-                            className="font-semibold text-white hover:text-[#fb397d] transition-colors text-sm"
+                            className="font-semibold text-white hover:text-[#c3003a] transition-colors text-sm"
                           >
                             {item.value}
                           </a>
@@ -169,12 +169,12 @@ export default function ContactMainContent() {
                     className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl hover:bg-[#faf7ff] transition-colors group"
                   >
                     <span className="flex items-center gap-2 text-sm font-medium text-[#2b1d3a] group-hover:text-[#5b32b4] transition-colors">
-                      <span className="text-[#fb397d]">{link.icon}</span>
+                      <span className="text-[#c3003a]">{link.icon}</span>
                       {link.label}
                     </span>
                     <ArrowRight
                       size={13}
-                      className="text-[#b5aec4] group-hover:text-[#5b32b4] group-hover:translate-x-0.5 transition-all"
+                      className="text-[#6b5d80] group-hover:text-[#5b32b4] group-hover:translate-x-0.5 transition-all"
                     />
                   </Link>
                 ))}
@@ -324,7 +324,7 @@ export default function ContactMainContent() {
                       htmlFor="message"
                       className="text-sm font-bold text-[#5b32b4]"
                     >
-                      Your Message <span className="text-[#fb397d]">*</span>
+                      Your Message <span className="text-[#c3003a]">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -396,7 +396,7 @@ function FormField({
   return (
     <div className="space-y-1.5">
       <label htmlFor={id} className="text-sm font-bold text-[#5b32b4]">
-        {label} {required && <span className="text-[#fb397d]">*</span>}
+        {label} {required && <span className="text-[#c3003a]">*</span>}
       </label>
       <input
         id={id}

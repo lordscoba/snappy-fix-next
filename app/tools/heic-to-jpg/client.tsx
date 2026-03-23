@@ -79,7 +79,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <Sliders size={20} className="text-[#fb397d]" />,
+    icon: <Sliders size={20} className="text-[#c3003a]" />,
     title: "Three compression presets",
     description:
       "Low (quality 90, up to 4000px), Medium (quality 75, up to 3000px), and High (quality 55, up to 2000px) — choose the right balance of quality and file size for your use case.",
@@ -91,7 +91,7 @@ const benefits = [
       "Choose JPG for smaller file sizes perfect for sharing, or PNG for lossless quality with no compression artefacts.",
   },
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Metadata stripped automatically",
     description:
       "EXIF orientation is applied to correctly rotate your photo, then all metadata — GPS, device info, timestamps — is removed from the output.",
@@ -103,7 +103,7 @@ const benefits = [
       "Converted JPG and PNG files open on Windows, Android, Linux, all web browsers, and every image editing app.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your photos are processed securely and never permanently stored. What you upload stays completely private.",
@@ -264,7 +264,7 @@ export default function HeicToJpgPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -333,7 +333,7 @@ export default function HeicToJpgPageClient() {
                     <td className="px-5 py-3 font-bold text-[#5b32b4] text-xs">
                       {row.preset}
                     </td>
-                    <td className="px-5 py-3 text-xs font-black text-[#fb397d] font-mono">
+                    <td className="px-5 py-3 text-xs font-black text-[#c3003a] font-mono">
                       {row.jpegQ}
                     </td>
                     <td className="px-5 py-3 text-xs font-bold text-[#2b1d3a]">
@@ -438,7 +438,7 @@ export default function HeicToJpgPageClient() {
               </ul>
             </div>
             <div>
-              <p className="font-black text-sm text-[#fb397d] mb-3 flex items-center gap-2">
+              <p className="font-black text-sm text-[#c3003a] mb-3 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-lg bg-[#fb397d] text-white text-xs font-black flex items-center justify-center">
                   P
                 </span>
@@ -457,7 +457,7 @@ export default function HeicToJpgPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

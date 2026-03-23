@@ -176,7 +176,7 @@ export default function FaviconGeneratorTool() {
             <br />
             or
             <br />
-            <span className="text-[#fb397d]">Browse</span>
+            <span className="text-[#c3003a]">Browse</span>
           </p>
         ) : (
           <img
@@ -293,7 +293,7 @@ export default function FaviconGeneratorTool() {
 
           <button
             onClick={handleReset}
-            className="text-sm font-bold text-gray-400 hover:text-[#fb397d] transition-colors"
+            className="text-sm font-bold text-gray-400 hover:text-[#c3003a] transition-colors"
           >
             Clear and start over
           </button>

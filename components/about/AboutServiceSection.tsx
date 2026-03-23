@@ -4,25 +4,25 @@ import { AboutSectionLabel, UseInView } from "../home/Helpers";
 // ─── Core services ────────────────────────────────────────────────────────────
 const SERVICES = [
   {
-    icon: <Code2 size={24} className="text-[#fb397d]" />,
+    icon: <Code2 size={24} className="text-[#c3003a]" />,
     title: "Website & Web App Development",
     body: "We build custom websites, SaaS platforms, and web applications using modern frameworks — React, Next.js, Node.js, and more. Every project is built for performance, scalability, and real business results.",
     tags: ["Next.js", "React", "Node.js", "PostgreSQL"],
   },
   {
-    icon: <Smartphone size={24} className="text-[#fb397d]" />,
+    icon: <Smartphone size={24} className="text-[#c3003a]" />,
     title: "Mobile App Development",
     body: "Cross-platform mobile apps built with Flutter — one codebase, iOS and Android. From MVP prototypes to production-grade applications, we build mobile experiences that users love.",
     tags: ["Flutter", "iOS", "Android", "Firebase"],
   },
   {
-    icon: <ImageIcon size={24} className="text-[#fb397d]" />,
+    icon: <ImageIcon size={24} className="text-[#c3003a]" />,
     title: "Free Online Image Tools",
     body: "We build and maintain a suite of 29+ free online image tools — converters, optimisers, compressors, watermark tools, and more — used daily by developers, designers, and marketers worldwide.",
     tags: ["WebP", "AVIF", "PDF", "SVG", "HEIC"],
   },
   {
-    icon: <Globe size={24} className="text-[#fb397d]" />,
+    icon: <Globe size={24} className="text-[#c3003a]" />,
     title: "SEO & Web Performance",
     body: "Every product we build is optimised for search engines and real web performance metrics. PageSpeed, Core Web Vitals, structured data, and technical SEO — baked in from the start.",
     tags: ["Core Web Vitals", "PageSpeed", "Schema.org", "SEO"],

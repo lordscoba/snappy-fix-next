@@ -127,7 +127,7 @@ export const LoginComponent = () => {
               <Link
                 href="/forgot-password"
                 target="_blank"
-                className="text-xs text-[#fb397d] hover:underline"
+                className="text-xs text-[#c3003a] hover:underline"
               >
                 Forgot password?
               </Link>
@@ -167,7 +167,7 @@ export const LoginComponent = () => {
           Don&apos;t have an account?{" "}
           <Link
             href="/register"
-            className="font-semibold text-[#fb397d] hover:underline"
+            className="font-semibold text-[#c3003a] hover:underline"
           >
             Create one
           </Link>

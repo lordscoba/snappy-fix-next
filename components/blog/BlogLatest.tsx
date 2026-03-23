@@ -74,7 +74,7 @@ export default function BlogLatest({
     <section id="latest-section">
       {/* Header */}
       <div className="flex items-center gap-3 mb-8">
-        <HiBolt className="text-[#fb397d] text-xl" />
+        <HiBolt className="text-[#c3003a] text-xl" />
         <h2 className="text-white text-sm font-black uppercase tracking-[0.2em]">
           Latest Posts
         </h2>
@@ -130,7 +130,7 @@ export default function BlogLatest({
                     <div className="flex items-center gap-3 text-[11px] text-[#6f5a88]">
                       <span>{post.author}</span>
                       <span className="flex items-center gap-1">
-                        <HiClock size={11} className="text-[#fb397d]" />
+                        <HiClock size={11} className="text-[#c3003a]" />
                         {post.readingTime}
                       </span>
                     </div>

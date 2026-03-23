@@ -34,7 +34,7 @@ export default function BlogCategories({
     <section>
       {/* Section label */}
       <div className="flex items-center gap-3 mb-6">
-        <HiHashtag className="text-[#fb397d] text-xl" />
+        <HiHashtag className="text-[#c3003a] text-xl" />
         <span className="text-[#9d86b8] text-xs font-bold uppercase tracking-[0.2em]">
           Browse by Category
         </span>
@@ -44,7 +44,7 @@ export default function BlogCategories({
             type="button"
             aria-label="Clear"
             onClick={() => handleSelect(null)}
-            className="text-xs text-[#6f5a88] hover:text-[#fb397d] transition-colors font-medium"
+            className="text-xs text-[#6f5a88] hover:text-[#c3003a] transition-colors font-medium"
           >
             Clear ×
           </button>

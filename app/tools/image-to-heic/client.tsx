@@ -71,7 +71,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <HardDrive size={20} className="text-[#fb397d]" />,
+    icon: <HardDrive size={20} className="text-[#c3003a]" />,
     title: "40–50% smaller files",
     description:
       "HEIC typically produces files 40–50% smaller than JPEG at equivalent quality — freeing storage on iCloud, devices, and backup drives.",
@@ -83,7 +83,7 @@ const benefits = [
       "Set compression from 10 to 100. The default of 80 matches iPhone's native HEIC quality — or go higher for archival, lower for maximum savings.",
   },
   {
-    icon: <FileImage size={20} className="text-[#fb397d]" />,
+    icon: <FileImage size={20} className="text-[#c3003a]" />,
     title: "Any format to HEIC",
     description:
       "Converts JPG, PNG, WebP, BMP, TIFF, and GIF to HEIC — not just JPEG. Bring any image into Apple's efficient storage format.",
@@ -95,7 +95,7 @@ const benefits = [
       "Upload and convert in seconds. No processing queue, no waiting — your HEIC file is ready to download immediately.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your images are processed securely and never permanently stored. Original and converted files are discarded after the session ends.",
@@ -305,7 +305,7 @@ export default function ImageToHeicPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -383,7 +383,7 @@ export default function ImageToHeicPageClient() {
                     <td className="px-5 py-3 text-xs text-gray-600">
                       {row.use}
                     </td>
-                    <td className="px-5 py-3 text-xs font-bold text-[#fb397d]">
+                    <td className="px-5 py-3 text-xs font-bold text-[#c3003a]">
                       {row.size}
                     </td>
                   </tr>
@@ -426,7 +426,7 @@ export default function ImageToHeicPageClient() {
                     <td className="px-5 py-3 font-bold text-[#2b1d3a] text-xs">
                       {row.format}
                     </td>
-                    <td className="px-5 py-3 font-black text-[#fb397d] text-xs">
+                    <td className="px-5 py-3 font-black text-[#c3003a] text-xs">
                       {row.size}
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-600">
@@ -491,7 +491,7 @@ export default function ImageToHeicPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

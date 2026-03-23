@@ -170,7 +170,7 @@ export default function ImageAnalyserTools() {
 
         {!preview ? (
           <div className="space-y-3">
-            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto text-[#fb397d]">
+            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto text-[#c3003a]">
               <Maximize size={32} />
             </div>
             <p className="text-lg font-bold text-[#2b1d3a]">
@@ -448,7 +448,7 @@ function MetricCard({
 
   return (
     <div className="bg-white border border-[#e9e1ff] p-5 rounded-2xl shadow-sm">
-      <div className="flex items-center justify-center text-[#fb397d] mb-2">
+      <div className="flex items-center justify-center text-[#c3003a] mb-2">
         {icon}
       </div>
 

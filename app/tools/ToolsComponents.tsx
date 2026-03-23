@@ -117,7 +117,7 @@ export default function ToolsComponents() {
                           <p className="text-sm text-gray-600 leading-relaxed">
                             {tool.description}
                           </p>
-                          <span className="inline-flex items-center text-sm font-semibold text-[#fb397d] group-hover:gap-3 gap-1 transition-all">
+                          <span className="inline-flex items-center text-sm font-semibold text-[#c3003a] group-hover:gap-3 gap-1 transition-all">
                             Use Tool →
                           </span>
                         </div>

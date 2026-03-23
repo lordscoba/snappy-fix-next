@@ -70,7 +70,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Copy size={20} className="text-[#fb397d]" />,
+    icon: <Copy size={20} className="text-[#c3003a]" />,
     title: "One-click copy",
     description:
       "The Base64 string is displayed in a readable textarea with a Copy String button — click once and the full encoded string is in your clipboard.",
@@ -82,7 +82,7 @@ const benefits = [
       "Upload your image and get the Base64 string in seconds. The result panel shows a live preview rendered from the Base64 data so you can verify the output.",
   },
   {
-    icon: <FileCode size={20} className="text-[#fb397d]" />,
+    icon: <FileCode size={20} className="text-[#c3003a]" />,
     title: "Format detection",
     description:
       "The tool detects and returns the image format (PNG, JPG, WebP, etc.) so you always know the correct MIME type to use in your data URI or API payload.",
@@ -94,7 +94,7 @@ const benefits = [
       "A direct link to the Base64 to Image tool is built in — convert in both directions without navigating away from the workflow.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image and the generated Base64 string are never stored on our servers. Processing happens securely and the session data is discarded.",
@@ -270,7 +270,7 @@ export default function ImageToBase64PageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -338,7 +338,7 @@ export default function ImageToBase64PageClient() {
                     <td className="px-5 py-3 font-bold text-[#5b32b4] text-xs">
                       {row.context}
                     </td>
-                    <td className="px-5 py-3 text-[10px] font-mono text-[#fb397d] break-all max-w-[200px]">
+                    <td className="px-5 py-3 text-[10px] font-mono text-[#c3003a] break-all max-w-[200px]">
                       {row.example}
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-600">
@@ -382,8 +382,8 @@ export default function ImageToBase64PageClient() {
               </ul>
             </div>
             <div>
-              <p className="font-bold text-[#fb397d] text-sm mb-3 flex items-center gap-2">
-                <CheckCircle2 size={14} className="text-[#fb397d]" />
+              <p className="font-bold text-[#c3003a] text-sm mb-3 flex items-center gap-2">
+                <CheckCircle2 size={14} className="text-[#c3003a]" />
                 Avoid Base64 for:
               </p>
               <ul className="space-y-2">
@@ -398,7 +398,7 @@ export default function ImageToBase64PageClient() {
                     key={item}
                     className="flex items-start gap-2 text-sm text-gray-600"
                   >
-                    <span className="text-[#fb397d] mt-0.5 shrink-0 text-xs font-black">
+                    <span className="text-[#c3003a] mt-0.5 shrink-0 text-xs font-black">
                       ✕
                     </span>
                     {item}

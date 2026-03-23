@@ -73,7 +73,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Instant conversion",
     description:
       "Upload your image and get a downloadable PDF in seconds — no processing queue, no email delivery, no waiting.",
@@ -85,7 +85,7 @@ const benefits = [
       "The PDF is sized to fit your image perfectly — no white borders, no cropping, ready to print on any printer or send to a print shop.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "No watermark",
     description:
       "Download a completely clean PDF with no added branding, watermarks, or overlaid text. Your image, unmodified.",
@@ -97,7 +97,7 @@ const benefits = [
       "PDF is the accepted format for professional email attachments, government portals, visa applications, and online submissions.",
   },
   {
-    icon: <Globe size={20} className="text-[#fb397d]" />,
+    icon: <Globe size={20} className="text-[#c3003a]" />,
     title: "Works on any device",
     description:
       "Fully responsive — convert images to PDF on desktop, laptop, tablet, or smartphone from any modern browser without installing software.",
@@ -317,7 +317,7 @@ export default function ImageToPDFPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}

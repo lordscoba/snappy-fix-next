@@ -71,7 +71,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Maximize size={20} className="text-[#fb397d]" />,
+    icon: <Maximize size={20} className="text-[#c3003a]" />,
     title: "Full dimensional analysis",
     description:
       "Get pixel dimensions, aspect ratio with named labels, and a resolution tier (HD, Full HD, 4K) — all in one scan.",
@@ -83,7 +83,7 @@ const benefits = [
       "Extracts the dominant colour and full colour palette with one-click hex copy — useful for design matching and brand consistency.",
   },
   {
-    icon: <BarChart3 size={20} className="text-[#fb397d]" />,
+    icon: <BarChart3 size={20} className="text-[#c3003a]" />,
     title: "Brightness and contrast scores",
     description:
       "Measures luminance and contrast on standardised scales with named interpretations — Balanced, High Contrast, Very Dark, etc.",
@@ -95,7 +95,7 @@ const benefits = [
       "Surfaces all hidden metadata embedded in your image — camera model, GPS coordinates, exposure settings, and creation timestamps.",
   },
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "AI optimisation recommendations",
     description:
       "Generates specific, actionable suggestions based on your image's actual data — not generic tips, but file-specific insights.",
@@ -313,7 +313,7 @@ export default function ImageAnalyzerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}

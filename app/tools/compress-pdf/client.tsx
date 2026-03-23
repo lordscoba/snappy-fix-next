@@ -70,7 +70,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Instant compression",
     description:
       "Upload and compress in seconds. No processing queue, no waiting — your smaller PDF is ready to download immediately.",
@@ -82,7 +82,7 @@ const benefits = [
       "Choose simple preset compression or take full manual control over quality and DPI in Pro mode for precise output.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Secure processing",
     description:
       "Your documents are processed securely and never permanently stored. What you upload stays private.",
@@ -94,7 +94,7 @@ const benefits = [
       "Download your compressed PDF exactly as it was — clean, unmodified, and free of any added branding or watermarks.",
   },
   {
-    icon: <Globe size={20} className="text-[#fb397d]" />,
+    icon: <Globe size={20} className="text-[#c3003a]" />,
     title: "Works on any device",
     description:
       "Fully responsive. Compress PDFs from your desktop, laptop, tablet, or smartphone — any modern browser works.",
@@ -256,7 +256,7 @@ export default function CompressPDFPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -329,7 +329,7 @@ export default function CompressPDFPageClient() {
                   </p>
                 </div>
                 <div className="bg-[#fb397d]/5 border border-[#fb397d]/20 rounded-xl p-4">
-                  <p className="font-bold text-[#fb397d] text-sm mb-1">
+                  <p className="font-bold text-[#c3003a] text-sm mb-1">
                     Pro Mode
                   </p>
                   <p className="text-gray-500 text-xs leading-relaxed">

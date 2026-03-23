@@ -26,6 +26,7 @@ const CTABanners = () => {
             Contact Us
           </Link>
           <Link
+            arial-label="Free Tools"
             href="/tools"
             className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold px-8 py-4 rounded-full transition-all backdrop-blur-sm"
           >

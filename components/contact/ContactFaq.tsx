@@ -36,7 +36,7 @@ export default function ContactFaq() {
     <section className="py-16 bg-gradient-to-br from-[#faf7ff] to-white">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center space-y-3 mb-10">
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#fb397d] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#c3003a] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
             FAQ
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#2b1d3a]">

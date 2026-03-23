@@ -9,7 +9,7 @@ export default function ContactBottomCTA() {
           <h2 className="text-2xl md:text-3xl font-extrabold text-white">
             Need something right now?
           </h2>
-          <p className="text-white/55 mt-1">
+          <p className="text-white/70 mt-1">
             Try our free online tools — no signup, no watermark, instant
             results.
           </p>

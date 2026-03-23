@@ -254,7 +254,7 @@ export default function PDFCompressorTools() {
 
           <button
             onClick={handleReset}
-            className="text-sm font-bold text-gray-400 hover:text-[#fb397d]"
+            className="text-sm font-bold text-gray-400 hover:text-[#c3003a]"
             aria-label="clear and start over"
           >
             Clear and start over

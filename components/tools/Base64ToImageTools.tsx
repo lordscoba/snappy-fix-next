@@ -142,7 +142,7 @@ export default function Base64ToImageTools() {
             {base64Input && (
               <button
                 onClick={() => setBase64Input("")}
-                className="absolute top-5 right-5 text-gray-400 hover:text-[#fb397d] transition-colors"
+                className="absolute top-5 right-5 text-gray-400 hover:text-[#c3003a] transition-colors"
                 aria-label="clear input"
               >
                 <RefreshCcw size={18} />

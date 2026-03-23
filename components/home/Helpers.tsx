@@ -37,7 +37,7 @@ export function SectionHeader({
 }) {
   return (
     <div className="text-center space-y-3">
-      <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#fb397d] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
+      <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#c3003a] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
         {label}
       </span>
       <h2 className="text-3xl md:text-5xl font-extrabold text-[#2b1d3a]">
@@ -52,7 +52,7 @@ export function SectionHeader({
 
 export function AboutSectionLabel({ text }: { text: string }) {
   return (
-    <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#fb397d] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
+    <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#c3003a] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
       {text}
     </span>
   );
