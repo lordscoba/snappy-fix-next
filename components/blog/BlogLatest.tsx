@@ -149,6 +149,8 @@ export default function BlogLatest({
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2 mt-10">
           <button
+            type="button"
+            aria-label="Previous page"
             onClick={() => changePage(Math.max(page - 1, 1))}
             disabled={page === 1}
             className="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[#9d86b8] hover:bg-[#5b32b4] hover:border-[#5b32b4] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
@@ -158,6 +160,7 @@ export default function BlogLatest({
 
           {Array.from({ length: totalPages }).map((_, i) => (
             <button
+              type="button"
               key={i}
               onClick={() => changePage(i + 1)}
               aria-label={`Page ${i + 1}`}
@@ -172,6 +175,8 @@ export default function BlogLatest({
           ))}
 
           <button
+            type="button"
+            aria-label="Next page"
             onClick={() => changePage(Math.min(page + 1, totalPages))}
             disabled={page === totalPages}
             className="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[#9d86b8] hover:bg-[#5b32b4] hover:border-[#5b32b4] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"

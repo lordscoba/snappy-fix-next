@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { tools } from "@/data/toolsData";
 import { NavbarMenu } from "@/components/Layout";
@@ -8,9 +8,21 @@ import ToolCategories from "@/components/tools/ToolCategories";
 import { splitTitle } from "@/lib/utils/title";
 import { getMainToolsBreadcrumb } from "@/lib/utils/metadata";
 import Script from "next/script";
+import { useSearchParams } from "next/navigation";
 
 export default function ToolsComponents() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("search") || "";
+
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
+
+  // Optional: Sync state if the URL changes (e.g., clicking a link elsewhere)
+  useEffect(() => {
+    const query = searchParams.get("search");
+    if (query !== null) {
+      setSearchQuery(query);
+    }
+  }, [searchParams]);
 
   // Filter tools based on search query
   const filteredTools = tools.filter(
@@ -31,7 +43,7 @@ export default function ToolsComponents() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
-      <NavbarMenu background="bg-[#884bdf]" />
+      <NavbarMenu background="bg-[#47238f]" />
 
       <section className="w-full max-w-7xl mx-auto px-6 pt-48 pb-20 space-y-20">
         {/* Header */}

@@ -176,28 +176,26 @@ export default function BlogSearchPageClient() {
   }, [fetchPosts]);
 
   const router = useRouter(); // add this import: import { useRouter, useSearchParams } from "next/navigation";
-
   const update = useCallback(
     (patch: Partial<FilterState>) => {
-      startTransition(() => {
-        setFilters((prev) => {
-          const next = { ...prev, ...patch, page: 1 };
+      // 1. Calculate the next state immediately
+      const nextFilters = { ...filters, ...patch, page: 1 };
 
-          // ── Sync URL search params ──
-          const params = new URLSearchParams();
-          if (next.category_id) params.set("category", next.category_id);
-          if (next.search) params.set("search", next.search);
-          if (next.is_featured) params.set("featured", "true");
-          if (next.is_exclusive) params.set("exclusive", "true");
+      // 2. Update the React state
+      setFilters(nextFilters);
 
-          const query = params.toString();
-          router.replace(`?${query}`, { scroll: false });
+      // 3. Sync the URL (Side Effect)
+      const params = new URLSearchParams();
+      if (nextFilters.category_id)
+        params.set("category", nextFilters.category_id);
+      if (nextFilters.search) params.set("search", nextFilters.search);
+      if (nextFilters.is_featured) params.set("featured", "true");
+      if (nextFilters.is_exclusive) params.set("exclusive", "true");
 
-          return next;
-        });
-      });
+      const query = params.toString();
+      router.replace(`?${query}`, { scroll: false });
     },
-    [router],
+    [filters, router], // Dependencies must include 'filters' now
   );
 
   const clearAll = useCallback(() => {
@@ -212,17 +210,18 @@ export default function BlogSearchPageClient() {
   }, [router]);
 
   const changePage = (next: number) => {
-    setFilters((f) => {
-      const params = new URLSearchParams();
-      if (f.category_id) params.set("category", f.category_id);
-      if (f.search) params.set("search", f.search);
-      if (f.is_featured) params.set("featured", "true");
-      if (f.is_exclusive) params.set("exclusive", "true");
-      if (next > 1) params.set("page", String(next));
+    const nextFilters = { ...filters, page: next };
+    setFilters(nextFilters);
 
-      router.replace(`?${params.toString()}`, { scroll: false });
-      return { ...f, page: next };
-    });
+    const params = new URLSearchParams();
+    if (nextFilters.category_id)
+      params.set("category", nextFilters.category_id);
+    if (nextFilters.search) params.set("search", nextFilters.search);
+    if (nextFilters.is_featured) params.set("featured", "true");
+    if (nextFilters.is_exclusive) params.set("exclusive", "true");
+    if (next > 1) params.set("page", String(next));
+
+    router.replace(`?${params.toString()}`, { scroll: false });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -241,10 +240,10 @@ export default function BlogSearchPageClient() {
   // ─────────────────────────────────────────────────────────
   return (
     <main className="min-h-screen bg-[#0e0716]">
-      <NavbarMenu background="bg-[#884bdf]" />
+      <NavbarMenu background="bg-[#47238f]" />
 
       {/* ── Page Header ───────────────────────────────────────── */}
-      <section className="relative pt-36 pb-16 px-6 overflow-hidden mt-28 md:mt-32">
+      <section className="relative pt-36 pb-16 px-6 overflow-hidden  mt-16 md:mt-20">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#5b32b4]/20 blur-3xl pointer-events-none" />
         <div className="absolute top-20 right-0 w-72 h-72 rounded-full bg-[#fb397d]/10 blur-3xl pointer-events-none" />
 
@@ -309,6 +308,8 @@ export default function BlogSearchPageClient() {
             />
             {filters.search && (
               <button
+                type="button"
+                aria-label="Clear search"
                 onClick={() => update({ search: "" })}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6f5a88] hover:text-white transition-colors"
               >
@@ -319,6 +320,7 @@ export default function BlogSearchPageClient() {
 
           {/* Mobile filter toggle */}
           <button
+            aria-label="Toggle filters"
             onClick={() => setShowFilters((s) => !s)}
             className={`sm:hidden flex items-center gap-2 px-4 py-3 rounded-2xl border text-sm font-semibold transition-all ${
               showFilters || hasActiveFilters
@@ -355,6 +357,8 @@ export default function BlogSearchPageClient() {
             />
             {hasActiveFilters && (
               <button
+                type="button"
+                aria-label="Clear all filters"
                 onClick={clearAll}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs text-[#6f5a88] hover:text-[#fb397d] transition-colors border border-transparent hover:border-white/10"
               >
@@ -370,6 +374,8 @@ export default function BlogSearchPageClient() {
           <div className="sm:hidden max-w-7xl mx-auto mt-3 space-y-3 pb-1">
             <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
               <button
+                type="button"
+                aria-label="Clear category filter"
                 onClick={() => update({ category_id: "" })}
                 className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all ${
                   !filters.category_id
@@ -381,6 +387,8 @@ export default function BlogSearchPageClient() {
               </button>
               {categories.map((cat) => (
                 <button
+                  type="button"
+                  aria-label={cat.name}
                   key={cat.id}
                   onClick={() =>
                     update({
@@ -415,6 +423,8 @@ export default function BlogSearchPageClient() {
               />
               {hasActiveFilters && (
                 <button
+                  type="button"
+                  aria-label="Clear all filters"
                   onClick={clearAll}
                   className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs text-[#6f5a88] hover:text-[#fb397d] border border-transparent hover:border-white/10 transition-all"
                 >
@@ -439,6 +449,8 @@ export default function BlogSearchPageClient() {
               ) : (
                 <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
                   <button
+                    type="button"
+                    aria-label="Clear category filter"
                     onClick={() => update({ category_id: "" })}
                     className={`shrink-0 px-4 py-2 rounded-full text-xs font-bold border transition-all duration-200 ${
                       !filters.category_id
@@ -450,6 +462,8 @@ export default function BlogSearchPageClient() {
                   </button>
                   {categories.map((cat) => (
                     <button
+                      type="button"
+                      aria-label={cat.name}
                       key={cat.id}
                       onClick={() =>
                         update({
@@ -532,6 +546,8 @@ export default function BlogSearchPageClient() {
                   Something went wrong. Please try again.
                 </p>
                 <button
+                  type="button"
+                  aria-label="Retry"
                   onClick={fetchPosts}
                   className="flex items-center gap-2 px-6 py-3 bg-[#5b32b4] hover:bg-[#fb397d] text-white text-sm font-bold rounded-full transition-all"
                 >
@@ -554,6 +570,8 @@ export default function BlogSearchPageClient() {
                   Try adjusting your search terms or removing some filters.
                 </p>
                 <button
+                  type="button"
+                  aria-label="Clear all filters"
                   onClick={clearAll}
                   className="px-6 py-3 bg-[#5b32b4] hover:bg-[#fb397d] text-white text-sm font-bold rounded-full transition-all duration-300"
                 >
@@ -636,6 +654,8 @@ export default function BlogSearchPageClient() {
             {!loading && totalPages > 1 && (
               <div className="flex items-center justify-center gap-2 mt-12">
                 <button
+                  type="button"
+                  aria-label="Previous page"
                   onClick={() => changePage(Math.max(filters.page - 1, 1))}
                   disabled={filters.page === 1}
                   className="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[#9d86b8] hover:bg-[#5b32b4] hover:border-[#5b32b4] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
@@ -645,6 +665,8 @@ export default function BlogSearchPageClient() {
 
                 {Array.from({ length: totalPages }).map((_, i) => (
                   <button
+                    type="button"
+                    aria-label={`Go to page ${i + 1}`}
                     key={i}
                     onClick={() => changePage(i + 1)}
                     className={`w-9 h-9 rounded-full text-sm font-bold transition-all ${
@@ -658,6 +680,8 @@ export default function BlogSearchPageClient() {
                 ))}
 
                 <button
+                  type="button"
+                  aria-label="Next page"
                   onClick={() =>
                     changePage(Math.min(filters.page + 1, totalPages))
                   }
@@ -732,6 +756,8 @@ export default function BlogSearchPageClient() {
                           : filters.category_id === cat.id;
                       return (
                         <button
+                          type="button"
+                          aria-label={cat.name}
                           key={cat.id || "all"}
                           onClick={() =>
                             update({ category_id: cat.id === "" ? "" : cat.id })
@@ -789,6 +815,8 @@ function FilterToggle({
       : "bg-[#5b32b4] border-[#5b32b4] text-white shadow-md shadow-[#5b32b4]/25";
   return (
     <button
+      type="button"
+      aria-label={label}
       onClick={onClick}
       className={`flex items-center gap-1.5 px-4 py-2.5 rounded-2xl border text-xs font-bold transition-all duration-200 ${
         active
@@ -813,6 +841,8 @@ function ActiveChip({
     <span className="inline-flex items-center gap-1.5 bg-[#5b32b4]/20 border border-[#5b32b4]/40 text-[#c4b5d9] text-xs px-3 py-1 rounded-full">
       {label}
       <button
+        type="button"
+        aria-label="Remove"
         onClick={onRemove}
         className="hover:text-[#fb397d] transition-colors"
       >
@@ -837,6 +867,8 @@ function SidebarToggle({
 }) {
   return (
     <button
+      type="button"
+      aria-label={label}
       onClick={onClick}
       className={`w-full flex items-center gap-3 p-3 rounded-xl border transition-all duration-200 text-left ${
         active

@@ -126,7 +126,7 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
   return (
     <>
       {/* ── Hero Banner ────────────────────────────────────── */}
-      <section className="relative w-full h-[55vh] min-h-[420px] max-h-[600px] overflow-hidden  mt-28 md:mt-32">
+      <section className="relative w-full h-[55vh] min-h-[420px] max-h-[600px] overflow-hidden mt-16 md:mt-20">
         <Image
           src={post.thumbnail_url || "/images/blog/minimalist.png"}
           alt={post.title}
@@ -314,7 +314,10 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
                     placeholder="your@email.com"
                     className="flex-1 bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-[#6f5a88] focus:outline-none focus:border-[#fb397d] transition-colors"
                   />
-                  <button className="bg-[#fb397d] hover:bg-[#e02d6d] text-white font-bold px-6 py-3 rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-[#fb397d]/30 whitespace-nowrap">
+                  <button
+                    aria-label="Subscribe"
+                    className="bg-[#fb397d] hover:bg-[#e02d6d] text-white font-bold px-6 py-3 rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-[#fb397d]/30 whitespace-nowrap"
+                  >
                     Subscribe
                   </button>
                 </div>
@@ -448,6 +451,8 @@ function BlogDetailsError({ onRetry }: { onRetry: () => void }) {
       </p>
       <div className="flex gap-3">
         <button
+          type="button"
+          aria-label="Retry"
           onClick={onRetry}
           className="flex items-center gap-2 px-6 py-3 bg-[#5b32b4] hover:bg-[#fb397d] text-white text-sm font-bold rounded-full transition-all"
         >

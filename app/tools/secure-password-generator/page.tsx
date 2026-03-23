@@ -1,11 +1,8 @@
-import SecurePasswordGeneratorTools from "@/components/tools/PasswordGeneratorTools";
-import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
-import RandomToolsSection from "@/components/tools/RandomToolsSection";
-import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
+import SecurePasswordGeneratorPageClient from "./client";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "secure-password-generator",
@@ -94,7 +91,6 @@ export default function SecurePasswordGeneratorPage() {
           __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
-
       <Script
         id="secure-password-generator-faq"
         type="application/ld+json"
@@ -102,7 +98,6 @@ export default function SecurePasswordGeneratorPage() {
           __html: JSON.stringify(faqSchema),
         }}
       />
-
       <Script
         id="secure-password-generator-breadcrumb"
         type="application/ld+json"
@@ -110,7 +105,6 @@ export default function SecurePasswordGeneratorPage() {
           __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
-
       <Script
         id="secure-password-generator-howto"
         type="application/ld+json"
@@ -119,57 +113,7 @@ export default function SecurePasswordGeneratorPage() {
         }}
       />
       <ToolTopNav />
-      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-3 py-16 space-y-16">
-        {/* Header */}
-        <header className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            Secure Password Generator
-          </h1>
-
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Instantly generate strong and secure passwords to protect your
-            online accounts. Customize password length and include symbols,
-            numbers, and uppercase or lowercase characters for maximum security.
-          </p>
-
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
-
-        {/* Tool Component */}
-        <SecurePasswordGeneratorTools />
-
-        {/* SEO Content Section */}
-        <section className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl font-bold text-[#5b32b4]">
-            Generate Strong and Secure Passwords Instantly
-          </h2>
-
-          <p className="text-gray-600 leading-relaxed">
-            Weak passwords are one of the biggest security risks online. Our
-            Secure Password Generator helps you create highly secure random
-            passwords with customizable options such as length, symbols,
-            numbers, and special characters. These strong passwords help protect
-            your accounts from hacking and brute-force attacks.
-          </p>
-
-          <ul className="grid md:grid-cols-2 gap-4 text-gray-600 list-disc list-inside">
-            <li>Generate strong random passwords instantly</li>
-            <li>Customize length and character types</li>
-            <li>Include symbols, numbers, and letters</li>
-            <li>Secure browser-based generation</li>
-            <li>Free and unlimited usage</li>
-          </ul>
-        </section>
-
-        {/* Other Tools */}
-        <OtherToolsSection currentSlug="secure-password-generator" />
-
-        {/* Random tools */}
-        <RandomToolsSection />
-
-        {/* Categories */}
-        <ToolCategoriesSection />
-      </section>
+      <SecurePasswordGeneratorPageClient />
     </main>
   );
 }

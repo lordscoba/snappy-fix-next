@@ -85,6 +85,8 @@ export default function BlogList({ posts, perPage = 5 }: BlogListProps) {
       {/* Pagination */}
       <div className="flex items-center justify-center gap-2">
         <button
+          type="button"
+          aria-label="Previous page"
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
           className="rounded-full border px-4 py-2 text-sm text-[#5b32b4] hover:bg-[#f4edff]"
         >
@@ -93,6 +95,7 @@ export default function BlogList({ posts, perPage = 5 }: BlogListProps) {
 
         {Array.from({ length: totalPages }).map((_, i) => (
           <button
+            type="button"
             key={i}
             onClick={() => setPage(i + 1)}
             className={`h-9 w-9 rounded-full text-sm font-medium ${
@@ -107,6 +110,8 @@ export default function BlogList({ posts, perPage = 5 }: BlogListProps) {
         ))}
 
         <button
+          type="button"
+          aria-label="Next page"
           onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
           className="rounded-full border px-4 py-2 text-sm text-[#5b32b4] hover:bg-[#f4edff]"
         >

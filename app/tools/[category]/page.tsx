@@ -50,7 +50,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
         />
       )}
-      <NavbarMenu background="bg-[#884bdf]" />
+      <NavbarMenu background="bg-[#47238f]" />
 
       <section className="w-full max-w-7xl mx-auto px-6 pt-48 pb-20 space-y-20">
         {/* Header */}

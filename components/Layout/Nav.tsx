@@ -6,69 +6,89 @@ import Link from "next/link";
 import { LogOut, ChevronDown, User } from "lucide-react";
 import { useAuth } from "@/lib/hooks/useAuth";
 
-type NavProps = {
-  background: string;
+// ─── Types ────────────────────────────────────────────────────────────────────
+type NavLink = {
+  label: string;
+  href: string;
 };
 
-const links = [
-  "hero",
-  "why",
-  "features",
-  "pricing",
-  "testimonial",
-  "team",
-  "contact",
-  "tools",
-  "blog",
+type NavProps = {
+  background: string;
+  links?: NavLink[];
+};
+
+// ─── Default nav links ────────────────────────────────────────────────────────
+const DEFAULT_LINKS: NavLink[] = [
+  { label: "Home", href: "/#hero" },
+  { label: "Why us", href: "/#why" },
+  { label: "Features", href: "/#features" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Testimonials", href: "/#testimonial" },
+  { label: "Tools", href: "/tools" },
+  { label: "Blog", href: "/blog" },
+  { label: "About us", href: "/about" },
+  { label: "Contact us", href: "/contact" },
 ];
 
-const Nav = ({ background }: NavProps) => {
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function useClickOutside(
+  ref: React.RefObject<HTMLElement | null>,
+  active: boolean,
+  callback: () => void,
+) {
+  useEffect(() => {
+    if (!active) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) callback();
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [ref, active, callback]);
+}
+
+// ─── Avatar ───────────────────────────────────────────────────────────────────
+type AvatarProps = {
+  initials: string;
+  size?: "sm" | "md";
+};
+
+const Avatar = ({ initials, size = "sm" }: AvatarProps) => (
+  <div
+    className={`flex items-center justify-center rounded-full bg-gradient-to-br from-[#9572e8] to-[#fb397d] font-bold text-white shrink-0 ${
+      size === "md" ? "w-10 h-10 text-sm" : "w-8 h-8 text-xs"
+    }`}
+  >
+    {initials}
+  </div>
+);
+
+// ─── Nav ──────────────────────────────────────────────────────────────────────
+const Nav = ({ background, links = DEFAULT_LINKS }: NavProps) => {
   const [open, setOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+
   const menuRef = useRef<HTMLDivElement | null>(null);
   const userMenuRef = useRef<HTMLDivElement | null>(null);
 
   const { user, isAuthenticated, isHydrated, logoutUser } = useAuth();
 
-  // ── Close mobile nav on outside click ────────────────────────────────────
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
-    if (open) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [open]);
+  // Outside-click handlers via reusable hook
+  useClickOutside(menuRef, open, () => setOpen(false));
+  useClickOutside(userMenuRef, userMenuOpen, () => setUserMenuOpen(false));
 
-  // ── Close user dropdown on outside click ─────────────────────────────────
+  // Escape key closes both menus
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        userMenuRef.current &&
-        !userMenuRef.current.contains(e.target as Node)
-      ) {
-        setUserMenuOpen(false);
-      }
-    };
-    if (userMenuOpen)
-      document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [userMenuOpen]);
-
-  // ── Escape closes everything ──────────────────────────────────────────────
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
         setUserMenuOpen(false);
       }
     };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
   }, []);
 
-  // ── Lock body scroll when mobile nav is open ──────────────────────────────
+  // Lock body scroll when mobile nav is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -76,6 +96,7 @@ const Nav = ({ background }: NavProps) => {
     };
   }, [open]);
 
+  // Derived user display values
   const firstName = user?.first_name ?? "";
   const lastName = user?.last_name ?? "";
   const initials =
@@ -86,21 +107,9 @@ const Nav = ({ background }: NavProps) => {
         : "?";
   const displayName = firstName ? `${firstName} ${lastName}`.trim() : "Account";
 
-  // ── User avatar bubble ────────────────────────────────────────────────────
-  const Avatar = ({ size = "sm" }: { size?: "sm" | "md" }) => (
-    <div
-      className={`flex items-center justify-center rounded-full bg-gradient-to-br from-[#9572e8] to-[#fb397d] font-bold text-white shrink-0 ${
-        size === "md" ? "w-10 h-10 text-sm" : "w-8 h-8 text-xs"
-      }`}
-    >
-      {initials}
-    </div>
-  );
-
-  // ── Desktop auth section ──────────────────────────────────────────────────
-  const DesktopAuthSection = () => {
+  // ── Desktop auth section ────────────────────────────────────────────────
+  const DesktopAuth = () => {
     if (!isHydrated) {
-      // Skeleton placeholder — prevents layout shift
       return (
         <div className="hidden md:block w-28 h-10 rounded-full bg-white/10 animate-pulse" />
       );
@@ -120,10 +129,12 @@ const Nav = ({ background }: NavProps) => {
     return (
       <div className="hidden md:block relative" ref={userMenuRef}>
         <button
+          type="button"
+          aria-label="User menu"
           onClick={() => setUserMenuOpen((p) => !p)}
           className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1.5 rounded-full text-white transition"
         >
-          <Avatar size="sm" />
+          <Avatar initials={initials} size="sm" />
           <span className="text-sm font-medium max-w-[120px] truncate">
             {displayName}
           </span>
@@ -133,12 +144,11 @@ const Nav = ({ background }: NavProps) => {
           />
         </button>
 
-        {/* ── Dropdown ── */}
         {userMenuOpen && (
           <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50">
-            {/* User info header */}
+            {/* Header */}
             <div className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#9572e8]/10 to-[#fb397d]/10 border-b border-gray-100">
-              <Avatar size="md" />
+              <Avatar initials={initials} size="md" />
               <div className="min-w-0">
                 <p className="text-sm font-bold text-[#2b1d3a] truncate">
                   {displayName}
@@ -165,7 +175,6 @@ const Nav = ({ background }: NavProps) => {
               </div>
             )}
 
-            {/* Dashboard link — only for admin */}
             {user?.role === "ADMIN" && (
               <Link
                 href="/admin"
@@ -176,7 +185,6 @@ const Nav = ({ background }: NavProps) => {
               </Link>
             )}
 
-            {/* Profile link */}
             <Link
               href="/profile"
               onClick={() => setUserMenuOpen(false)}
@@ -185,8 +193,9 @@ const Nav = ({ background }: NavProps) => {
               My Profile
             </Link>
 
-            {/* Logout */}
             <button
+              type="button"
+              aria-label="Sign out"
               onClick={() => {
                 setUserMenuOpen(false);
                 logoutUser();
@@ -204,49 +213,43 @@ const Nav = ({ background }: NavProps) => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition ${background}`}>
-      <div className="flex items-center justify-between p-6 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
         {/* Logo */}
-        <Link href="/#hero" aria-label="Snappy-Fix Technologies logo">
+        <Link href="/#hero" aria-label="Snappy-Fix Technologies home">
           <Image
             src="/images/logo/snappy-fix-logo.webp"
-            alt="Snappy-Fix Technologies logo"
-            width={112}
-            height={112}
+            alt="Snappy-Fix Technologies"
+            width={48}
+            height={48}
             priority
-            className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto"
-            sizes="(max-width: 640px) 96px,
-                   (max-width: 768px) 112px,
-                   (max-width: 1024px) 128px,
-                   144px"
+            className="w-10 sm:w-12 h-auto object-contain"
+            sizes="(max-width: 640px) 40px, 48px"
           />
         </Link>
 
-        {/* Desktop nav links */}
-        <div className="hidden md:flex gap-6 text-white">
-          {links.map((item) => {
-            const label = item.charAt(0).toUpperCase() + item.slice(1);
-            const isInternalRoute = item === "blog" || item === "tools";
-            return isInternalRoute ? (
-              <Link key={item} href={`/${item}`} className="hover:underline">
-                {label}
-              </Link>
-            ) : (
-              <Link key={item} href={`/#${item}`} className="hover:underline">
-                {label}
-              </Link>
-            );
-          })}
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-6 text-white text-sm">
+          {links.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              className="hover:text-[#fb397d] transition-colors"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
 
         {/* Desktop auth */}
-        <DesktopAuthSection />
+        <DesktopAuth />
 
         {/* Mobile hamburger */}
         <button
+          type="button"
           aria-label="Toggle navigation"
           aria-expanded={open}
-          onClick={() => setOpen((prev) => !prev)}
-          className="md:hidden text-white text-3xl"
+          onClick={() => setOpen((p) => !p)}
+          className="md:hidden text-white text-3xl leading-none"
         >
           {open ? "✕" : "☰"}
         </button>
@@ -257,20 +260,21 @@ const Nav = ({ background }: NavProps) => {
         <div className="fixed inset-0 bg-black/40 z-40 md:hidden">
           <div
             ref={menuRef}
-            className="absolute top-0 right-0 w-72 h-full bg-[#9572e8] text-white flex flex-col p-6 gap-4 shadow-xl overflow-y-auto"
+            className="absolute top-0 right-0 w-72 h-full bg-[#47238f] text-white flex flex-col p-6 gap-4 shadow-xl overflow-y-auto"
           >
             <button
+              type="button"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
-              className="self-end text-2xl"
+              className="self-end text-2xl leading-none"
             >
               ✕
             </button>
 
-            {/* ── Mobile user card ── */}
+            {/* Mobile user card */}
             {isHydrated && isAuthenticated && user && (
               <div className="flex items-center gap-3 bg-white/15 rounded-2xl p-3 mb-2">
-                <Avatar size="md" />
+                <Avatar initials={initials} size="md" />
                 <div className="min-w-0">
                   <p className="text-sm font-bold truncate">{displayName}</p>
                   <p className="text-[10px] opacity-70 truncate">
@@ -292,30 +296,18 @@ const Nav = ({ background }: NavProps) => {
             )}
 
             {/* Nav links */}
-            {links.map((item) => {
-              const label = item.charAt(0).toUpperCase() + item.slice(1);
-              const isInternalRoute = item === "blog" || item === "tools";
-              return isInternalRoute ? (
-                <Link
-                  key={item}
-                  href={`/${item}`}
-                  onClick={() => setOpen(false)}
-                  className="text-lg hover:underline"
-                >
-                  {label}
-                </Link>
-              ) : (
-                <Link
-                  key={item}
-                  href={`/#${item}`}
-                  onClick={() => setOpen(false)}
-                  className="text-lg hover:underline"
-                >
-                  {label}
-                </Link>
-              );
-            })}
+            {links.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className="text-lg hover:underline"
+              >
+                {label}
+              </Link>
+            ))}
 
+            {/* Mobile auth actions */}
             <div className="mt-auto flex flex-col gap-3">
               {isHydrated && isAuthenticated ? (
                 <>
@@ -336,6 +328,8 @@ const Nav = ({ background }: NavProps) => {
                     My Profile
                   </Link>
                   <button
+                    type="button"
+                    aria-label="Sign out"
                     onClick={() => {
                       setOpen(false);
                       logoutUser();
@@ -363,161 +357,3 @@ const Nav = ({ background }: NavProps) => {
 };
 
 export default Nav;
-// "use client";
-
-// import { useState, useEffect, useRef } from "react";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useAuth } from "@/hooks/useAuth";
-// import { LogOut, ChevronDown, User } from "lucide-react";
-
-// type NavProps = {
-//   background: string;
-// };
-
-// const links = [
-//   "hero",
-//   "why",
-//   "features",
-//   "pricing",
-//   "testimonial",
-//   "team",
-//   "contact",
-//   "tools",
-//   "blog",
-// ];
-
-// const Nav = ({ background }: NavProps) => {
-//   const [open, setOpen] = useState(false);
-//   const menuRef = useRef<HTMLDivElement | null>(null);
-
-//   useEffect(() => {
-//     const handleClickOutside = (e: MouseEvent) => {
-//       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-//         setOpen(false);
-//       }
-//     };
-
-//     if (open) document.addEventListener("mousedown", handleClickOutside);
-//     return () => document.removeEventListener("mousedown", handleClickOutside);
-//   }, [open]);
-
-//   useEffect(() => {
-//     const handleEscape = (e: KeyboardEvent) => {
-//       if (e.key === "Escape") setOpen(false);
-//     };
-
-//     if (open) document.addEventListener("keydown", handleEscape);
-//     return () => document.removeEventListener("keydown", handleEscape);
-//   }, [open]);
-
-//   useEffect(() => {
-//     document.body.style.overflow = open ? "hidden" : "";
-//     return () => {
-//       document.body.style.overflow = "";
-//     };
-//   }, [open]);
-
-//   return (
-//     <nav className={`fixed top-0 w-full z-50 transition ${background}`}>
-//       <div className="flex items-center justify-between p-6 max-w-7xl mx-auto">
-//         <Link href="/#hero" aria-label="Snappy-Fix Technologies logo">
-//           <Image
-//             src="/images/logo/snappy-fix-logo.webp"
-//             alt="Snappy-Fix Technologies logo"
-//             width={112}
-//             height={112}
-//             priority
-//             className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto"
-//             sizes="(max-width: 640px) 96px,
-//            (max-width: 768px) 112px,
-//            (max-width: 1024px) 128px,
-//            144px"
-//           />
-//         </Link>
-//         <div className="hidden md:flex gap-6 text-white">
-//           {links.map((item) => {
-//             const label = item.charAt(0).toUpperCase() + item.slice(1);
-
-//             const isInternalRoute = item === "blog" || item === "tools";
-
-//             return isInternalRoute ? (
-//               <Link key={item} href={`/${item}`} className="hover:underline">
-//                 {label}
-//               </Link>
-//             ) : (
-//               <Link key={item} href={`/#${item}`} className="hover:underline">
-//                 {label}
-//               </Link>
-//             );
-//           })}
-//         </div>
-//         <Link
-//           href="/login"
-//           className="hidden md:block border-2 border-[#9572e8] px-8 py-2 rounded-full text-white hover:bg-[#fb397d] transition"
-//         >
-//           Login
-//         </Link>
-//         <button
-//           aria-label="Toggle navigation"
-//           aria-expanded={open}
-//           onClick={() => setOpen((prev) => !prev)}
-//           className="md:hidden text-white text-3xl"
-//         >
-//           {open ? "✕" : "☰"}
-//         </button>
-//       </div>
-
-//       {open && (
-//         <div className="fixed inset-0 bg-black/40 z-40 md:hidden">
-//           <div
-//             ref={menuRef}
-//             className="absolute top-0 right-0 w-72 h-full bg-[#9572e8] text-white flex flex-col p-6 gap-6 shadow-xl"
-//           >
-//             <button
-//               aria-label="Close menu"
-//               onClick={() => setOpen(false)}
-//               className="self-end text-2xl"
-//             >
-//               ✕
-//             </button>
-
-//             {links.map((item) => {
-//               const label = item.charAt(0).toUpperCase() + item.slice(1);
-//               const isInternalRoute = item === "blog" || item === "tools";
-
-//               return isInternalRoute ? (
-//                 <Link
-//                   key={item}
-//                   href={`/${item}`}
-//                   onClick={() => setOpen(false)}
-//                   className="text-lg hover:underline"
-//                 >
-//                   {label}
-//                 </Link>
-//               ) : (
-//                 <Link
-//                   key={item}
-//                   href={`/#${item}`}
-//                   onClick={() => setOpen(false)}
-//                   className="text-lg hover:underline"
-//                 >
-//                   {label}
-//                 </Link>
-//               );
-//             })}
-
-//             <Link
-//               href="/login"
-//               className="mt-6 border-2 border-white px-6 py-3 rounded-full hover:bg-[#fb397d] transition"
-//             >
-//               Login
-//             </Link>
-//           </div>
-//         </div>
-//       )}
-//     </nav>
-//   );
-// };
-
-// export default Nav;

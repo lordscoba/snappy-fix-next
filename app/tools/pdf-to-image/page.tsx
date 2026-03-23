@@ -1,11 +1,8 @@
-import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
-import PDFToImageConverterTools from "@/components/tools/PDFToImageConverterTools";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
-import RandomToolsSection from "@/components/tools/RandomToolsSection";
-import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
+import PDFToImagePageClient from "./client";
 
 const currentTool = tools.find((tool) => tool.slug === "pdf-to-image")!;
 
@@ -93,7 +90,6 @@ export default function PdfToImagePage() {
           __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
-
       <Script
         id="pdf-to-image-faq"
         type="application/ld+json"
@@ -101,7 +97,6 @@ export default function PdfToImagePage() {
           __html: JSON.stringify(faqSchema),
         }}
       />
-
       <Script
         id="pdf-to-image-breadcrumb"
         type="application/ld+json"
@@ -109,7 +104,6 @@ export default function PdfToImagePage() {
           __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
-
       <Script
         id="pdf-to-image-howto"
         type="application/ld+json"
@@ -117,59 +111,8 @@ export default function PdfToImagePage() {
           __html: JSON.stringify(howToSchema),
         }}
       />
-
       <ToolTopNav />
-
-      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
-        {/* Header */}
-        <header className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            PDF to Image Converter
-          </h1>
-
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Convert PDF pages into high-quality PNG or JPG images instantly.
-            Perfect for extracting pages for sharing, editing, presentations,
-            and web use.
-          </p>
-
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
-
-        {/* Tool Component */}
-        <PDFToImageConverterTools />
-
-        {/* SEO Content Section */}
-        <section className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl font-bold text-[#5b32b4]">
-            Convert PDF Pages into Downloadable Images
-          </h2>
-
-          <p className="text-gray-600 leading-relaxed">
-            Our PDF to Image Converter allows you to extract pages from PDF
-            documents and convert them into high-quality PNG or JPG images.
-            Upload a PDF file and download each page as an image instantly
-            without installing any software.
-          </p>
-
-          <ul className="grid md:grid-cols-2 gap-4 text-gray-600 list-disc list-inside">
-            <li>Convert PDF pages to PNG or JPG images</li>
-            <li>Extract images from PDF documents</li>
-            <li>No watermark</li>
-            <li>Secure browser-based processing</li>
-            <li>Free and unlimited usage</li>
-          </ul>
-        </section>
-
-        {/* Other Tools */}
-        <OtherToolsSection currentSlug="pdf-to-image" />
-
-        {/* Random tools */}
-        <RandomToolsSection />
-
-        {/* Categories */}
-        <ToolCategoriesSection />
-      </section>
+      <PDFToImagePageClient />
     </main>
   );
 }

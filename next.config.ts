@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    qualities: [75, 90],
+    qualities: [70, 75, 85, 90],
     remotePatterns: [
       {
         protocol: "https",
@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  env: {
+    NEXT_PUBLIC_BUILD_DATE: new Date().toISOString(),
   },
 };
 

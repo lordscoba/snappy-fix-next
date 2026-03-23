@@ -1,11 +1,8 @@
-import CustomOptimizerTool from "@/components/tools/CustomOptimizerTool";
-import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
-import RandomToolsSection from "@/components/tools/RandomToolsSection";
-import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
+import CustomImageOptimizerPageClient from "./client";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "optimize-image-custom",
@@ -94,7 +91,6 @@ export default function CustomOptimizerPage() {
           __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
-
       <Script
         id="optimize-image-custom-faq"
         type="application/ld+json"
@@ -102,7 +98,6 @@ export default function CustomOptimizerPage() {
           __html: JSON.stringify(faqSchema),
         }}
       />
-
       <Script
         id="optimize-image-custom-breadcrumb"
         type="application/ld+json"
@@ -110,7 +105,6 @@ export default function CustomOptimizerPage() {
           __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
-
       <Script
         id="optimize-image-custom-howto"
         type="application/ld+json"
@@ -119,51 +113,7 @@ export default function CustomOptimizerPage() {
         }}
       />
       <ToolTopNav />
-      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
-        <header className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            Custom Image Optimizer
-          </h1>
-
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Fine-tune your image optimization. Set a target file size in KB,
-            adjust quality levels, and resize by percentage for full control
-            over output results.
-          </p>
-
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
-
-        <CustomOptimizerTool />
-
-        <section className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl font-bold text-[#5b32b4]">
-            Advanced Image Compression Controls
-          </h2>
-
-          <p className="text-gray-600 leading-relaxed">
-            Unlike automatic optimizers, our custom tool gives you precise
-            control. Reduce image size to exact requirements for exams,
-            government portals, websites, or email attachments.
-          </p>
-
-          <ul className="grid md:grid-cols-2 gap-4 text-gray-600 list-disc list-inside">
-            <li>Set exact target KB</li>
-            <li>Adjust compression quality</li>
-            <li>Resize by percentage</li>
-            <li>No watermark</li>
-            <li>Secure processing</li>
-          </ul>
-        </section>
-
-        <OtherToolsSection currentSlug="optimize-image-custom" />
-
-        {/* Random tools */}
-        <RandomToolsSection />
-
-        {/* Categories */}
-        <ToolCategoriesSection />
-      </section>
+      <CustomImageOptimizerPageClient />
     </main>
   );
 }

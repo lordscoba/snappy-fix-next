@@ -41,6 +41,8 @@ export default function BlogCategories({
         <div className="flex-1 h-px bg-white/10" />
         {active && (
           <button
+            type="button"
+            aria-label="Clear"
             onClick={() => handleSelect(null)}
             className="text-xs text-[#6f5a88] hover:text-[#fb397d] transition-colors font-medium"
           >
@@ -55,6 +57,8 @@ export default function BlogCategories({
           const isActive = cat === "All" ? active === null : active === cat;
           return (
             <button
+              type="button"
+              aria-label="Select category"
               key={cat}
               onClick={() => handleSelect(cat === "All" ? null : cat)}
               className={`snap-start shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 border ${

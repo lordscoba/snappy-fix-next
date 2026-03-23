@@ -1,11 +1,8 @@
-import WhatsAppOptimizerTool from "@/components/tools/WhatsappOptimizerTool";
-import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import { tools } from "@/data/toolsData";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
-import RandomToolsSection from "@/components/tools/RandomToolsSection";
-import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
+import WhatsAppOptimizerPageClient from "./client";
 
 const currentTool = tools.find(
   (tool) => tool.slug === "optimize-whatsapp-image",
@@ -95,15 +92,11 @@ export default function WhatsAppOptimizerPage() {
           __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
-
       <Script
         id="whatsapp-image-optimizer-faq"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-
       <Script
         id="whatsapp-image-optimizer-breadcrumb"
         type="application/ld+json"
@@ -111,59 +104,13 @@ export default function WhatsAppOptimizerPage() {
           __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
-
       <Script
         id="whatsapp-image-optimizer-howto"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(howToSchema),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <ToolTopNav />
-      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
-        <header className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            Optimize Images for WhatsApp
-          </h1>
-
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Compress and resize images to share faster on WhatsApp. Reduce file
-            size without visible quality loss and improve upload speed.
-          </p>
-
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
-
-        <WhatsAppOptimizerTool />
-
-        <section className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl font-bold text-[#5b32b4]">
-            Why Optimize for WhatsApp?
-          </h2>
-
-          <p className="text-gray-600 leading-relaxed">
-            WhatsApp automatically compresses large images, which can degrade
-            quality. Optimizing before upload preserves clarity while reducing
-            file size for quicker sharing.
-          </p>
-
-          <ul className="grid md:grid-cols-2 gap-4 text-gray-600 list-disc list-inside">
-            <li>Smaller file sizes</li>
-            <li>Better image clarity</li>
-            <li>Faster sharing</li>
-            <li>Optimized for WhatsApp status</li>
-            <li>Secure and private processing</li>
-          </ul>
-        </section>
-
-        <OtherToolsSection currentSlug="optimize-whatsapp-image" />
-
-        {/* Random tools */}
-        <RandomToolsSection />
-
-        {/* Categories */}
-        <ToolCategoriesSection />
-      </section>
+      <WhatsAppOptimizerPageClient />
     </main>
   );
 }

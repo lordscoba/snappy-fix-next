@@ -48,7 +48,7 @@ export default function BlogHero({ items }: { items: HeroPost[] }) {
   const active = items[index];
 
   return (
-    <section className="relative w-full h-[92vh] min-h-[580px] max-h-[780px] overflow-hidden bg-[#0e0716] mt-24 md:mt-32">
+    <section className="relative w-full h-[92vh] min-h-[580px] max-h-[780px] overflow-hidden bg-[#0e0716]  mt-16 md:mt-20">
       {/* Background image with overlay */}
       <div
         className="absolute inset-0 transition-opacity duration-500"
@@ -122,13 +122,15 @@ export default function BlogHero({ items }: { items: HeroPost[] }) {
 
       {/* Nav arrows */}
       <button
-        onClick={goPrev}
+        type="button"
         aria-label="Previous"
+        onClick={goPrev}
         className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#5b32b4] hover:border-[#5b32b4] transition-all duration-200"
       >
         <MdChevronLeft size={22} />
       </button>
       <button
+        type="button"
         onClick={goNext}
         aria-label="Next"
         className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#5b32b4] hover:border-[#5b32b4] transition-all duration-200"
@@ -140,6 +142,7 @@ export default function BlogHero({ items }: { items: HeroPost[] }) {
       <div className="absolute bottom-6 right-6 sm:right-12 lg:right-20 z-20 flex items-center gap-2">
         {items.map((_, i) => (
           <button
+            type="button"
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Slide ${i + 1}`}

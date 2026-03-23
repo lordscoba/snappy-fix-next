@@ -182,7 +182,7 @@ export default function BlogPageClient() {
 
   return (
     <main className="relative min-h-screen bg-[#0e0716] scroll-smooth">
-      <NavbarMenu background="bg-[#884bdf]" />
+      <NavbarMenu background="bg-[#47238f]" />
 
       {/* ── Hero Carousel ────────────────────────────────────── */}
       {loadingHero ? (
@@ -347,6 +347,8 @@ function ErrorBanner({ onRetry }: { onRetry: () => void }) {
         Something went wrong while fetching posts. Please try again.
       </p>
       <button
+        type="button"
+        aria-label="Retry"
         onClick={onRetry}
         className="flex items-center gap-2 px-6 py-3 bg-[#5b32b4] hover:bg-[#fb397d] text-white text-sm font-bold rounded-full transition-all duration-300"
       >

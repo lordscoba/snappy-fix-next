@@ -1,98 +1,112 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
-import { ImArrowDown } from "react-icons/im";
-import { RiEmotionHappyLine } from "react-icons/ri";
-import { IoPersonSharp } from "react-icons/io5";
-import { AiOutlineStar } from "react-icons/ai";
+import {
+  HiOutlineGlobeAlt,
+  HiOutlineFaceSmile,
+  HiOutlineStar,
+  HiOutlineWrenchScrewdriver,
+} from "react-icons/hi2";
 import CountUp from "react-countup";
 import Image from "next/image";
 
+// ─── Types ────────────────────────────────────────────────────────────────────
 type Stat = {
   label: string;
   value: number;
+  suffix: string;
   icon: React.ReactNode;
 };
 
-const stats: Stat[] = [
+// ─── Data — defined outside component so it is never recreated on re-render ──
+const STATS: Stat[] = [
   {
-    label: "Total Websites Built",
+    label: "Websites Built",
     value: 110,
-    icon: <ImArrowDown size={38} color="#fff" />,
+    suffix: "+",
+    icon: <HiOutlineGlobeAlt />,
   },
   {
     label: "Happy Clients",
     value: 110,
-    icon: <RiEmotionHappyLine size={38} color="#fff" />,
+    suffix: "+",
+    icon: <HiOutlineFaceSmile />,
   },
+  { label: "5-Star Reviews", value: 103, suffix: "", icon: <HiOutlineStar /> },
   {
-    label: "Active Clients",
-    value: 20,
-    icon: <IoPersonSharp size={38} color="#fff" />,
-  },
-  {
-    label: "5-Star Reviews",
-    value: 103,
-    icon: <AiOutlineStar size={38} color="#fff" />,
+    label: "Online Tools",
+    value: 29,
+    suffix: "",
+    icon: <HiOutlineWrenchScrewdriver />,
   },
 ];
 
+// ─── Component ────────────────────────────────────────────────────────────────
 const Counter = () => {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const node = sectionRef.current;
+    const el = sectionRef.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(entry.isIntersecting);
-      },
-      { threshold: 0.4 },
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.2 },
     );
 
-    if (node) observer.observe(node);
-
-    return () => {
-      if (node) observer.unobserve(node);
-    };
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
-      id="counter"
       ref={sectionRef}
-      className="relative py-20 overflow-hidden" // Changed to relative and overflow-hidden
+      className="relative py-20 overflow-hidden isolate"
+      aria-label="Company statistics"
     >
-      {/* The Background Image Layer */}
-      <Image
-        src="/images/bg-img/rt.webp"
-        alt="Background pattern"
-        fill
-        priority={false} // Ensures lazy loading (default)
-        className="object-cover object-center -z-10" // Puts it behind the content
-        sizes="100vw" // Helps Next.js pick the right size for the screen
-      />
+      {/* Background — image + overlay inside -z-10 wrapper.
+          Content sits above at default z-0. No z-20 needed on content. */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/bg-img/rt.webp"
+          alt="Background image"
+          fill
+          className="object-cover object-center scale-105"
+          quality={75}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#5b32b4]/90 via-[#47238f]/85 to-[#2b1d3a]/90" />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-white">
-        {stats.map((stat, index) => (
-          <div key={index} className="flex items-end gap-4">
-            <span className="text-5xl font-bold min-w-[80px]">
-              {visible ? (
-                <CountUp
-                  key={visible ? "start" : "reset"}
-                  end={stat.value}
-                  duration={2}
-                />
-              ) : (
-                0
-              )}
-            </span>
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 sm:gap-8 text-center">
+          {STATS.map(({ label, value, suffix, icon }, i) => (
+            <div key={i} className="flex flex-col items-center group">
+              <div className="mb-4 p-3 rounded-2xl bg-white/10 border border-white/20 text-white text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                {icon}
+              </div>
 
-            <div className="flex flex-col gap-2">
-              {stat.icon}
-              <p className="text-lg">{stat.label}</p>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+                {visible ? (
+                  <CountUp
+                    start={0}
+                    end={value}
+                    duration={2.5}
+                    suffix={suffix}
+                    useEasing
+                  />
+                ) : (
+                  <span>0{suffix}</span>
+                )}
+              </div>
+
+              <p className="mt-2 text-white/70 text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">
+                {label}
+              </p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

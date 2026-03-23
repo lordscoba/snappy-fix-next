@@ -48,6 +48,8 @@ export default function BlogDetailsSidebar({
                     : activeCategory === cat;
                 return (
                   <button
+                    type="button"
+                    aria-label="Select category"
                     key={cat}
                     onClick={() =>
                       setActiveCategory(cat === "All" ? null : cat)

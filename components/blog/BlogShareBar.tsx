@@ -88,8 +88,9 @@ export default function BlogShareBar({ title, slug }: BlogShareBarProps) {
 
       {/* Copy link */}
       <button
-        onClick={handleCopy}
+        type="button"
         aria-label="Copy link"
+        onClick={handleCopy}
         className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-xs font-semibold transition-all duration-200 ${
           copied
             ? "bg-[#5b32b4]/30 border-[#5b32b4] text-[#e0ccff]"
