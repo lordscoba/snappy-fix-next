@@ -1,11 +1,11 @@
 export const tools = [
   {
     slug: "image-converter",
-    name: "Free Online Image Converter | Convert JPG, PNG, WEBP, SVG",
+    name: "Free Online Image Converter | Convert JPG, PNG, WebP, AVIF, GIF, ICO",
     description:
-      "Convert images between JPG, PNG, WEBP, SVG and more instantly.",
+      "Convert images between 10 formats — PNG, JPEG, WebP, AVIF, GIF, ICO, BMP, and TIFF. Animated GIFs preserved. Quality 90 for lossy formats. Free, no watermark.",
     longDescription:
-      "A free online image converter to change formats like JPG to PNG, PNG to WEBP, or WEBP to JPG. High-quality, secure, and lightning-fast conversion.",
+      "Free online image converter supporting 10 output formats including next-generation WebP and AVIF for web performance. Convert JPG to PNG, PNG to WebP, JPEG to AVIF, and more. Animated GIFs preserve all frames. ICO output embeds 5 resolution layers (16–256px). Quality 90 for all lossy formats. Secure, no watermark.",
     category: "Conversion Tools",
     href: "/tools/image-converter",
     icon: "convert",
@@ -32,6 +32,9 @@ export const tools = [
       "convert image to webp",
       "convert image to png",
       "convert image to jpg",
+      "convert png to ico",
+      "convert jpg to ico",
+      "animated gif converter",
 
       // Web optimization intent
       "webp converter online",
@@ -71,11 +74,11 @@ export const tools = [
   },
   {
     slug: "optimize-twitter-image",
-    name: "Optimize Images for Twitter (X) Free Online | Best Twitter Image Optimizer",
+    name: "Optimize Images for Twitter (X) Free | Twitter Image Optimizer — 1600px & 1MB",
     description:
-      "Resize and optimize images perfectly for Twitter posts and headers.",
+      "Resize and compress images to 1600px and under 1MB using progressive JPEG — exactly what Twitter accepts without triggering re-compression.",
     longDescription:
-      "Ensure your Twitter posts and profile headers look professional. This tool optimizes image dimensions and file size for maximum engagement and fast loading.",
+      "Stop Twitter from degrading your photos. This tool optimises images to Twitter's 1600px longest-side and 1MB target using progressive JPEG encoding — the specification Twitter handles with minimal re-compression. Works for post images, headers, and profile pictures. Free, no watermark.",
     category: "Social Media Tools",
     href: "/tools/optimize-twitter-image",
     api: "/api/v1/optimize/twitter",
@@ -90,14 +93,19 @@ export const tools = [
       "twitter image compression tool",
       "free twitter image optimizer",
       "resize image for twitter post",
+      "twitter photo quality",
+      "stop twitter compressing images",
+      "twitter image blurry fix",
+      "twitter image 1600px",
     ],
   },
   {
     slug: "optimize-whatsapp-image",
     name: "Optimize Images for WhatsApp Free | Compress & Resize WhatsApp Images",
-    description: "Resize and compress images for WhatsApp status and chats.",
+    description:
+      "Resize and compress images to 1600px and under 1MB using progressive JPEG — the specification WhatsApp compresses least aggressively. Free, no watermark.",
     longDescription:
-      "Stop WhatsApp from ruining your image quality. Compress and resize images to the perfect dimensions for WhatsApp status and direct messaging.",
+      "Stop WhatsApp from ruining your image quality. Optimises to 1600px longest side and under 1MB using progressive JPEG — identical specification to the WhatsApp pipeline, meaning minimal re-compression on delivery. Works for chats, groups, Status, and WhatsApp Business. Free, no watermark.",
     category: "Social Media Tools",
     href: "/tools/optimize-whatsapp-image",
     api: "/api/v1/optimize/whatsapp",
@@ -112,14 +120,18 @@ export const tools = [
       "reduce whatsapp image size",
       "free whatsapp image optimizer",
       "whatsapp image resizer online",
+      "stop whatsapp compressing photos",
+      "whatsapp image quality fix",
+      "whatsapp image blurry",
     ],
   },
   {
     slug: "optimize-web-image",
-    name: "Optimize Images for Website Performance | Web Image Compressor",
-    description: "Optimize images for websites to improve PageSpeed and SEO.",
+    name: "Optimize Images for Websites | WebP Converter — 1920px, Quality 75, Method 6",
+    description:
+      "Convert images to WebP at quality 75 using method-6 compression and resize to 1920px max — fix PageSpeed 'Serve images in next-gen formats' instantly.",
     longDescription:
-      "Reduce image file sizes by up to 80% without losing quality. Perfect for improving Core Web Vitals and website loading performance.",
+      "Reduce image file sizes 25–35% by converting to WebP at quality 75 with method-6 (highest-effort) compression, resized to 1920px longest side. Directly addresses Google PageSpeed's 'Serve images in next-gen formats' and 'Properly size images' recommendations. Improves Core Web Vitals LCP and Lighthouse scores. Free, no watermark.",
     category: "Optimization Tools",
     href: "/tools/optimize-web-image",
     api: "/api/v1/optimize/web",
@@ -134,15 +146,19 @@ export const tools = [
       "web performance image tool",
       "optimize images for faster loading",
       "website image resizer online",
+      "convert images to webp",
+      "pagespeed images next gen formats",
+      "core web vitals image optimizer",
+      "webp converter for website",
     ],
   },
   {
     slug: "optimize-instagram-image",
     name: "Optimize Images for Instagram Free | Instagram Photo Resizer & Compressor",
     description:
-      "Resize images perfectly for Instagram posts, stories, and reels.",
+      "Resize images to 1080px for Instagram posts, stories, and reels. Optimised for Instagram compression — sharper photos in the feed. Free, no watermark.",
     longDescription:
-      "Automatically crop and resize images to Instagram’s 1:1, 4:5, and 9:16 aspect ratios to ensure your content never gets cut off.",
+      "Automatically crop and resize images to Instagram's 1:1, 4:5, and 9:16 aspect ratios to ensure your content never gets cut off.",
     category: "Social Media Tools",
     href: "/tools/optimize-instagram-image",
     api: "/api/v1/optimize/instagram",
@@ -161,11 +177,11 @@ export const tools = [
   },
   {
     slug: "optimize-youtube-thumbnail-image",
-    name: "YouTube Thumbnail Optimizer Free | Resize & Compress YouTube Thumbnails",
+    name: "YouTube Thumbnail Optimizer Free | Resize to 1280×720 Quality 90 JPEG",
     description:
-      "Optimize thumbnails for YouTube (1280x720) with high compression.",
+      "Crop and optimise images to exactly 1280×720 px at quality 90 JPEG — the YouTube thumbnail specification that displays sharply on all surfaces.",
     longDescription:
-      "Create the perfect YouTube thumbnail. Our tool ensures your image meets the 2MB limit while maintaining 1280x720 HD resolution.",
+      "Create YouTube thumbnails that display sharply in search results, the homepage feed, and Smart TVs. The tool centre-crops your image to exactly 1280×720 px (16:9) using high-quality LANCZOS resampling, saves as quality-90 progressive JPEG under YouTube's 2MB limit, and minimises further re-encoding by YouTube's pipeline. Free, no watermark.",
     category: "Social Media Tools",
     href: "/tools/optimize-youtube-thumbnail-image",
     api: "/api/v1/optimize/youtube-thumbnail",
@@ -180,15 +196,18 @@ export const tools = [
       "youtube thumbnail compressor",
       "free youtube thumbnail resizer",
       "youtube image optimizer",
+      "youtube thumbnail 1280x720",
+      "youtube thumbnail quality",
+      "sharp youtube thumbnail",
     ],
   },
   {
     slug: "optimize-seo-responsive-image",
-    name: "SEO Responsive Image Optimizer | Optimize Images for Search Engines",
+    name: "SEO Responsive Image Generator | Create srcset WebP & AVIF Files in One ZIP",
     description:
-      "Generate responsive images for modern SEO and Core Web Vitals.",
+      "Generate responsive image sets — 480px, 768px, and 1200px WebP plus optional AVIF — in one ZIP download, ready for HTML srcset implementation.",
     longDescription:
-      "Generate multiple image sizes for srcset attributes. Improve your SEO score by serving the right image size to mobile and desktop users.",
+      "Fix Google PageSpeed's 'Properly size images' recommendation by generating a complete responsive image set in one click. Downloads a ZIP containing image-480.webp, image-768.webp, image-1200.webp (all at WebP quality 75, method 6), and image.avif (quality 50) where supported. Use the included files with HTML srcset to serve the right size to every device. Free, no watermark.",
     category: "SEO Tools",
     href: "/tools/optimize-seo-responsive-image",
     api: "/api/v1/optimize/seo-responsive",
@@ -203,14 +222,19 @@ export const tools = [
       "mobile friendly image optimizer",
       "seo image compression tool",
       "optimize images for core web vitals",
+      "srcset image generator",
+      "responsive image srcset",
+      "webp srcset generator",
+      "properly size images pagespeed",
     ],
   },
   {
     slug: "image-analyzer",
-    name: "Image Analyzer Online | Check Image Size, Dimensions & Metadata ",
-    description: "Analyze image size, format, EXIF metadata, and dimensions.",
+    name: "Image Analyzer Online | Check Image Size, Dimensions, DPI & EXIF Metadata",
+    description:
+      "Analyze image size, dimensions, format, DPI, EXIF metadata, and colour profile instantly. Essential for photographers, designers, and print professionals. Free.",
     longDescription:
-      "Deep-dive into your image properties. Check DPI, EXIF data, color profiles, and hidden metadata instantly.",
+      "Deep-dive into your image properties. Check pixel dimensions, file size, DPI (dots per inch), EXIF data, color profiles, and hidden metadata instantly. Essential for photographers, designers, and developers verifying images before print, web use, or publication.",
     category: "Analysis Tools",
     href: "/tools/image-analyzer",
     api: "/api/v1/analyze/",
@@ -254,9 +278,10 @@ export const tools = [
   {
     slug: "svg-image-optimizer",
     name: "Free SVG Optimizer Online | Reduce SVG File Size Without Losing Quality",
-    description: "Reduce SVG file size instantly by removing unnecessary code.",
+    description:
+      "Reduce SVG file size by removing metadata, comments, whitespace, and verbose IDs using the scour engine — lossless visual output.",
     longDescription:
-      "Clean up your SVG files. Remove metadata, comments, and hidden elements to create tiny, fast-loading vector files for the web.",
+      "Clean up SVG files exported from Figma, Illustrator, and Inkscape. Uses the scour library to remove metadata, XML prolog, editor comments, whitespace, and to shorten element IDs — achieving 20–60% file size reductions from design tool exports with zero visual change. Free, no watermark.",
     category: "Optimization Tools",
     href: "/tools/svg-image-optimizer",
     api: "/api/v1/optimize-svg",
@@ -274,14 +299,18 @@ export const tools = [
       "optimize svg without quality loss",
       "secure svg optimizer",
       "free svg optimizer online",
+      "figma svg optimizer",
+      "illustrator svg optimizer",
+      "inkscape svg optimizer",
     ],
   },
   {
     slug: "image-cropper",
-    name: "Free Online Image Cropper | Crop Images to Exact Dimensions",
-    description: "Crop images to exact dimensions or aspect ratios online.",
+    name: "Free Online Image Cropper | Crop Images to Exact Dimensions or Aspect Ratio",
+    description:
+      "Crop images to exact pixel dimensions or aspect ratios online — set precise left, top, right, and bottom crop coordinates. Free, no watermark, no signup.",
     longDescription:
-      "A precise image cropping tool. Select custom areas or use presets for social media to get the perfect frame every time.",
+      "A precise image cropping tool. Set exact left, top, right, and bottom crop coordinates, or use aspect ratio presets for social media platforms. Get the perfect frame every time with secure server-side processing. Free, no watermark, no signup.",
     category: "Editing Tools",
     href: "/tools/image-cropper",
     api: "/api/v1/images/crop",
@@ -323,9 +352,10 @@ export const tools = [
   {
     slug: "image-resizer",
     name: "Free Online Image Resizer | Resize Images to Exact Width & Height or %",
-    description: "Resize images to custom width and height instantly.",
+    description:
+      "Resize images to exact pixel dimensions or by percentage — maintain or override aspect ratio. Quality 90 output, all formats.",
     longDescription:
-      "Quickly resize images by entering custom dimensions or scaling by percentage. Maintain aspect ratio for high-quality results.",
+      "Quickly resize images by entering custom pixel dimensions or scaling by percentage. Toggle aspect ratio lock for proportional scaling or override for exact dimensions. Output preserves original format at quality 90. Works with JPG, PNG, WebP, BMP, GIF, and TIFF. Free, no watermark.",
     category: "Editing Tools",
     href: "/tools/image-resizer",
     api: "/api/v1/images/resize",
@@ -377,10 +407,11 @@ export const tools = [
   },
   {
     slug: "image-to-base64",
-    name: "Image to Base64 Converter Online | Encode JPG, PNG, WEBP to Base64",
-    description: "Convert images to Base64 strings for CSS and HTML.",
+    name: "Image to Base64 Converter Online | Encode JPG, PNG, WebP to Base64 String",
+    description:
+      "Convert images to Base64 data URI strings for embedding in CSS, HTML, and JavaScript — eliminates extra HTTP requests for small icons and sprites. Free.",
     longDescription:
-      "Encode images into Base64 format instantly. Perfect for embedding small icons directly into your code to reduce HTTP requests.",
+      "Encode images into Base64 format instantly. Perfect for embedding small icons and sprites directly into your CSS or HTML to eliminate extra HTTP requests and improve page load performance. Supports JPG, PNG, WebP, and all standard formats. Free, secure, no watermark.",
     category: "Conversion Tools",
     href: "/tools/image-to-base64",
     api: "/images-to-base64",
@@ -397,14 +428,17 @@ export const tools = [
       "image encoder online",
       "secure base64 encoder",
       "free image to base64 converter",
+      "base64 data uri generator",
+      "embed image in css base64",
     ],
   },
   {
     slug: "base64-to-image",
-    name: "Base64 to Image Converter Online | Decode Base64 to JPG, PNG, WEBP",
-    description: "Decode Base64 strings back into viewable image files.",
+    name: "Base64 to Image Converter Online | Decode Base64 to JPG, PNG, WebP",
+    description:
+      "Decode Base64 strings or data URIs back into downloadable image files — JPG, PNG, or WebP. Paste your Base64 string and download instantly. Free.",
     longDescription:
-      "Turn Base64 code back into JPG, PNG, or WEBP files. Simply paste your data URI and download your image instantly.",
+      "Turn Base64 code back into JPG, PNG, or WebP files. Simply paste your data URI or raw Base64 string and download your image instantly. Useful for developers debugging encoded images, extracting embedded CSS images, and verifying Base64 encoding. Free, no watermark.",
     category: "Conversion Tools",
     href: "/tools/base64-to-image",
     api: "/api/v1/images/from-base64",
@@ -419,15 +453,17 @@ export const tools = [
       "convert base64 to image file",
       "base64 to jpg online",
       "base64 decoder tool",
+      "data uri to image",
+      "base64 image viewer",
     ],
   },
   {
     slug: "favicon-generator",
-    name: "Favicon Generator Online | Create ICO & App Icons from PNG or JPG ",
+    name: "Favicon Generator Online | Create Complete Favicon Package — ICO, PNG, WebP + OG Image & Manifest",
     description:
-      "Generate professional favicon icons for websites from any image.",
+      "Generate a complete favicon package — 7 sizes, multi-resolution ICO, dark mode variant, OG social preview, PWA manifest, and HTML code — in one ZIP.",
     longDescription:
-      "Convert your logo into standard 16x16, 32x32, and Apple Touch icons. Get your website's branding ready in seconds.",
+      "Convert your logo into a complete, deploy-ready favicon package. Downloads a single ZIP (favicon-package.zip) containing: 7 sized files (16px–512px), multi-resolution favicon.ico (16/32/48/64px layers), dark mode variant, social-preview-1200x630.png with auto-detected brand colour, auto-generated site.webmanifest, and favicon-html-code.txt with ready-to-paste HTML. Minimum image size 256×256px. ICO, PNG, or WebP output. Free, no watermark.",
     category: "SEO Tools",
     href: "/tools/favicon-generator",
     api: "/api/v1/images/favicon",
@@ -444,14 +480,20 @@ export const tools = [
       "favicon maker online",
       "generate app icons",
       "multi size favicon generator",
+      "pwa favicon generator",
+      "favicon package generator",
+      "apple touch icon generator",
+      "site webmanifest generator",
+      "og image generator",
     ],
   },
   {
     slug: "optimize-image-custom",
-    name: "Custom Image Optimizer Online | Compress to Target KB & Resize",
-    description: "Full control over image compression, quality, and file size.",
+    name: "Custom Image Optimizer Online | Compress to Target KB, Resize, Control Quality",
+    description:
+      "Full manual control — compress to a target KB using binary-search precision, adjust quality, and resize by percentage. Free, no watermark, no signup.",
     longDescription:
-      "The ultimate image tool. Compress to a specific target KB size, adjust quality sliders, and resize dimensions all in one place.",
+      "The most flexible image optimisation tool. Compress to a specific target KB size using binary-search precision, adjust quality manually, and resize by percentage — all in one tool. Ideal for images that must meet exact file size requirements for portals, uploads, or client specs. Free, no watermark.",
     category: "Optimization Tools",
     href: "/tools/optimize-image-custom",
     api: "/api/v1/optimize/custom",
@@ -466,15 +508,17 @@ export const tools = [
       "image size reducer online",
       "manual image compression tool",
       "optimize image custom settings",
+      "compress image to exact size",
+      "image file size reducer",
     ],
   },
   {
     slug: "compress-pdf",
-    name: "Compress PDF Online Free | Reduce PDF File Size Without Losing Quality",
+    name: "Compress PDF Online Free | Reduce PDF File Size — Standard & Pro Compression",
     description:
-      "Compress PDF files online to reduce file size while maintaining quality.",
+      "Compress PDF files online to reduce file size — Standard presets for everyday documents, Pro mode for manual quality and DPI control.",
     longDescription:
-      "Reduce PDF file size instantly using our free online PDF compressor. Choose standard compression or advanced pro compression to shrink large PDFs for email, web upload, or document sharing.",
+      "Reduce PDF file size instantly. Standard mode applies low, medium, or high compression presets suitable for reports, invoices, and presentations. Pro mode gives manual control over image quality (0–100) and DPI for design documents and portfolios. Supports files up to 50MB. Completely free, no watermark, no account required.",
     category: "PDF Tools",
     href: "/tools/compress-pdf",
     api: "/compress-pdf",
@@ -491,16 +535,16 @@ export const tools = [
       "compress large pdf",
       "minimize pdf size",
       "pdf compression tool",
+      "pdf compressor standard pro",
     ],
   },
-
   {
     slug: "image-to-pdf",
-    name: "Image to PDF Converter Online | Convert JPG, PNG, WebP to PDF ",
+    name: "Image to PDF Converter Online | Convert JPG, PNG, WebP to PDF",
     description:
-      "Convert JPG, PNG, and WebP images into high-quality PDF documents.",
+      "Convert JPG, PNG, and WebP images to PDF instantly — handles transparency, generates print-ready documents for sharing and archival. Free, no watermark.",
     longDescription:
-      "Convert images to PDF online for free. Upload JPG, PNG, or WebP images and instantly generate a downloadable PDF file perfect for documents, printing, and sharing.",
+      "Convert images to PDF online for free. Upload JPG, PNG, or WebP images and instantly generate a downloadable PDF file. Handles RGBA and transparent images by converting to RGB before PDF generation. Perfect for documents, printing, certificates, and sharing across platforms that require PDF format. Free, no watermark.",
     category: "PDF Tools",
     href: "/tools/image-to-pdf",
     api: "/image-to-pdf",
@@ -517,14 +561,13 @@ export const tools = [
       "free image to pdf tool",
     ],
   },
-
   {
     slug: "pdf-to-image",
-    name: "PDF to Image Converter Online | Convert PDF Pages to PNG or JPG",
+    name: "PDF to Image Converter Online | Convert PDF Pages to PNG or JPG — ZIP Download",
     description:
-      "Convert PDF pages into high-quality PNG or JPG images instantly.",
+      "Convert all PDF pages to PNG or JPG images — rendered at 2× resolution and delivered as a ZIP file with one image per page.",
     longDescription:
-      "Extract and convert PDF pages into image files online. Download PDF pages as PNG or JPG images for easy sharing, editing, or web use.",
+      "Extract and convert every page of a PDF into high-quality images. Renders pages at 2× resolution (approximately 144 DPI) using PyMuPDF for sharp, readable output. Downloads as a ZIP archive containing one image per page (page_1.png, page_2.png, etc.). Choose PNG for lossless quality or JPG for smaller files. Free, no watermark.",
     category: "PDF Tools",
     href: "/tools/pdf-to-image",
     api: "/pdf-to-image",
@@ -539,19 +582,20 @@ export const tools = [
       "pdf to jpg converter free",
       "download pdf pages as images",
       "pdf image converter tool",
+      "pdf to png zip download",
+      "convert every page of pdf to image",
     ],
   },
-
   {
     slug: "extract-pdf-images",
-    name: "Extract Images from PDF Online | Download PDF Images Instantly",
-    description: "Extract all embedded images from PDF documents instantly.",
+    name: "Extract Images from PDF Online | Download Embedded PDF Images Instantly",
+    description:
+      "Extract all embedded images from PDF documents instantly — photographs, diagrams, charts, and illustrations — packaged in a ZIP download. Free, no watermark.",
     longDescription:
-      "Pull images directly from PDF files without losing quality. Our PDF image extractor lets you download embedded images from any PDF document in seconds.",
+      "Pull images directly from PDF files without losing quality. Extracts every embedded image from any PDF document — photographs, diagrams, illustrations, and charts — and packages them for download. Essential for recovering images from reports, research papers, and design documents. Free, no watermark.",
     category: "PDF Tools",
     href: "/tools/extract-pdf-images",
     api: "/extract-pdf-images",
-
     keywords: [
       "extract images from pdf",
       "pdf image extractor",
@@ -578,28 +622,23 @@ export const tools = [
       "how to extract images from pdf",
       "pdf to images extractor",
       "download images from pdf report",
-
-      // supporting keywords
-      "extract images from pdf",
       "pdf image extractor",
       "get images from pdf",
       "pdf image downloader",
       "download images from pdf online",
       "extract pictures from pdf",
-      "pdf to images extractor",
       "pull images from pdf",
       "save images from pdf",
       "free pdf image extractor",
     ],
   },
-
   {
     slug: "heic-to-jpg",
-    name: "HEIC to JPG / PNG Converter Online | Convert iPhone HEIC Photos ",
+    name: "HEIC to JPG / PNG Converter Online | Convert iPhone HEIC Photos — 3 Quality Presets",
     description:
-      "Convert HEIC photos from iPhone to JPG or PNG images instantly.",
+      "Convert iPhone HEIC photos to JPG or PNG — three quality presets: Low (quality 90), Medium (quality 75), or High (quality 55). Metadata stripped automatically.",
     longDescription:
-      "Upload HEIC images from iPhone and convert them to JPG or PNG online. Perfect for sharing HEIC photos on websites, Android devices, and social media.",
+      "Convert HEIC images from iPhone, iPad, and Mac to universally compatible JPG or PNG. Three compression presets control the quality-versus-file-size balance: Low (JPEG quality 90, up to 4000px — maximum fidelity), Medium (quality 75, up to 3000px — balanced), High (quality 55, up to 2000px — smallest file). All presets strip EXIF metadata, correct orientation automatically, and normalise DPI to 72. Output filename appends '_compressed'. Free, no watermark.",
     category: "Conversion Tools",
     href: "/tools/heic-to-jpg",
     api: "/heic-to-image",
@@ -614,16 +653,18 @@ export const tools = [
       "convert iphone photos to jpg",
       "heic image converter",
       "heic to png online",
+      "heic to jpg quality settings",
+      "compress heic to jpg",
+      "heic converter with compression",
     ],
   },
-
   {
     slug: "image-to-heic",
-    name: "Image to HEIC Converter Online | Convert JPG, PNG to HEIC",
+    name: "Image to HEIC Converter Online | Convert JPG, PNG to HEIC — Adjustable Quality",
     description:
-      "Convert JPG, PNG, or WebP images into HEIC format with adjustable quality.",
+      "Convert JPG, PNG, or WebP images to HEIC format with an adjustable quality slider (10–100). Default quality 80 matches iPhone's native HEIC setting.",
     longDescription:
-      "Convert images to HEIC format to reduce storage space while maintaining high visual quality. Perfect for Apple devices and efficient image storage.",
+      "Convert images to HEIC format to reduce storage space while maintaining high visual quality. Quality slider ranges from 10 (maximum compression) to 100 (maximum fidelity) — default 80 matches the quality level Apple's own iPhone cameras use when shooting HEIC. HEIC produces files 40–50% smaller than JPEG at equivalent quality. Accepts JPG, PNG, WebP, BMP, GIF, and TIFF. Free, no watermark.",
     category: "Conversion Tools",
     href: "/tools/image-to-heic",
     api: "/image-to-heic",
@@ -638,16 +679,17 @@ export const tools = [
       "heic format converter",
       "create heic images",
       "heic converter free",
+      "reduce image size heic",
+      "save images as heic",
     ],
   },
-
   {
     slug: "image-dpi-checker",
-    name: "Image DPI Checker Online | Check Image Resolution & DPI",
+    name: "Image DPI Checker Online | Check Image DPI, Resolution & Dimensions",
     description:
-      "Check image DPI, resolution, and print size instantly online.",
+      "Check image DPI (X and Y), pixel dimensions, and file format instantly — read-only analysis with no changes made to your file. Free, no signup required.",
     longDescription:
-      "Analyze image DPI, resolution, dimensions, and printable size. Perfect for photographers, designers, and print professionals preparing high-quality images.",
+      "Analyze image DPI (X and Y), pixel dimensions (width × height), and file format instantly. Reads the DPI metadata embedded in JPEG, PNG, WebP, and HEIC files. Essential for photographers, designers, and print professionals verifying images before submission. No changes made to your file — read-only analysis. Free, no watermark.",
     category: "Analysis Tools",
     href: "/tools/image-dpi-checker",
     api: "/image-dpi-checker",
@@ -662,16 +704,17 @@ export const tools = [
       "photo resolution checker",
       "check dpi of image",
       "image print size checker",
+      "verify image dpi",
+      "image dpi reader",
     ],
   },
-
   {
     slug: "image-dpi-changer",
-    name: "Image DPI Changer Online | Change Image DPI for Print & Design ",
+    name: "Image DPI Changer Online | Change Image DPI for Print & Design — Any Custom Value",
     description:
-      "Change image DPI online for printing and professional design.",
+      "Change image DPI online — set to 72, 150, 300, 600, or any custom value. Pixel dimensions and visual quality unchanged. Built-in DPI Checker included. Free.",
     longDescription:
-      "Modify image DPI settings without changing dimensions. Convert images to 72, 150, 300, or custom DPI for web, print, or publishing.",
+      "Modify image DPI metadata without changing pixel dimensions or visual quality. Set any target DPI value — 72 for web, 150 for medium print, 300 for professional printing, 600 for publishing. Also includes a built-in DPI Checker mode to read your current DPI before changing. Supports JPEG (quality 95 progressive), PNG (lossless), WebP (quality 95), and HEIC (quality 90). Output filename appends the DPI value (e.g. photo_300dpi.jpg). Free, no watermark.",
     category: "Editing Tools",
     href: "/tools/image-dpi-changer",
     api: "/image-dpi-changer",
@@ -697,7 +740,7 @@ export const tools = [
       "change image dpi online",
       "change photo dpi online",
 
-      // Question based keywords (very good for SEO)
+      // Question based keywords
       "how to change image dpi",
       "how to change dpi of an image",
       "how do you change the dpi of an image",
@@ -734,13 +777,13 @@ export const tools = [
       "image dpi tool",
     ],
   },
-
   {
     slug: "image-watermark",
-    name: "Add Watermark to Images Online | Protect Photos with Text or Logo",
-    description: "Add text or logo watermarks to protect your images online.",
+    name: "Add Watermark to Images Online | Text or Logo Watermark — Position, Opacity & Rotation Control",
+    description:
+      "Add text or logo watermarks to images with full control over position, opacity, rotation, and three output quality presets.",
     longDescription:
-      "Secure your photos by adding visible or transparent watermarks. Upload images and apply text or logo watermarks to prevent unauthorized reuse.",
+      "Protect your photos by adding visible or transparent text or logo watermarks. Control watermark position (9-point grid), opacity (10–100%), rotation, font size, and colour. Three output quality presets: Low compression (quality 85, largest file — best for print and high-fidelity delivery), Medium (quality 75 — balanced professional use), High compression (quality 60, smallest file — web previews and social media). Output is progressive JPEG. Free, no watermark added unless you configure one.",
     category: "Editing Tools",
     href: "/tools/image-watermark",
     api: "/watermark-image",
@@ -757,14 +800,15 @@ export const tools = [
       "watermark maker online",
       "logo watermark generator",
       "free image watermark tool",
+      "custom watermark position",
+      "transparent watermark online",
     ],
   },
-
   {
     slug: "image-color-effects",
     name: "Image Color Effects Editor Online | Apply Photo Filters & Effects",
     description:
-      "Apply creative color filters and effects to your images instantly.",
+      "Apply colour filters and effects to images — grayscale, sepia, vintage, and more. Transform photos with professional visual filters. Free, no watermark.",
     longDescription:
       "Enhance photos with powerful color effects including grayscale, sepia, vintage, and more. Transform your images with professional visual filters.",
     category: "Editing Tools",
@@ -785,13 +829,13 @@ export const tools = [
       "image filter generator",
     ],
   },
-
   {
     slug: "remove-image-metadata",
-    name: "Remove Image Metadata Online (EXIF Scrubber) | EXIF Data Remover & Privacy Tool ",
-    description: "Remove EXIF metadata from images to protect privacy.",
+    name: "Remove Image Metadata Online (EXIF Scrubber) | Strip GPS, Device Info & All EXIF Data",
+    description:
+      "Remove all metadata from images — GPS location, device model, timestamps, ICC profiles — in one click. Complete scrub at quality 95.",
     longDescription:
-      "Strip hidden metadata such as GPS location, camera information, and timestamps from images before sharing them online.",
+      "Strip all hidden metadata from images before sharing — EXIF, IPTC, XMP, GPS coordinates, device model, timestamps, and ICC colour profiles. Creates a brand new image from pixel data only — the most thorough metadata removal method. Output quality: JPEG at 95 progressive, PNG lossless optimised, WebP at quality 95 method 6, HEIC at quality 90. Output filename appends '_clean'. Free, no watermark.",
     category: "Security Tools",
     href: "/tools/remove-image-metadata",
     api: "/exif-scrubber",
@@ -806,15 +850,19 @@ export const tools = [
       "remove metadata from jpg",
       "remove metadata from photo",
       "image exif remover",
+      "strip all image metadata",
+      "remove gps location from photo",
+      "remove device info from image",
+      "image metadata cleaner",
     ],
   },
-
   {
     slug: "gif-maker",
-    name: "GIF Maker Online (Video & Images) | Create GIFs from Videos & Images Free",
-    description: "Create animated GIFs from videos or multiple images online.",
+    name: "GIF Maker Online | Create GIFs from Videos (up to 15s) or Images — FPS, Quality & Reverse",
+    description:
+      "Create animated GIFs from videos (up to 15 seconds, up to 15 FPS) or from single images. Trim, quality presets, and reverse playback included.",
     longDescription:
-      "Upload a video or multiple images to create animated GIFs instantly. Perfect for social media, messaging apps, memes, and lightweight animations. Convert video clips to GIFs or combine images into a single animated GIF in seconds.",
+      "Upload a video (MP4, MOV, WebM) to create an animated GIF with full control: trim to any segment up to 15 seconds, set FPS (1–15), choose output width, select a quality preset (HD/High/Balanced/Small), and toggle reverse for boomerang effects. Adaptive encoding targets under 1MB. Or upload a single image to create a looping GIF with configurable frame duration (100ms–30,000ms). Free, no watermark.",
     category: "Conversion Tools",
     href: "/tools/gif-maker",
     api: "/gif-maker",
@@ -831,16 +879,18 @@ export const tools = [
       "free gif maker",
       "gif animation creator",
       "online gif generator",
+      "gif maker with trim",
+      "gif fps control",
+      "reverse gif maker",
     ],
   },
-
   {
     slug: "sticker-maker",
-    name: "Sticker Maker Online (Image & Video to Sticker) | Create WhatsApp & Telegram Stickers Free",
+    name: "Sticker Maker Online | Create WhatsApp & Telegram Stickers from Images or Videos — 512×512 WebP",
     description:
-      "Create WhatsApp and Telegram stickers from images or videos instantly.",
+      "Create 512x512 WebP stickers for WhatsApp and Telegram from images or videos up to 6 seconds. FPS, quality presets, and reverse playback included. Free.",
     longDescription:
-      "Free online sticker maker that lets you convert images or short videos into animated or static stickers. Upload photos to create transparent stickers or convert videos into animated stickers optimized for WhatsApp, Telegram, and other messaging apps. Perfect for memes, social media, and custom sticker packs.",
+      "Free online sticker maker generating 512×512 WebP stickers — the exact specification for WhatsApp and Telegram. Image stickers: transparent RGBA canvas, WebP quality 80. Animated video stickers: FFmpeg-encoded animated WebP with up to 6 seconds, FPS slider (1–20), four quality presets with adaptive fallback encoding to stay under WhatsApp's 512KB limit, and reverse toggle for boomerang loops. Direct 'Share to WhatsApp' button on mobile via Web Share API. Free, no watermark.",
     category: "Social Media Tools",
     href: "/tools/sticker-maker",
     api: "/sticker-maker",
@@ -857,14 +907,18 @@ export const tools = [
       "photo to sticker generator",
       "online sticker generator",
       "free sticker maker",
+      "whatsapp sticker 512x512",
+      "animated whatsapp sticker",
+      "webp sticker generator",
     ],
   },
   {
     slug: "secure-password-generator",
-    name: "Secure Password Generator Online | Create Strong Passwords",
-    description: "Generate strong and secure passwords instantly.",
+    name: "Secure Password Generator Online | Create Strong Passwords — Up to 128 Characters",
+    description:
+      "Generate cryptographically strong passwords up to 128 characters with custom character types, exclude ambiguous characters, and a live strength meter.",
     longDescription:
-      "Create highly secure passwords with customizable length, symbols, numbers, and characters to protect your online accounts.",
+      "Create highly secure passwords with full configuration control: length 6–128 characters, toggle uppercase, lowercase, numbers, and symbols independently, and exclude visually ambiguous characters (e.g. 0, O, 1, l, I) to prevent transcription errors. Generated server-side using cryptographically secure randomness — not browser-based Math.random(). Live strength meter scores Weak/Fair/Good/Strong. One-click copy. Nothing stored. Free, no account required.",
     category: "Security Tools",
     href: "/tools/secure-password-generator",
     api: "/secure-password-generator",
@@ -879,6 +933,10 @@ export const tools = [
       "safe password generator",
       "strong password maker",
       "online password generator",
+      "password generator 128 characters",
+      "password generator with symbols",
+      "cryptographically secure password",
+      "exclude ambiguous characters password",
     ],
   },
 ];

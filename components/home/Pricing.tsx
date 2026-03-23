@@ -1,108 +1,77 @@
-import Image from "next/image";
+import Link from "next/link";
+import { SectionHeader } from "./Helpers";
 
-type Plan = {
-  title: string;
-  price: number;
-  starting: number;
-  weeks: number;
-  featured?: boolean;
-};
-
-const plans: Plan[] = [
-  { title: "Blog Website Development", price: 80, starting: 40, weeks: 2 },
+const PLANS = [
+  { title: "Blog Website", price: 80, starting: 40, weeks: 2, popular: false },
   {
-    title: "Investment Platform Development",
+    title: "E-commerce Platform",
     price: 500,
     starting: 350,
     weeks: 4,
+    popular: true,
   },
   {
-    title: "E-commerce Website Development",
+    title: "Investment Platform",
     price: 500,
     starting: 350,
     weeks: 4,
-    featured: true,
+    popular: false,
   },
   {
-    title: "Education Website Development",
+    title: "Education Platform",
     price: 500,
     starting: 350,
     weeks: 4,
+    popular: false,
   },
 ];
 
-const Pricing = () => {
+export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="relative py-20 min-h-[600px] [clip-path:inset(0)]"
+      className="py-20 bg-gradient-to-br from-[#faf7ff] to-white"
     >
-      <div className="fixed inset-0 -z-10">
-        <Image
-          src="/images/bg-img/footer.webp"
-          alt="footer"
-          fill
-          className="object-cover"
-          quality={75}
-          priority={false}
+      <div className="max-w-7xl mx-auto px-6">
+        <SectionHeader
+          label="Pricing"
+          title="Website Development Pricing"
+          subtitle="Flexible packages for every business — from blogs to full e-commerce and SaaS platforms."
         />
-      </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 space-y-14">
-        <header className="text-center space-y-4">
-          <h2
-            id="pricing-heading"
-            className="text-4xl md:text-5xl font-bold text-[#5b32b4]"
-          >
-            Website Development Pricing Plans
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Choose a flexible website development package that fits your
-            business needs and budget.
-          </p>
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {plans.map((plan, index) => (
-            <PriceCard key={index} plan={plan} />
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {PLANS.map((plan, i) => (
+            <article
+              key={i}
+              className={`relative bg-white rounded-3xl border p-7 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${plan.popular ? "border-[#fb397d] ring-2 ring-[#fb397d]/20" : "border-[#e9e1ff]"}`}
+            >
+              {plan.popular && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#fb397d] text-white text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">
+                  Most Popular
+                </span>
+              )}
+              <h3 className="font-bold text-[#2b1d3a] text-center mb-4 leading-snug">
+                {plan.title}
+              </h3>
+              <div className="flex items-end justify-center gap-1 text-[#5b32b4] mb-6">
+                <span className="text-lg font-bold self-start mt-2">$</span>
+                <span className="text-5xl font-extrabold">{plan.price}</span>
+              </div>
+              <ul className="space-y-2 text-sm text-gray-500 text-center mb-8">
+                <li>Starting from ${plan.starting}</li>
+                <li>{plan.weeks}-week delivery</li>
+                <li>Free hosting included</li>
+                <li>Responsive design</li>
+              </ul>
+              <Link
+                href="/contact"
+                className={`block text-center font-bold py-3 rounded-full transition-all active:scale-95 ${plan.popular ? "bg-[#fb397d] text-white hover:bg-[#e02d6e]" : "bg-[#f4edff] text-[#5b32b4] hover:bg-[#5b32b4] hover:text-white"}`}
+              >
+                Get Started
+              </Link>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-const PriceCard = ({ plan }: { plan: Plan }) => {
-  return (
-    <article
-      className={`relative rounded-3xl border bg-white p-8 text-center transition hover:-translate-y-2 hover:shadow-xl
-      ${plan.featured ? "border-[#fb397d] ring-2 ring-[#fb397d]/30" : ""}`}
-    >
-      {plan.featured && (
-        <span className="absolute top-4 right-4 bg-[#fb397d] text-white text-xs px-3 py-1 rounded-full">
-          Most Popular
-        </span>
-      )}
-
-      <h3 className="text-xl font-semibold text-[#5b32b4]">{plan.title}</h3>
-
-      <div className="mt-6 flex justify-center gap-1 text-[#fb397d]">
-        <span className="text-lg">$</span>
-        <span className="text-5xl font-bold">{plan.price}</span>
-      </div>
-
-      <ul className="mt-8 space-y-3 text-gray-600">
-        <li>Starting from ${plan.starting}</li>
-        <li>{plan.weeks}-week delivery</li>
-        <li>Free hosting included</li>
-        <li>Mobile-friendly responsive design</li>
-      </ul>
-
-      <button className="mt-10 w-full rounded-full py-3 font-medium bg-[#5b32b4] text-white hover:bg-[#47238f]">
-        Get Started
-      </button>
-    </article>
-  );
-};
-
-export default Pricing;
+}

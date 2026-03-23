@@ -1,82 +1,71 @@
-"use client";
-
-import { Project, projects } from "@/data/ProjectData";
 import Image from "next/image";
 import Link from "next/link";
-export default function ProjectsDone() {
-  return (
-    <section id="projects" className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-6 space-y-12">
-        <header className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            Projects We’ve Delivered
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            A quick look at high‑impact products we’ve built for clients.
-          </p>
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
+// import  useInView  from "./Helpers";
+// import SectionHeader from "../SectionHeader";
+import { Project, projects } from "@/data/ProjectData";
+import { ExternalLink } from "lucide-react";
+import { SectionHeader, UseInView } from "../home/Helpers";
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project: Project) => (
+export default function ProjectsSection() {
+  const { ref, visible } = UseInView();
+  return (
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-20 bg-white"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <SectionHeader
+          label="Portfolio"
+          title="Projects We've Delivered"
+          subtitle="A look at high-impact websites and platforms built for our clients."
+          action={
+            <Link
+              href="/projects"
+              className="text-sm font-bold text-[#fb397d] hover:underline"
+            >
+              See all projects →
+            </Link>
+          }
+        />
+        <div
+          className={`mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          {projects.slice(0, 3).map((project: Project) => (
             <article
               key={project.slug}
-              className="group rounded-3xl border bg-white overflow-hidden shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              className="group rounded-3xl border border-[#e9e1ff] bg-white overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:shadow-[#5b32b4]/10 transition-all duration-300"
             >
-              <figure className="relative h-52 w-full overflow-hidden">
+              <figure className="relative h-48 overflow-hidden bg-[#f4edff]">
                 <Image
                   src={project.cover}
                   alt={project.title}
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  width={600}
-                  height={400}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </figure>
-
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between text-xs text-[#b5aec4]">
-                  <span className="bg-[#f4edff] text-[#5b32b4] px-3 py-1 rounded-full">
-                    {project.category}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-semibold text-[#2b1d3a]">
+              <div className="p-6 space-y-3">
+                <span className="text-xs font-bold text-[#5b32b4] bg-[#f4edff] px-3 py-1 rounded-full">
+                  {project.category}
+                </span>
+                <h3 className="font-bold text-[#2b1d3a] group-hover:text-[#5b32b4] transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
                   {project.excerpt}
                 </p>
-
-                <div className="flex items-center justify-between pt-2">
-                  {/* <Link
-                    href={`/projects/${project.slug}`}
-                    className="text-sm font-semibold text-[#fb397d] hover:underline"
-                  >
-                    View case study
-                  </Link> */}
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-[#5b32b4] hover:underline"
-                  >
-                    Visit site
-                  </a>
-                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm font-bold text-[#fb397d] hover:gap-2 transition-all"
+                >
+                  Visit site <ExternalLink size={13} />
+                </a>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="flex justify-center">
-          <Link
-            href="/projects"
-            className="rounded-full bg-[#5b32b4] px-8 py-3 text-white font-medium hover:bg-[#47238f]"
-          >
-            See all projects
-          </Link>
         </div>
       </div>
     </section>

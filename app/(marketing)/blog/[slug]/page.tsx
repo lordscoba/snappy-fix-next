@@ -319,7 +319,7 @@ export default async function BlogDetailsPage({ params }: { params: Params }) {
 
   return (
     <main className="min-h-screen bg-[#0e0716]">
-      <NavbarMenu background="bg-[#884bdf]" />
+      <NavbarMenu background="bg-[#47238f]" />
 
       {/* JSON-LD — rendered server-side in the HTML for crawlers */}
       {jsonLd && (

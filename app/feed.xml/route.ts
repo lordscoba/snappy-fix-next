@@ -5,10 +5,11 @@ import { Feed } from "feed";
 import { NextResponse } from "next/server";
 import { data as portfolios } from "@/data/PortifolioData";
 import { News } from "@/types/blog-types";
-import {
-  fetchAllPublishedPosts,
-  getBlogList,
-} from "@/lib/api/services/blog.service";
+import { fetchAllPublishedPosts } from "@/lib/api/services/blog.service";
+
+const DEPLOY_DATE = process.env.NEXT_PUBLIC_BUILD_DATE
+  ? new Date(process.env.NEXT_PUBLIC_BUILD_DATE)
+  : new Date();
 
 export async function GET() {
   const site_url = "https://www.snappy-fix.com";
@@ -64,7 +65,7 @@ export async function GET() {
       "Explore our full suite of free online image tools. Convert, optimize, and edit images instantly in your browser with professional-grade speed.",
     content:
       "The Snappy-fix tools library offers a comprehensive collection of utilities for developers, designers, and SEO specialists. Our suite includes Base64 converters, image optimizers, metadata analyzers, and more, all built for performance and privacy.",
-    date: new Date(),
+    date: DEPLOY_DATE,
     category: [{ name: "Resource Hub" }],
     author: [{ name: "Snappy-Fix Technologies" }],
   });
@@ -77,7 +78,7 @@ export async function GET() {
       "Snappy-fix Projects Done is a collection of projects completed by the Snappy-fix team. These projects showcase our expertise in web development, UI/UX design, and digital product scaling.",
     content:
       "Snappy-fix Projects Done is a collection of projects completed by the Snappy-fix team. These projects showcase our expertise in web development, UI/UX design, and digital product scaling.",
-    date: new Date(),
+    date: DEPLOY_DATE,
     category: [{ name: "Resource Hub" }],
     author: [{ name: "Snappy-Fix Technologies" }],
   });
@@ -90,7 +91,7 @@ export async function GET() {
       link: `${site_url}${cat.href}`,
       description: cat.description,
       content: cat.longDescription,
-      date: new Date(),
+      date: DEPLOY_DATE,
       category: [{ name: "Tool Categories" }],
       author: [{ name: "Snappy-Fix Technologies" }],
     });
@@ -104,7 +105,7 @@ export async function GET() {
       link: `${site_url}${tool.href}`,
       description: tool.description,
       content: tool.longDescription,
-      date: new Date(),
+      date: DEPLOY_DATE,
       category: [{ name: tool.category }],
       author: [{ name: "Snappy-Fix Technologies" }],
     });
@@ -121,7 +122,7 @@ export async function GET() {
       "Stay updated with the latest trends in high-performance web development, modern design systems, and technical SEO.",
     date: allPosts[0]?.created_at
       ? new Date(allPosts[0].created_at)
-      : new Date(),
+      : DEPLOY_DATE,
     category: [{ name: "Blog" }],
     author: [{ name: "Snappy-Fix Technologies" }],
   });
@@ -167,8 +168,34 @@ export async function GET() {
       "The Snappy-Fix blog search page lets you discover articles by topic, category, or content type. Filter by featured posts, exclusive content, or search by keyword across our full library of engineering and design guides.",
     date: allPosts[0]?.created_at
       ? new Date(allPosts[0].created_at)
-      : new Date(),
+      : DEPLOY_DATE,
     category: [{ name: "Blog" }],
+    author: [{ name: "Snappy-Fix Technologies" }],
+  });
+
+  feed.addItem({
+    title: "About Snappy-Fix Technologies | Nigerian Software Company",
+    id: `${site_url}/about`,
+    link: `${site_url}/about`,
+    description:
+      "Learn about Snappy-Fix Technologies — a Nigerian software development company building scalable websites, web applications, and free online image tools for businesses worldwide.",
+    content:
+      "Snappy-Fix Technologies was founded in Uyo, Akwa Ibom State, Nigeria. We build custom websites, SaaS platforms, mobile apps, and a suite of 29+ free online image tools. Our team of developers, designers, and engineers has delivered 110+ projects for clients across Nigeria, the UK, the US, and beyond.",
+    date: DEPLOY_DATE,
+    category: [{ name: "Company" }],
+    author: [{ name: "Snappy-Fix Technologies" }],
+  });
+
+  feed.addItem({
+    title: "Contact Snappy-Fix Technologies | Get a Website Quote",
+    id: `${site_url}/contact`,
+    link: `${site_url}/contact`,
+    description:
+      "Get in touch with Snappy-Fix Technologies for website development, web applications, and digital solutions. Based in Uyo, Nigeria — serving clients worldwide.",
+    content:
+      "Reach the Snappy-Fix Technologies team for website development enquiries, tool feedback, partnerships, or general questions. We respond within 24 hours. Email: snappyfix.tech@gmail.com. Phone: +234 808 769 0994. Address: Uyo, Akwa Ibom State, Nigeria.",
+    date: DEPLOY_DATE,
+    category: [{ name: "Company" }],
     author: [{ name: "Snappy-Fix Technologies" }],
   });
 
@@ -191,7 +218,7 @@ export async function GET() {
       content: `Explore our full collection of ${category.name} articles covering practical techniques, best practices, and real-world insights from the Snappy-Fix engineering and design team.`,
       date: allPosts[0]?.created_at
         ? new Date(allPosts[0].created_at)
-        : new Date(),
+        : DEPLOY_DATE,
       category: [{ name: category.name }],
       author: [{ name: "Snappy-Fix Technologies" }],
     });
@@ -205,7 +232,7 @@ export async function GET() {
       link: `${site_url}/portfolio/${person.slug}`,
       description: person.text,
       content: person.about,
-      date: new Date(),
+      date: DEPLOY_DATE,
       category: [{ name: "Portfolio" }],
       author: [{ name: person.name }],
       image: `${site_url}${person.image}`,
@@ -216,7 +243,7 @@ export async function GET() {
   return new NextResponse(feed.rss2(), {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "s-maxage=3600, stale-while-revalidate", // Optional: Cache for 1 hour
+      "Cache-Control": "s-maxage=86400, stale-while-revalidate=3600",
     },
   });
 }

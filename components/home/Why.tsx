@@ -1,72 +1,61 @@
-import { MdOutlinePhoneAndroid } from "react-icons/md";
-import { TfiRulerPencil } from "react-icons/tfi";
-import { CiSettings } from "react-icons/ci";
+import { Code2, Globe, Shield, Zap } from "lucide-react";
+import { SectionHeader, UseInView } from "./Helpers";
 
-type Feature = {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-};
-
-const features: Feature[] = [
+// ─── Why features ─────────────────────────────────────────────────────────────
+const WHY_FEATURES = [
   {
-    title: "Custom Website & Platform Development",
-    description:
-      "We design and build scalable websites, SaaS platforms, and web applications tailored to your brand and business goals.",
-    icon: <MdOutlinePhoneAndroid size={42} className="text-[#fb397d]" />,
+    icon: <Zap size={28} className="text-[#fb397d]" />,
+    title: "Fast & Reliable",
+    body: "Every tool and website we build is engineered for speed. Optimised images, clean code, and fast load times — always.",
   },
   {
-    title: "Modern UI & High-Performance Design",
-    description:
-      "Our interfaces are built with modern UI/UX principles to deliver fast, visually engaging and conversion-focused digital experiences.",
-    icon: <TfiRulerPencil size={42} className="text-[#fb397d]" />,
+    icon: <Shield size={28} className="text-[#fb397d]" />,
+    title: "Private & Secure",
+    body: "Your files are never stored. Image processing happens securely and files are discarded immediately after download.",
   },
   {
-    title: "Powerful Online Tools",
-    description:
-      "We build and maintain free online tools like image converters, optimizers, analyzers and other utilities designed for developers, designers and marketers.",
-    icon: <CiSettings size={42} className="text-[#fb397d]" />,
+    icon: <Globe size={28} className="text-[#fb397d]" />,
+    title: "Built for the Web",
+    body: "From PageSpeed to Core Web Vitals, we design and build with real web performance standards — not just aesthetics.",
+  },
+  {
+    icon: <Code2 size={28} className="text-[#fb397d]" />,
+    title: "Clean Engineering",
+    body: "Scalable, maintainable code written by specialists. No bloat, no shortcuts — just solid digital products.",
   },
 ];
 
-const Why = () => {
+export default function WhySection() {
+  const { ref, visible } = UseInView();
   return (
-    <section id="why" className="px-6 py-16 md:px-24">
-      <header className="text-center space-y-4 mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-          Why Choose Snappy-Fix Technologies
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          We combine design, technology, and engineering to build high-quality
-          web platforms and powerful online tools. From custom websites to
-          advanced image processing utilities, we create fast, reliable
-          solutions that help businesses and creators succeed online.
-        </p>
-        <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-      </header>
-
-      <div className="flex flex-wrap justify-center gap-8">
-        {features.map((feature, index) => (
-          <article
-            key={index}
-            className="group bg-white text-center border p-8 max-w-[22rem] rounded-3xl transition hover:shadow-xl hover:-translate-y-1"
-          >
-            <div className="flex justify-center mb-4 group-hover:scale-110 transition">
-              {feature.icon}
-            </div>
-
-            <h3 className="text-lg font-semibold text-[#5b32b4]">
-              {feature.title}
-            </h3>
-
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              {feature.description}
-            </p>
-          </article>
-        ))}
+    <section
+      id="why"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-20 bg-white"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <SectionHeader
+          label="Why Us"
+          title="Why Choose Snappy-Fix Technologies"
+          subtitle="We combine modern design, solid engineering, and real-world performance standards to build products that work."
+        />
+        <div
+          className={`mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          {WHY_FEATURES.map((f, i) => (
+            <article
+              key={i}
+              className="group bg-white border border-[#e9e1ff] rounded-3xl p-7 hover:border-[#5b32b4]/40 hover:shadow-lg hover:shadow-[#5b32b4]/10 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-[#f4edff] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                {f.icon}
+              </div>
+              <h3 className="font-bold text-[#2b1d3a] mb-2">{f.title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{f.body}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default Why;
+}

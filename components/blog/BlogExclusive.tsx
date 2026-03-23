@@ -106,7 +106,11 @@ export default function BlogExclusive({ posts }: { posts: PostCard[] }) {
             placeholder="your@email.com"
             className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-[#6f5a88] focus:outline-none focus:border-[#fb397d] transition-colors"
           />
-          <button className="w-full bg-[#fb397d] hover:bg-[#e02d6d] text-white text-sm font-bold py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#fb397d]/30">
+          <button
+            type="button"
+            aria-label="Subscribe"
+            className="w-full bg-[#fb397d] hover:bg-[#e02d6d] text-white text-sm font-bold py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#fb397d]/30"
+          >
             Subscribe
           </button>
         </div>

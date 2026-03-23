@@ -1,11 +1,8 @@
-import ImageToHeicTools from "@/components/tools/ImageToHeicTools";
-import OtherToolsSection from "@/components/tools/OtherToolsSection";
 import ToolTopNav from "@/components/Layout/ToolTopNav";
 import { tools } from "@/data/toolsData";
 import Script from "next/script";
 import { getToolMetadata, getToolSchemas } from "@/lib/utils/metadata";
-import RandomToolsSection from "@/components/tools/RandomToolsSection";
-import ToolCategoriesSection from "@/components/tools/ToolCategoriesSection";
+import ImageToHeicPageClient from "./client";
 
 const currentTool = tools.find((tool) => tool.slug === "image-to-heic")!;
 
@@ -92,7 +89,6 @@ export default function ImageToHeicPage() {
           __html: JSON.stringify(schemas.toolStructuredData),
         }}
       />
-
       <Script
         id="image-to-heic-faq"
         type="application/ld+json"
@@ -100,7 +96,6 @@ export default function ImageToHeicPage() {
           __html: JSON.stringify(faqSchema),
         }}
       />
-
       <Script
         id="image-to-heic-breadcrumb"
         type="application/ld+json"
@@ -108,7 +103,6 @@ export default function ImageToHeicPage() {
           __html: JSON.stringify(schemas.breadcrumbSchema),
         }}
       />
-
       <Script
         id="image-to-heic-howto"
         type="application/ld+json"
@@ -117,57 +111,7 @@ export default function ImageToHeicPage() {
         }}
       />
       <ToolTopNav />
-      <section className="pt-32 md:pt-36 pb-16 w-full max-w-7xl mx-auto px-6 py-16 space-y-16">
-        {/* Header */}
-        <header className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#5b32b4]">
-            Image to HEIC Converter
-          </h1>
-
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Convert JPG, PNG, or WebP images into the efficient HEIC format.
-            Reduce storage size while maintaining excellent visual quality,
-            perfect for Apple devices and modern image storage.
-          </p>
-
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
-
-        {/* Tool Component */}
-        <ImageToHeicTools />
-
-        {/* SEO Content Section */}
-        <section className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl font-bold text-[#5b32b4]">
-            Convert Images to HEIC Format Instantly
-          </h2>
-
-          <p className="text-gray-600 leading-relaxed">
-            HEIC (High Efficiency Image Container) is a modern image format used
-            by Apple devices to store high-quality images with smaller file
-            sizes. Our Image to HEIC Converter allows you to convert JPG, PNG,
-            and WebP images into HEIC format quickly and securely without
-            installing any software.
-          </p>
-
-          <ul className="grid md:grid-cols-2 gap-4 text-gray-600 list-disc list-inside">
-            <li>Convert JPG, PNG, or WebP to HEIC</li>
-            <li>Smaller file sizes with high image quality</li>
-            <li>No watermark</li>
-            <li>Secure browser-based processing</li>
-            <li>Free and unlimited usage</li>
-          </ul>
-        </section>
-
-        {/* Other Tools */}
-        <OtherToolsSection currentSlug="image-to-heic" />
-
-        {/* Random tools */}
-        <RandomToolsSection />
-
-        {/* Categories */}
-        <ToolCategoriesSection />
-      </section>
+      <ImageToHeicPageClient />
     </main>
   );
 }

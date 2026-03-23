@@ -1,8 +1,9 @@
 import { Metadata } from "next/types";
 import ToolsComponents from "./ToolsComponents";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Free Online Image Tools | Converter, Optimizer & Editor | Snappy-fix",
+  title: "Free Online Image Tools | Converter, Optimizer & Editor",
   description:
     "Browse our comprehensive library of free online image tools. From high-fidelity conversion and SVG optimization to professional-grade editing and SEO analysis, Snappy-fix provides fast, secure, browser-based solutions for every visual task.",
   keywords: [
@@ -46,9 +47,30 @@ export const metadata: Metadata = {
   },
 };
 
+// Skeleton shown during static generation and while searchParams resolves
+function ToolsPageSkeleton() {
+  return (
+    <div className="relative min-h-screen bg-gradient-to-br from-white via-[#faf7ff] to-white">
+      <div className="w-full max-w-7xl mx-auto px-6 pt-48 pb-20 space-y-12 animate-pulse">
+        <div className="text-center space-y-4">
+          <div className="h-14 w-96 bg-[#f4edff] rounded-2xl mx-auto" />
+          <div className="h-5 w-80 bg-[#f4edff] rounded mx-auto" />
+          <div className="h-14 max-w-xl bg-[#f4edff] rounded-2xl mx-auto" />
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-40 bg-[#f4edff] rounded-[2rem]" />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Page() {
-  // We return the Client Component here.
-  // This allows the page to remain a Server Component for SEO (metadata)
-  // while enabling interactivity inside ToolsComponents.
-  return <ToolsComponents />;
+  return (
+    <Suspense fallback={<ToolsPageSkeleton />}>
+      <ToolsComponents />
+    </Suspense>
+  );
 }

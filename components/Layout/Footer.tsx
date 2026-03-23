@@ -9,33 +9,22 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { splitTitle } from "@/lib/utils/title";
 import { usePathname } from "next/navigation";
 
-const links = [
-  "hero",
-  "why",
-  "features",
-  "pricing",
-  "testimonial",
-  "team",
-  "contact",
-  "tools",
-  "blog",
-];
+// ─── Types ────────────────────────────────────────────────────────────────────
+type CategoryWithTools = (typeof toolCategories)[number] & {
+  tools: typeof tools;
+};
 
-const shuffleWithSeed = (array: any[], seed: number) => {
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+// Deterministic daily shuffle — same order within each day, changes at midnight
+function shuffleWithSeed<T>(array: T[], seed: number): T[] {
   const shuffled = [...array];
-
   let currentIndex = shuffled.length;
-  let randomIndex;
-
-  const random = () => {
-    const x = Math.sin(seed++) * 10000;
-    return x - Math.floor(x);
-  };
+  let s = seed;
 
   while (currentIndex !== 0) {
-    randomIndex = Math.floor(random() * currentIndex);
+    s = (s * 1664525 + 1013904223) & 0xffffffff;
+    const randomIndex = Math.abs(s) % currentIndex;
     currentIndex--;
-
     [shuffled[currentIndex], shuffled[randomIndex]] = [
       shuffled[randomIndex],
       shuffled[currentIndex],
@@ -43,170 +32,185 @@ const shuffleWithSeed = (array: any[], seed: number) => {
   }
 
   return shuffled;
-};
+}
 
+// ─── Nav links used in Platform column ───────────────────────────────────────
+const PLATFORM_LINKS = [
+  { label: "Home", href: "/#hero" },
+  { label: "Why us", href: "/#why" },
+  { label: "Features", href: "/#features" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Testimonials", href: "/#testimonial" },
+  { label: "Team", href: "/#team" },
+  { label: "Tools", href: "/tools" },
+  { label: "Blog", href: "/blog" },
+  { label: "About us", href: "/about" },
+  { label: "Contact us", href: "/contact" },
+];
+
+const LEGAL_LINKS = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms & Conditions", href: "/terms" },
+];
+
+const SOCIAL = [
+  {
+    icon: <FaFacebookF />,
+    label: "Facebook",
+    href: "https://web.facebook.com/p/Snappy-fix-Technologies-100064249260204/",
+  },
+  { icon: <FaTwitter />, label: "Twitter", href: "#" },
+  { icon: <FaInstagram />, label: "Instagram", href: "#" },
+];
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
 const Footer = () => {
-  const [year, setYear] = useState<number | string>("");
-  const [categoryTools, setCategoryTools] = useState<any[]>([]);
-
+  const [year, setYear] = useState<number | null>(null);
+  const [categoryTools, setCategoryTools] = useState<CategoryWithTools[]>([]);
   const pathname = usePathname();
-  const isAdminPage = pathname?.startsWith("/admin");
 
   useEffect(() => {
     setYear(new Date().getFullYear());
 
-    const todaySeed = new Date().getDate(); // reshuffle daily
+    const seed = new Date().getDate(); // reshuffles daily
 
-    const grouped = toolCategories.map((cat) => {
-      const filtered = tools.filter((t) => t.category === cat.name);
-
-      const shuffled = shuffleWithSeed(filtered, todaySeed);
-
-      return {
-        ...cat,
-        tools: shuffled.slice(0, 3),
-      };
-    });
+    const grouped: CategoryWithTools[] = toolCategories.map((cat) => ({
+      ...cat,
+      tools: shuffleWithSeed(
+        tools.filter((t) => t.category === cat.name),
+        seed,
+      ).slice(0, 3),
+    }));
 
     setCategoryTools(grouped);
   }, []);
 
-  const companyLinks = links.filter(
-    (item) => !["tools", "blog"].includes(item),
-  );
+  // Hide footer entirely on admin pages
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <>
-      {" "}
-      {!isAdminPage && (
-        <footer className="relative [clip-path:inset(0)] text-white">
-          {/* 1. Optimized Fixed Background Layer */}
-          <div className="fixed inset-0 -z-10">
+    <footer className="bg-[#47238f] text-white">
+      {/* ── Main grid ── */}
+      <div className="max-w-7xl mx-auto px-6 py-16 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        {/* ── Brand column ── */}
+        <div className="sm:col-span-2 lg:col-span-1">
+          <Link href="/" aria-label="Snappy-Fix Technologies home">
             <Image
-              src="/images/bg-img/footer.webp"
-              alt="Snow Background"
-              fill
-              className="object-cover"
-              quality={75}
-              priority={false}
+              src="/images/logo/snappy-fix-logo.webp"
+              alt="Snappy-Fix Technologies"
+              width={120}
+              height={40}
+              className="h-10 w-auto object-contain mb-4"
+              loading="lazy"
             />
+          </Link>
+          <h2 className="text-lg font-bold text-white mb-3">
+            Snappy-Fix Technologies
+          </h2>
+          <p className="text-sm text-white/55 leading-relaxed max-w-xs">
+            Free online image tools for creators, developers, and businesses.
+            Convert, optimise, and analyse images instantly — plus custom
+            websites built to perform.
+          </p>
+
+          {/* Social buttons */}
+          <div className="flex gap-3 mt-6">
+            {SOCIAL.map(({ icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#fb397d] text-white transition-all duration-200 hover:scale-110"
+              >
+                {icon}
+              </a>
+            ))}
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 lg:grid-cols-4 gap-14">
-            {/* Brand */}
-            <div>
-              <h2 className="text-3xl font-bold text-[#9b69e4]">
-                Snappy-fix Tech
-              </h2>
+        </div>
 
-              <p className="mt-4 text-sm text-black/50 leading-relaxed">
-                Powerful online image tools for creators, developers and
-                businesses. Convert, optimize and analyze images instantly.
-              </p>
-
-              <div className="flex gap-4 mt-6">
-                <SocialButton icon={<FaFacebookF />} />
-                <SocialButton icon={<FaTwitter />} />
-                <SocialButton icon={<FaInstagram />} />
-              </div>
-            </div>
-
-            {/* Tool Categories */}
-            <div className="lg:col-span-2 grid grid-cols-2 gap-10">
-              {categoryTools.slice(0, 4).map((category) => (
-                <div key={category.slug}>
-                  <h3 className="text-lg font-semibold mb-5 text-black/60">
-                    {category.name}
-                  </h3>
-
-                  <ul className="space-y-3 text-sm text-black/50">
-                    {category.tools.map((tool: any) => (
-                      <li key={tool.slug}>
-                        <Link
-                          href={tool.href}
-                          className="hover:text-white transition"
-                        >
-                          {splitTitle(tool.name, 1)}
-                        </Link>
-                      </li>
-                    ))}
-
-                    <li>
-                      <Link
-                        href={category.href}
-                        className="text-[#9b69e4] hover:text-[#fb397d] font-medium"
-                      >
-                        View all →
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            {/* Platform + Legal */}
-            <div>
-              <h3 className="text-lg font-semibold mb-5 text-black/60">
-                Platform
+        {/* ── Tool categories — 2 columns spanning 2 grid cols ── */}
+        <div className="sm:col-span-2 grid grid-cols-2 gap-8 lg:gap-10">
+          {categoryTools.slice(0, 4).map((category) => (
+            <div key={category.slug}>
+              <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/40 mb-4">
+                {category.name}
               </h3>
-
-              <ul className="space-y-3 text-sm text-black/50">
-                {companyLinks.map((item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item}`}
-                      className="hover:text-white transition"
+              <ul className="space-y-2.5">
+                {category.tools.map((tool) => (
+                  <li key={tool.slug}>
+                    <Link
+                      href={tool.href}
+                      className="text-sm text-white/60 hover:text-white transition-colors duration-150"
                     >
-                      {item.charAt(0).toUpperCase() + item.slice(1)}
-                    </a>
+                      {splitTitle(tool.name, 1)}
+                    </Link>
                   </li>
                 ))}
-
                 <li>
-                  <Link href="/blog" className="hover:text-white transition">
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-
-              <h3 className="text-lg font-semibold mt-10 mb-5 text-black/60">
-                Legal
-              </h3>
-
-              <ul className="space-y-3 text-sm text-black/50">
-                <li>
-                  <Link href="/privacy" className="hover:text-white transition">
-                    Privacy Policy
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="/terms" className="hover:text-white transition">
-                    Terms & Conditions
+                  <Link
+                    href={category.href}
+                    className="text-sm font-semibold text-[#c49ef8] hover:text-[#fb397d] transition-colors duration-150"
+                  >
+                    View all →
                   </Link>
                 </li>
               </ul>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="relative border-t border-white/10 text-center py-6 text-sm text-white/50">
-            © {year || "2026"} Snappy-fix Technologies. All rights reserved.
-          </div>
-        </footer>
-      )}
-    </>
+        {/* ── Platform + Legal ── */}
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/40 mb-4">
+            Platform
+          </h3>
+          <ul className="space-y-2.5">
+            {PLATFORM_LINKS.map(({ label, href }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-sm text-white/60 hover:text-white transition-colors duration-150"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/40 mt-9 mb-4">
+            Legal
+          </h3>
+          <ul className="space-y-2.5">
+            {LEGAL_LINKS.map(({ label, href }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-sm text-white/60 hover:text-white transition-colors duration-150"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* ── Bottom bar ── */}
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+          <p>
+            © {year ?? new Date().getFullYear()} Snappy-Fix Technologies. All
+            rights reserved.
+          </p>
+          <p className="text-center sm:text-right">
+            Built in 🇳🇬 Nigeria · Serving users worldwide
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 };
-
-const SocialButton = ({ icon }: { icon: React.ReactNode }) => (
-  <button
-    className="w-10 h-10 flex items-center justify-center rounded-full
-               bg-[#9b69e4] text-white
-               transition-all duration-300
-               hover:bg-[#fb397d] hover:scale-110 hover:shadow-lg"
-    aria-label="social link"
-  >
-    {icon}
-  </button>
-);
 
 export default Footer;

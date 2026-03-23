@@ -1,72 +1,98 @@
-import { TfiUser, TfiPulse, TfiDashboard } from "react-icons/tfi";
+import { Code2, Cpu, Globe, ImageIcon, Star } from "lucide-react";
+import { UseInView } from "./Helpers";
+import Image from "next/image";
 
-type Feature = {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-};
-
-const features: Feature[] = [
-  {
-    title: "Modern UI/UX Design",
-    description:
-      "We design visually appealing and user-friendly interfaces that improve engagement and conversion.",
-    icon: <TfiUser size={38} className="text-[#fb397d]" />,
-  },
-  {
-    title: "Fast Performance",
-    description:
-      "Our websites are optimized for speed, ensuring fast load times and better user experience.",
-    icon: <TfiPulse size={38} className="text-[#fb397d]" />,
-  },
-  {
-    title: "Clean & Maintainable Code",
-    description:
-      "We write scalable, clean, and maintainable code, making future updates easy and cost-effective.",
-    icon: <TfiDashboard size={38} className="text-[#fb397d]" />,
-  },
-];
-
-const Features = () => {
+export default function FeaturesSection() {
+  const { ref, visible } = UseInView();
   return (
-    <section id="features" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 space-y-12">
-        <header className="text-center space-y-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#5b32b4]">
-            Powerful Features We Integrate Into Your Website
-          </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            Our web solutions are built with performance, usability, and
-            scalability in mind, helping your business stand out online.
-          </p>
-          <div className="h-1 w-20 bg-[#fb397d] mx-auto rounded" />
-        </header>
-
-        <div className="flex flex-col md:flex-row gap-10">
-          {features.map((feature, index) => (
-            <article
-              key={index}
-              className="group flex-1 p-8 rounded-3xl border transition hover:shadow-xl hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-4">
-                <div className="group-hover:scale-110 transition">
-                  {feature.icon}
+    <section
+      id="features"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-20 bg-[#faf7ff] relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <div className="space-y-6">
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#fb397d] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
+              What We Build
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#2b1d3a] leading-tight">
+              Websites, Apps & Online Tools — All in One Place
+            </h2>
+            <p className="text-gray-500 leading-relaxed">
+              Snappy-Fix Technologies is a modern web development company and
+              creator of powerful free online tools. We build business websites,
+              scalable web applications, SaaS platforms, and image utilities
+              used by developers and marketers worldwide.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  icon: <Code2 size={18} />,
+                  title: "Web & App Development",
+                  text: "Custom websites, SaaS, and mobile apps.",
+                },
+                {
+                  icon: <ImageIcon size={18} />,
+                  title: "Image Tools",
+                  text: "All free tools for processing images.",
+                },
+                {
+                  icon: <Cpu size={18} />,
+                  title: "Performance Focused",
+                  text: "PageSpeed and Core Web Vitals optimised.",
+                },
+                {
+                  icon: <Globe size={18} />,
+                  title: "SEO Ready",
+                  text: "Built with search visibility in mind.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-3 bg-white rounded-2xl border border-[#e9e1ff] p-4"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-[#f4edff] text-[#5b32b4] flex items-center justify-center shrink-0">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#2b1d3a] text-sm">
+                      {item.title}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-0.5">{item.text}</p>
+                  </div>
                 </div>
-
-                <h3 className="text-xl font-semibold text-[#5b32b4]">
-                  {feature.title}
-                </h3>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/bg-img/cart-1.webp"
+                alt="Snappy-Fix web development project"
+                fill
+                className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            {/* Floating badge */}
+            <div className="absolute -bottom-4 -left-4 bg-white border border-[#e9e1ff] rounded-2xl px-5 py-3 shadow-lg flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-[#5b32b4] flex items-center justify-center">
+                <Star size={14} className="text-white fill-white" />
               </div>
-
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
-            </article>
-          ))}
+              <div>
+                <p className="text-xs font-black text-[#2b1d3a]">
+                  5-Star Rated
+                </p>
+                <p className="text-[10px] text-gray-400">103+ reviews</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Features;
+}

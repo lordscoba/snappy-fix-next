@@ -12,34 +12,36 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Snappy-Fix Technologies | Software Development Company & Free Online Image Tools",
-    template: "%s | Snappy-Fix Technologies",
+      "Snappy-Fix Technologies | Free Online Image Tools & Software Development",
+    template: "%s | Snappy-Fix",
   },
 
   description:
-    "Snappy-Fix Technologies is a Nigerian software development company building scalable websites, web applications, and mobile apps. We also provide powerful free online image tools including image converters, optimizers, analyzers, resizers, and SEO utilities used by developers, designers, and marketers worldwide.",
+    "Free online image tools built by Snappy-Fix Technologies — convert, compress, resize, crop, watermark, and optimise images for web, print, and social media. Also a Nigerian software development company building scalable web and mobile applications.",
 
   keywords: [
-    "software development company",
-    "web development Nigeria",
-    "mobile app development Nigeria",
-    "web application development",
-    "image tools online",
-    "free image tools",
-    "image converter",
+    "free online image tools",
+    "image converter online",
     "image optimizer",
     "resize image online",
+    "compress image online",
+    "image tools for developers",
+    "image tools for designers",
     "svg optimizer",
+    "favicon generator",
+    "webp converter",
+    "pdf to image",
+    "heic to jpg",
+    "remove exif data",
     "seo image tools",
-    "frontend development",
-    "backend development",
-    "flutter development",
-    "react development",
-    "full stack developers",
+    "web image optimizer",
+    "software development company Nigeria",
+    "web development Nigeria",
+    "mobile app development Nigeria",
+    "full stack developers Nigeria",
     "tech company Nigeria",
-    "software company Nigeria",
-    "Uyo",
     "Port Harcourt",
+    "Uyo",
     "Lagos",
     "Nigeria",
   ],
@@ -47,9 +49,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Snappy-Fix Technologies" }],
   creator: "Snappy-Fix Technologies",
   publisher: "Snappy-Fix Technologies",
-
   category: "Technology",
-
   applicationName: "Snappy-Fix Technologies",
 
   icons: {
@@ -68,11 +68,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: {
       default:
-        "Snappy-Fix Technologies | Software Development Company in Nigeria",
-      template: "%s | Snappy-Fix Technologies",
+        "Snappy-Fix Technologies | Free Online Image Tools & Software Development",
+      template: "%s | Snappy-Fix",
     },
     description:
-      "We design and build scalable web and mobile applications for Nigerian and global businesses.",
+      "Free online image tools — convert, compress, resize, crop, watermark, and optimise for web, print, and social media. Also a Nigerian software development company.",
     url: "https://www.snappy-fix.com",
     siteName: "Snappy-Fix Technologies",
     locale: "en_NG",
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
         url: "/images/snappy-fix-logo.png",
         width: 1200,
         height: 630,
-        alt: "Snappy-Fix Technologies Logo",
+        alt: "Snappy-Fix Technologies — Free Image Tools",
       },
     ],
   },
@@ -91,17 +91,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: {
       default:
-        "Snappy-Fix Technologies | Software Development Company in Nigeria",
-      template: "%s | Snappy-Fix Technologies",
+        "Snappy-Fix Technologies | Free Online Image Tools & Software Development",
+      template: "%s | Snappy-Fix",
     },
     description:
-      "Snappy-Fix builds scalable web, mobile, and cloud applications for businesses worldwide.",
+      "Free online image tools — convert, compress, resize, crop, watermark, and optimise images for web, print, and social media.",
     creator: "@snappyfix",
     site: "@snappyfix",
     images: [
       {
         url: "/images/snappy-fix-logo.png",
-        alt: "Snappy-Fix Technologies Logo",
+        alt: "Snappy-Fix Technologies",
       },
     ],
   },
@@ -118,7 +118,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // themeColor: "#0f172a",
   referrer: "origin-when-cross-origin",
 
   other: {
@@ -131,34 +130,75 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const structuredData = {
+  // Organization schema — links the site to the company entity in Google's
+  // Knowledge Graph. Emitted on every page via the root layout.
+  const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Snappy-Fix Technologies",
     url: "https://www.snappy-fix.com",
-    logo: "https://www.snappy-fix.com/images/snappy-fix-logo.png",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.snappy-fix.com/images/snappy-fix-logo.png",
+      width: 512,
+      height: 512,
+    },
     sameAs: [
-      "https://web.facebook.com/p/Snappy-fix-Technologies-100064249260204/?_rdc=1&_rdr#",
+      "https://web.facebook.com/p/Snappy-fix-Technologies-100064249260204/",
     ],
     description:
-      "Snappy-Fix Technologies builds scalable web applications, mobile apps, and developer tools for businesses across Nigeria and globally.",
+      "Snappy-Fix Technologies provides free online image tools — converters, optimisers, compressors, and utilities for developers, designers, and marketers — alongside software development services for Nigerian and global businesses.",
     foundingLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Uyo",
         addressRegion: "Akwa Ibom",
-        addressCountry: "Nigeria",
+        addressCountry: "NG",
       },
     },
+    areaServed: [
+      { "@type": "Country", name: "Nigeria" },
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "India" },
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
       email: "snappyfix.tech@gmail.com",
-      areaServed: "NG",
       availableLanguage: ["English"],
     },
+    knowsAbout: [
+      "Image Optimisation",
+      "Web Performance",
+      "PDF Processing",
+      "Software Development",
+      "Web Application Development",
+      "Mobile App Development",
+    ],
   };
+
+  // WebSite schema — enables the Google Sitelinks Search Box in organic
+  // results when Google detects the SearchAction potentialAction.
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Snappy-Fix Technologies",
+    url: "https://www.snappy-fix.com",
+    description:
+      "Free online image tools — convert, compress, optimise, and process images for web, print, social media, and SEO.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate:
+          "https://www.snappy-fix.com/tools?search={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
@@ -167,14 +207,21 @@ export default function RootLayout({
         <SpeedInsights />
         <Analytics />
         <Script
-          id="structured-data"
+          id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
+            __html: JSON.stringify(organizationSchema),
           }}
         />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+        <GoogleAnalytics gaId="G-XLRF67HQ9E" />
       </body>
-      <GoogleAnalytics gaId="G-XLRF67HQ9E" />
     </html>
   );
 }
