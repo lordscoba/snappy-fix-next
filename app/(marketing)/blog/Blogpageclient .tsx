@@ -249,7 +249,7 @@ export default function BlogPageClient() {
         {/* ── Featured ─────────────────────────────────────── */}
         <section>
           {/* <div className="flex items-center gap-3 mb-8">
-            <span className="text-[#fb397d] text-xl">★</span>
+            <span className="text-[#c3003a] text-xl">★</span>
             <h2 className="text-white text-sm font-black uppercase tracking-[0.2em]">
               Featured
             </h2>
@@ -338,7 +338,7 @@ function ErrorBanner({ onRetry }: { onRetry: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
       <div className="w-16 h-16 rounded-full bg-[#fb397d]/10 border border-[#fb397d]/20 flex items-center justify-center mb-4">
-        <HiExclamationTriangle className="text-[#fb397d] text-2xl" />
+        <HiExclamationTriangle className="text-[#c3003a] text-2xl" />
       </div>
       <h3 className="text-white font-black text-lg mb-2">
         Failed to load articles

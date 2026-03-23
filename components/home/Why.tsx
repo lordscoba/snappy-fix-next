@@ -4,22 +4,22 @@ import { SectionHeader, UseInView } from "./Helpers";
 // ─── Why features ─────────────────────────────────────────────────────────────
 const WHY_FEATURES = [
   {
-    icon: <Zap size={28} className="text-[#fb397d]" />,
+    icon: <Zap size={28} className="text-[#c3003a]" />,
     title: "Fast & Reliable",
     body: "Every tool and website we build is engineered for speed. Optimised images, clean code, and fast load times — always.",
   },
   {
-    icon: <Shield size={28} className="text-[#fb397d]" />,
+    icon: <Shield size={28} className="text-[#c3003a]" />,
     title: "Private & Secure",
     body: "Your files are never stored. Image processing happens securely and files are discarded immediately after download.",
   },
   {
-    icon: <Globe size={28} className="text-[#fb397d]" />,
+    icon: <Globe size={28} className="text-[#c3003a]" />,
     title: "Built for the Web",
     body: "From PageSpeed to Core Web Vitals, we design and build with real web performance standards — not just aesthetics.",
   },
   {
-    icon: <Code2 size={28} className="text-[#fb397d]" />,
+    icon: <Code2 size={28} className="text-[#c3003a]" />,
     title: "Clean Engineering",
     body: "Scalable, maintainable code written by specialists. No bloat, no shortcuts — just solid digital products.",
   },

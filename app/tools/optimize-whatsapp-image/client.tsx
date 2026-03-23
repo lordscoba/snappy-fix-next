@@ -66,7 +66,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "One-click optimisation",
     description:
       "No settings. Upload, click one button, download a WhatsApp-ready file — dimensions, compression, and encoding handled automatically.",
@@ -78,7 +78,7 @@ const benefits = [
       "Pre-optimising to 1600px / 1MB means WhatsApp applies far less further compression — the image recipients see is noticeably sharper.",
   },
   {
-    icon: <Share2 size={20} className="text-[#fb397d]" />,
+    icon: <Share2 size={20} className="text-[#c3003a]" />,
     title: "Chats, groups, and status",
     description:
       "Works for all WhatsApp sharing contexts — individual chats, group messages, WhatsApp Business catalogues, and Status updates.",
@@ -90,7 +90,7 @@ const benefits = [
       "Progressive JPEG encoding loads visually faster and is handled more efficiently by WhatsApp's compression pipeline than standard JPEG.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed securely and never permanently stored. Files are discarded after your download is ready.",
@@ -238,7 +238,7 @@ export default function WhatsAppOptimizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -301,7 +301,7 @@ export default function WhatsAppOptimizerPageClient() {
                     <td className="px-5 py-3 font-bold text-[#5b32b4] text-xs">
                       {row.format}
                     </td>
-                    <td className="px-5 py-3 text-xs font-black text-[#fb397d] font-mono">
+                    <td className="px-5 py-3 text-xs font-black text-[#c3003a] font-mono">
                       {row.dims}
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-600">
@@ -363,7 +363,7 @@ export default function WhatsAppOptimizerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

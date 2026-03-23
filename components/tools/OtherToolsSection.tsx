@@ -69,7 +69,7 @@ export default function OtherToolsSection({
               {tool.description}
             </p>
 
-            <span className="text-sm font-semibold text-[#fb397d] group-hover:underline">
+            <span className="text-sm font-semibold text-[#c3003a] group-hover:underline">
               Try now →
             </span>
           </Link>

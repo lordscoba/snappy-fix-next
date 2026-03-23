@@ -74,7 +74,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Filter size={20} className="text-[#fb397d]" />,
+    icon: <Filter size={20} className="text-[#c3003a]" />,
     title: "8 cinematic LUT filters",
     description:
       "Professional-grade LUT filters used in film and photography post-production — including Teal & Orange, Clarendon, Lark, and Film stock emulation.",
@@ -86,7 +86,7 @@ const benefits = [
       "One-click creative presets: Vintage, Noir, Cyberpunk, Warm, Cool, Dramatic, and Faded — each tuned for a specific emotional atmosphere.",
   },
   {
-    icon: <Sliders size={20} className="text-[#fb397d]" />,
+    icon: <Sliders size={20} className="text-[#c3003a]" />,
     title: "6 manual adjustment sliders",
     description:
       "Fine-tune brightness, contrast, saturation, hue, exposure, and temperature independently for precise control over every colour channel.",
@@ -98,7 +98,7 @@ const benefits = [
       "Apply a LUT or preset as a base grade, then refine with manual sliders — the same workflow professional colourists use in post-production.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "No watermark, no limits",
     description:
       "Download your colour-graded images at full quality with no watermark, no account required, and no daily usage limits.",
@@ -323,7 +323,7 @@ export default function ImageColorEffectsPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -391,8 +391,8 @@ export default function ImageColorEffectsPageClient() {
           {/* Presets table */}
           <div className="rounded-2xl border border-[#e9e1ff] overflow-hidden">
             <div className="bg-[#fff5f9] px-5 py-3 flex items-center gap-2">
-              <Sparkles size={14} className="text-[#fb397d]" />
-              <span className="text-xs font-black text-[#fb397d] uppercase tracking-wider">
+              <Sparkles size={14} className="text-[#c3003a]" />
+              <span className="text-xs font-black text-[#c3003a] uppercase tracking-wider">
                 Mood Presets
               </span>
             </div>
@@ -402,7 +402,7 @@ export default function ImageColorEffectsPageClient() {
                   key={preset.name}
                   className={`flex justify-between px-5 py-3 ${i % 2 === 0 ? "bg-white" : "bg-[#fff9fb]"}`}
                 >
-                  <span className="text-xs font-black text-[#fb397d]">
+                  <span className="text-xs font-black text-[#c3003a]">
                     {preset.name}
                   </span>
                   <span className="text-xs text-gray-500 text-right max-w-[55%]">
@@ -441,13 +441,13 @@ export default function ImageColorEffectsPageClient() {
                     className={i % 2 === 0 ? "bg-white" : "bg-[#faf7ff]"}
                   >
                     <td className="px-5 py-3 font-black text-[#5b32b4] text-xs flex items-center gap-1.5">
-                      <span className="text-[#fb397d]">{s.icon}</span>
+                      <span className="text-[#c3003a]">{s.icon}</span>
                       {s.name}
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-500 font-mono">
                       {s.range}
                     </td>
-                    <td className="px-5 py-3 text-xs font-bold text-[#fb397d]">
+                    <td className="px-5 py-3 text-xs font-bold text-[#c3003a]">
                       {s.default}
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-500">{s.tip}</td>
@@ -507,7 +507,7 @@ export default function ImageColorEffectsPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

@@ -160,7 +160,7 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
                 </Link>
               </li>
               <li className="text-[#6f5a88]">/</li>
-              <li className="text-[#fb397d] truncate max-w-[200px] sm:max-w-sm">
+              <li className="text-[#c3003a] truncate max-w-[200px] sm:max-w-sm">
                 {post.title}
               </li>
             </ol>
@@ -194,15 +194,15 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-5 text-sm text-[#9d86b8]">
             <span className="flex items-center gap-1.5">
-              <HiUser className="text-[#fb397d]" size={14} />
+              <HiUser className="text-[#c3003a]" size={14} />
               Snappy‑Fix Team
             </span>
             <span className="flex items-center gap-1.5">
-              <HiCalendar className="text-[#fb397d]" size={14} />
+              <HiCalendar className="text-[#c3003a]" size={14} />
               {publishedDate}
             </span>
             <span className="flex items-center gap-1.5">
-              <HiClock className="text-[#fb397d]" size={14} />
+              <HiClock className="text-[#c3003a]" size={14} />
               {readingTime}
             </span>
           </div>
@@ -236,20 +236,20 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
                   prose-headings:text-white prose-headings:font-black
                   prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
                   prose-p:text-[#c4b5d9] prose-p:leading-[1.85]
-                  prose-a:text-[#fb397d] prose-a:underline
+                  prose-a:text-[#c3003a] prose-a:underline
                   prose-strong:text-white prose-strong:font-bold
                   prose-em:text-[#e0ccff]
-                  prose-code:text-[#fb397d] prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+                  prose-code:text-[#c3003a] prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
                   prose-pre:bg-[#1a0f2e] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-2xl prose-pre:p-5
                   prose-blockquote:border-l-[#fb397d] prose-blockquote:border-l-4 prose-blockquote:pl-5 prose-blockquote:text-[#9d86b8] prose-blockquote:italic
                   prose-ul:text-[#c4b5d9] prose-ol:text-[#c4b5d9]
-                  prose-li:marker:text-[#fb397d]
+                  prose-li:marker:text-[#c3003a]
                   prose-img:rounded-2xl prose-img:border prose-img:border-white/10
                   prose-hr:border-white/10
                   prose-table:border-0 prose-thead:border-0 prose-tr:border-0
                   prose-th:p-0 prose-td:p-0
                   [&>p:first-child]:text-xl [&>p:first-child]:text-[#e0ccff] [&>p:first-child]:font-medium [&>p:first-child]:leading-relaxed
-                  [&>p:first-child::first-letter]:text-5xl [&>p:first-child::first-letter]:font-black [&>p:first-child::first-letter]:text-[#fb397d] [&>p:first-child::first-letter]:float-left [&>p:first-child::first-letter]:mr-3 [&>p:first-child::first-letter]:mt-1 [&>p:first-child::first-letter]:leading-none"
+                  [&>p:first-child::first-letter]:text-5xl [&>p:first-child::first-letter]:font-black [&>p:first-child::first-letter]:text-[#c3003a] [&>p:first-child::first-letter]:float-left [&>p:first-child::first-letter]:mr-3 [&>p:first-child::first-letter]:mt-1 [&>p:first-child::first-letter]:leading-none"
                 dangerouslySetInnerHTML={{ __html: post.body }}
                 itemProp="articleBody"
               />
@@ -281,7 +281,7 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
                 <span className="text-white font-black text-xl">S</span>
               </div>
               <div>
-                <p className="text-[10px] font-bold text-[#fb397d] uppercase tracking-widest mb-1">
+                <p className="text-[10px] font-bold text-[#c3003a] uppercase tracking-widest mb-1">
                   Written by
                 </p>
                 <h3 className="text-white font-black text-lg">
@@ -298,7 +298,7 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
             <div className="mt-10 rounded-2xl bg-gradient-to-br from-[#5b32b4] via-[#3d1f8a] to-[#2b1d3a] p-8 border border-[#5b32b4]/30 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#fb397d]/15 blur-2xl pointer-events-none" />
               <div className="relative z-10">
-                <span className="text-[10px] font-black text-[#fb397d] uppercase tracking-widest">
+                <span className="text-[10px] font-black text-[#c3003a] uppercase tracking-widest">
                   Newsletter
                 </span>
                 <h3 className="text-white text-2xl font-black mt-2 mb-2">
@@ -441,7 +441,7 @@ function BlogDetailsError({ onRetry }: { onRetry: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
       <div className="w-16 h-16 rounded-full bg-[#fb397d]/10 border border-[#fb397d]/20 flex items-center justify-center mb-4">
-        <HiExclamationTriangle className="text-[#fb397d] text-2xl" />
+        <HiExclamationTriangle className="text-[#c3003a] text-2xl" />
       </div>
       <h2 className="text-white font-black text-xl mb-2">
         Failed to load article
@@ -487,7 +487,7 @@ function RelatedCard({ post }: { post: News }) {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0e0716]/70 to-transparent" />
         </figure>
         <div className="p-4 space-y-2">
-          <span className="text-[10px] font-bold text-[#fb397d] uppercase tracking-widest">
+          <span className="text-[10px] font-bold text-[#c3003a] uppercase tracking-widest">
             {post.category?.name || "Uncategorized"}
           </span>
           <h3 className="text-white text-sm font-bold leading-snug line-clamp-2 group-hover:text-[#e0ccff] transition-colors">

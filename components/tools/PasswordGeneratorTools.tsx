@@ -270,7 +270,7 @@ export default function PasswordGeneratorTools() {
 
             <button
               onClick={handleReset}
-              className="flex-1 text-sm font-bold text-gray-400 hover:text-[#fb397d]"
+              className="flex-1 text-sm font-bold text-gray-400 hover:text-[#c3003a]"
             >
               Generate New
             </button>

@@ -180,7 +180,7 @@ export default function ImageDPICheckerTools() {
 
               <button
                 onClick={handleReset}
-                className="text-sm font-bold text-[#fb397d] hover:underline"
+                className="text-sm font-bold text-[#c3003a] hover:underline"
                 aria-label="analyze another image"
               >
                 Analyze another image
@@ -293,8 +293,8 @@ export default function ImageDPICheckerTools() {
           </p>
         </div>
         <div className="bg-[#fff0f5] p-8 rounded-[2rem]">
-          <h4 className="font-bold text-[#fb397d] mb-2">The 300 DPI Rule</h4>
-          <p className="text-sm text-[#fb397d]/70 leading-relaxed">
+          <h4 className="font-bold text-[#c3003a] mb-2">The 300 DPI Rule</h4>
+          <p className="text-sm text-[#c3003a]/70 leading-relaxed">
             Standard magazines and brochures require 300 DPI. For billboards,
             lower DPI is often acceptable due to viewing distance.
           </p>

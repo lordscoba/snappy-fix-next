@@ -302,7 +302,7 @@ export default function CropImageTools() {
             </button>
             <button
               onClick={handleReset}
-              className="text-xs font-bold text-gray-400 hover:text-[#fb397d] transition-colors py-2 uppercase tracking-tighter"
+              className="text-xs font-bold text-gray-400 hover:text-[#c3003a] transition-colors py-2 uppercase tracking-tighter"
             >
               Start New Crop
             </button>

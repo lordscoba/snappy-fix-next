@@ -233,7 +233,7 @@ const Nav = ({ background, links = DEFAULT_LINKS }: NavProps) => {
             <Link
               key={href}
               href={href}
-              className="hover:text-[#fb397d] transition-colors"
+              className="hover:text-[#c3003a] transition-colors"
             >
               {label}
             </Link>

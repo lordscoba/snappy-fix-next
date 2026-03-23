@@ -81,7 +81,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <FolderArchive size={20} className="text-[#fb397d]" />,
+    icon: <FolderArchive size={20} className="text-[#c3003a]" />,
     title: "Complete package in one ZIP",
     description:
       "7 favicon sizes, multi-res ICO, dark mode variant, OG social preview, site.webmanifest, and ready-to-paste HTML — one download, nothing missing.",
@@ -93,7 +93,7 @@ const benefits = [
       "The tool analyses your logo and automatically detects your brand colour, using it in the generated site.webmanifest theme_color and the social preview background.",
   },
   {
-    icon: <Sliders size={20} className="text-[#fb397d]" />,
+    icon: <Sliders size={20} className="text-[#c3003a]" />,
     title: "Full configuration control",
     description:
       "Choose output format (ICO/PNG/WebP), set background colour or transparency, and control padding — all before generating.",
@@ -105,7 +105,7 @@ const benefits = [
       "Multi-resolution favicon.ico embeds 16, 32, 48, and 64px layers — works in every browser including older IE, Edge, Chrome, Firefox, and Safari.",
   },
   {
-    icon: <Smartphone size={20} className="text-[#fb397d]" />,
+    icon: <Smartphone size={20} className="text-[#c3003a]" />,
     title: "Mobile and PWA ready",
     description:
       "Includes Apple Touch icon (180×180), Android home screen sizes (192×192, 512×512), and a fully generated site.webmanifest for Progressive Web Apps.",
@@ -262,7 +262,7 @@ export default function FaviconGeneratorPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -289,7 +289,7 @@ export default function FaviconGeneratorPageClient() {
                 <div key={item.file} className="flex items-start gap-2.5">
                   <CheckCircle2
                     size={13}
-                    className="text-[#fb397d] mt-0.5 shrink-0"
+                    className="text-[#c3003a] mt-0.5 shrink-0"
                   />
                   <div>
                     <span className="font-mono font-bold text-[#5b32b4] text-xs">

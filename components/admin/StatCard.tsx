@@ -22,7 +22,7 @@ export default function StatCard({ label, value, trend }: StatCardProps) {
             className={`text-xs font-medium px-2 py-1 rounded-lg ${
               isPositive
                 ? "bg-emerald-50 text-emerald-600"
-                : "bg-pink-50 text-[#fb397d]"
+                : "bg-pink-50 text-[#c3003a]"
             }`}
           >
             {trend}

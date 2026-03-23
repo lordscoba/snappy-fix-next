@@ -69,7 +69,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <FileImage size={20} className="text-[#fb397d]" />,
+    icon: <FileImage size={20} className="text-[#c3003a]" />,
     title: "WebP output — 25–35% smaller",
     description:
       "Converts to WebP at quality 75 using method 6 — the highest-effort compression. Files are 25–35% smaller than equivalent JPEG at visually identical quality.",
@@ -81,7 +81,7 @@ const benefits = [
       "Resizes to 1920px longest side — the width of a full-screen 1080p display. Eliminates pixels that screens never render, reducing download size without any visual change.",
   },
   {
-    icon: <BarChart3 size={20} className="text-[#fb397d]" />,
+    icon: <BarChart3 size={20} className="text-[#c3003a]" />,
     title: "PageSpeed Insights improvement",
     description:
       "Directly addresses 'Serve images in next-gen formats' and 'Properly size images' — two of the highest-impact PageSpeed Insights recommendations.",
@@ -93,7 +93,7 @@ const benefits = [
       "Upload and click one button. Format conversion, dimension optimisation, and compression level are all applied automatically.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed securely and never permanently stored. Files are discarded after your optimised download is ready.",
@@ -252,7 +252,7 @@ export default function WebOptimizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -321,7 +321,7 @@ export default function WebOptimizerPageClient() {
                     <td className="px-5 py-3 font-bold text-[#5b32b4] text-xs">
                       {row.type}
                     </td>
-                    <td className="px-5 py-3 text-xs font-black text-[#fb397d] font-mono">
+                    <td className="px-5 py-3 text-xs font-black text-[#c3003a] font-mono">
                       {row.recommended}
                     </td>
                     <td className="px-5 py-3 text-xs font-bold text-[#2b1d3a]">
@@ -390,7 +390,7 @@ export default function WebOptimizerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

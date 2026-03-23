@@ -101,8 +101,9 @@ const Blog = () => {
           subtitle="Ideas on design, performance, and building high-quality digital products."
           action={
             <Link
+              arial-label="View all articles"
               href="/blog"
-              className="text-sm font-bold text-[#fb397d] hover:underline"
+              className="text-sm font-bold text-[#c3003a] hover:underline"
             >
               View all articles →
             </Link>
@@ -135,7 +136,7 @@ const Blog = () => {
                       <span className="text-xs font-bold text-[#5b32b4] bg-[#f4edff] px-3 py-1 rounded-full">
                         {post.category}
                       </span>
-                      <span className="text-xs text-[#b5aec4]">
+                      <span className="text-xs text-[#6b5d80]">
                         {post.date}
                       </span>
                     </div>
@@ -150,7 +151,8 @@ const Blog = () => {
 
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-1 text-sm font-bold text-[#fb397d] hover:gap-2 transition-all"
+                      aria-label={`Read article: ${post.title}`}
+                      className="inline-flex items-center gap-1 text-sm font-bold text-[#c3003a] hover:gap-2 transition-all"
                     >
                       Read more <ArrowRight size={14} />
                     </Link>
@@ -178,155 +180,3 @@ export function BlogCardSkeleton() {
 }
 
 export default Blog;
-// "use client";
-
-// import { getBlogList } from "@/lib/api/services/blog.service";
-// import { News } from "@/types/blog-types";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useEffect, useState } from "react";
-// import { SectionHeader } from "./Helpers";
-// import { ArrowRight } from "lucide-react";
-
-// // ─── Static blog fallback ─────────────────────────────────────────────────────
-// const BLOG_FALLBACK = [
-//   {
-//     slug: "web-performance-guide",
-//     title: "How to Improve Your Website's Core Web Vitals in 2025",
-//     excerpt:
-//       "A practical guide to LCP, CLS, and FID — the metrics Google uses to rank your site.",
-//     category: "Web Performance",
-//     date: "Mar 2025",
-//     cover: "/images/blog/minimalist.png",
-//     author: "Snappy-Fix Team",
-//   },
-//   {
-//     slug: "image-formats-guide",
-//     title: "WebP vs AVIF vs JPEG: Which Format Should You Use?",
-//     excerpt:
-//       "A clear comparison of modern image formats and when to use each one for the best results.",
-//     category: "Image Tools",
-//     date: "Feb 2025",
-//     cover: "/images/blog/minimalist.png",
-//     author: "Snappy-Fix Team",
-//   },
-//   {
-//     slug: "favicon-guide",
-//     title: "The Complete Favicon Guide for 2025",
-//     excerpt:
-//       "Everything you need — sizes, formats, dark mode variants, PWA manifests, and the HTML tags.",
-//     category: "Web Development",
-//     date: "Jan 2025",
-//     cover: "/images/blog/minimalist.png",
-//     author: "Snappy-Fix Team",
-//   },
-// ];
-
-// const Blog = () => {
-//   const [blogPosts, setBlogPosts] = useState<News[] | null>(null);
-//   const [blogLoading, setBlogLoading] = useState(true);
-
-//   // Fetch blog posts with fallback
-//   useEffect(() => {
-//     getBlogList(1, 3, "", "", "published", false, false)
-//       .then((res) => setBlogPosts(res.data.data.news?.slice(0, 3) || null))
-//       .catch(() => setBlogPosts(null))
-//       .finally(() => setBlogLoading(false));
-//   }, []);
-//   const blogData =
-//     blogPosts && blogPosts.length > 0
-//       ? blogPosts.map((p) => ({
-//           slug: p.slug,
-//           title: p.title,
-//           excerpt: p.meta_desc || p.body?.slice(0, 120) || "",
-//           category: p.category?.name || "General",
-//           date: p.created_at
-//             ? new Date(p.created_at).toLocaleDateString("en-US", {
-//                 month: "short",
-//                 year: "numeric",
-//               })
-//             : "",
-//           cover: p.thumbnail_url || "/images/blog/minimalist.png",
-//           author: "Snappy-Fix Team",
-//         }))
-//       : BLOG_FALLBACK;
-//   return (
-//     <section id="blog" className="py-20 bg-white">
-//       <div className="max-w-7xl mx-auto px-6">
-//         <SectionHeader
-//           label="Blog"
-//           title="Snappy-Fix Insights"
-//           subtitle="Ideas on design, performance, and building high-quality digital products."
-//           action={
-//             <Link
-//               href="/blog"
-//               className="text-sm font-bold text-[#fb397d] hover:underline"
-//             >
-//               View all articles →
-//             </Link>
-//           }
-//         />
-//         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-//           {blogLoading
-//             ? Array.from({ length: 3 }).map((_, i) => (
-//                 <BlogCardSkeleton key={i} />
-//               ))
-//             : blogData.map((post) => (
-//                 <article
-//                   key={post.slug}
-//                   className="group rounded-3xl border border-[#e9e1ff] bg-white overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:shadow-[#5b32b4]/10 transition-all duration-300"
-//                 >
-//                   <figure className="relative h-48 overflow-hidden bg-[#f4edff]">
-//                     <Image
-//                       src={post.cover}
-//                       alt={post.title}
-//                       fill
-//                       className="object-cover group-hover:scale-105 transition-transform duration-500"
-//                       loading="lazy"
-//                       sizes="(max-width: 768px) 100vw, 33vw"
-//                     />
-//                   </figure>
-//                   <div className="p-6 space-y-3">
-//                     <div className="flex items-center justify-between">
-//                       <span className="text-xs font-bold text-[#5b32b4] bg-[#f4edff] px-3 py-1 rounded-full">
-//                         {post.category}
-//                       </span>
-//                       <span className="text-xs text-[#b5aec4]">
-//                         {post.date}
-//                       </span>
-//                     </div>
-//                     <h3 className="font-bold text-[#2b1d3a] leading-snug line-clamp-2 group-hover:text-[#5b32b4] transition-colors">
-//                       {post.title}
-//                     </h3>
-//                     <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
-//                       {post.excerpt}
-//                     </p>
-//                     <Link
-//                       href={`/blog/${post.slug}`}
-//                       className="inline-flex items-center gap-1 text-sm font-bold text-[#fb397d] hover:gap-2 transition-all"
-//                     >
-//                       Read more <ArrowRight size={14} />
-//                     </Link>
-//                   </div>
-//                 </article>
-//               ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export function BlogCardSkeleton() {
-//   return (
-//     <div className="rounded-3xl border border-[#e9e1ff] overflow-hidden animate-pulse">
-//       <div className="h-48 bg-[#f4edff]" />
-//       <div className="p-6 space-y-3">
-//         <div className="h-4 w-24 bg-[#f4edff] rounded-full" />
-//         <div className="h-5 w-full bg-[#f4edff] rounded" />
-//         <div className="h-4 w-3/4 bg-[#f4edff] rounded" />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Blog;

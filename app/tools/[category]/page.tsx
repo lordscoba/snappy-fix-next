@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
                     {tool.description}
                   </p>
 
-                  <span className="inline-flex items-center text-sm font-semibold text-[#fb397d] group-hover:gap-3 gap-1 transition-all">
+                  <span className="inline-flex items-center text-sm font-semibold text-[#c3003a] group-hover:gap-3 gap-1 transition-all">
                     Use Tool →
                   </span>
                 </div>

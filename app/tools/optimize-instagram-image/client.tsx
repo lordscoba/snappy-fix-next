@@ -76,7 +76,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "One-click optimisation",
     description:
       "No settings to configure. Upload your image, click one button, and download an Instagram-ready file — the tool handles everything automatically.",
@@ -88,7 +88,7 @@ const benefits = [
       "Pre-optimising to Instagram's specs means less aggressive re-compression by the platform — resulting in sharper, clearer images in the feed.",
   },
   {
-    icon: <LayoutGrid size={20} className="text-[#fb397d]" />,
+    icon: <LayoutGrid size={20} className="text-[#c3003a]" />,
     title: "Posts, Stories, and Reels",
     description:
       "Works for all Instagram content formats — feed posts, portrait posts, landscape posts, Stories, Reels, and cover thumbnails.",
@@ -100,7 +100,7 @@ const benefits = [
       "Takes your phone camera's native resolution output — often 4000px+ wide — and processes it into the optimal Instagram upload format.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed securely and never permanently stored. Files are discarded after your download is ready.",
@@ -307,7 +307,7 @@ export default function InstagramOptimizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -407,7 +407,7 @@ export default function InstagramOptimizerPageClient() {
                     <td className="px-5 py-3 font-bold text-[#5b32b4] text-sm">
                       {row.format}
                     </td>
-                    <td className="px-5 py-3 text-xs font-black text-[#fb397d] font-mono">
+                    <td className="px-5 py-3 text-xs font-black text-[#c3003a] font-mono">
                       {row.dims}
                     </td>
                     <td className="px-5 py-3 text-xs font-bold text-[#2b1d3a]">
@@ -472,7 +472,7 @@ export default function InstagramOptimizerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

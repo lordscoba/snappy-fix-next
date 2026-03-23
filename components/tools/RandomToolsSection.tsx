@@ -42,7 +42,7 @@ export default function RandomToolsSection({
       <div className="flex flex-col items-center space-y-3">
         <div className="flex items-center space-x-2">
           <span className="h-px w-8 bg-[#fb397d]"></span>
-          <span className="text-[#fb397d] font-bold text-xs uppercase tracking-[0.2em]">
+          <span className="text-[#c3003a] font-bold text-xs uppercase tracking-[0.2em]">
             Quick Access
           </span>
           <span className="h-px w-8 bg-[#fb397d]"></span>
@@ -75,7 +75,7 @@ export default function RandomToolsSection({
                 <h3 className="text-xl font-bold text-[#2b1d3a] leading-tight group-hover:text-[#5b32b4] transition-colors">
                   {splitTitle(tool.name)}
                 </h3>
-                <div className="text-[#5b32b4]/20 group-hover:text-[#fb397d] transition-colors">
+                <div className="text-[#5b32b4]/20 group-hover:text-[#c3003a] transition-colors">
                   <svg
                     className="w-6 h-6"
                     fill="currentColor"
@@ -93,7 +93,7 @@ export default function RandomToolsSection({
 
             {/* Action Button */}
             <div className="relative z-10 pt-6">
-              <span className="inline-flex items-center justify-center w-full py-2.5 rounded-xl bg-gray-50 text-[#fb397d] text-sm font-bold group-hover:bg-[#fb397d] group-hover:text-white transition-all duration-300 shadow-sm">
+              <span className="inline-flex items-center justify-center w-full py-2.5 rounded-xl bg-gray-50 text-[#c3003a] text-sm font-bold group-hover:bg-[#fb397d] group-hover:text-white transition-all duration-300 shadow-sm">
                 Use Tool
               </span>
             </div>

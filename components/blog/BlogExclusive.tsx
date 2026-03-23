@@ -22,7 +22,7 @@ export default function BlogExclusive({ posts }: { posts: PostCard[] }) {
     <aside className="flex flex-col">
       {/* Header */}
       <div className="flex items-center gap-3 mb-8">
-        <HiLockClosed className="text-[#fb397d] text-xl" />
+        <HiLockClosed className="text-[#c3003a] text-xl" />
         <h2 className="text-white text-sm font-black uppercase tracking-[0.2em]">
           Exclusive
         </h2>
@@ -72,7 +72,7 @@ export default function BlogExclusive({ posts }: { posts: PostCard[] }) {
 
               {/* Meta */}
               <div className="flex-1 min-w-0 space-y-1.5">
-                <span className="text-[10px] font-bold text-[#fb397d] uppercase tracking-widest">
+                <span className="text-[10px] font-bold text-[#c3003a] uppercase tracking-widest">
                   {post.category}
                 </span>
                 <h3 className="text-white text-sm font-bold leading-snug line-clamp-2 group-hover:text-[#e0ccff] transition-colors">
@@ -80,7 +80,7 @@ export default function BlogExclusive({ posts }: { posts: PostCard[] }) {
                 </h3>
                 <div className="flex items-center gap-2 text-[11px] text-[#6f5a88]">
                   <span className="flex items-center gap-1">
-                    <HiClock size={10} className="text-[#fb397d]" />
+                    <HiClock size={10} className="text-[#c3003a]" />
                     {post.readingTime}
                   </span>
                   <span>·</span>

@@ -38,7 +38,7 @@ export default function ToolCategoriesSection({
     <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
       {/* Section Header */}
       <div className="relative text-center space-y-4">
-        <span className="inline-block px-4 py-1.5 mb-2 text-xs font-bold tracking-widest uppercase text-[#fb397d] bg-[#fb397d]/10 rounded-full">
+        <span className="inline-block px-4 py-1.5 mb-2 text-xs font-bold tracking-widest uppercase text-[#c3003a] bg-[#fb397d]/10 rounded-full">
           Utility Suite
         </span>
 
@@ -87,7 +87,7 @@ export default function ToolCategoriesSection({
 
             {/* Footer Link */}
             <div className="relative z-10 mt-8 flex items-center justify-between">
-              <span className="text-sm font-bold text-[#fb397d] uppercase tracking-wider group-hover:mr-2 transition-all">
+              <span className="text-sm font-bold text-[#c3003a] uppercase tracking-wider group-hover:mr-2 transition-all">
                 Open Tools
               </span>
               <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-[#5b32b4] group-hover:bg-[#fb397d] group-hover:text-white transition-all duration-300">

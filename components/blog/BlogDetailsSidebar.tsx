@@ -129,7 +129,7 @@ function SidebarSection({
   return (
     <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5">
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-[#fb397d] text-base">{icon}</span>
+        <span className="text-[#c3003a] text-base">{icon}</span>
         <h3 className="text-white text-xs font-black uppercase tracking-[0.2em]">
           {title}
         </h3>

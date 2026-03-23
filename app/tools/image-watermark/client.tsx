@@ -81,7 +81,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Type size={20} className="text-[#fb397d]" />,
+    icon: <Type size={20} className="text-[#c3003a]" />,
     title: "Text and logo modes",
     description:
       "Choose text for quick copyright notices or upload a transparent PNG logo for professional brand watermarking — both in the same tool.",
@@ -93,7 +93,7 @@ const benefits = [
       "Hex colour picker, manual hex input, and 20 quick swatches — plus a live opacity preview box that shows exactly how your colour looks at your chosen transparency.",
   },
   {
-    icon: <Sliders size={20} className="text-[#fb397d]" />,
+    icon: <Sliders size={20} className="text-[#c3003a]" />,
     title: "Opacity and transparency",
     description:
       "Slide opacity from 10% to 100% with a live preview. Subtle and translucent or bold and visible — your choice for every image.",
@@ -105,7 +105,7 @@ const benefits = [
       "Rotate the watermark from -180° to +180° with an animated compass dial. Diagonal watermarks are harder to crop out while remaining readable.",
   },
   {
-    icon: <Maximize2 size={20} className="text-[#fb397d]" />,
+    icon: <Maximize2 size={20} className="text-[#c3003a]" />,
     title: "5-position grid placement",
     description:
       "Place your watermark at top-left, top-right, center, bottom-left, or bottom-right using the interactive grid selector — standard positions used by professional photographers worldwide.",
@@ -326,7 +326,7 @@ export default function ImageWatermarkPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -458,7 +458,7 @@ export default function ImageWatermarkPageClient() {
           </div>
           <div className="relative rounded-2xl bg-gradient-to-br from-[#fff5f9] to-white border border-[#fb397d]/20 p-5 overflow-hidden">
             <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-[#fb397d]/8 blur-xl pointer-events-none" />
-            <p className="font-black text-[#fb397d] text-sm mb-3">
+            <p className="font-black text-[#c3003a] text-sm mb-3">
               Rotation strategy
             </p>
             <ul className="space-y-2">
@@ -472,7 +472,7 @@ export default function ImageWatermarkPageClient() {
                   key={r.angle}
                   className="flex items-start gap-2 text-xs text-gray-600"
                 >
-                  <span className="font-black text-[#fb397d] shrink-0 w-16">
+                  <span className="font-black text-[#c3003a] shrink-0 w-16">
                     {r.angle}
                   </span>
                   {r.use}

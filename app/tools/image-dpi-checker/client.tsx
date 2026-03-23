@@ -69,7 +69,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Ruler size={20} className="text-[#fb397d]" />,
+    icon: <Ruler size={20} className="text-[#c3003a]" />,
     title: "DPI, resolution, and print size",
     description:
       "Returns DPI X, DPI Y, pixel dimensions, image format, and estimated physical print size — all in one scan.",
@@ -81,7 +81,7 @@ const benefits = [
       "Green for print-ready (≥300 DPI) or amber for web-quality. Know immediately whether your image meets professional print standards.",
   },
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Instant results",
     description:
       "Upload and get your full DPI analysis in seconds — no waiting, no processing queue, no email delivery.",
@@ -93,7 +93,7 @@ const benefits = [
       "The checker reads your image metadata and returns results without modifying the file. No image data is permanently stored.",
   },
   {
-    icon: <FileImage size={20} className="text-[#fb397d]" />,
+    icon: <FileImage size={20} className="text-[#c3003a]" />,
     title: "Multi-format support",
     description:
       "Works with JPG, PNG, TIFF, and PSD — the formats most commonly used in photography and professional print workflows.",
@@ -315,7 +315,7 @@ export default function ImageDPICheckerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -424,7 +424,7 @@ export default function ImageDPICheckerPageClient() {
                     <td className="px-5 py-3 text-xs font-mono font-bold text-[#5b32b4]">
                       {row.pixels}
                     </td>
-                    <td className="px-5 py-3 text-xs font-black text-[#fb397d]">
+                    <td className="px-5 py-3 text-xs font-black text-[#c3003a]">
                       {row.dpi}
                     </td>
                     <td className="px-5 py-3 text-xs font-bold text-[#2b1d3a]">
@@ -493,7 +493,7 @@ export default function ImageDPICheckerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

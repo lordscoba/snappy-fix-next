@@ -70,7 +70,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Target size={20} className="text-[#fb397d]" />,
+    icon: <Target size={20} className="text-[#c3003a]" />,
     title: "Target KB precision",
     description:
       "The only free online optimizer that compresses to an exact file size target. Enter the KB limit from any portal and get the correctly-sized image instantly.",
@@ -82,7 +82,7 @@ const benefits = [
       "Set compression quality from 1 to 100. Default 85 gives near-lossless output. Go lower for aggressive compression, higher for maximum fidelity.",
   },
   {
-    icon: <Percent size={20} className="text-[#fb397d]" />,
+    icon: <Percent size={20} className="text-[#c3003a]" />,
     title: "Percentage resize",
     description:
       "Scale dimensions by percentage simultaneously with compression — reducing pixel count and file size in one step for maximum efficiency.",
@@ -94,7 +94,7 @@ const benefits = [
       "Target KB, Quality, and Resize % are all optional and combinable. Mix and match to meet any specific requirement from any upload system.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your images are processed securely and never permanently stored. Nothing is retained after your optimized file is delivered.",
@@ -318,7 +318,7 @@ export default function CustomImageOptimizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -422,7 +422,7 @@ export default function CustomImageOptimizerPageClient() {
                     <td className="px-5 py-3 text-xs font-black text-[#5b32b4] font-mono">
                       {row.limit}
                     </td>
-                    <td className="px-5 py-3 text-xs font-bold text-[#fb397d]">
+                    <td className="px-5 py-3 text-xs font-bold text-[#c3003a]">
                       {row.quality}
                     </td>
                   </tr>
@@ -485,7 +485,7 @@ export default function CustomImageOptimizerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

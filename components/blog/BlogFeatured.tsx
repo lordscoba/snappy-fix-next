@@ -24,14 +24,14 @@ export default function BlogFeatured({ posts }: { posts: PostCard[] }) {
     <section>
       {/* Section header */}
       <div className="flex items-center gap-3 mb-8">
-        <HiStar className="text-[#fb397d] text-xl" />
+        <HiStar className="text-[#c3003a] text-xl" />
         <h2 className="text-white text-sm font-black uppercase tracking-[0.2em]">
           Featured
         </h2>
         <div className="flex-1 h-px bg-white/10" />
         <Link
           href="/blog/list"
-          className="text-xs text-[#9d86b8] hover:text-[#fb397d] transition-colors font-medium"
+          className="text-xs text-[#9d86b8] hover:text-[#c3003a] transition-colors font-medium"
         >
           View all →
         </Link>
@@ -62,7 +62,7 @@ export default function BlogFeatured({ posts }: { posts: PostCard[] }) {
 
             {/* Content */}
             <div className="absolute bottom-0 left-0 right-0 p-6">
-              <span className="text-[10px] font-bold text-[#fb397d] uppercase tracking-widest">
+              <span className="text-[10px] font-bold text-[#c3003a] uppercase tracking-widest">
                 {main.category}
               </span>
               <h3 className="text-2xl font-black text-white mt-2 mb-3 leading-tight group-hover:text-[#e0ccff] transition-colors">
@@ -103,7 +103,7 @@ export default function BlogFeatured({ posts }: { posts: PostCard[] }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0e0716]/95 via-[#0e0716]/40 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="text-[10px] font-bold text-[#fb397d] uppercase tracking-widest">
+                  <span className="text-[10px] font-bold text-[#c3003a] uppercase tracking-widest">
                     {post.category}
                   </span>
                   <h3 className="text-base font-bold text-white mt-1 leading-snug group-hover:text-[#e0ccff] transition-colors line-clamp-2">

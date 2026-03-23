@@ -1067,7 +1067,7 @@ export default function Privacy() {
           </p>
           <Link
             href="/#contact"
-            className="text-[#fb397d] font-semibold hover:underline"
+            className="text-[#c3003a] font-semibold hover:underline"
           >
             Contact Snappy-fix Technologies →
           </Link>

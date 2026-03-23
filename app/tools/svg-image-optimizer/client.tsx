@@ -144,7 +144,7 @@ const svgVsRaster = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Minimize2 size={20} className="text-[#fb397d]" />,
+    icon: <Minimize2 size={20} className="text-[#c3003a]" />,
     title: "Industry-standard scour engine",
     description:
       "Powered by scour — the same library used by professional SVG pipelines — for thorough, conservative optimisation that preserves all visual output.",
@@ -156,7 +156,7 @@ const benefits = [
       "All shapes, paths, colours, and gradients are preserved. Only code that browsers never render is removed — the output is visually identical.",
   },
   {
-    icon: <BarChart3 size={20} className="text-[#fb397d]" />,
+    icon: <BarChart3 size={20} className="text-[#c3003a]" />,
     title: "20–60% smaller from design exports",
     description:
       "SVGs from Figma, Illustrator, and Inkscape carry substantial editor overhead. Scour targets this specifically, often halving the file size.",
@@ -168,7 +168,7 @@ const benefits = [
       "Optimisation runs server-side in a dedicated thread — heavy path processing does not block your browser or require waiting for large files.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your SVG file is processed and discarded — never permanently stored. Original and optimised files are not retained after delivery.",
@@ -304,7 +304,7 @@ export default function SVGImageOptimizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -381,7 +381,7 @@ export default function SVGImageOptimizerPageClient() {
                     <td
                       className={`px-5 py-3 text-xs font-black ${
                         row.savings === "High"
-                          ? "text-[#fb397d]"
+                          ? "text-[#c3003a]"
                           : row.savings === "Medium"
                             ? "text-[#5b32b4]"
                             : row.savings === "Low"
@@ -469,7 +469,7 @@ export default function SVGImageOptimizerPageClient() {
                     <CheckCircle2
                       size={13}
                       className={`mt-0.5 shrink-0 ${
-                        idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#fb397d]"
+                        idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#c3003a]"
                       }`}
                     />
                     {item}
@@ -497,7 +497,7 @@ export default function SVGImageOptimizerPageClient() {
                     <CheckCircle2
                       size={13}
                       className={`mt-0.5 shrink-0 ${
-                        idx % 2 === 0 ? "text-[#fb397d]" : "text-[#5b32b4]"
+                        idx % 2 === 0 ? "text-[#c3003a]" : "text-[#5b32b4]"
                       }`}
                     />
                     {item}

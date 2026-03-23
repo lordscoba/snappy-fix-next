@@ -74,7 +74,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <Layers size={20} className="text-[#fb397d]" />,
+    icon: <Layers size={20} className="text-[#c3003a]" />,
     title: "10 output formats",
     description:
       "PNG, JPEG, WebP, AVIF, BMP, TIFF, GIF, ICO — the widest format coverage of any free online converter, including next-generation formats.",
@@ -86,7 +86,7 @@ const benefits = [
       "Animated GIFs converted to GIF output retain all frames and animation timing — not just the first frame.",
   },
   {
-    icon: <FileImage size={20} className="text-[#fb397d]" />,
+    icon: <FileImage size={20} className="text-[#c3003a]" />,
     title: "Quality 90 for lossy formats",
     description:
       "JPEG, WebP, and AVIF conversions use quality 90 — visually indistinguishable from the source at normal viewing sizes.",
@@ -98,7 +98,7 @@ const benefits = [
       "Your image is uploaded securely and not permanently stored after conversion. Files are processed and returned to your browser only.",
   },
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Instant conversion",
     description:
       "Upload, select format, convert, and download in seconds. No processing queue, no waiting, no email delivery.",
@@ -312,7 +312,7 @@ export default function ImageConverterPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -364,7 +364,7 @@ export default function ImageConverterPageClient() {
                   <span className="text-xs font-black text-[#5b32b4] bg-[#f3ecff] px-2 py-1 rounded-lg">
                     {c.from}
                   </span>
-                  <ArrowLeftRight size={12} className="text-[#fb397d]" />
+                  <ArrowLeftRight size={12} className="text-[#c3003a]" />
                   <span className="text-xs font-black text-white bg-[#fb397d] px-2 py-1 rounded-lg">
                     {c.to}
                   </span>
@@ -415,7 +415,7 @@ export default function ImageConverterPageClient() {
                     <td className="px-4 py-3 text-xs text-gray-600">
                       {row.bestFor}
                     </td>
-                    <td className="px-4 py-3 text-xs text-[#fb397d] font-bold">
+                    <td className="px-4 py-3 text-xs text-[#c3003a] font-bold">
                       {row.size}
                     </td>
                     <td className="px-4 py-3 text-xs text-gray-500">
@@ -471,14 +471,14 @@ export default function ImageConverterPageClient() {
                   Converting your site's JPEG and PNG images to{" "}
                   <strong className="text-[#5b32b4]">WebP</strong> typically
                   reduces total image payload by{" "}
-                  <strong className="text-[#fb397d]">25–35%</strong> with no
+                  <strong className="text-[#c3003a]">25–35%</strong> with no
                   visible quality difference — directly improving Largest
                   Contentful Paint (LCP) and overall page speed scores.
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   For maximum compression on modern browsers,{" "}
                   <strong className="text-[#5b32b4]">AVIF</strong> achieves up
-                  to <strong className="text-[#fb397d]">50% smaller</strong>{" "}
+                  to <strong className="text-[#c3003a]">50% smaller</strong>{" "}
                   files than JPEG at equivalent quality.
                 </p>
               </div>

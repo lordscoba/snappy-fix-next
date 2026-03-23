@@ -107,7 +107,7 @@ const Footer = () => {
           <h2 className="text-lg font-bold text-white mb-3">
             Snappy-Fix Technologies
           </h2>
-          <p className="text-sm text-white/55 leading-relaxed max-w-xs">
+          <p className="text-sm text-white/70 leading-relaxed max-w-xs">
             Free online image tools for creators, developers, and businesses.
             Convert, optimise, and analyse images instantly — plus custom
             websites built to perform.
@@ -134,7 +134,7 @@ const Footer = () => {
         <div className="sm:col-span-2 grid grid-cols-2 gap-8 lg:gap-10">
           {categoryTools.slice(0, 4).map((category) => (
             <div key={category.slug}>
-              <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/40 mb-4">
+              <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/65 mb-4">
                 {category.name}
               </h3>
               <ul className="space-y-2.5">
@@ -151,7 +151,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href={category.href}
-                    className="text-sm font-semibold text-[#c49ef8] hover:text-[#fb397d] transition-colors duration-150"
+                    className="text-sm font-semibold text-[#c49ef8] hover:text-[#c3003a] transition-colors duration-150"
                   >
                     View all →
                   </Link>
@@ -163,7 +163,7 @@ const Footer = () => {
 
         {/* ── Platform + Legal ── */}
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/40 mb-4">
+          <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/65 mb-4">
             Platform
           </h3>
           <ul className="space-y-2.5">
@@ -179,7 +179,7 @@ const Footer = () => {
             ))}
           </ul>
 
-          <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/40 mt-9 mb-4">
+          <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-white/65 mt-9 mb-4">
             Legal
           </h3>
           <ul className="space-y-2.5">
@@ -199,7 +199,7 @@ const Footer = () => {
 
       {/* ── Bottom bar ── */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/65">
           <p>
             © {year ?? new Date().getFullYear()} Snappy-Fix Technologies. All
             rights reserved.

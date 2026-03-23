@@ -72,7 +72,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <FileImage size={20} className="text-[#fb397d]" />,
+    icon: <FileImage size={20} className="text-[#c3003a]" />,
     title: "PNG or JPG — your choice",
     description:
       "Toggle between lossless PNG for maximum quality and smaller JPG for file size efficiency. The right format for every use case.",
@@ -84,7 +84,7 @@ const benefits = [
       "Multi-page PDFs are fully processed — every page is extracted as a separate image in a single upload.",
   },
   {
-    icon: <Zap size={20} className="text-[#fb397d]" />,
+    icon: <Zap size={20} className="text-[#c3003a]" />,
     title: "Instant conversion",
     description:
       "Upload your PDF, click convert, and download image files in seconds — no queue, no email delivery.",
@@ -96,7 +96,7 @@ const benefits = [
       "Converted images embed in web pages, social posts, emails, and messaging apps instantly — without requiring a PDF viewer.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your PDF and the generated images are never permanently stored. Files are discarded after conversion is complete.",
@@ -309,7 +309,7 @@ export default function PDFToImagePageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -363,7 +363,7 @@ export default function PDFToImagePageClient() {
                   <th className="text-left px-5 py-3 font-bold text-[#5b32b4] text-xs uppercase tracking-wider">
                     PNG
                   </th>
-                  <th className="text-left px-5 py-3 font-bold text-[#fb397d] text-xs uppercase tracking-wider">
+                  <th className="text-left px-5 py-3 font-bold text-[#c3003a] text-xs uppercase tracking-wider">
                     JPG
                   </th>
                 </tr>

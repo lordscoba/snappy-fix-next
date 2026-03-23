@@ -71,7 +71,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <Clapperboard size={20} className="text-[#fb397d]" />,
+    icon: <Clapperboard size={20} className="text-[#c3003a]" />,
     title: "Video and image modes",
     description:
       "Convert videos (MP4, MOV, WebM) or turn a single image into an animated GIF — two tools in one.",
@@ -83,7 +83,7 @@ const benefits = [
       "Trim clips, set FPS, adjust width, choose quality, and enable reverse playback — all before generating.",
   },
   {
-    icon: <Repeat2 size={20} className="text-[#fb397d]" />,
+    icon: <Repeat2 size={20} className="text-[#c3003a]" />,
     title: "Reverse / boomerang mode",
     description:
       "Toggle Reverse to play your GIF backwards, creating a boomerang loop effect without any additional software.",
@@ -95,7 +95,7 @@ const benefits = [
       "Share your GIF directly to messaging apps and social media from the tool using the native device share sheet.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "No watermark, no limits",
     description:
       "Download clean GIFs with no added branding. Generate as many as you need for any project at zero cost.",
@@ -297,7 +297,7 @@ export default function GifMakerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -414,7 +414,7 @@ export default function GifMakerPageClient() {
                     <td className="px-5 py-3 text-gray-500 text-xs">
                       {row.low}
                     </td>
-                    <td className="px-5 py-3 font-bold text-[#fb397d] text-xs">
+                    <td className="px-5 py-3 font-bold text-[#c3003a] text-xs">
                       {row.recommended}
                     </td>
                     <td className="px-5 py-3 text-gray-500 text-xs">

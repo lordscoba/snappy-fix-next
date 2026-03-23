@@ -69,7 +69,7 @@ const faqs = [
 
 const benefits = [
   {
-    icon: <FolderArchive size={20} className="text-[#fb397d]" />,
+    icon: <FolderArchive size={20} className="text-[#c3003a]" />,
     title: "3 breakpoint sizes in one ZIP",
     description:
       "480px, 768px, and 1200px WebP files in a single download — all files needed to implement responsive images in HTML using srcset.",
@@ -81,7 +81,7 @@ const benefits = [
       "If AVIF encoding is available, image.avif (quality 50) is included in the ZIP for maximum compression on supporting browsers — 30–50% smaller than WebP.",
   },
   {
-    icon: <BarChart3 size={20} className="text-[#fb397d]" />,
+    icon: <BarChart3 size={20} className="text-[#c3003a]" />,
     title: "PageSpeed 'Properly size images'",
     description:
       "Using responsive images directly addresses Google's 'Properly size images' recommendation — one of the highest-impact PageSpeed Insights opportunities.",
@@ -93,7 +93,7 @@ const benefits = [
       "Mobile users download the 480px file instead of a 1200px file — reducing mobile LCP time and improving Core Web Vitals scores.",
   },
   {
-    icon: <ShieldCheck size={20} className="text-[#fb397d]" />,
+    icon: <ShieldCheck size={20} className="text-[#c3003a]" />,
     title: "Private and secure",
     description:
       "Your image is processed securely and never permanently stored. Files are discarded after your ZIP is delivered.",
@@ -241,7 +241,7 @@ export default function SeoResponsiveOptimizerPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -424,7 +424,7 @@ export default function SeoResponsiveOptimizerPageClient() {
                   >
                     <CheckCircle2
                       size={13}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

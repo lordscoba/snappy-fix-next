@@ -18,7 +18,7 @@ export default function ContactHero() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-6 text-center space-y-5">
-        <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#fb397d] bg-[#fb397d]/15 border border-[#fb397d]/30 px-4 py-1.5 rounded-full">
+        <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#c3003a] bg-[#fb397d]/15 border border-[#fb397d]/30 px-4 py-1.5 rounded-full">
           Get In Touch
         </span>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">

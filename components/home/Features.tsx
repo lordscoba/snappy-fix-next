@@ -15,7 +15,7 @@ export default function FeaturesSection() {
           className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="space-y-6">
-            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#fb397d] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#c3003a] bg-[#fb397d]/10 px-4 py-1.5 rounded-full">
               What We Build
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-[#2b1d3a] leading-tight">

@@ -70,7 +70,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <ScanLine size={20} className="text-[#fb397d]" />,
+    icon: <ScanLine size={20} className="text-[#c3003a]" />,
     title: "Full document scan",
     description:
       "Automatically scans every page of your PDF and locates all embedded image objects — no manual selection needed.",
@@ -82,7 +82,7 @@ const benefits = [
       "Images are extracted directly from the PDF structure, not screenshotted. You get the original quality every time.",
   },
   {
-    icon: <Download size={20} className="text-[#fb397d]" />,
+    icon: <Download size={20} className="text-[#c3003a]" />,
     title: "Bulk download",
     description:
       "All extracted images are packaged together for download in one click — no need to save each image individually.",
@@ -94,7 +94,7 @@ const benefits = [
       "Your PDF is processed securely and never permanently stored. Your document contents remain entirely private.",
   },
   {
-    icon: <Globe size={20} className="text-[#fb397d]" />,
+    icon: <Globe size={20} className="text-[#c3003a]" />,
     title: "Works on any device",
     description:
       "Fully responsive — extract images from PDFs on desktop, laptop, tablet, or smartphone from any modern browser.",
@@ -285,7 +285,7 @@ export default function ExtractPDFImagesPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -359,7 +359,7 @@ export default function ExtractPDFImagesPageClient() {
                   >
                     <CheckCircle2
                       size={14}
-                      className="text-[#fb397d] mt-0.5 shrink-0"
+                      className="text-[#c3003a] mt-0.5 shrink-0"
                     />
                     {item}
                   </li>

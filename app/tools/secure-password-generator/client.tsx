@@ -66,7 +66,7 @@ const faqs = [
 // ─── Benefits ─────────────────────────────────────────────────────────────────
 const benefits = [
   {
-    icon: <RefreshCw size={20} className="text-[#fb397d]" />,
+    icon: <RefreshCw size={20} className="text-[#c3003a]" />,
     title: "Server-side random generation",
     description:
       "Passwords are generated server-side using cryptographically secure randomness — not predictable browser Math.random() — ensuring genuine unpredictability.",
@@ -78,7 +78,7 @@ const benefits = [
       "Toggle uppercase, lowercase, numbers, and symbols independently. Build exactly the character set required by any platform's password policy.",
   },
   {
-    icon: <Eye size={20} className="text-[#fb397d]" />,
+    icon: <Eye size={20} className="text-[#c3003a]" />,
     title: "Exclude ambiguous characters",
     description:
       "Exclude visually similar characters (0, O, 1, l, I) to prevent transcription errors when typing passwords from screen.",
@@ -90,7 +90,7 @@ const benefits = [
       "Instant Weak / Fair / Good / Strong rating based on length and character diversity — scored as you generate.",
   },
   {
-    icon: <Copy size={20} className="text-[#fb397d]" />,
+    icon: <Copy size={20} className="text-[#c3003a]" />,
     title: "One-click copy",
     description:
       "Copy the generated password to clipboard instantly — no selecting, no highlighting, no risk of partial copy.",
@@ -293,7 +293,7 @@ export default function SecurePasswordGeneratorPageClient() {
               key={badge}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b32b4] bg-[#f3ecff] border border-[#e9e1ff] px-3 py-1.5 rounded-full"
             >
-              <CheckCircle2 size={12} className="text-[#fb397d]" />
+              <CheckCircle2 size={12} className="text-[#c3003a]" />
               {badge}
             </span>
           ))}
@@ -400,7 +400,7 @@ export default function SecurePasswordGeneratorPageClient() {
                 <AlertTriangle
                   size={14}
                   className={`shrink-0 mt-0.5 ${
-                    i % 2 === 0 ? "text-[#fb397d]" : "text-amber-500"
+                    i % 2 === 0 ? "text-[#c3003a]" : "text-amber-500"
                   }`}
                 />
                 <div>
@@ -438,7 +438,7 @@ export default function SecurePasswordGeneratorPageClient() {
                     <CheckCircle2
                       size={13}
                       className={`mt-0.5 shrink-0 ${
-                        idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#fb397d]"
+                        idx % 2 === 0 ? "text-[#5b32b4]" : "text-[#c3003a]"
                       }`}
                     />
                     {item}
@@ -466,7 +466,7 @@ export default function SecurePasswordGeneratorPageClient() {
                     <CheckCircle2
                       size={13}
                       className={`mt-0.5 shrink-0 ${
-                        idx % 2 === 0 ? "text-[#fb397d]" : "text-[#5b32b4]"
+                        idx % 2 === 0 ? "text-[#c3003a]" : "text-[#5b32b4]"
                       }`}
                     />
                     {item}

@@ -240,7 +240,7 @@ export default function ImageToHeicTools() {
 
           <button
             onClick={handleReset}
-            className="text-sm font-bold text-gray-400 hover:text-[#fb397d]"
+            className="text-sm font-bold text-gray-400 hover:text-[#c3003a]"
           >
             Clear and start over
           </button>

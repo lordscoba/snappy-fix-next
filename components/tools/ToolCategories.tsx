@@ -56,7 +56,7 @@ export default function ToolCategories({
                     {count} tool{count !== 1 ? "s" : ""}
                   </span>
 
-                  <span className="inline-flex items-center text-sm font-semibold text-[#fb397d] group-hover:gap-3 gap-1 transition-all">
+                  <span className="inline-flex items-center text-sm font-semibold text-[#c3003a] group-hover:gap-3 gap-1 transition-all">
                     View →
                   </span>
                 </div>

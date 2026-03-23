@@ -262,7 +262,7 @@ export default function ImageConverterTool() {
           </button>
           <button
             onClick={handleReset}
-            className="text-sm font-bold text-gray-400 hover:text-[#fb397d] transition-colors"
+            className="text-sm font-bold text-gray-400 hover:text-[#c3003a] transition-colors"
           >
             Clear and start over
           </button>

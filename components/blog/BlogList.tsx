@@ -52,7 +52,7 @@ export default function BlogList({ posts, perPage = 5 }: BlogListProps) {
             </figure>
 
             <div className="p-6 space-y-4">
-              <div className="flex items-center justify-between text-xs text-[#b5aec4]">
+              <div className="flex items-center justify-between text-xs text-[#6b5d80]">
                 <span className="bg-[#f4edff] text-[#5b32b4] px-3 py-1 rounded-full">
                   {post.category}
                 </span>
@@ -72,7 +72,7 @@ export default function BlogList({ posts, perPage = 5 }: BlogListProps) {
                 </span>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-sm font-semibold text-[#fb397d] hover:underline"
+                  className="text-sm font-semibold text-[#c3003a] hover:underline"
                 >
                   Read more
                 </Link>

@@ -212,7 +212,7 @@ export default function AdminShell({
           <button
             type="button"
             onClick={logoutUser}
-            className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#fb397d]/10 hover:bg-[#fb397d] px-4 py-2.5 text-xs font-bold text-[#fb397d] hover:text-white border border-[#fb397d]/20 hover:border-transparent transition-all active:scale-95 group"
+            className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#fb397d]/10 hover:bg-[#fb397d] px-4 py-2.5 text-xs font-bold text-[#c3003a] hover:text-white border border-[#fb397d]/20 hover:border-transparent transition-all active:scale-95 group"
           >
             <svg
               width="13"
