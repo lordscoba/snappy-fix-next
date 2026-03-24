@@ -57,7 +57,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://www.googletagmanager.com https://www.google-analytics.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com",
               "style-src 'self' 'unsafe-inline'",
               `img-src 'self' data: blob: https://res.cloudinary.com ${apiHosts} https://www.google-analytics.com`,
               `connect-src 'self' ${apiHosts} https://www.google-analytics.com https://vitals.vercel-insights.com https://www.googletagmanager.com`,
