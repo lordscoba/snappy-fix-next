@@ -8,6 +8,7 @@ import { clients } from "../client";
 import { WEB_ENDPOINTS } from "../endpoints";
 
 export const getBlogDetails = async (slug: string) => {
+  console.log("Fetching blog details for slug:");
   return clients.golang.get<BlogDetailsResponse>(
     `${WEB_ENDPOINTS.blog_details}${slug}`,
   );

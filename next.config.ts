@@ -1,5 +1,16 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
+
+// Add local API to the list if in development
+const apiHosts = [
+  "https://*.railway.app",
+  isDev ? "http://127.0.0.1:8019" : "", // Add local dev API
+  isDev ? "http://127.0.0.1:8000" : "", // Add local dev API
+]
+  .filter(Boolean)
+  .join(" ");
+
 const nextConfig: NextConfig = {
   images: {
     deviceSizes: [480, 640, 750, 828, 1080, 1200, 1920],
@@ -46,10 +57,12 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://www.googletagmanager.com https://www.google-analytics.com",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob: https://res.cloudinary.com https://*.railway.app https://www.google-analytics.com",
-              "connect-src 'self' https://*.railway.app https://www.google-analytics.com https://www.googletagmanager.com",
+              `img-src 'self' data: blob: https://res.cloudinary.com ${apiHosts} https://www.google-analytics.com`,
+              `connect-src 'self' ${apiHosts} https://www.google-analytics.com https://vitals.vercel-insights.com https://www.googletagmanager.com`,
+              // "img-src 'self' data: blob: https://res.cloudinary.com https://*.railway.app https://www.google-analytics.com",
+              // "connect-src 'self' https://*.railway.app https://www.google-analytics.com https://www.googletagmanager.com",
               "font-src 'self'",
               "frame-ancestors 'none'",
             ].join("; "),
