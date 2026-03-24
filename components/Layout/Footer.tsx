@@ -5,7 +5,12 @@ import Image from "next/image";
 import { tools } from "@/data/toolsData";
 import { toolCategories } from "@/data/toolsCategoryData";
 import { useEffect, useState } from "react";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
 import { splitTitle } from "@/lib/utils/title";
 import { usePathname } from "next/navigation";
 
@@ -57,10 +62,14 @@ const SOCIAL = [
   {
     icon: <FaFacebookF />,
     label: "Facebook",
-    href: "https://web.facebook.com/p/Snappy-fix-Technologies-100064249260204/",
+    href: "https://www.facebook.com/profile.php?id=100064249260204",
   },
   { icon: <FaTwitter />, label: "Twitter", href: "#" },
-  { icon: <FaInstagram />, label: "Instagram", href: "#" },
+  {
+    icon: <FaLinkedin />,
+    label: "Instagram",
+    href: "https://www.linkedin.com/company/snappy-fix/",
+  },
 ];
 
 // ─── Footer ───────────────────────────────────────────────────────────────────

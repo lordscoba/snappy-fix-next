@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { NavbarMenu } from "@/components/Layout";
 import BlogDetailsComponent from "@/components/blog/BlogDetailsComponent";
-import {
-  fetchAllPublishedPosts,
-  getBlogDetails,
-} from "@/lib/api/services/blog.service";
+import { fetchAllPublishedPosts } from "@/lib/api/services/blog.service";
 import Script from "next/script";
+import { getCachedBlogDetails } from "@/lib/api/cached";
 
 type Params = Promise<{ slug: string }>;
 
@@ -21,7 +19,7 @@ export async function generateMetadata({
   const { slug } = await params;
 
   try {
-    const res = await getBlogDetails(slug);
+    const res = await getCachedBlogDetails(slug);
     const post = res.data.data.news;
 
     if (!post) {
@@ -134,7 +132,7 @@ export async function generateStaticParams() {
 // ─── JSON-LD builder ──────────────────────────────────────────────────────────
 async function buildJsonLd(slug: string) {
   try {
-    const res = await getBlogDetails(slug);
+    const res = await getCachedBlogDetails(slug);
     const post = res.data.data.news;
     if (!post) return null;
 
@@ -329,7 +327,6 @@ export default async function BlogDetailsPage({ params }: { params: Params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-
       <BlogDetailsComponent slug={slug} />
     </main>
   );

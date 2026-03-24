@@ -21,6 +21,7 @@ import { News } from "@/types/blog-types";
 import { Category } from "@/types/category-types";
 import BlogShareBar from "@/components/blog/BlogShareBar";
 import BlogDetailsSidebar from "@/components/blog/BlogDetailsSidebar";
+import { getCachedBlogDetails } from "@/lib/api/cached";
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function BlogDetailsComponent({ slug }: { slug: string }) {
@@ -31,12 +32,11 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  // ─── Fetch main post ──────────────────────────────────────
   const fetchPost = useCallback(async () => {
     try {
       setError(false);
       setLoading(true);
-      const res = await getBlogDetails(slug);
+      const res = await getCachedBlogDetails(slug);
       const news = res.data.data.news;
       if (!news) {
         notFound();
