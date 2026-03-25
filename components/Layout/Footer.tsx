@@ -5,12 +5,7 @@ import Image from "next/image";
 import { tools } from "@/data/toolsData";
 import { toolCategories } from "@/data/toolsCategoryData";
 import { useEffect, useState } from "react";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { splitTitle } from "@/lib/utils/title";
 import { usePathname } from "next/navigation";
 
@@ -46,7 +41,7 @@ const PLATFORM_LINKS = [
   { label: "Features", href: "/#features" },
   { label: "Pricing", href: "/#pricing" },
   { label: "Testimonials", href: "/#testimonial" },
-  { label: "Team", href: "/#team" },
+  { label: "Team", href: "/about#teams" },
   { label: "Tools", href: "/tools" },
   { label: "Blog", href: "/blog" },
   { label: "About us", href: "/about" },
@@ -58,19 +53,41 @@ const LEGAL_LINKS = [
   { label: "Terms & Conditions", href: "/terms" },
 ];
 
-const SOCIAL = [
+const SOCIAL = Object.freeze([
   {
     icon: <FaFacebookF />,
     label: "Facebook",
     href: "https://www.facebook.com/profile.php?id=100064249260204",
   },
-  { icon: <FaTwitter />, label: "Twitter", href: "#" },
+  {
+    icon: <FaTwitter />,
+    label: "Twitter",
+    href: "https://x.com/snappy_fix_tech",
+  },
   {
     icon: <FaLinkedin />,
-    label: "Instagram",
+    label: "LinkedIn",
     href: "https://www.linkedin.com/company/snappy-fix/",
   },
-];
+]);
+
+// const SOCIAL = [
+//   {
+//     icon: <FaFacebookF />,
+//     label: "Facebook",
+//     href: "https://www.facebook.com/profile.php?id=100064249260204",
+//   },
+//   {
+//     icon: <FaTwitter />,
+//     label: "Twitter",
+//     href: "https://x.com/snappy_fix_tech",
+//   },
+//   {
+//     icon: <FaLinkedin />,
+//     label: "Instagram",
+//     href: "https://www.linkedin.com/company/snappy-fix/",
+//   },
+// ];
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 const Footer = () => {

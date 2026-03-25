@@ -1,3 +1,5 @@
+"use client";
+
 import { Star } from "lucide-react";
 import { AboutSectionLabel, UseInView } from "../home/Helpers";
 import Image from "next/image";

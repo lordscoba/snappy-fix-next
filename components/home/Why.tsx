@@ -1,3 +1,5 @@
+"use client";
+
 import { Code2, Globe, Shield, Zap } from "lucide-react";
 import { SectionHeader, UseInView } from "./Helpers";
 

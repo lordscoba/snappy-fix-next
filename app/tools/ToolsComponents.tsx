@@ -89,52 +89,101 @@ export default function ToolsComponents() {
           <div className="h-1.5 w-24 bg-gradient-to-r from-[#5b32b4] to-[#fb397d] mx-auto rounded-full" />
         </header>
 
-        {/* Categories Overview - Pass the searchQuery to filter categories inside this component */}
-        <ToolCategories searchQuery={searchQuery} />
+        {!searchQuery ? (
+          <>
+            <ToolCategories searchQuery={searchQuery} />
+            {/* Tools by Category */}
+            <div className="space-y-20">
+              {categories.length > 0 ? (
+                categories.map((category) => (
+                  <section key={category} className="space-y-10">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#2b1d3a] border-l-4 border-[#fb397d] pl-4">
+                      {category}
+                    </h2>
 
-        {/* Tools by Category */}
-        <div className="space-y-20">
-          {categories.length > 0 ? (
-            categories.map((category) => (
-              <section key={category} className="space-y-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#2b1d3a] border-l-4 border-[#fb397d] pl-4">
-                  {category}
-                </h2>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredTools
-                    .filter((tool) => tool.category === category)
-                    .map((tool) => (
-                      <Link
-                        key={tool.slug}
-                        href={tool.href}
-                        className="group relative rounded-[2rem] border border-[#e9e1ff] bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(91,50,180,0.15)]"
-                      >
-                        <div className="space-y-4">
-                          <h3 className="text-xl font-bold text-[#2b1d3a] group-hover:text-[#5b32b4] transition-colors">
-                            {splitTitle(tool.name, 1)}
-                          </h3>
-                          <p className="text-sm text-gray-600 leading-relaxed">
-                            {tool.description}
-                          </p>
-                          <span className="inline-flex items-center text-sm font-semibold text-[#c3003a] group-hover:gap-3 gap-1 transition-all">
-                            Use Tool →
-                          </span>
-                        </div>
-                        <div className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-br from-[#5b32b4]/5 to-[#fb397d]/5" />
-                      </Link>
-                    ))}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {filteredTools
+                        .filter((tool) => tool.category === category)
+                        .map((tool) => (
+                          <Link
+                            key={tool.slug}
+                            href={tool.href}
+                            className="group relative rounded-[2rem] border border-[#e9e1ff] bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(91,50,180,0.15)]"
+                          >
+                            <div className="space-y-4">
+                              <h3 className="text-xl font-bold text-[#2b1d3a] group-hover:text-[#5b32b4] transition-colors">
+                                {splitTitle(tool.name, 1)}
+                              </h3>
+                              <p className="text-sm text-gray-600 leading-relaxed">
+                                {tool.description}
+                              </p>
+                              <span className="inline-flex items-center text-sm font-semibold text-[#c3003a] group-hover:gap-3 gap-1 transition-all">
+                                Use Tool →
+                              </span>
+                            </div>
+                            <div className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-br from-[#5b32b4]/5 to-[#fb397d]/5" />
+                          </Link>
+                        ))}
+                    </div>
+                  </section>
+                ))
+              ) : (
+                <div className="text-center py-20">
+                  <p className="text-gray-500 text-xl">
+                    No tools found matching "{searchQuery}"
+                  </p>
                 </div>
-              </section>
-            ))
-          ) : (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-xl">
-                No tools found matching "{searchQuery}"
-              </p>
+              )}
+            </div>{" "}
+          </>
+        ) : (
+          <>
+            {/* Tools by Category */}
+            <div className="space-y-20">
+              {categories.length > 0 ? (
+                categories.map((category) => (
+                  <section key={category} className="space-y-10">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#2b1d3a] border-l-4 border-[#fb397d] pl-4">
+                      {category}
+                    </h2>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {filteredTools
+                        .filter((tool) => tool.category === category)
+                        .map((tool) => (
+                          <Link
+                            key={tool.slug}
+                            href={tool.href}
+                            className="group relative rounded-[2rem] border border-[#e9e1ff] bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(91,50,180,0.15)]"
+                          >
+                            <div className="space-y-4">
+                              <h3 className="text-xl font-bold text-[#2b1d3a] group-hover:text-[#5b32b4] transition-colors">
+                                {splitTitle(tool.name, 1)}
+                              </h3>
+                              <p className="text-sm text-gray-600 leading-relaxed">
+                                {tool.description}
+                              </p>
+                              <span className="inline-flex items-center text-sm font-semibold text-[#c3003a] group-hover:gap-3 gap-1 transition-all">
+                                Use Tool →
+                              </span>
+                            </div>
+                            <div className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-br from-[#5b32b4]/5 to-[#fb397d]/5" />
+                          </Link>
+                        ))}
+                    </div>
+                  </section>
+                ))
+              ) : (
+                <div className="text-center py-20">
+                  <p className="text-gray-500 text-xl">
+                    No tools found matching "{searchQuery}"
+                  </p>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+            <ToolCategories searchQuery={searchQuery} />
+          </>
+        )}
 
         {/* SEO Block */}
         <section className="max-w-4xl mx-auto text-center space-y-6 pt-10">

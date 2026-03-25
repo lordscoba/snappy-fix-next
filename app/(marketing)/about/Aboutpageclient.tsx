@@ -57,29 +57,13 @@ export default function AboutPageClient() {
       {/* Team grid is large (images + data) — Suspense prevents it blocking above content */}
       <Suspense
         fallback={
-          <section className="py-20 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="rounded-3xl border border-[#e9e1ff] overflow-hidden animate-pulse"
-                  >
-                    <div className="h-52 sm:h-60 bg-[#f4edff]" />
-                    <div className="p-4 space-y-2">
-                      <div className="h-4 w-3/4 bg-[#f4edff] rounded" />
-                      <div className="h-3 w-1/2 bg-[#f4edff] rounded" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <div id="teams" className="py-20 bg-white min-h-[400px]">
+            Loading team...
+          </div>
         }
       >
         <AboutTeamSection />
       </Suspense>
-
       <AboutCTA />
     </main>
   );

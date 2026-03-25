@@ -23,6 +23,19 @@ const nextConfig: NextConfig = {
         hostname: "res.cloudinary.com",
         pathname: "/**",
       },
+      // Allow images from your production backend
+      {
+        protocol: "https",
+        hostname: "*.railway.app",
+        pathname: "/**",
+      },
+      // Allow images from local backend (Dev only)
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "8000",
+        pathname: "/**",
+      },
     ],
   },
   env: {
@@ -60,7 +73,8 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com",
               "style-src 'self' 'unsafe-inline'",
               `img-src 'self' data: blob: https://res.cloudinary.com ${apiHosts} https://www.google-analytics.com`,
-              `connect-src 'self' ${apiHosts} https://www.google-analytics.com https://vitals.vercel-insights.com https://www.googletagmanager.com`,
+              `connect-src 'self' ${apiHosts} ${isDev ? "ws://localhost:* ws://127.0.0.1:*" : ""} https://www.google-analytics.com https://vitals.vercel-insights.com https://www.googletagmanager.com`,
+              // `connect-src 'self' ${apiHosts} https://www.google-analytics.com https://vitals.vercel-insights.com https://www.googletagmanager.com`,
               // "img-src 'self' data: blob: https://res.cloudinary.com https://*.railway.app https://www.google-analytics.com",
               // "connect-src 'self' https://*.railway.app https://www.google-analytics.com https://www.googletagmanager.com",
               "font-src 'self'",
@@ -97,7 +111,9 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=604800, stale-while-revalidate=86400",
+            value: isDev
+              ? "no-cache"
+              : "public, max-age=604800, stale-while-revalidate=86400",
           },
         ],
       },

@@ -1,7 +1,4 @@
-"use client";
-
 import { RegisterComponent } from "@/components/auth/RegisterComponent";
-import { useState } from "react";
 
 export default function RegisterPage() {
   return (

@@ -69,9 +69,11 @@ export default function BlogList({ posts, perPage = 5 }: BlogListProps) {
                   By {post.author} • {post.readingTime}
                 </span>
                 <Link
+                  aria-label={`Read more about ${post.title}`}
                   href={`/blog/${post.slug}`}
                   className="text-sm font-semibold text-[#c3003a] hover:underline"
                 >
+                  <span className="sr-only">{post.title}</span>
                   Read more
                 </Link>
               </div>
