@@ -243,7 +243,7 @@ export default function BlogSearchPageClient() {
       <NavbarMenu background="bg-[#47238f]" />
 
       {/* ── Page Header ───────────────────────────────────────── */}
-      <section className="relative pt-36 pb-16 px-6 overflow-hidden  mt-16 md:mt-20">
+      <section className="relative pt-36 pb-16 px-6 overflow-hidden  mt-16 md:mt-20 w-full">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#5b32b4]/20 blur-3xl pointer-events-none" />
         <div className="absolute top-20 right-0 w-72 h-72 rounded-full bg-[#fb397d]/10 blur-3xl pointer-events-none" />
 
@@ -438,16 +438,17 @@ export default function BlogSearchPageClient() {
       </section>
 
       {/* ── Main Content ──────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_280px] gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-10">
+        <div className="flex flex-col xl:flex-row gap-6 min-w-0">
           {/* ── Results ─────────────────────────────────────── */}
-          <div>
+          <div className="min-w-0">
             {/* Category pills — desktop */}
             <div className="hidden sm:block mb-8">
               {loadingCategories ? (
                 <CategoryPillSkeleton />
               ) : (
-                <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                // <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory">
                   <button
                     type="button"
                     aria-label="Clear category filter"
@@ -697,8 +698,12 @@ export default function BlogSearchPageClient() {
           </div>
 
           {/* ── Sidebar ───────────────────────────────────────── */}
-          <aside className="hidden xl:block">
-            <div className="sticky top-24 flex flex-col gap-6">
+          {/* <aside className="hidden xl:block w-full"> */}
+          <aside className="hidden xl:block w-[320px] shrink-0">
+            <div
+              className="sticky top-24 flex flex-col gap-6 
+             min-w-0 w-full flex-1 min-w-0"
+            >
               {/* Quick filters */}
               <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-4">
@@ -731,7 +736,7 @@ export default function BlogSearchPageClient() {
               </div>
 
               {/* Categories */}
-              <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5">
+              <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5 overflow-hidden max-w-full">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-[#c3003a] text-base">#</span>
                   <h3 className="text-white text-xs font-black uppercase tracking-[0.2em]">
@@ -750,7 +755,7 @@ export default function BlogSearchPageClient() {
                     ))}
                   </div>
                 ) : (
-                  <div className="space-y-1">
+                  <div className="space-y-1 overflow-hidden max-w-full">
                     {[{ id: "", name: "All" }, ...categories].map((cat) => {
                       const isActive =
                         cat.id === ""
@@ -764,13 +769,15 @@ export default function BlogSearchPageClient() {
                           onClick={() =>
                             update({ category_id: cat.id === "" ? "" : cat.id })
                           }
-                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200 ${
+                          className={`w-full min-w-0 flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200 border box-border ${
                             isActive
-                              ? "bg-[#fb397d]/15 border border-[#fb397d]/30 text-[#c3003a]"
-                              : "text-[#9d86b8] hover:bg-white/5 hover:text-white border border-transparent"
+                              ? "bg-[#fb397d]/15 border-[#fb397d]/30 text-[#c3003a]"
+                              : "text-[#9d86b8] hover:bg-white/5 hover:text-white border-transparent"
                           }`}
                         >
-                          <span className="font-medium">{cat.name}</span>
+                          <span className="font-medium truncate mr-2">
+                            {cat.name}
+                          </span>
                         </button>
                       );
                     })}
@@ -779,15 +786,17 @@ export default function BlogSearchPageClient() {
               </div>
 
               {/* Back to blog */}
-              <Link
-                href="/blog"
-                className="group flex items-center justify-between bg-gradient-to-r from-[#5b32b4] to-[#884bdf] text-white px-5 py-4 rounded-2xl border border-[#5b32b4]/30 hover:shadow-lg hover:shadow-[#5b32b4]/25 transition-all duration-300"
-              >
-                <span className="text-sm font-bold">Back to Blog</span>
-                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                  →
-                </span>
-              </Link>
+              <div className="p-5">
+                <Link
+                  href="/blog"
+                  className="group flex items-center gap-3 bg-gradient-to-r from-[#5b32b4] to-[#884bdf] text-white px-4 py-4 rounded-2xl border border-[#5b32b4]/30 hover:shadow-lg hover:shadow-[#5b32b4]/25 transition-all duration-300"
+                >
+                  <span className="text-sm font-bold">Back to Blog</span>
+                  <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+              </div>
             </div>
           </aside>
         </div>

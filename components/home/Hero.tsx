@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import {
   ArrowLeftRight,
@@ -10,28 +10,25 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import CountUp from "react-countup";
-import { UseInView } from "./Helpers";
-import { tools } from "@/data/toolsData";
+import { useEffect, useState } from "react";
 
 // ─── Hero background images ───────────────────────────────────────────────────
-const BG_IMAGES = [
-  "/images/snowC1.webp",
-  "/images/snowC2.webp",
-  "/images/snowg.webp",
-];
+// const BG_IMAGES = [
+//   "/images/snowC1.webp",
+//   "/images/snowC2.webp",
+//   "/images/snowg.webp",
+// ];
 
 // ─── Stats ───────────────────────────────────────────────────────────────────
 
 export const Hero = () => {
-  // Start with a default image
-  const [bgSrc, setBgSrc] = useState(BG_IMAGES[0]);
-  // Randomize background on mount
-  useEffect(() => {
-    const randomBg = BG_IMAGES[Math.floor(Math.random() * BG_IMAGES.length)];
-    setBgSrc(randomBg);
-  }, []);
+  // // Start with a default image
+  // const [bgSrc, setBgSrc] = useState(BG_IMAGES[0]);
+  // // Randomize background on mount
+  // useEffect(() => {
+  //   const randomBg = BG_IMAGES[Math.floor(Math.random() * BG_IMAGES.length)];
+  //   setBgSrc(randomBg);
+  // }, []);
 
   return (
     <header

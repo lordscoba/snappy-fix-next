@@ -19,7 +19,7 @@ const CTABanners = () => {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
-            href="#contact"
+            href="/contact#contact"
             className="inline-flex items-center gap-2 bg-[#fb397d] hover:bg-[#e02d6e] text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg active:scale-95"
           >
             <Send size={16} />

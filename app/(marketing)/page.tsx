@@ -12,7 +12,6 @@ import ProjectsSection from "@/components/projects/ProjectsDone";
 import { Hero } from "@/components/home/Hero";
 import dynamic from "next/dynamic";
 import Testimonial from "@/components/home/Testimonial";
-// import Counter from "@/components/home/Counter";
 const Counter = dynamic(() => import("@/components/home/Counter"), {
   ssr: false,
 });

@@ -1,3 +1,4 @@
+"use client";
 import { Target, Shield, Zap, Heart, Users, CheckCircle2 } from "lucide-react";
 import { AboutSectionLabel, UseInView } from "../home/Helpers";
 

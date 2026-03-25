@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, ArrowRight } from "lucide-react";
@@ -9,6 +11,7 @@ export default function AboutTeamSection() {
 
   return (
     <section
+      id="teams"
       ref={ref as React.RefObject<HTMLElement>}
       className="py-20 bg-white"
     >

@@ -15,7 +15,7 @@ import {
   HiStar,
   HiLockClosed,
 } from "react-icons/hi2";
-import { getBlogDetails, getBlogList } from "@/lib/api/services/blog.service";
+import { getBlogList } from "@/lib/api/services/blog.service";
 import { getBlogCategories } from "@/lib/api/services/category.service";
 import { News } from "@/types/blog-types";
 import { Category } from "@/types/category-types";
@@ -121,7 +121,10 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
     author: "Snappy‑Fix Team",
   }));
 
-  const categoryNames = categories.map((c) => c.name);
+  // const categoryNames = categories.map((c) => c.name);
+  const categoryList: Category[] = categories.map((c) => ({
+    ...c,
+  }));
 
   return (
     <>
@@ -349,7 +352,7 @@ export default function BlogDetailsComponent({ slug }: { slug: string }) {
 
           {/* ── RIGHT: Sidebar ────────────────────────────── */}
           <BlogDetailsSidebar
-            categories={categoryNames}
+            categories={categoryList}
             related={sidebarRelated}
             latest={sidebarLatest}
           />

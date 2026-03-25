@@ -1,3 +1,5 @@
+"use client";
+
 import { Code2, Cpu, Globe, ImageIcon, Star } from "lucide-react";
 import { UseInView } from "./Helpers";
 import Image from "next/image";

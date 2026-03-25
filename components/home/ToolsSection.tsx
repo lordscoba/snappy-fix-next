@@ -1,3 +1,5 @@
+"use client";
+
 import { tools } from "@/data/toolsData";
 import { ArrowRight, Zap } from "lucide-react";
 import { SectionHeader, UseInView } from "./Helpers";
@@ -54,7 +56,7 @@ export default function ToolsSection() {
             href="/tools"
             className="inline-flex items-center gap-2 bg-[#5b32b4] hover:bg-[#47238f] text-white font-bold px-8 py-3.5 rounded-full transition-all active:scale-95"
           >
-            View All {tools.length} Tools
+            View All Tools
             <ArrowRight size={16} />
           </Link>
         </div>

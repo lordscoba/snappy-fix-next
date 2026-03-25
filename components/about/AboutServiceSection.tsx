@@ -1,3 +1,5 @@
+"use client";
+
 import { Code2, Globe, ImageIcon, Smartphone } from "lucide-react";
 import { AboutSectionLabel, UseInView } from "../home/Helpers";
 

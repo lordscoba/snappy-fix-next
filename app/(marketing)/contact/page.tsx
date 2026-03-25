@@ -1,4 +1,3 @@
-// ─── app/contact/page.tsx ─────────────────────────────────────────────────────
 import type { Metadata } from "next";
 import Script from "next/script";
 import ContactPageClient from "./Contactpageclient ";

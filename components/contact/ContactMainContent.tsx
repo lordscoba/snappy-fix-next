@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArrowRight,
   CheckCircle,
@@ -84,7 +86,7 @@ export default function ContactMainContent() {
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm((f) => ({ ...f, [field]: e.target.value }));
   return (
-    <section className="py-16 bg-white">
+    <section id="contact" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-10">
           {/* ── Left: Contact info ── */}

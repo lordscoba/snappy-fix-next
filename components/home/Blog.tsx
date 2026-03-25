@@ -169,7 +169,10 @@ const Blog = () => {
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 export function BlogCardSkeleton() {
   return (
-    <div className="rounded-3xl border border-[#e9e1ff] overflow-hidden animate-pulse">
+    <div
+      id="blog"
+      className="rounded-3xl border border-[#e9e1ff] overflow-hidden animate-pulse"
+    >
       <div className="h-48 bg-[#f4edff]" />
       <div className="p-6 space-y-3">
         <div className="h-4 w-24 bg-[#f4edff] rounded-full" />

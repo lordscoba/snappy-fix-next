@@ -1,5 +1,6 @@
 "use client";
 
+import { Category } from "feed";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -22,7 +23,7 @@ type SidebarPost = {
 };
 
 type BlogDetailsSidebarProps = {
-  categories: string[];
+  categories: Category[];
   related: SidebarPost[];
   latest: SidebarPost[];
 };
@@ -41,18 +42,23 @@ export default function BlogDetailsSidebar({
         {categories.length > 0 && (
           <SidebarSection icon={<HiHashtag />} title="Categories">
             <div className="flex flex-wrap gap-2 mt-1">
-              {["All", ...categories].map((cat) => {
+              {["All", ...categories].map((cat: any) => {
                 const isActive =
-                  cat === "All"
+                  cat?.name === "All"
                     ? activeCategory === null
                     : activeCategory === cat;
                 return (
-                  <button
+                  <Link
                     type="button"
                     aria-label="Select category"
-                    key={cat}
+                    key={cat?.id ?? "All"}
+                    href={
+                      cat?.id === "All"
+                        ? "/blog/list"
+                        : `/blog/list?category=${cat?.id}`
+                    }
                     onClick={() =>
-                      setActiveCategory(cat === "All" ? null : cat)
+                      setActiveCategory(cat?.name === "All" ? null : cat?.name!)
                     }
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 border ${
                       isActive
@@ -60,8 +66,8 @@ export default function BlogDetailsSidebar({
                         : "bg-white/5 border-white/10 text-[#c4b5d9] hover:bg-[#5b32b4]/30 hover:border-[#5b32b4]/60 hover:text-white"
                     }`}
                   >
-                    {cat}
-                  </button>
+                    {cat?.name}
+                  </Link>
                 );
               })}
             </div>
