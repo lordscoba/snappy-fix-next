@@ -42,7 +42,7 @@ const processQueue = (error: any, token: string | null = null) => {
   failedQueue = [];
 };
 
-// ✅ Factory — each client gets its OWN response interceptor
+// Factory — each client gets its OWN response interceptor
 //    so retries go back through the SAME client that made the original request
 const attachResponseInterceptor = (client: AxiosInstance) => {
   client.interceptors.response.use(
@@ -54,7 +54,7 @@ const attachResponseInterceptor = (client: AxiosInstance) => {
         return Promise.reject(error);
       }
 
-      // ✅ Exact match — not includes() — prevents false positives
+      // Exact match — not includes() — prevents false positives
       const isRefreshCall = originalRequest.url === WEB_ENDPOINTS.refreshToken;
       if (isRefreshCall) {
         tokenStorage.clearTokens();
@@ -63,7 +63,7 @@ const attachResponseInterceptor = (client: AxiosInstance) => {
       }
 
       if (isRefreshing) {
-        // ✅ Queue the request and retry with new token when refresh completes
+        // Queue the request and retry with new token when refresh completes
         return new Promise<string>((resolve, reject) => {
           failedQueue.push({ resolve, reject });
         })
@@ -85,7 +85,7 @@ const attachResponseInterceptor = (client: AxiosInstance) => {
           throw new Error("No refresh token available");
         }
 
-        // ✅ Always use mainApiClient for refresh — it's a golang endpoint
+        // Always use mainApiClient for refresh — it's a golang endpoint
         const response = await mainApiClient.post<RefreshTokenResponse>(
           WEB_ENDPOINTS.refreshToken,
           { refresh_jti: rfJti, refresh_token: rfToken },
@@ -97,7 +97,7 @@ const attachResponseInterceptor = (client: AxiosInstance) => {
         processQueue(null, access_token);
 
         originalRequest.headers.Authorization = `Bearer ${access_token}`;
-        return client(originalRequest); // ✅ retry on same client
+        return client(originalRequest); // retry on same client
       } catch (err) {
         processQueue(err, null);
         tokenStorage.clearTokens();

@@ -1,4 +1,5 @@
 import DashboardShell from "@/components/Layout/DashboardShell";
+import Link from "next/link";
 
 export default function DashboardHome() {
   return (
@@ -34,9 +35,12 @@ export default function DashboardHome() {
             </div>
           </div>
 
-          <button className="rounded-full bg-[#5b32b4] px-6 py-3 text-white text-sm font-semibold hover:bg-[#47238f]">
+          <Link
+            className="rounded-full bg-[#5b32b4] px-6 py-3 text-white text-sm font-semibold hover:bg-[#47238f]"
+            href={"/contact"}
+          >
             Notify me when it’s ready
-          </button>
+          </Link>
         </div>
       </section>
     </DashboardShell>

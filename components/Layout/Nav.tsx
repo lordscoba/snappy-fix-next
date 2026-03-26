@@ -175,7 +175,7 @@ const Nav = ({ background, links = DEFAULT_LINKS }: NavProps) => {
               </div>
             )}
 
-            {user?.role === "ADMIN" && (
+            {user?.role === "ADMIN" ? (
               <Link
                 href="/admin"
                 onClick={() => setUserMenuOpen(false)}
@@ -183,15 +183,23 @@ const Nav = ({ background, links = DEFAULT_LINKS }: NavProps) => {
               >
                 Dashboard
               </Link>
+            ) : (
+              <Link
+                href="/dashboard"
+                onClick={() => setUserMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 text-sm text-[#3e2a55] hover:bg-[#faf7ff] transition"
+              >
+                Dashboard
+              </Link>
             )}
 
-            <Link
+            {/* <Link
               href="/profile"
               onClick={() => setUserMenuOpen(false)}
               className="flex items-center gap-2 px-4 py-3 text-sm text-[#3e2a55] hover:bg-[#faf7ff] transition"
             >
               My Profile
-            </Link>
+            </Link> */}
 
             <button
               type="button"

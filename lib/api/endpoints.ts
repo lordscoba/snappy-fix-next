@@ -111,4 +111,27 @@ export const WEB_ENDPOINTS = {
   admin_image_details: "/admin/images/",
   admin_image_create: "/admin/images",
   admin_image_delete: "/admin/images/",
+
+  //admin settings
+  admin_metrics: "/admin/settings/metrics",
+
+  //usage log
+  admin_usage_log_list: "/usage-logs",
+  admin_usage_log_count_all: "/usage-logs/count/all",
+  admin_usage_count_errors: "/usage-logs/count/errors",
+  admin_usage_count_actions: "/usage-logs/count/action/",
+  admin_stats_average_processing_speed:
+    "/usage-logs/stats/average-processing-time",
+  admin_stats_error_rate: "/usage-logs/stats/error-rate",
+  admin_stats_group_by_action: "/usage-logs/stats/group-by-action",
+
+  //contact us
+  create_contact_message: "/public/contact",
+
+  //admin contact us
+  admin_get_all_contact_messages: "/contact",
+  admin_get_contact_message_by_id: "/contact/",
+  admin_mark_contact_message_as_read: "/contact/",
+  admin_delete_contact_message_by_id: "/contact/",
+  admin_count_contact_messages: "/contact/count/all",
 } as const;

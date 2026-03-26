@@ -1,35 +1,46 @@
+"use client";
+
+import { useState } from "react";
 import AdminShell from "../../components/Layout/AdminShell";
-import StatCard from "../../components/admin/StatCard";
+import { UsageLogFilters } from "@/types/usage-log-types";
+import UsageStatsCards from "@/components/admin/api_usage/UsageStatsCards";
+import UsageLogsTable from "@/components/admin/api_usage/UsageLogsTable";
 
 export default function AdminHome() {
+  // State for the UsageLogsTable
+  const [page, setPage] = useState(1);
+  const [limit] = useState(10);
+  const [filters, setFilters] = useState<UsageLogFilters>({});
+
   return (
     <AdminShell
       title="Dashboard"
-      subtitle="Overview of recent activity and platform health."
+      subtitle="Overview of platform usage, health, and recent API activity."
     >
-      <section className="grid gap-6 md:grid-cols-3 my-4">
-        <StatCard label="Active Projects" value="12" trend="+3 this week" />
-        <StatCard label="New Requests" value="46" trend="+12 today" />
-        <StatCard label="Revenue" value="$18.4k" trend="+8%" />
+      {/* ─── Top Stats Row ─── */}
+      <section className="my-6">
+        <UsageStatsCards />
       </section>
 
-      <section className="rounded-3xl border border-[#e7ddf2] bg-white p-6 shadow">
-        <h2 className="text-xl font-semibold">Latest Updates</h2>
-        <p className="mt-2 text-sm text-[#6f5a88]">
-          Track approvals, pending tasks, and team check‑ins.
-        </p>
+      {/* ─── Main Logs Table ─── */}
+      <section className="mt-8">
+        <div className="mb-4">
+          <h2 className="text-xl font-semibold text-[#2b1d3a]">
+            Latest Activity Logs
+          </h2>
+          <p className="mt-1 text-sm text-[#6f5a88]">
+            Track recent processing actions, errors, and system events in
+            real-time.
+          </p>
+        </div>
 
-        <ul className="mt-6 space-y-4 text-sm text-[#6f5a88]">
-          <li className="rounded-2xl border border-[#eee4fb] bg-[#faf7ff] px-4 py-3">
-            New client brief received for “Aurora Web Revamp”.
-          </li>
-          <li className="rounded-2xl border border-[#eee4fb] bg-[#faf7ff] px-4 py-3">
-            Design review meeting scheduled for Friday, 3:00 PM.
-          </li>
-          <li className="rounded-2xl border border-[#eee4fb] bg-[#faf7ff] px-4 py-3">
-            Payment cleared for Project Nova phase 2.
-          </li>
-        </ul>
+        <UsageLogsTable
+          page={page}
+          limit={limit}
+          filters={filters}
+          setPage={setPage}
+          setFilters={setFilters}
+        />
       </section>
     </AdminShell>
   );

@@ -56,12 +56,12 @@ export default function DashboardShell({
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 href="/dashboard/profile"
                 className="rounded-full px-4 py-2 text-[#6f5a88] hover:bg-[#f1e9ff] transition-colors"
               >
                 Profile
-              </Link>
+              </Link> */}
 
               {/* Profile Shortcut */}
               <div className="h-8 w-[1px] bg-[#e6dcf4] mx-2 hidden md:block" />
