@@ -73,28 +73,28 @@ export async function submitAllToIndexNow() {
   console.log(" Manual IndexNow submission complete");
 }
 
-/* ---------------- SUBMIT TO INDEXNOW ---------------- */
+const BASE_URL_HOST =
+  typeof window === "undefined"
+    ? "http://localhost:3000" // server-side
+    : ""; // client-side
+
 export async function submitToIndexNow(
   urls: string[],
   options?: { type?: "update" | "delete" },
 ): Promise<void> {
   try {
-    const res = await fetch("/api/indexnow", {
+    const res = await fetch(`${BASE_URL_HOST}/api/indexnow`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        host: "https://www.snappy-fix.com",
-        key: "912144dd-3612-4949-9768-fded8fdc1c02",
-        keyLocation:
-          "https://www.snappy-fix.com/912144dd-3612-4949-9768-fded8fdc1c02.txt",
-        urlList: urls,
+        urls, //FIXED
       }),
     });
 
     if (!res.ok) {
-      const err = await res.json();
+      const err = await res.json().catch(() => ({}));
       throw new Error(err?.error || "IndexNow failed");
     }
 
@@ -104,17 +104,6 @@ export async function submitToIndexNow(
     );
   } catch (error) {
     console.error("IndexNow error:", error);
-    throw error; // 🔥 important for UI handling
+    throw error;
   }
 }
-
-// Usage
-
-// Now you can call it anywhere:
-
-// import { submitToIndexNow } from "@/lib/indexnow";
-
-// submitToIndexNow([
-//   "https://www.snappy-fix.com/tools/svg-optimizer",
-//   "https://www.snappy-fix.com/tools/base64-to-image"
-// ]);
