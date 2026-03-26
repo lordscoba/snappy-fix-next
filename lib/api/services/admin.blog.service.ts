@@ -9,6 +9,7 @@ import {
 
 import { clients } from "../client";
 import { WEB_ENDPOINTS } from "../endpoints";
+import { submitToIndexNow } from "@/lib/utils/indexnow";
 
 /* ---------------- GET ALL ---------------- */
 export const getAdminBlogs = async (
@@ -47,7 +48,6 @@ export const getAdminBlogDetails = async (slug: string) => {
   );
 };
 
-/* ---------------- CREATE ---------------- */
 export const createBlog = async (payload: any) => {
   const formData = new FormData();
 
@@ -62,29 +62,51 @@ export const createBlog = async (payload: any) => {
   if (payload.meta_title) formData.append("meta_title", payload.meta_title);
   if (payload.meta_desc) formData.append("meta_desc", payload.meta_desc);
 
-  // Handle local file upload
   if (payload.thumbnail instanceof File) {
     formData.append("thumbnail", payload.thumbnail);
   }
 
-  // Handle library image selection
   if (payload.thumbnail_id)
     formData.append("thumbnail_id", payload.thumbnail_id);
+
   if (payload.thumbnail_url)
     formData.append("thumbnail_url", payload.thumbnail_url);
 
-  if (payload.images && payload.images.length > 0) {
+  if (payload.images?.length) {
     payload.images.forEach((file: File) => formData.append("images", file));
   }
 
-  return clients.golang.post<BlogCreateResponse>(
+  //  MAIN REQUEST
+  const response = await clients.golang.post<BlogCreateResponse>(
     WEB_ENDPOINTS.admin_blog_create,
     formData,
     { headers: { "Content-Type": "multipart/form-data" } },
   );
+
+  // AFTER SUCCESS → INDEXNOW
+  try {
+    const blog = response.data.data.news;
+
+    // only submit if published
+    if (blog.status === "published") {
+      const urls = [
+        `https://www.snappy-fix.com/blog/${blog.slug}`,
+        "https://www.snappy-fix.com/blog",
+        "https://www.snappy-fix.com/sitemap.xml",
+      ];
+
+      await submitToIndexNow(urls);
+
+      console.log(" Submitted to IndexNow:", urls);
+    }
+  } catch (err) {
+    //  don't break main flow
+    console.error("IndexNow submission failed:", err);
+  }
+
+  return response;
 };
 
-/* ---------------- UPDATE ---------------- */
 export const updateBlog = async (
   id: string,
   payload: NewsPayload & {
@@ -93,6 +115,7 @@ export const updateBlog = async (
   },
 ) => {
   console.log(payload);
+
   const formData = new FormData();
 
   if (payload.title) formData.append("title", payload.title);
@@ -116,26 +139,74 @@ export const updateBlog = async (
   if (payload.thumbnail_url)
     formData.append("thumbnail_url", payload.thumbnail_url);
 
-  // ✅ File upload — only append if a new file is provided
   if (payload.thumbnail instanceof File) {
     formData.append("thumbnail", payload.thumbnail);
   }
 
-  if (payload.images && payload.images.length > 0) {
+  if (payload.images?.length) {
     payload.images.forEach((file) => formData.append("images", file));
   }
 
-  return clients.golang.put<BlogUpdateResponse>(
+  // MAIN REQUEST
+  const response = await clients.golang.put<BlogUpdateResponse>(
     `${WEB_ENDPOINTS.admin_blog_update}${id}`,
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },
     },
   );
+
+  // AFTER SUCCESS → INDEXNOW
+  try {
+    const blog = response.data.data.news;
+
+    // only submit if published
+    if (blog.status === "published") {
+      const urls = [
+        `https://www.snappy-fix.com/blog/${blog.slug}`,
+        "https://www.snappy-fix.com/blog",
+        "https://www.snappy-fix.com/sitemap.xml",
+      ];
+
+      // ⚡ fire and forget (non-blocking)
+      submitToIndexNow(urls);
+
+      console.log(" IndexNow update submitted:", urls);
+    }
+  } catch (err) {
+    console.error("IndexNow update failed:", err);
+  }
+
+  return response;
 };
-/* ---------------- DELETE ---------------- */
-export const deleteBlog = async (id: string) => {
-  return clients.golang.delete<BlogDeleteResponse>(
+
+// /* ---------------- DELETE ---------------- */
+// export const deleteBlog = async (id: string) => {
+//   return clients.golang.delete<BlogDeleteResponse>(
+//     `${WEB_ENDPOINTS.admin_blog_delete}${id}`,
+//   );
+// };
+
+export const deleteBlog = async (id: string, slug?: string) => {
+  const response = await clients.golang.delete<BlogDeleteResponse>(
     `${WEB_ENDPOINTS.admin_blog_delete}${id}`,
   );
+
+  try {
+    if (slug) {
+      const urls = [
+        `https://www.snappy-fix.com/blog/${slug}`,
+        "https://www.snappy-fix.com/blog",
+        "https://www.snappy-fix.com/sitemap.xml",
+      ];
+
+      submitToIndexNow(urls, { type: "delete" });
+
+      console.log("🗑️ Submitted for de-indexing:", urls);
+    }
+  } catch (err) {
+    console.error("IndexNow delete submission failed:", err);
+  }
+
+  return response;
 };
