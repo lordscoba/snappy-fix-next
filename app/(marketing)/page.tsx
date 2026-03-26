@@ -12,6 +12,7 @@ import ProjectsSection from "@/components/projects/ProjectsDone";
 import { Hero } from "@/components/home/Hero";
 import dynamic from "next/dynamic";
 import Testimonial from "@/components/home/Testimonial";
+import { generateIndexNowUrls } from "@/lib/utils/indexnow";
 const Counter = dynamic(() => import("@/components/home/Counter"), {
   ssr: false,
 });
@@ -26,7 +27,7 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
+  console.log("IndexNow URLs:", generateIndexNowUrls());
   return (
     <main className="relative overflow-x-hidden scroll-smooth bg-white">
       <Snow aria-hidden="true" />
