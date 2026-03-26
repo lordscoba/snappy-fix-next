@@ -88,6 +88,8 @@ export default function AdminShell({
 
   const navItems = [
     { label: "Dashboard", href: "/admin", icon: "📊" },
+    { label: "Usage Logs", href: "/admin/usage-logs", icon: "📊" },
+
     {
       label: "Blog",
       icon: "📰",
@@ -112,6 +114,7 @@ export default function AdminShell({
         { label: "Upload", href: "/admin/images/create" },
       ],
     },
+    { label: "Contact Us", href: "/admin/contact-us", icon: "📧" },
     { label: "Settings", href: "/admin/settings", icon: "⚙️" },
   ];
 
@@ -152,19 +155,21 @@ export default function AdminShell({
       <>
         {/* ── Logo ── */}
         <div className="mb-10 px-2 gap-3">
-          <div className="flex flex-row items-center gap-3">
-            <Image
-              src="/images/logo/snappy-fix-logo.webp"
-              alt="Logo"
-              width={56}
-              height={56}
-              priority
-              className="w-24 sm:w-10 md:w-14 lg:w-16"
-            />
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#b08fd9]">
-              Snappy-fix
-            </p>
-          </div>
+          <Link href={"/"}>
+            <div className="flex flex-row items-center gap-3">
+              <Image
+                src="/images/logo/snappy-fix-logo.webp"
+                alt="Logo"
+                width={56}
+                height={56}
+                priority
+                className="w-24 sm:w-10 md:w-14 lg:w-16"
+              />
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#b08fd9]">
+                Snappy-fix
+              </p>
+            </div>
+          </Link>
           <span className="text-[10px] text-[#6f5a88] opacity-60">
             ADMIN PANEL V2.0
           </span>
