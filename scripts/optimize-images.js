@@ -20,7 +20,6 @@ async function optimizeImage(filePath) {
 
     // Skip if file already exists
     if (fs.existsSync(outputPath)) {
-      console.log(`⏭ Skipping existing ${outputPath}`);
       continue;
     }
 
@@ -28,8 +27,6 @@ async function optimizeImage(filePath) {
       await sharp(filePath)
         .toFormat(format.ext, format.options)
         .toFile(outputPath);
-
-      console.log(`✔ Generated ${outputPath}`);
     } catch (err) {
       console.error(`Error converting ${filePath}`, err);
     }
@@ -42,8 +39,6 @@ async function run() {
   for (const file of files) {
     await optimizeImage(file);
   }
-
-  console.log("Image optimization complete.");
 }
 
 run();

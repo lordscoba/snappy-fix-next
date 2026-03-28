@@ -36,11 +36,6 @@ export const analyzeImage = async (
   const formData = new FormData();
   formData.append("file", file);
 
-  // --- ADD THIS LOG ---
-  console.log("DEBUG: API Base URL is:", clients.fastapi.defaults.baseURL);
-  console.log("DEBUG: Full Endpoint is:", IMAGE_ENDPOINTS.ANALYZE);
-  // --------------------
-
   return clients.fastapi.post<ImageAnalysisResponse>(
     IMAGE_ENDPOINTS.ANALYZE,
     formData,

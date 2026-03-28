@@ -122,7 +122,6 @@ export const RegisterComponent = () => {
         router.push("/login?registered=true");
       }, 3000);
     } catch (err: any) {
-      console.log("Error: ", err.response?.data?.message);
       setError(
         err.response?.data?.message ||
           "Registration failed. Please check your details.",

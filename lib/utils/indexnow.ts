@@ -52,11 +52,8 @@ export async function smartIndexNowSubmit(): Promise<boolean> {
       await submitToIndexNow(urls);
 
       localStorage.setItem("indexnow_hash", currentHash);
-
-      console.log("IndexNow triggered (tools/categories changed)");
       return true;
     }
-    console.log("No changes detected, skipping IndexNow");
     return false;
   } catch (error) {
     console.error("IndexNow smart submit error:", error);
@@ -69,8 +66,6 @@ export async function submitAllToIndexNow() {
   const urls = generateIndexNowUrls();
 
   await submitToIndexNow(urls);
-
-  console.log(" Manual IndexNow submission complete");
 }
 
 const BASE_URL_HOST =
@@ -97,11 +92,6 @@ export async function submitToIndexNow(
       const err = await res.json().catch(() => ({}));
       throw new Error(err?.error || "IndexNow failed");
     }
-
-    console.log(
-      `IndexNow ${options?.type === "delete" ? "de-index" : "update"} submitted:`,
-      urls,
-    );
   } catch (error) {
     console.error("IndexNow error:", error);
     throw error;

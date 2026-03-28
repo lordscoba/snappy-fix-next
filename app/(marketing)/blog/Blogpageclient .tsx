@@ -100,7 +100,6 @@ export default function BlogPageClient() {
 
   // ─── Fetch Latest (paginated + category filter) ────────────
   const fetchLatest = useCallback(async () => {
-    console.log("fetchLatest", latestPage, selectedCategory);
     try {
       setErrorLatest(false);
       setLoadingLatest(true);

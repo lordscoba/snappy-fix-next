@@ -14,5 +14,4 @@ export function log(
     console.warn(`[${level.toUpperCase()}] ${message}${payload}`);
     return;
   }
-  console.log(`[${level.toUpperCase()}] ${message}${payload}`);
 }
