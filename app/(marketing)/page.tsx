@@ -27,7 +27,6 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  console.log("IndexNow URLs:", generateIndexNowUrls());
   return (
     <main className="relative overflow-x-hidden scroll-smooth bg-white">
       <Snow aria-hidden="true" />

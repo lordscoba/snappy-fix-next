@@ -32,7 +32,6 @@ export const getAdminTopCategories = async (
 
 /* ---------------- GET DETAILS ---------------- */
 export const getAdminCategoryDetails = async (id: string) => {
-  console.log("DEBUG: Category ID is:", id);
   return clients.golang.get<BlogCategoryDetailsResponse>(
     `${WEB_ENDPOINTS.admin_category_details}${id}`,
   );

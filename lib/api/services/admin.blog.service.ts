@@ -96,8 +96,6 @@ export const createBlog = async (payload: any) => {
       ];
 
       await submitToIndexNow(urls);
-
-      console.log(" Submitted to IndexNow:", urls);
     }
   } catch (err) {
     //  don't break main flow
@@ -114,8 +112,6 @@ export const updateBlog = async (
     thumbnail_url?: string;
   },
 ) => {
-  console.log(payload);
-
   const formData = new FormData();
 
   if (payload.title) formData.append("title", payload.title);
@@ -170,8 +166,6 @@ export const updateBlog = async (
 
       // ⚡ fire and forget (non-blocking)
       submitToIndexNow(urls);
-
-      console.log(" IndexNow update submitted:", urls);
     }
   } catch (err) {
     console.error("IndexNow update failed:", err);
@@ -201,8 +195,6 @@ export const deleteBlog = async (id: string, slug?: string) => {
       ];
 
       submitToIndexNow(urls, { type: "delete" });
-
-      console.log("🗑️ Submitted for de-indexing:", urls);
     }
   } catch (err) {
     console.error("IndexNow delete submission failed:", err);

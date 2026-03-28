@@ -50,7 +50,6 @@ export function EditorWrapper({
   const handleUpdate = useCallback(
     ({ editor }: { editor: Editor }) => {
       onChange?.(editor.getHTML());
-      console.log("DEBUG: Editor content is:", editor.getHTML());
     },
     [onChange],
   );

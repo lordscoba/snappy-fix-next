@@ -52,7 +52,6 @@ export const getAdminContactMessageById = async (id: string) => {
 
 /* ---------------- MARK AS READ ---------------- */
 export const markContactMessageAsRead = async (id: string) => {
-  console.log("Marking contact message as read:", id);
   return clients.golang.patch<AdminMarkAsReadResponse>(
     `${WEB_ENDPOINTS.admin_mark_contact_message_as_read}${id}/read`,
   );

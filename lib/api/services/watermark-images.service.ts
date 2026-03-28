@@ -64,8 +64,6 @@ export const watermarkImage = async (
   }
   if (options?.compression) formData.append("compression", options.compression);
 
-  console.log(JSON.stringify(formDataToJson(formData), null, 2));
-
   return clients.fastapi.post(IMAGE_ENDPOINTS.WATERMARK_IMAGE, formData, {
     params,
     responseType: "blob",
